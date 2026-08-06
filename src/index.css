@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", sans-serif;
-  --font-serif: "Instrument Serif", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
   --color-cream: #F5F2ED;
   --color-cream-dark: #EBE7E0;
+  --color-command: #0E7490;
+  --color-command-soft: #E0F2FE;
 }
 
 @layer base {
@@ -19,29 +22,46 @@
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    line-height: 1.6;
+    line-height: 1.5;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
+    letter-spacing: 0 !important;
+  }
+
+  button,
+  select,
+  input {
+    font: inherit;
   }
 
   /* Focus states */
   *:focus-visible {
-    @apply outline-none ring-2 ring-amber-500/30 ring-offset-2 ring-offset-cream;
+    @apply outline-none ring-2 ring-cyan-700/30 ring-offset-2 ring-offset-cream;
   }
 
   /* Selection */
   ::selection {
-    @apply bg-amber-400/30 text-stone-900;
+    @apply bg-cyan-200 text-stone-950;
   }
 }
 
 @layer utilities {
   /* The single card style */
   .card {
-    @apply bg-white border border-stone-200 rounded-lg;
+    @apply bg-white/90 border border-stone-200/80 rounded-lg shadow-sm shadow-stone-300/20;
   }
 
   /* Label utility */
   .label {
-    @apply text-xs font-medium uppercase tracking-widest text-stone-400;
+    @apply text-[11px] font-semibold uppercase tracking-wider text-stone-500;
   }
 
   /* Subtle hover lift */
@@ -75,4 +95,15 @@
 /* Smooth transitions globally */
 *, *::before, *::after {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

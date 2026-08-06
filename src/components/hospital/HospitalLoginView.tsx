@@ -14,6 +14,7 @@ import {
   AlertCircle,
   HelpCircle,
 } from 'lucide-react';
+import AuthSwitch from '@/components/ui/auth-switch';
 import { Hospital, HospitalAdminRole } from '../../types';
 
 export interface HospitalUserSession {
@@ -178,16 +179,16 @@ export const HospitalLoginView: React.FC<HospitalLoginViewProps> = ({
           animate={{ opacity: 1, y: 0 }}
           className="bg-white/90 border border-stone-200 rounded-2xl p-6 md:p-8 shadow-lg shadow-stone-300/50 backdrop-blur-xl space-y-6"
         >
-          {/* Header */}
           <div className="text-center space-y-2">
             <div className="inline-flex items-center justify-center p-3 bg-sky-500/10 text-sky-400 rounded-2xl border border-sky-500/20 mb-1">
               <ShieldCheck className="w-8 h-8" />
             </div>
-            <h2 className="text-xl font-black text-stone-900">Hospital Operational Authentication</h2>
-            <p className="text-xs text-stone-500 max-w-xs mx-auto">
-              Secure single sign-on for hospital administrators, ER coordinators, bed managers, and biomedical staff.
-            </p>
           </div>
+
+          <AuthSwitch
+            activePortal="HOSPITAL"
+            onPortalChange={(portal) => onSwitchPortal?.(portal)}
+          />
 
           {errorMsg && (
             <div className="bg-rose-500/10 border border-rose-500/30 text-rose-300 p-3 rounded-xl text-xs font-semibold flex items-center space-x-2">

@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import {
-  Building2,
   BedDouble,
-  Truck,
-  Timer,
-  AlertTriangle,
-  PhoneCall,
+  Building2,
   ChevronRight,
-  ShieldAlert,
+  PhoneCall,
   Search,
+  ShieldAlert,
+  Timer,
+  Truck,
 } from 'lucide-react';
 import { District } from '../types';
 
@@ -28,67 +27,62 @@ export const DistrictOverview: React.FC<DistrictOverviewProps> = ({
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredDistricts = districts.filter(
-    (d) =>
-      d.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      d.marathiName.includes(searchTerm) ||
-      d.code.toLowerCase().includes(searchTerm.toLowerCase())
+    (district) =>
+      district.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      district.code.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
-  const getRiskBadge = (level: District['riskLevel']) => {
+  const riskBadgeClass = (level: District['riskLevel']) => {
     switch (level) {
       case 'CRITICAL':
-        return 'bg-rose-600 text-stone-900 font-extrabold animate-pulse';
+        return 'bg-rose-600 text-white';
       case 'HIGH':
-        return 'bg-rose-100 text-rose-400 border-rose-200 font-bold';
+        return 'bg-rose-50 text-rose-700';
       case 'ELEVATED':
-        return 'bg-amber-100 text-amber-400 border-amber-200 font-bold';
+        return 'bg-amber-50 text-amber-800';
       default:
-        return 'bg-emerald-100 text-emerald-400 border-emerald-300 font-semibold';
+        return 'bg-emerald-50 text-emerald-800';
     }
   };
 
-  const getStatusBadge = (status: District['operationalStatus']) => {
+  const statusBadgeClass = (status: District['operationalStatus']) => {
     switch (status) {
       case 'STRESS':
-        return 'bg-rose-50 text-rose-400 border border-rose-200';
+        return 'text-rose-700';
       case 'HEAVY_LOAD':
-        return 'bg-amber-50 text-amber-400 border border-amber-200';
       case 'ALERT':
-        return 'bg-orange-50 text-orange-700 border border-orange-200';
+        return 'text-amber-800';
       default:
-        return 'bg-emerald-50 text-emerald-400 border border-emerald-200';
+        return 'text-emerald-800';
     }
   };
 
   return (
-    <div className="bg-white rounded-lg border border-stone-200 shadow-sm p-4 space-y-4">
-      {/* Header & Controls */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-stone-200 pb-3">
+    <section className="card p-5">
+      <div className="mb-5 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <h2 className="text-lg font-extrabold text-stone-900 flex items-center gap-2">
-            <Building2 className="w-5 h-5 text-sky-400" />
-            Maharashtra Pilot District Emergency Network (7 Districts)
-          </h2>
-          <p className="text-xs text-stone-500">
-            Real-time emergency monitoring, hospital bed allocation status & dispatch latency across pilot centers.
+          <div className="label">District Network</div>
+          <h2 className="mt-1 text-xl font-bold text-stone-950">Pilot district readiness</h2>
+          <p className="mt-1 text-sm text-stone-500">
+            One row per command district, tuned for quick scan and fast routing.
           </p>
         </div>
 
-        <div className="flex items-center space-x-2">
+        <div className="flex flex-wrap items-center gap-2">
           <div className="relative">
-            <Search className="w-3.5 h-3.5 text-stone-500 absolute left-2.5 top-2.5" />
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-400" />
             <input
               type="text"
-              placeholder="Filter district..."
+              placeholder="Search district"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-8 pr-3 py-1.5 text-xs bg-cream border border-stone-200 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500 text-stone-900 font-medium"
+              onChange={(event) => setSearchTerm(event.target.value)}
+              className="h-10 w-64 rounded-lg border border-stone-200 bg-white pl-9 pr-3 text-sm font-medium text-stone-900 placeholder:text-stone-400"
             />
           </div>
           {selectedDistrict !== 'all' && (
             <button
               onClick={() => onSelectDistrict('all')}
-              className="text-xs bg-stone-100 hover:bg-stone-100 text-stone-600 font-semibold px-2.5 py-1.5 rounded-md border border-stone-200"
+              className="h-10 cursor-pointer rounded-lg border border-stone-200 bg-white px-3 text-sm font-semibold text-stone-700 transition-colors duration-200 hover:border-cyan-300 hover:text-cyan-800"
             >
               Show All
             </button>
@@ -96,152 +90,119 @@ export const DistrictOverview: React.FC<DistrictOverviewProps> = ({
         </div>
       </div>
 
-      {/* District Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5">
-        {filteredDistricts.map((district) => {
-          const isSelected = selectedDistrict === district.id;
-          const icuPercentAvailable = Math.round(
-            (district.availableIcuBeds / district.totalIcuBeds) * 100
-          );
+      <div className="overflow-hidden rounded-lg border border-stone-200 bg-white">
+        <div className="hidden grid-cols-[1.35fr_1fr_1fr_1fr_1fr_auto] gap-4 border-b border-stone-200 bg-stone-50 px-4 py-3 text-[11px] font-bold uppercase tracking-wider text-stone-500 lg:grid">
+          <span>District</span>
+          <span>Risk</span>
+          <span>Emergencies</span>
+          <span>ICU</span>
+          <span>Fleet</span>
+          <span className="text-right">Action</span>
+        </div>
 
-          return (
-            <div
-              key={district.id}
-              className={`bg-cream rounded-lg border p-3.5 transition-all flex flex-col justify-between ${
-                isSelected
-                  ? 'border-sky-600 ring-2 ring-sky-500/20 bg-sky-50/40 shadow'
-                  : 'border-stone-200 hover:border-stone-200 hover:shadow-sm'
-              }`}
-            >
-              <div>
-                {/* Card Title Bar */}
-                <div className="flex items-start justify-between mb-2">
+        <div className="divide-y divide-stone-200">
+          {filteredDistricts.map((district) => {
+            const isSelected = selectedDistrict === district.id;
+            const icuPercentAvailable = Math.round(
+              (district.availableIcuBeds / district.totalIcuBeds) * 100,
+            );
+
+            return (
+              <div
+                key={district.id}
+                className={`grid gap-4 px-4 py-4 transition-colors duration-200 lg:grid-cols-[1.35fr_1fr_1fr_1fr_1fr_auto] lg:items-center ${
+                  isSelected ? 'bg-cyan-50/70' : 'bg-white hover:bg-stone-50'
+                }`}
+              >
+                <div className="min-w-0">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h3 className="text-base font-bold text-stone-950">{district.name}</h3>
+                    <span className="rounded bg-stone-100 px-2 py-0.5 font-mono text-[11px] font-semibold text-stone-600">
+                      {district.code}
+                    </span>
+                    {isSelected && (
+                      <span className="rounded bg-cyan-700 px-2 py-0.5 text-[11px] font-bold text-white">
+                        Selected
+                      </span>
+                    )}
+                  </div>
+                  <a
+                    href={`tel:${district.controlCenterPhone}`}
+                    className="mt-1 inline-flex items-center gap-1 text-xs font-mono text-stone-500 transition-colors duration-200 hover:text-cyan-800"
+                  >
+                    <PhoneCall className="h-3.5 w-3.5" />
+                    {district.controlCenterPhone}
+                  </a>
+                </div>
+
+                <div>
+                  <span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-bold ${riskBadgeClass(district.riskLevel)}`}>
+                    {district.riskLevel}
+                  </span>
+                  <div className={`mt-1 text-xs font-semibold ${statusBadgeClass(district.operationalStatus)}`}>
+                    {district.operationalStatus.replace('_', ' ')}
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 text-sm">
+                  <ShieldAlert className="h-4 w-4 text-rose-600" />
                   <div>
-                    <div className="flex items-center space-x-1.5">
-                      <h3 className="text-base font-black text-stone-900">
-                        {district.name}
-                      </h3>
-                      <span className="text-xs text-stone-500 font-medium">
-                        ({district.marathiName})
-                      </span>
-                      <span className="text-[10px] bg-stone-100 text-stone-600 font-mono px-1 rounded">
-                        {district.code}
-                      </span>
+                    <div className="font-mono text-lg font-semibold text-stone-950">
+                      {district.currentEmergencies}
                     </div>
-                    <div className="flex items-center space-x-2 mt-1">
-                      <span
-                        className={`text-[10px] px-2 py-0.5 rounded border ${getRiskBadge(
-                          district.riskLevel
-                        )}`}
-                      >
-                        Risk: {district.riskLevel}
-                      </span>
-                      <span
-                        className={`text-[10px] px-2 py-0.5 rounded font-mono font-bold ${getStatusBadge(
-                          district.operationalStatus
-                        )}`}
-                      >
-                        {district.operationalStatus}
-                      </span>
+                    <div className="text-xs text-stone-500">{district.criticalIncidents} critical</div>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex items-center gap-2 text-sm">
+                    <BedDouble className="h-4 w-4 text-cyan-700" />
+                    <span className="font-mono text-lg font-semibold text-stone-950">
+                      {district.availableIcuBeds}/{district.totalIcuBeds}
+                    </span>
+                  </div>
+                  <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-stone-100">
+                    <div
+                      className={`h-full ${icuPercentAvailable < 12 ? 'bg-rose-600' : 'bg-cyan-700'}`}
+                      style={{ width: `${Math.min(100, icuPercentAvailable)}%` }}
+                    />
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 text-sm">
+                  <Truck className="h-4 w-4 text-emerald-700" />
+                  <div>
+                    <div className="font-mono text-lg font-semibold text-stone-950">
+                      {district.availableAmbulances}/{district.totalAmbulances}
+                    </div>
+                    <div className="flex items-center gap-1 text-xs text-stone-500">
+                      <Timer className="h-3.5 w-3.5" />
+                      {district.avgResponseTimeMin}m avg
                     </div>
                   </div>
+                </div>
 
+                <div className="flex items-center gap-2 lg:justify-end">
                   <button
                     onClick={() => onSelectDistrict(district.id)}
-                    className="text-xs text-sky-400 hover:text-sky-900 font-bold bg-white px-2 py-1 rounded border border-stone-200 shadow-2xs"
+                    className="h-9 cursor-pointer rounded-lg border border-stone-200 bg-white px-3 text-sm font-semibold text-stone-700 transition-colors duration-200 hover:border-cyan-300 hover:text-cyan-800"
                   >
-                    Select
+                    Focus
+                  </button>
+                  <button
+                    onClick={() => onNavigateToHospitals(district.id)}
+                    className="flex h-9 cursor-pointer items-center gap-1 rounded-lg bg-cyan-700 px-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-cyan-800"
+                  >
+                    <Building2 className="h-4 w-4" />
+                    <span>{district.hospitalsCount}</span>
+                    <ChevronRight className="h-4 w-4" />
                   </button>
                 </div>
-
-                {/* Key Metrics Grid */}
-                <div className="grid grid-cols-2 gap-2 my-3 text-xs">
-                  <div className="bg-white p-2 rounded border border-stone-200">
-                    <span className="text-[10px] text-stone-500 font-semibold block uppercase">
-                      Active Emergencies
-                    </span>
-                    <div className="flex items-baseline space-x-1 mt-0.5">
-                      <span className="text-base font-extrabold text-rose-400 font-mono">
-                        {district.currentEmergencies}
-                      </span>
-                      <span className="text-[10px] text-rose-600">
-                        ({district.criticalIncidents} Critical)
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="bg-white p-2 rounded border border-stone-200">
-                    <span className="text-[10px] text-stone-500 font-semibold block uppercase">
-                      ICU Availability
-                    </span>
-                    <div className="flex items-baseline space-x-1 mt-0.5">
-                      <span className="text-base font-extrabold text-sky-400 font-mono">
-                        {district.availableIcuBeds}
-                      </span>
-                      <span className="text-[10px] text-stone-500">
-                        / {district.totalIcuBeds}
-                      </span>
-                    </div>
-                    <div className="w-full bg-stone-100 h-1.5 rounded-full mt-1 overflow-hidden">
-                      <div
-                        className={`h-full ${
-                          icuPercentAvailable < 12 ? 'bg-rose-600' : 'bg-sky-600'
-                        }`}
-                        style={{ width: `${Math.min(100, icuPercentAvailable)}%` }}
-                      ></div>
-                    </div>
-                  </div>
-
-                  <div className="bg-white p-2 rounded border border-stone-200">
-                    <span className="text-[10px] text-stone-500 font-semibold block uppercase">
-                      108 Ambulances
-                    </span>
-                    <div className="flex items-baseline space-x-1 mt-0.5">
-                      <span className="text-sm font-extrabold text-stone-900 font-mono">
-                        {district.availableAmbulances}
-                      </span>
-                      <span className="text-[10px] text-stone-500">
-                        / {district.totalAmbulances} free
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="bg-white p-2 rounded border border-stone-200">
-                    <span className="text-[10px] text-stone-500 font-semibold block uppercase">
-                      Avg Response
-                    </span>
-                    <div className="flex items-baseline space-x-1 mt-0.5">
-                      <span className="text-sm font-extrabold text-emerald-400 font-mono">
-                        {district.avgResponseTimeMin}m
-                      </span>
-                      <span className="text-[10px] text-stone-500">target &lt;12m</span>
-                    </div>
-                  </div>
-                </div>
               </div>
-
-              {/* Action Bar */}
-              <div className="pt-2 border-t border-stone-200 flex items-center justify-between text-xs">
-                <a
-                  href={`tel:${district.controlCenterPhone}`}
-                  className="text-[11px] text-stone-500 font-mono hover:text-sky-400 flex items-center space-x-1"
-                >
-                  <PhoneCall className="w-3 h-3 text-sky-600" />
-                  <span>{district.controlCenterPhone}</span>
-                </a>
-
-                <button
-                  onClick={() => onNavigateToHospitals(district.id)}
-                  className="text-[11px] font-bold text-sky-400 hover:text-sky-900 flex items-center space-x-0.5"
-                >
-                  <span>{district.hospitalsCount} Hospitals</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };

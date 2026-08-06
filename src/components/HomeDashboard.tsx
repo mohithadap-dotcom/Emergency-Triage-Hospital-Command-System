@@ -1,27 +1,18 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
-  ShieldAlert,
-  Building2,
-  Flame,
-  BedDouble,
-  Truck,
-  Activity,
   ArrowRight,
-  Radio,
-  Clock,
-  PhoneCall,
-  CheckCircle2,
-  AlertTriangle,
+  BedDouble,
+  Building2,
   ChevronRight,
-  TrendingUp,
+  Flame,
   MapPin,
-  Box,
-  BarChart3,
-  Users,
+  Radio,
+  ShieldAlert,
+  Truck,
 } from 'lucide-react';
-import { District, Hospital, Incident, EocSummaryMetrics, SystemHealth } from '../types';
-import { KPICards } from './KPICards';
+import { District, EocSummaryMetrics, Hospital, Incident, SystemHealth } from '../types';
 import { DistrictOverview } from './DistrictOverview';
+import { KPICards } from './KPICards';
 import { MaharashtraMapVisualizer } from './MaharashtraMapVisualizer';
 import { NavTab } from './Navbar';
 
@@ -46,189 +37,198 @@ export const HomeDashboard: React.FC<HomeProps> = ({
   onSelectDistrict,
   onNavigateTab,
 }) => {
+  const scopedDistrict = districts.find((district) => district.id === selectedDistrict);
+  const scopeLabel = selectedDistrict === 'all' ? 'Statewide command' : `${scopedDistrict?.name} district`;
   const latestIncidents = incidents.slice(0, 4);
 
-  const topHospitalsWithIcu = hospitals
-    .filter((h) => selectedDistrict === 'all' || h.districtId === selectedDistrict)
-    .sort((a, b) => b.availableIcuBeds - a.availableIcuBeds)
-    .slice(0, 5);
+  const topHospitalsWithIcu = useMemo(
+    () =>
+      hospitals
+        .filter((hospital) => selectedDistrict === 'all' || hospital.districtId === selectedDistrict)
+        .sort((a, b) => b.availableIcuBeds - a.availableIcuBeds)
+        .slice(0, 4),
+    [hospitals, selectedDistrict],
+  );
+
+  const lastSyncTime = systemHealth.lastCheckTimestamp
+    ? new Date(systemHealth.lastCheckTimestamp).toLocaleTimeString('en-IN', {
+        hour: '2-digit',
+        minute: '2-digit',
+      })
+    : 'Live';
+
+  const severityClass = (severity: Incident['severity']) => {
+    if (severity === 'CRITICAL') return 'bg-rose-50 text-rose-700';
+    if (severity === 'MAJOR') return 'bg-amber-50 text-amber-800';
+    return 'bg-stone-100 text-stone-600';
+  };
 
   return (
-    <div className="space-y-8">
-      {/* 1. Government Branding Banner */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-stone-200">
-        <div>
-          <div className="label mb-3">
-            Maharashtra State Emergency Operations Center
+    <div className="space-y-6">
+      <section className="card overflow-hidden">
+        <div className="grid gap-6 p-5 md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:p-6 xl:p-7">
+          <div className="min-w-0">
+            <div className="label mb-3">Maharashtra State Emergency Operations Center</div>
+            <h1 className="text-3xl font-extrabold tracking-tight text-stone-950 md:text-4xl xl:text-5xl">
+              Operational command without the noise.
+            </h1>
+            <p className="mt-3 max-w-5xl text-sm leading-6 text-stone-600">
+              Live incident triage, ICU capacity, hospital readiness, and 108 ambulance dispatch across the pilot districts.
+            </p>
+
+            <div className="mt-5 flex flex-wrap items-center gap-2 text-sm">
+              <span className="inline-flex h-9 items-center gap-2 rounded-lg bg-cyan-50 px-3 font-semibold text-cyan-800">
+                <MapPin className="h-4 w-4" />
+                {scopeLabel}
+              </span>
+              <span className="inline-flex h-9 items-center gap-2 rounded-lg bg-emerald-50 px-3 font-semibold text-emerald-800">
+                <Radio className="h-4 w-4" />
+                Last sync {lastSyncTime}
+              </span>
+              <span className="inline-flex h-9 items-center gap-2 rounded-lg bg-rose-50 px-3 font-semibold text-rose-700">
+                <Flame className="h-4 w-4" />
+                {metrics.criticalIncidents} critical
+              </span>
+            </div>
           </div>
-          <h1 className="text-3xl md:text-4xl font-serif tracking-tight text-stone-900 leading-tight">
-            Operational Command Center
-          </h1>
-          <p className="text-sm text-stone-500 mt-2 max-w-xl leading-relaxed">
-            Centralized multi-hospital coordination, real-time ICU bed tracking & 108 emergency dispatch across Nagpur, Pune, Mumbai, Nashik, Wardha, Amravati, and Chandrapur.
-          </p>
+
+          <div className="flex flex-wrap gap-2 md:justify-end">
+            <button
+              onClick={() => onNavigateTab('gis')}
+              className="flex h-11 cursor-pointer items-center gap-2 rounded-lg bg-cyan-700 px-4 text-sm font-semibold text-white transition-colors duration-200 hover:bg-cyan-800"
+            >
+              <MapPin className="h-4 w-4" />
+              <span>Open GIS</span>
+            </button>
+            <button
+              onClick={() => onNavigateTab('incidents')}
+              className="flex h-11 cursor-pointer items-center gap-2 rounded-lg border border-stone-200 bg-white px-4 text-sm font-semibold text-stone-800 transition-colors duration-200 hover:border-cyan-300 hover:text-cyan-800"
+            >
+              <ShieldAlert className="h-4 w-4" />
+              <span>Live Incidents</span>
+            </button>
+          </div>
         </div>
+      </section>
 
-        <div className="flex flex-wrap items-center gap-3">
-          <button
-            onClick={() => onNavigateTab('ops')}
-            className="bg-white border border-stone-200 hover:border-amber-400/50 text-stone-600 hover:text-amber-400 font-medium text-xs px-4 py-2.5 rounded-md flex items-center gap-2 transition-colors duration-200"
-          >
-            <ShieldAlert className="w-4 h-4" />
-            <span>Emergency Operations</span>
-          </button>
-          <button
-            onClick={() => onNavigateTab('hospitals')}
-            className="bg-white border border-stone-200 hover:border-stone-300 text-stone-500 hover:text-stone-800 font-medium text-xs px-4 py-2.5 rounded-md flex items-center gap-2 transition-colors duration-200"
-          >
-            <Building2 className="w-4 h-4" />
-            <span>Hospital Network</span>
-          </button>
-        </div>
-      </div>
-
-      {/* 2. KPI Cards */}
-      <KPICards metrics={metrics} onFilterClick={(type) => {
-        if (type === 'active_emergencies' || type === 'critical_incidents') onNavigateTab('incidents');
-        else if (type === 'available_icu' || type === 'hospitals_online') onNavigateTab('hospitals');
-        else if (type === 'available_ambulances') onNavigateTab('fleet');
-        else if (type === 'system_health') onNavigateTab('observability');
-      }} />
-
-      {/* 3. Interactive GIS Map */}
-      <MaharashtraMapVisualizer
-        districts={districts}
-        selectedDistrict={selectedDistrict}
-        onSelectDistrict={onSelectDistrict}
+      <KPICards
+        metrics={metrics}
+        onFilterClick={(type) => {
+          if (type === 'active_emergencies' || type === 'critical_incidents') onNavigateTab('incidents');
+          else if (type === 'available_icu') onNavigateTab('hospitals');
+          else if (type === 'available_ambulances') onNavigateTab('fleet');
+          else if (type === 'system_health') onNavigateTab('observability');
+        }}
       />
 
-      {/* 4. District Network Grid */}
+      <div className="grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,2fr)_minmax(420px,0.85fr)] 2xl:grid-cols-[minmax(0,2.35fr)_minmax(460px,0.8fr)]">
+        <MaharashtraMapVisualizer
+          districts={districts}
+          selectedDistrict={selectedDistrict}
+          onSelectDistrict={onSelectDistrict}
+        />
+
+        <aside className="card p-5">
+          <div className="mb-5 flex items-center justify-between gap-3">
+            <div>
+              <div className="label">Operational Queue</div>
+              <h2 className="mt-1 text-lg font-bold text-stone-950">What needs attention</h2>
+            </div>
+            <button
+              onClick={() => onNavigateTab('incidents')}
+              className="flex h-9 cursor-pointer items-center gap-1 rounded-lg px-2 text-sm font-semibold text-cyan-800 transition-colors duration-200 hover:bg-cyan-50"
+            >
+              <span>View all</span>
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+
+          <div className="space-y-3">
+            {latestIncidents.map((incident) => (
+              <button
+                key={incident.id}
+                onClick={() => onNavigateTab('incidents')}
+                className="w-full cursor-pointer rounded-lg border border-stone-200 bg-white p-3 text-left transition-colors duration-200 hover:border-cyan-200 hover:bg-cyan-50/30"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <div className="font-mono text-xs font-semibold text-stone-500">{incident.code}</div>
+                    <div className="mt-1 truncate text-sm font-semibold text-stone-950">{incident.title}</div>
+                    <div className="mt-1 truncate text-xs text-stone-500">
+                      {incident.districtName} - {incident.locationName}
+                    </div>
+                  </div>
+                  <span className={`shrink-0 rounded-full px-2 py-1 text-[11px] font-bold ${severityClass(incident.severity)}`}>
+                    {incident.severity}
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
+
+          <div className="my-5 h-px bg-stone-200" />
+
+          <div className="mb-4 flex items-center justify-between gap-3">
+            <div>
+              <div className="label">Receiving Capacity</div>
+              <h2 className="mt-1 text-lg font-bold text-stone-950">ICU availability</h2>
+            </div>
+            <button
+              onClick={() => onNavigateTab('hospitals')}
+              className="flex h-9 cursor-pointer items-center gap-1 rounded-lg px-2 text-sm font-semibold text-cyan-800 transition-colors duration-200 hover:bg-cyan-50"
+            >
+              <span>Hospitals</span>
+              <ArrowRight className="h-4 w-4" />
+            </button>
+          </div>
+
+          <div className="space-y-3">
+            {topHospitalsWithIcu.map((hospital) => (
+              <div
+                key={hospital.id}
+                className="flex items-center justify-between gap-3 rounded-lg border border-stone-200 bg-white p-3"
+              >
+                <div className="min-w-0">
+                  <div className="truncate text-sm font-semibold text-stone-950">{hospital.name}</div>
+                  <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-stone-500">
+                    <span className="inline-flex items-center gap-1">
+                      <Building2 className="h-3.5 w-3.5" />
+                      {hospital.districtName}
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <BedDouble className="h-3.5 w-3.5" />
+                      {hospital.traumaLevel}
+                    </span>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="font-mono text-2xl font-semibold text-stone-950">{hospital.availableIcuBeds}</div>
+                  <div className="text-[11px] font-semibold text-stone-500">
+                    {hospital.availableVentilators} ventilators
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-5 rounded-lg bg-emerald-50 p-3 text-sm text-emerald-900">
+            <div className="flex items-center gap-2 font-semibold">
+              <Truck className="h-4 w-4" />
+              {metrics.availableAmbulances} ambulances ready statewide
+            </div>
+          </div>
+        </aside>
+      </div>
+
       <DistrictOverview
         districts={districts}
         selectedDistrict={selectedDistrict}
         onSelectDistrict={onSelectDistrict}
-        onNavigateToHospitals={(distId) => {
-          onSelectDistrict(distId);
+        onNavigateToHospitals={(districtId) => {
+          onSelectDistrict(districtId);
           onNavigateTab('hospitals');
         }}
       />
-
-      {/* 5. Split Section: Incidents + Hospital Capacity */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Latest Incident Feed */}
-        <div className="card p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-sm font-medium text-stone-800">
-              Latest Incidents
-            </h2>
-            <button
-              onClick={() => onNavigateTab('incidents')}
-              className="text-xs text-stone-500 hover:text-amber-400 flex items-center gap-1 transition-colors duration-200"
-            >
-              <span>View all</span>
-              <ChevronRight className="w-3 h-3" />
-            </button>
-          </div>
-
-          <div className="space-y-3">
-            {latestIncidents.map((inc) => (
-              <div
-                key={inc.id}
-                className="p-4 rounded-md bg-cream border border-stone-200 hover:border-stone-300 transition-colors duration-200"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-mono text-[11px] text-stone-500">
-                    {inc.code}
-                  </span>
-                  <span
-                    className={`text-[10px] font-medium tracking-widest uppercase ${
-                      inc.severity === 'CRITICAL'
-                        ? 'text-rose-400'
-                        : 'text-stone-500'
-                    }`}
-                  >
-                    {inc.severity}
-                  </span>
-                </div>
-                <h3 className="text-sm font-medium text-stone-800">{inc.title}</h3>
-                <div className="flex items-center justify-between mt-2 text-xs text-stone-500">
-                  <span>{inc.districtName} · {inc.locationName}</span>
-                  <span className="font-mono">{inc.affectedCount} affected</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Hospital Capacity */}
-        <div className="card p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-sm font-medium text-stone-800">
-              ICU Bed Availability
-            </h2>
-            <button
-              onClick={() => onNavigateTab('hospitals')}
-              className="text-xs text-stone-500 hover:text-amber-400 flex items-center gap-1 transition-colors duration-200"
-            >
-              <span>All hospitals</span>
-              <ChevronRight className="w-3 h-3" />
-            </button>
-          </div>
-
-          <div className="space-y-3">
-            {topHospitalsWithIcu.map((h) => (
-              <div
-                key={h.id}
-                className="p-4 rounded-md bg-cream border border-stone-200 flex items-center justify-between hover:border-stone-300 transition-colors duration-200"
-              >
-                <div>
-                  <div className="text-sm font-medium text-stone-800">{h.name}</div>
-                  <div className="text-xs text-stone-500 mt-1">
-                    {h.districtName} · {h.traumaLevel}
-                  </div>
-                </div>
-
-                <div className="text-right">
-                  <div className="font-mono text-lg font-medium text-stone-900">
-                    {h.availableIcuBeds}
-                  </div>
-                  <div className="text-[10px] text-stone-500 tracking-wider uppercase mt-0.5">
-                    ICU free · {h.availableVentilators} vent
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* 6. Module Access Cards */}
-      <div>
-        <div className="label mb-4">
-          Operations Modules
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {[
-            { tab: 'ops' as NavTab, label: 'Emergency Ops', sub: 'Tactical Dispatch', icon: ShieldAlert },
-            { tab: 'incidents' as NavTab, label: 'Live Incidents', sub: 'Triage & Casualty', icon: Flame },
-            { tab: 'hospitals' as NavTab, label: 'Hospital Network', sub: 'ICU Telemetry', icon: Building2 },
-            { tab: 'fleet' as NavTab, label: 'Ambulance Fleet', sub: 'MEMS 108 GPS', icon: Truck },
-            { tab: 'analytics' as NavTab, label: 'Analytics', sub: 'Response Intelligence', icon: BarChart3 },
-            { tab: 'observability' as NavTab, label: 'System Health', sub: 'Postgres & Redis', icon: Activity },
-          ].map((mod) => (
-            <div
-              key={mod.tab}
-              onClick={() => onNavigateTab(mod.tab)}
-              className="card p-4 cursor-pointer hover:border-stone-300 transition-colors duration-200 group"
-            >
-              <mod.icon className="w-5 h-5 text-stone-500 mb-4 group-hover:text-amber-500/70 transition-colors duration-200" />
-              <div className="text-sm font-medium text-stone-800">{mod.label}</div>
-              <div className="text-[10px] text-stone-500 mt-1">{mod.sub}</div>
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AlertCircle, X, ShieldAlert, ArrowRight, Radio } from 'lucide-react';
+import { ArrowRight, Radio, X } from 'lucide-react';
 
 interface AlertBannerProps {
   disasterModeActive: boolean;
@@ -16,42 +16,51 @@ export const AlertBanner: React.FC<AlertBannerProps> = ({
 
   return (
     <div
-      className={`px-4 py-2.5 shadow-md flex items-center justify-between transition-colors border-b ${
+      className={`border-b ${
         disasterModeActive
-          ? 'bg-rose-600 text-white border-rose-400 animate-pulse'
-          : 'bg-amber-600 text-white border-amber-400'
+          ? 'border-rose-200 bg-rose-50 text-rose-950'
+          : 'border-stone-200/80 bg-white/65 text-stone-800'
       }`}
     >
-      <div className="flex items-center space-x-3 text-xs md:text-sm">
-        <div className="flex items-center space-x-1.5 font-bold uppercase tracking-wider bg-stone-900/10 px-2 py-1 rounded border border-stone-300">
-          <Radio className="w-4 h-4 text-amber-100 animate-ping" />
-          <span>{disasterModeActive ? 'STATEWIDE LEVEL 3 RED ALERT' : 'ACTIVE EMERGENCY BROADCAST'}</span>
+      <div className="flex w-full flex-col gap-3 px-3 py-3 sm:px-4 md:flex-row md:items-center md:justify-between md:px-5 xl:px-6">
+        <div className="flex min-w-0 items-start gap-3">
+          <div
+            className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${
+              disasterModeActive ? 'bg-rose-600 text-white' : 'bg-amber-50 text-amber-700'
+            }`}
+          >
+            <Radio className="h-4 w-4" />
+          </div>
+          <div className="min-w-0">
+            <div className="text-xs font-bold uppercase tracking-wider">
+              {disasterModeActive ? 'Statewide Level 3 Red Alert' : 'Active Emergency Broadcast'}
+            </div>
+            <p className="mt-0.5 text-sm leading-snug text-stone-700">
+              {disasterModeActive
+                ? 'Directive 44-A is active. District hospitals should clear non-emergency ICU beds and report status every 15 minutes.'
+                : 'Multi-vehicle collision on Samruddhi Expressway KM 412. AIIMS Nagpur and GMCH Nagpur are on priority reception protocol.'}
+            </p>
+          </div>
         </div>
 
-        <p className="font-medium">
-          {disasterModeActive
-            ? 'State Disaster Triage Directive 44-A in effect. All district hospitals instructed to clear non-emergency ICU beds and report status every 15 minutes.'
-            : 'Multi-vehicle collision on Samruddhi Expressway (KM 412) - AIIMS Nagpur & GMCH Nagpur set to priority reception protocol.'}
-        </p>
-      </div>
-
-      <div className="flex items-center space-x-3 text-xs">
-        <button
-          onClick={onNavigateToIncidents}
-          className="bg-white/20 hover:bg-white/30 text-stone-900 font-bold px-3 py-1.5 rounded flex items-center space-x-1 transition-colors"
-        >
-          <span>View Triage Dispatch</span>
-          <ArrowRight className="w-3.5 h-3.5" />
-        </button>
-        {!disasterModeActive && (
+        <div className="flex shrink-0 items-center gap-2">
           <button
-            onClick={() => setDismissed(true)}
-            className="text-amber-100 hover:text-stone-900 p-1"
-            title="Acknowledge Broadcast"
+            onClick={onNavigateToIncidents}
+            className="flex h-9 cursor-pointer items-center gap-2 rounded-lg border border-stone-200 bg-white px-3 text-sm font-semibold text-stone-800 transition-colors duration-200 hover:border-cyan-300 hover:text-cyan-800"
           >
-            <X className="w-4 h-4" />
+            <span>Open Triage</span>
+            <ArrowRight className="h-4 w-4" />
           </button>
-        )}
+          {!disasterModeActive && (
+            <button
+              onClick={() => setDismissed(true)}
+              aria-label="Acknowledge broadcast"
+              className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg text-stone-500 transition-colors duration-200 hover:bg-stone-100 hover:text-stone-900"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

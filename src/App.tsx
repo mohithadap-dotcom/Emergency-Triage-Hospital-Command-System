@@ -363,7 +363,7 @@ export default function App() {
       />
 
       {/* 4. Main EOC Operations Area */}
-      <main className="flex-1 px-6 py-8 md:px-8 md:py-10 max-w-[1440px] w-full mx-auto">
+      <main className="flex-1 w-full px-3 py-4 sm:px-4 md:px-5 xl:px-6">
         {activeTab === 'home' && (
           <HomeDashboard
             metrics={metrics}
@@ -496,16 +496,19 @@ export default function App() {
       </main>
 
       {/* 5. Official EOC Footer */}
-      <footer className="bg-slate-900 text-slate-400 border-t-2 border-amber-500 py-3 px-4 text-xs mt-auto">
-        <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
-          <div className="flex items-center space-x-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-            <span className="font-semibold text-slate-200">
+      <footer className="mt-auto border-t border-stone-200 bg-white/70 px-4 py-3 text-xs text-stone-500">
+        <div className="flex w-full flex-col items-center justify-between gap-2 md:flex-row">
+          <div className="flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-emerald-500"></span>
+            <span
+              aria-label="Government of Maharashtra - Public Health and Relief Operations"
+              className="font-semibold text-[0] text-transparent after:text-xs after:text-stone-700 after:content-['Government_of_Maharashtra_-_Public_Health_and_Relief_Operations']"
+            >
               Government of Maharashtra — Public Health & Relief Operations Department
             </span>
           </div>
 
-          <div className="flex items-center space-x-4 font-mono text-[11px]">
+          <div className="flex flex-wrap items-center justify-center gap-3 font-mono text-[11px] [&>span:nth-child(2)]:hidden">
             <span>Platform: Rakshak AI v1.0.0</span>
             <span>•</span>
             <span>Pilot Districts: Nagpur, Pune, Mumbai, Nashik, Wardha, Amravati, Chandrapur</span>

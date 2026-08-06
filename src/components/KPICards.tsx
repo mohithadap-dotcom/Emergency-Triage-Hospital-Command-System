@@ -1,15 +1,11 @@
 import React from 'react';
 import {
-  Flame,
+  Activity,
   AlertTriangle,
   BedDouble,
-  Wind,
-  Truck,
+  Flame,
   Timer,
-  Building2,
-  Globe2,
-  Activity,
-  BellRing,
+  Truck,
 } from 'lucide-react';
 import { EocSummaryMetrics } from '../types';
 
@@ -19,120 +15,92 @@ interface KPICardsProps {
 }
 
 export const KPICards: React.FC<KPICardsProps> = ({ metrics, onFilterClick }) => {
+  const icuFreePercent =
+    metrics.totalIcuBeds > 0
+      ? Math.round((metrics.availableIcuBeds / metrics.totalIcuBeds) * 100)
+      : 0;
+
   const cards = [
     {
       id: 'active_emergencies',
       title: 'Active Emergencies',
       value: metrics.activeEmergencies,
-      subtitle: 'Across 7 Pilot Districts',
+      subtitle: `${metrics.criticalIncidents} critical cases`,
       icon: Flame,
-      isCritical: false,
+      accent: 'text-rose-700',
+      bg: 'bg-rose-50',
     },
     {
       id: 'critical_incidents',
-      title: 'Critical',
+      title: 'Critical Priority',
       value: metrics.criticalIncidents,
-      subtitle: 'Immediate Priority Triage',
+      subtitle: 'Immediate dispatch review',
       icon: AlertTriangle,
-      isCritical: true,
+      accent: 'text-rose-700',
+      bg: 'bg-rose-50',
     },
     {
       id: 'available_icu',
-      title: 'ICU Beds',
-      value: `${metrics.availableIcuBeds}`,
-      subtitle: `of ${metrics.totalIcuBeds} — ${((metrics.availableIcuBeds / metrics.totalIcuBeds) * 100).toFixed(0)}% free`,
+      title: 'ICU Capacity',
+      value: metrics.availableIcuBeds,
+      subtitle: `${icuFreePercent}% free statewide`,
       icon: BedDouble,
-      isCritical: false,
-    },
-    {
-      id: 'available_ventilators',
-      title: 'Ventilators',
-      value: `${metrics.availableVentilators}`,
-      subtitle: `of ${metrics.totalVentilators} operational`,
-      icon: Wind,
-      isCritical: false,
+      accent: 'text-cyan-800',
+      bg: 'bg-cyan-50',
     },
     {
       id: 'available_ambulances',
-      title: 'Ambulances',
-      value: `${metrics.availableAmbulances}`,
-      subtitle: `of ${metrics.totalAmbulances} fleet ready`,
+      title: '108 Fleet Ready',
+      value: metrics.availableAmbulances,
+      subtitle: `of ${metrics.totalAmbulances} units available`,
       icon: Truck,
-      isCritical: false,
+      accent: 'text-emerald-800',
+      bg: 'bg-emerald-50',
     },
     {
       id: 'response_time',
       title: 'Avg Response',
       value: `${metrics.averageResponseTimeMin}m`,
-      subtitle: 'Target: < 12 mins',
+      subtitle: 'Target under 12 minutes',
       icon: Timer,
-      isCritical: false,
-    },
-    {
-      id: 'hospitals_online',
-      title: 'Hospitals',
-      value: `${metrics.hospitalsOnline}`,
-      subtitle: `of ${metrics.totalHospitals} live`,
-      icon: Building2,
-      isCritical: false,
-    },
-    {
-      id: 'districts_connected',
-      title: 'Districts',
-      value: `${metrics.districtsConnected}`,
-      subtitle: `of ${metrics.totalDistricts} connected`,
-      icon: Globe2,
-      isCritical: false,
+      accent: 'text-amber-800',
+      bg: 'bg-amber-50',
     },
     {
       id: 'system_health',
       title: 'System Health',
       value: `${metrics.systemHealthScore}%`,
-      subtitle: 'All services operational',
+      subtitle: `${metrics.hospitalsOnline}/${metrics.totalHospitals} hospitals live`,
       icon: Activity,
-      isCritical: false,
-    },
-    {
-      id: 'emergency_alerts',
-      title: 'Alerts',
-      value: metrics.activeAlertsCount,
-      subtitle: 'Broadcast directives',
-      icon: BellRing,
-      isCritical: false,
+      accent: 'text-cyan-800',
+      bg: 'bg-cyan-50',
     },
   ];
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+    <section className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-6">
       {cards.map((card) => {
         const Icon = card.icon;
         return (
-          <div
+          <button
             key={card.id}
-            onClick={() => onFilterClick && onFilterClick(card.id)}
-            className={`card p-4 cursor-pointer hover:border-stone-300 transition-colors duration-200 flex flex-col justify-between ${
-              card.isCritical ? 'border-rose-900/50' : ''
-            }`}
+            onClick={() => onFilterClick?.(card.id)}
+            className="card min-h-[132px] cursor-pointer p-4 text-left transition-colors duration-200 hover:border-cyan-200 hover:bg-white"
           >
-            <div>
-              <div className="flex items-center justify-between mb-3">
-                <span className="label">
-                  {card.title}
-                </span>
-                <Icon className={`w-4 h-4 ${card.isCritical ? 'text-rose-500/70' : 'text-stone-500'}`} />
+            <div className="flex items-start justify-between gap-3">
+              <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${card.bg}`}>
+                <Icon className={`h-4 w-4 ${card.accent}`} />
               </div>
-
-              <div className="font-mono text-2xl font-medium text-stone-900 tracking-tight">
-                {card.value}
-              </div>
+              <span className="label text-right">{card.title}</span>
             </div>
 
-            <p className="text-[11px] text-stone-500 mt-3 pt-3 border-t border-stone-200">
-              {card.subtitle}
-            </p>
-          </div>
+            <div className="mt-4 font-mono text-3xl font-semibold tracking-tight text-stone-950">
+              {card.value}
+            </div>
+            <p className="mt-2 text-sm leading-snug text-stone-500">{card.subtitle}</p>
+          </button>
         );
       })}
-    </div>
+    </section>
   );
 };

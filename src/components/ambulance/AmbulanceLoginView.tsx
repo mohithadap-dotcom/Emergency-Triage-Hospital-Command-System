@@ -13,6 +13,7 @@ import {
   Radio,
   ArrowRight,
 } from 'lucide-react';
+import AuthSwitch from '@/components/ui/auth-switch';
 import { AmbulanceUserRole, AmbulanceUserSession, Ambulance as AmbulanceType } from '../../types';
 
 interface AmbulanceLoginViewProps {
@@ -225,14 +226,11 @@ export const AmbulanceLoginView: React.FC<AmbulanceLoginViewProps> = ({
 
           {/* Right Column - Authentication Form */}
           <div className="md:col-span-7 p-6 md:p-8 flex flex-col justify-center">
-            <div className="mb-6">
-              <h3 className="text-xl font-extrabold text-stone-900 mb-1">
-                EMS Operational Login
-              </h3>
-              <p className="text-xs text-stone-500">
-                Select role, assign vehicle unit, and verify shift token.
-              </p>
-            </div>
+            <AuthSwitch
+              activePortal="AMBULANCE"
+              className="mb-6"
+              onPortalChange={(portal) => onSwitchPortal(portal)}
+            />
 
             {errorMsg && (
               <div className="mb-4 p-3 bg-rose-950/80 border border-rose-500/50 rounded-lg text-rose-200 text-xs flex items-center space-x-2">
