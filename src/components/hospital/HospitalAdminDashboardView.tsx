@@ -456,7 +456,7 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
   return (
     <div className="space-y-6">
       {/* Top Banner & Control Bar */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 text-white shadow-xl relative overflow-hidden">
+      <div className="bg-white border border-stone-200 rounded-xl p-6 text-stone-900 shadow-lg shadow-stone-300/40 relative overflow-hidden">
         <div className="absolute right-0 top-0 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 relative z-10">
@@ -473,27 +473,27 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
               </span>
             </div>
 
-            <h1 className="text-2xl font-black text-white mt-2 flex items-center gap-3">
+            <h1 className="text-2xl font-black text-stone-900 mt-2 flex items-center gap-3">
               <span>{activeHospital?.name}</span>
-              <span className="text-xs font-semibold px-3 py-1 bg-slate-800 text-slate-300 rounded-full border border-slate-700 font-mono">
+              <span className="text-xs font-semibold px-3 py-1 bg-stone-100 text-stone-600 rounded-full border border-stone-300 font-mono">
                 {activeHospital?.districtName} District
               </span>
             </h1>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-stone-500 mt-1">
               Direct operational resource manager synchronized with Maharashtra State Emergency Operations Center (SEOC)
             </p>
           </div>
 
           {/* Hospital & Role Selectors */}
-          <div className="flex flex-wrap items-center gap-3 bg-slate-800/80 p-3 rounded-xl border border-slate-700">
+          <div className="flex flex-wrap items-center gap-3 bg-stone-100/80 p-3 rounded-xl border border-stone-300">
             <div>
-              <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+              <label className="text-[10px] font-bold text-stone-500 uppercase tracking-wider block mb-1">
                 Select Operating Hospital
               </label>
               <select
                 value={selectedHospitalId}
                 onChange={(e) => setSelectedHospitalId(e.target.value)}
-                className="bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs font-extrabold text-white focus:outline-none focus:border-sky-500 min-w-[200px]"
+                className="bg-white border border-stone-300 rounded-lg px-3 py-1.5 text-xs font-extrabold text-stone-900 focus:outline-none focus:border-sky-500 min-w-[200px]"
               >
                 {hospitals.map((h) => (
                   <option key={h.id} value={h.id}>
@@ -504,13 +504,13 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
             </div>
 
             <div>
-              <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+              <label className="text-[10px] font-bold text-stone-500 uppercase tracking-wider block mb-1">
                 Active Admin Role
               </label>
               <select
                 value={activeRole}
                 onChange={(e) => setActiveRole(e.target.value as HospitalAdminRole)}
-                className="bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs font-extrabold text-amber-400 focus:outline-none focus:border-amber-500"
+                className="bg-white border border-stone-300 rounded-lg px-3 py-1.5 text-xs font-extrabold text-amber-400 focus:outline-none focus:border-amber-500"
               >
                 <option value="HOSPITAL_ADMINISTRATOR">Hospital Administrator</option>
                 <option value="EMERGENCY_COORDINATOR">ER Coordinator</option>
@@ -526,11 +526,11 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
       </div>
 
       {/* Sub-Tab Navigation Bar */}
-      <div className="bg-white border border-slate-200 rounded-xl p-1.5 shadow-sm flex items-center space-x-1 overflow-x-auto text-xs font-bold text-slate-700">
+      <div className="bg-white border border-stone-200 rounded-xl p-1.5 shadow-sm flex items-center space-x-1 overflow-x-auto text-xs font-bold text-stone-600">
         <button
           onClick={() => setAdminTab('OVERVIEW')}
           className={`px-3 py-2 rounded-lg transition-all flex items-center space-x-2 ${
-            adminTab === 'OVERVIEW' ? 'bg-slate-900 text-white shadow-sm' : 'hover:bg-slate-100 text-slate-700'
+            adminTab === 'OVERVIEW' ? 'bg-white text-stone-900 shadow-sm' : 'hover:bg-stone-100 text-stone-600'
           }`}
         >
           <Building2 className="w-4 h-4 text-sky-400" />
@@ -540,7 +540,7 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
         <button
           onClick={() => setAdminTab('QUICK_SYNC')}
           className={`px-3 py-2 rounded-lg transition-all flex items-center space-x-2 ${
-            adminTab === 'QUICK_SYNC' ? 'bg-slate-900 text-white shadow-sm' : 'hover:bg-slate-100 text-slate-700'
+            adminTab === 'QUICK_SYNC' ? 'bg-white text-stone-900 shadow-sm' : 'hover:bg-stone-100 text-stone-600'
           }`}
         >
           <Sliders className="w-4 h-4 text-emerald-400" />
@@ -550,7 +550,7 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
         <button
           onClick={() => setAdminTab('EMERGENCY_QUEUE')}
           className={`px-3 py-2 rounded-lg transition-all flex items-center space-x-2 ${
-            adminTab === 'EMERGENCY_QUEUE' ? 'bg-slate-900 text-white shadow-sm' : 'hover:bg-slate-100 text-slate-700'
+            adminTab === 'EMERGENCY_QUEUE' ? 'bg-white text-stone-900 shadow-sm' : 'hover:bg-stone-100 text-stone-600'
           }`}
         >
           <ShieldCheck className="w-4 h-4 text-rose-400" />
@@ -560,7 +560,7 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
         <button
           onClick={() => setAdminTab('ICU_VENTILATORS')}
           className={`px-3 py-2 rounded-lg transition-all flex items-center space-x-2 ${
-            adminTab === 'ICU_VENTILATORS' ? 'bg-slate-900 text-white shadow-sm' : 'hover:bg-slate-100 text-slate-700'
+            adminTab === 'ICU_VENTILATORS' ? 'bg-white text-stone-900 shadow-sm' : 'hover:bg-stone-100 text-stone-600'
           }`}
         >
           <BedDouble className="w-4 h-4 text-indigo-400" />
@@ -570,7 +570,7 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
         <button
           onClick={() => setAdminTab('EQUIPMENT')}
           className={`px-3 py-2 rounded-lg transition-all flex items-center space-x-2 ${
-            adminTab === 'EQUIPMENT' ? 'bg-slate-900 text-white shadow-sm' : 'hover:bg-slate-100 text-slate-700'
+            adminTab === 'EQUIPMENT' ? 'bg-white text-stone-900 shadow-sm' : 'hover:bg-stone-100 text-stone-600'
           }`}
         >
           <Wrench className="w-4 h-4 text-amber-400" />
@@ -580,7 +580,7 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
         <button
           onClick={() => setAdminTab('STAFF')}
           className={`px-3 py-2 rounded-lg transition-all flex items-center space-x-2 ${
-            adminTab === 'STAFF' ? 'bg-slate-900 text-white shadow-sm' : 'hover:bg-slate-100 text-slate-700'
+            adminTab === 'STAFF' ? 'bg-white text-stone-900 shadow-sm' : 'hover:bg-stone-100 text-stone-600'
           }`}
         >
           <Users className="w-4 h-4 text-cyan-400" />
@@ -590,7 +590,7 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
         <button
           onClick={() => setAdminTab('DEPARTMENTS')}
           className={`px-3 py-2 rounded-lg transition-all flex items-center space-x-2 ${
-            adminTab === 'DEPARTMENTS' ? 'bg-slate-900 text-white shadow-sm' : 'hover:bg-slate-100 text-slate-700'
+            adminTab === 'DEPARTMENTS' ? 'bg-white text-stone-900 shadow-sm' : 'hover:bg-stone-100 text-stone-600'
           }`}
         >
           <Layers className="w-4 h-4 text-purple-400" />
@@ -600,20 +600,20 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
         <button
           onClick={() => setAdminTab('AI_ASSISTANT')}
           className={`px-3 py-2 rounded-lg transition-all flex items-center space-x-2 ${
-            adminTab === 'AI_ASSISTANT' ? 'bg-slate-900 text-white shadow-sm' : 'hover:bg-slate-100 text-slate-700'
+            adminTab === 'AI_ASSISTANT' ? 'bg-white text-stone-900 shadow-sm' : 'hover:bg-stone-100 text-stone-600'
           }`}
         >
-          <Sparkles className="w-4 h-4 text-amber-300 fill-amber-300" />
+          <Sparkles className="w-4 h-4 text-amber-100 fill-amber-300" />
           <span>Gemini AI Assistant</span>
         </button>
 
         <button
           onClick={() => setAdminTab('AUDIT_LOG')}
           className={`px-3 py-2 rounded-lg transition-all flex items-center space-x-2 ${
-            adminTab === 'AUDIT_LOG' ? 'bg-slate-900 text-white shadow-sm' : 'hover:bg-slate-100 text-slate-700'
+            adminTab === 'AUDIT_LOG' ? 'bg-white text-stone-900 shadow-sm' : 'hover:bg-stone-100 text-stone-600'
           }`}
         >
-          <FileText className="w-4 h-4 text-slate-400" />
+          <FileText className="w-4 h-4 text-stone-500" />
           <span>Audit History</span>
         </button>
       </div>
@@ -623,13 +623,13 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
         <div className="space-y-6">
           {/* Key KPI Cards Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-1">
-              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Available ICU Beds</span>
+            <div className="bg-white p-4 rounded-xl border border-stone-200 shadow-sm space-y-1">
+              <span className="text-[11px] font-bold text-stone-500 uppercase tracking-wider block">Available ICU Beds</span>
               <div className="flex items-baseline justify-between">
-                <span className="text-2xl font-black text-slate-900">{activeHospital.availableIcuBeds}</span>
-                <span className="text-xs font-bold text-slate-500">/ {activeHospital.totalIcuBeds} total</span>
+                <span className="text-2xl font-black text-stone-900">{activeHospital.availableIcuBeds}</span>
+                <span className="text-xs font-bold text-stone-500">/ {activeHospital.totalIcuBeds} total</span>
               </div>
-              <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+              <div className="w-full bg-stone-100 rounded-full h-1.5 overflow-hidden">
                 <div
                   className="bg-emerald-500 h-1.5 rounded-full"
                   style={{
@@ -639,13 +639,13 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
               </div>
             </div>
 
-            <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-1">
-              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Ready Ventilators</span>
+            <div className="bg-white p-4 rounded-xl border border-stone-200 shadow-sm space-y-1">
+              <span className="text-[11px] font-bold text-stone-500 uppercase tracking-wider block">Ready Ventilators</span>
               <div className="flex items-baseline justify-between">
-                <span className="text-2xl font-black text-slate-900">{activeHospital.availableVentilators}</span>
-                <span className="text-xs font-bold text-slate-500">/ {activeHospital.totalVentilators} total</span>
+                <span className="text-2xl font-black text-stone-900">{activeHospital.availableVentilators}</span>
+                <span className="text-xs font-bold text-stone-500">/ {activeHospital.totalVentilators} total</span>
               </div>
-              <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+              <div className="w-full bg-stone-100 rounded-full h-1.5 overflow-hidden">
                 <div
                   className="bg-sky-500 h-1.5 rounded-full"
                   style={{
@@ -655,30 +655,30 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
               </div>
             </div>
 
-            <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-1">
-              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">ER Dept Status</span>
+            <div className="bg-white p-4 rounded-xl border border-stone-200 shadow-sm space-y-1">
+              <span className="text-[11px] font-bold text-stone-500 uppercase tracking-wider block">ER Dept Status</span>
               <div className="flex items-center justify-between">
                 <span
                   className={`text-sm font-black px-2.5 py-1 rounded-md ${
                     activeHospital.emergencyDeptStatus === 'NORMAL'
-                      ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                      ? 'bg-emerald-100 text-emerald-400 border border-emerald-300'
                       : activeHospital.emergencyDeptStatus === 'FULL'
-                      ? 'bg-rose-600 text-white animate-pulse'
-                      : 'bg-amber-500 text-white'
+                      ? 'bg-rose-600 text-stone-900 animate-pulse'
+                      : 'bg-amber-500 text-stone-900'
                   }`}
                 >
                   {activeHospital.emergencyDeptStatus}
                 </span>
-                <span className="text-xs font-bold text-slate-500">{activeHospital.availableEmergencyBeds} free beds</span>
+                <span className="text-xs font-bold text-stone-500">{activeHospital.availableEmergencyBeds} free beds</span>
               </div>
             </div>
 
-            <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-1">
-              <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Doctors / Nurses On Duty</span>
+            <div className="bg-white p-4 rounded-xl border border-stone-200 shadow-sm space-y-1">
+              <span className="text-[11px] font-bold text-stone-500 uppercase tracking-wider block">Doctors / Nurses On Duty</span>
               <div className="flex items-baseline justify-between">
-                <span className="text-2xl font-black text-slate-900">
-                  {activeHospital.doctorsOnDuty} <span className="text-xs font-bold text-slate-500">Docs</span> / {activeHospital.nursesOnDuty}{' '}
-                  <span className="text-xs font-bold text-slate-500">Nurses</span>
+                <span className="text-2xl font-black text-stone-900">
+                  {activeHospital.doctorsOnDuty} <span className="text-xs font-bold text-stone-500">Docs</span> / {activeHospital.nursesOnDuty}{' '}
+                  <span className="text-xs font-bold text-stone-500">Nurses</span>
                 </span>
               </div>
             </div>
@@ -687,62 +687,62 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
           {/* Incoming ER Queue & Quick Status */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Incoming Requests Column */}
-            <div className="lg:col-span-2 bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4">
+            <div className="lg:col-span-2 bg-white border border-stone-200 rounded-xl p-5 shadow-sm space-y-4">
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                <h2 className="text-sm font-bold text-slate-900 flex items-center space-x-2">
+                <h2 className="text-sm font-bold text-stone-900 flex items-center space-x-2">
                   <ShieldCheck className="w-4 h-4 text-rose-600" />
                   <span>Incoming Emergency Dispatch Queue</span>
                 </h2>
-                <span className="text-xs font-bold text-slate-500">
+                <span className="text-xs font-bold text-stone-500">
                   {erRequests.length} active emergency cases
                 </span>
               </div>
 
               <div className="space-y-3">
                 {erRequests.map((req) => (
-                  <div key={req.id} className="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3">
+                  <div key={req.id} className="bg-cream border border-stone-200 rounded-xl p-4 space-y-3">
                     <div className="flex items-start justify-between">
                       <div>
                         <div className="flex items-center space-x-2">
                           <span
                             className={`px-2 py-0.5 rounded text-[10px] font-black ${
                               req.priority === 'RED'
-                                ? 'bg-rose-600 text-white'
-                                : 'bg-amber-500 text-white'
+                                ? 'bg-rose-600 text-stone-900'
+                                : 'bg-amber-500 text-stone-900'
                             }`}
                           >
                             PRIORITY {req.priority}
                           </span>
-                          <span className="text-xs font-mono font-bold text-slate-700">{req.incidentCode}</span>
-                          <span className="text-[10px] bg-slate-200 px-2 py-0.5 rounded text-slate-700 font-bold">
+                          <span className="text-xs font-mono font-bold text-stone-600">{req.incidentCode}</span>
+                          <span className="text-[10px] bg-stone-100 px-2 py-0.5 rounded text-stone-600 font-bold">
                             ETA {req.etaMinutes} MIN
                           </span>
                         </div>
-                        <h3 className="text-sm font-bold text-slate-900 mt-1">{req.incidentTitle}</h3>
-                        <p className="text-xs text-slate-600 mt-0.5">
-                          Patient: <strong className="text-slate-800">{req.patientName} ({req.patientAgeGender})</strong> • Ambulance: {req.assignedAmbulanceRegNo}
+                        <h3 className="text-sm font-bold text-stone-900 mt-1">{req.incidentTitle}</h3>
+                        <p className="text-xs text-stone-500 mt-0.5">
+                          Patient: <strong className="text-stone-800">{req.patientName} ({req.patientAgeGender})</strong> • Ambulance: {req.assignedAmbulanceRegNo}
                         </p>
                       </div>
 
                       <span
                         className={`text-[10px] font-bold px-2.5 py-1 rounded-full ${
                           req.status === 'ACCEPTED'
-                            ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                            ? 'bg-emerald-100 text-emerald-400 border border-emerald-300'
                             : req.status === 'PENDING'
-                            ? 'bg-amber-100 text-amber-800 border border-amber-300 animate-pulse'
-                            : 'bg-slate-200 text-slate-700'
+                            ? 'bg-amber-100 text-amber-400 border border-amber-200 animate-pulse'
+                            : 'bg-stone-100 text-stone-600'
                         }`}
                       >
                         {req.status}
                       </span>
                     </div>
 
-                    <div className="bg-white p-2.5 rounded-lg border border-slate-200 text-xs text-slate-600 space-y-1">
+                    <div className="bg-white p-2.5 rounded-lg border border-stone-200 text-xs text-stone-500 space-y-1">
                       <div>
-                        <strong className="text-slate-800">Symptoms:</strong> {req.symptoms}
+                        <strong className="text-stone-800">Symptoms:</strong> {req.symptoms}
                       </div>
                       <div>
-                        <strong className="text-slate-800">Triage Summary:</strong> {req.triageSummary}
+                        <strong className="text-stone-800">Triage Summary:</strong> {req.triageSummary}
                       </div>
                     </div>
 
@@ -750,14 +750,14 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
                       <div className="flex items-center gap-2 pt-1">
                         <button
                           onClick={() => handleUpdateErRequest(req.id, 'ACCEPTED', 'Dr. Anand Mahajan', 'BAY-ICU-301')}
-                          className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg transition-colors flex items-center space-x-1"
+                          className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-stone-900 text-xs font-bold rounded-lg transition-colors flex items-center space-x-1"
                         >
                           <CheckCircle2 className="w-3.5 h-3.5" />
                           <span>Accept & Reserve ICU</span>
                         </button>
                         <button
                           onClick={() => handleUpdateErRequest(req.id, 'REJECTED')}
-                          className="px-3 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold rounded-lg transition-colors"
+                          className="px-3 py-1.5 bg-stone-100 hover:bg-stone-100 text-stone-600 text-xs font-bold rounded-lg transition-colors"
                         >
                           Divert Emergency
                         </button>
@@ -769,15 +769,15 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
             </div>
 
             {/* Quick Status Control Side Panel */}
-            <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4">
-              <h2 className="text-sm font-bold text-slate-900 flex items-center space-x-2 border-b border-slate-100 pb-2">
+            <div className="bg-white border border-stone-200 rounded-xl p-5 shadow-sm space-y-4">
+              <h2 className="text-sm font-bold text-stone-900 flex items-center space-x-2 border-b border-slate-100 pb-2">
                 <Sliders className="w-4 h-4 text-emerald-600" />
                 <span>Quick Status Control</span>
               </h2>
 
               <div className="space-y-3 text-xs">
                 <div>
-                  <label className="font-bold text-slate-700 block mb-1">ER Department Status Override</label>
+                  <label className="font-bold text-stone-600 block mb-1">ER Department Status Override</label>
                   <div className="grid grid-cols-3 gap-1.5">
                     {(['NORMAL', 'FULL', 'DIVERTING'] as ERStatus[]).map((st) => (
                       <button
@@ -788,8 +788,8 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
                         }}
                         className={`py-1.5 rounded font-bold text-[11px] border transition-all ${
                           quickForm.emergencyDeptStatus === st
-                            ? 'bg-slate-900 text-white border-slate-900 shadow-sm'
-                            : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                            ? 'bg-white text-stone-900 border-stone-200 shadow-sm'
+                            : 'bg-cream text-stone-600 border-stone-200 hover:bg-stone-100'
                         }`}
                       >
                         {st}
@@ -798,25 +798,25 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
                   </div>
                 </div>
 
-                <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-2">
-                  <span className="font-bold text-slate-800 block">Critical Stocks Summary</span>
+                <div className="bg-cream p-3 rounded-lg border border-stone-200 space-y-2">
+                  <span className="font-bold text-stone-800 block">Critical Stocks Summary</span>
                   <div className="flex justify-between text-[11px]">
-                    <span className="text-slate-600">Oxygen Plant Level:</span>
-                    <strong className="text-slate-900">{activeHospital.oxygenCapacityPercent}%</strong>
+                    <span className="text-stone-500">Oxygen Plant Level:</span>
+                    <strong className="text-stone-900">{activeHospital.oxygenCapacityPercent}%</strong>
                   </div>
                   <div className="flex justify-between text-[11px]">
-                    <span className="text-slate-600">Blood Units (All Groups):</span>
-                    <strong className="text-slate-900">{activeHospital.bloodUnitsAvailable} units</strong>
+                    <span className="text-stone-500">Blood Units (All Groups):</span>
+                    <strong className="text-stone-900">{activeHospital.bloodUnitsAvailable} units</strong>
                   </div>
                   <div className="flex justify-between text-[11px]">
-                    <span className="text-slate-600">Operating Theatres:</span>
-                    <strong className="text-slate-900">{activeHospital.operatingTheatresAvailable} available</strong>
+                    <span className="text-stone-500">Operating Theatres:</span>
+                    <strong className="text-stone-900">{activeHospital.operatingTheatresAvailable} available</strong>
                   </div>
                 </div>
 
                 <button
                   onClick={() => setAdminTab('QUICK_SYNC')}
-                  className="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg shadow-sm transition-colors flex items-center justify-center space-x-1.5"
+                  className="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-stone-900 text-xs font-bold rounded-lg shadow-sm transition-colors flex items-center justify-center space-x-1.5"
                 >
                   <Save className="w-3.5 h-3.5" />
                   <span>Open Full Resource Sync Form</span>
@@ -829,14 +829,14 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
 
       {/* TAB 2: ONE-CLICK QUICK RESOURCE UPDATE FORM */}
       {adminTab === 'QUICK_SYNC' && (
-        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm space-y-6">
+        <div className="bg-white border border-stone-200 rounded-xl p-6 shadow-sm space-y-6">
           <div className="flex items-center justify-between border-b border-slate-100 pb-4">
             <div>
-              <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+              <h2 className="text-base font-bold text-stone-900 flex items-center gap-2">
                 <Sliders className="w-5 h-5 text-emerald-600" />
                 <span>One-Save Real-Time State Resource Sync Panel</span>
               </h2>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-stone-500 mt-0.5">
                 Modifications here immediately update the District Control Dashboard, State EOC, AI Resource Balancer, and Ambulance Routing Engines across Maharashtra
               </p>
             </div>
@@ -844,7 +844,7 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
             <button
               onClick={handleSaveQuickSync}
               disabled={savingSync}
-              className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs rounded-xl shadow-md transition-all flex items-center space-x-2 border border-emerald-500"
+              className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-stone-900 font-extrabold text-xs rounded-xl shadow-md transition-all flex items-center space-x-2 border border-emerald-500"
             >
               <Save className="w-4 h-4" />
               <span>{savingSync ? 'Synchronizing State...' : 'Save & Synchronize All Dashboards'}</span>
@@ -852,7 +852,7 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
           </div>
 
           {syncSuccessMsg && (
-            <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 p-3 rounded-lg text-xs font-semibold flex items-center space-x-2">
+            <div className="bg-emerald-50 border border-emerald-200 text-emerald-400 p-3 rounded-lg text-xs font-semibold flex items-center space-x-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
               <span>{syncSuccessMsg}</span>
             </div>
@@ -860,16 +860,16 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Card 1: Bed & Ventilator Capacity */}
-            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-4">
-              <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider border-b border-slate-200 pb-2">
+            <div className="bg-cream p-4 rounded-xl border border-stone-200 space-y-4">
+              <h3 className="text-xs font-bold text-stone-900 uppercase tracking-wider border-b border-stone-200 pb-2">
                 Bed & Ventilator Stocks
               </h3>
 
               <div className="space-y-3">
                 <div>
-                  <label className="text-xs font-semibold text-slate-700 flex justify-between">
+                  <label className="text-xs font-semibold text-stone-600 flex justify-between">
                     <span>Available ICU Beds</span>
-                    <strong className="text-slate-900">{quickForm.availableIcuBeds}</strong>
+                    <strong className="text-stone-900">{quickForm.availableIcuBeds}</strong>
                   </label>
                   <input
                     type="range"
@@ -882,9 +882,9 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-slate-700 flex justify-between">
+                  <label className="text-xs font-semibold text-stone-600 flex justify-between">
                     <span>Available General Ward Beds</span>
-                    <strong className="text-slate-900">{quickForm.availableGeneralBeds}</strong>
+                    <strong className="text-stone-900">{quickForm.availableGeneralBeds}</strong>
                   </label>
                   <input
                     type="range"
@@ -897,9 +897,9 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-slate-700 flex justify-between">
+                  <label className="text-xs font-semibold text-stone-600 flex justify-between">
                     <span>Available Ventilators</span>
-                    <strong className="text-slate-900">{quickForm.availableVentilators}</strong>
+                    <strong className="text-stone-900">{quickForm.availableVentilators}</strong>
                   </label>
                   <input
                     type="range"
@@ -914,16 +914,16 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
             </div>
 
             {/* Card 2: Duty Medical Staff */}
-            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-4">
-              <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider border-b border-slate-200 pb-2">
+            <div className="bg-cream p-4 rounded-xl border border-stone-200 space-y-4">
+              <h3 className="text-xs font-bold text-stone-900 uppercase tracking-wider border-b border-stone-200 pb-2">
                 Active Staff On Duty
               </h3>
 
               <div className="space-y-3">
                 <div>
-                  <label className="text-xs font-semibold text-slate-700 flex justify-between">
+                  <label className="text-xs font-semibold text-stone-600 flex justify-between">
                     <span>Doctors On Duty</span>
-                    <strong className="text-slate-900">{quickForm.doctorsOnDuty}</strong>
+                    <strong className="text-stone-900">{quickForm.doctorsOnDuty}</strong>
                   </label>
                   <input
                     type="number"
@@ -931,14 +931,14 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
                     max="100"
                     value={quickForm.doctorsOnDuty}
                     onChange={(e) => setQuickForm({ ...quickForm, doctorsOnDuty: Number(e.target.value) })}
-                    className="w-full mt-1 px-3 py-1.5 border border-slate-300 rounded text-xs font-bold bg-white"
+                    className="w-full mt-1 px-3 py-1.5 border border-stone-200 rounded text-xs font-bold bg-white"
                   />
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-slate-700 flex justify-between">
+                  <label className="text-xs font-semibold text-stone-600 flex justify-between">
                     <span>Nurses On Duty</span>
-                    <strong className="text-slate-900">{quickForm.nursesOnDuty}</strong>
+                    <strong className="text-stone-900">{quickForm.nursesOnDuty}</strong>
                   </label>
                   <input
                     type="number"
@@ -946,14 +946,14 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
                     max="200"
                     value={quickForm.nursesOnDuty}
                     onChange={(e) => setQuickForm({ ...quickForm, nursesOnDuty: Number(e.target.value) })}
-                    className="w-full mt-1 px-3 py-1.5 border border-slate-300 rounded text-xs font-bold bg-white"
+                    className="w-full mt-1 px-3 py-1.5 border border-stone-200 rounded text-xs font-bold bg-white"
                   />
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-slate-700 flex justify-between">
+                  <label className="text-xs font-semibold text-stone-600 flex justify-between">
                     <span>Available Operating Theatres</span>
-                    <strong className="text-slate-900">{quickForm.operatingTheatresAvailable}</strong>
+                    <strong className="text-stone-900">{quickForm.operatingTheatresAvailable}</strong>
                   </label>
                   <input
                     type="number"
@@ -961,23 +961,23 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
                     max={activeHospital.operatingTheatresTotal}
                     value={quickForm.operatingTheatresAvailable}
                     onChange={(e) => setQuickForm({ ...quickForm, operatingTheatresAvailable: Number(e.target.value) })}
-                    className="w-full mt-1 px-3 py-1.5 border border-slate-300 rounded text-xs font-bold bg-white"
+                    className="w-full mt-1 px-3 py-1.5 border border-stone-200 rounded text-xs font-bold bg-white"
                   />
                 </div>
               </div>
             </div>
 
             {/* Card 3: Blood & Oxygen Stocks */}
-            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-4">
-              <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider border-b border-slate-200 pb-2">
+            <div className="bg-cream p-4 rounded-xl border border-stone-200 space-y-4">
+              <h3 className="text-xs font-bold text-stone-900 uppercase tracking-wider border-b border-stone-200 pb-2">
                 Blood & Medical Supplies
               </h3>
 
               <div className="space-y-3">
                 <div>
-                  <label className="text-xs font-semibold text-slate-700 flex justify-between">
+                  <label className="text-xs font-semibold text-stone-600 flex justify-between">
                     <span>Blood Units Available</span>
-                    <strong className="text-slate-900">{quickForm.bloodUnitsAvailable} units</strong>
+                    <strong className="text-stone-900">{quickForm.bloodUnitsAvailable} units</strong>
                   </label>
                   <input
                     type="number"
@@ -985,14 +985,14 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
                     max="500"
                     value={quickForm.bloodUnitsAvailable}
                     onChange={(e) => setQuickForm({ ...quickForm, bloodUnitsAvailable: Number(e.target.value) })}
-                    className="w-full mt-1 px-3 py-1.5 border border-slate-300 rounded text-xs font-bold bg-white"
+                    className="w-full mt-1 px-3 py-1.5 border border-stone-200 rounded text-xs font-bold bg-white"
                   />
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-slate-700 flex justify-between">
+                  <label className="text-xs font-semibold text-stone-600 flex justify-between">
                     <span>Oxygen Capacity Plant Level</span>
-                    <strong className="text-slate-900">{quickForm.oxygenCapacityPercent}%</strong>
+                    <strong className="text-stone-900">{quickForm.oxygenCapacityPercent}%</strong>
                   </label>
                   <input
                     type="range"
@@ -1005,9 +1005,9 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-slate-700 flex justify-between">
+                  <label className="text-xs font-semibold text-stone-600 flex justify-between">
                     <span>Emergency Medicines Stock Level</span>
-                    <strong className="text-slate-900">{quickForm.emergencyMedicinesStockLevelPercent}%</strong>
+                    <strong className="text-stone-900">{quickForm.emergencyMedicinesStockLevelPercent}%</strong>
                   </label>
                   <input
                     type="range"
@@ -1028,19 +1028,19 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
 
       {/* TAB 3: MEDICAL EQUIPMENT TRACKER */}
       {adminTab === 'EQUIPMENT' && (
-        <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4">
+        <div className="bg-white border border-stone-200 rounded-xl p-5 shadow-sm space-y-4">
           <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-            <h2 className="text-sm font-bold text-slate-900 flex items-center space-x-2">
+            <h2 className="text-sm font-bold text-stone-900 flex items-center space-x-2">
               <Wrench className="w-4 h-4 text-amber-600" />
               <span>Biomedical Equipment & Ventilator Fleet Registry</span>
             </h2>
 
-            <span className="text-xs font-bold text-slate-500">{equipments.length} tracked devices</span>
+            <span className="text-xs font-bold text-stone-500">{equipments.length} tracked devices</span>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-50 border-b border-slate-200 font-bold text-slate-700">
+              <thead className="bg-cream border-b border-stone-200 font-bold text-stone-600">
                 <tr>
                   <th className="p-3">Device Name & Category</th>
                   <th className="p-3">Serial ID</th>
@@ -1051,30 +1051,30 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
                   <th className="p-3">Next Service</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-stone-200">
                 {equipments.map((eq) => (
-                  <tr key={eq.id} className="hover:bg-slate-50">
-                    <td className="p-3 font-bold text-slate-900">{eq.name}</td>
-                    <td className="p-3 font-mono text-slate-600">{eq.serialNumber}</td>
-                    <td className="p-3 text-slate-700">
-                      {eq.department} • <span className="text-slate-500">{eq.location}</span>
+                  <tr key={eq.id} className="hover:bg-cream">
+                    <td className="p-3 font-bold text-stone-900">{eq.name}</td>
+                    <td className="p-3 font-mono text-stone-500">{eq.serialNumber}</td>
+                    <td className="p-3 text-stone-600">
+                      {eq.department} • <span className="text-stone-500">{eq.location}</span>
                     </td>
                     <td className="p-3">
                       <span
                         className={`px-2 py-0.5 rounded text-[10px] font-bold ${
                           eq.status === 'Available'
-                            ? 'bg-emerald-100 text-emerald-800'
+                            ? 'bg-emerald-100 text-emerald-400'
                             : eq.status === 'Assigned'
-                            ? 'bg-sky-100 text-sky-800'
-                            : 'bg-amber-100 text-amber-800'
+                            ? 'bg-sky-100 text-sky-400'
+                            : 'bg-amber-100 text-amber-400'
                         }`}
                       >
                         {eq.status}
                       </span>
                     </td>
-                    <td className="p-3 font-mono font-bold text-slate-800">{eq.batteryHealthPercent}%</td>
-                    <td className="p-3 text-slate-600">{eq.assignedPatientName || 'None'}</td>
-                    <td className="p-3 font-mono text-slate-500">{eq.nextServiceDueDate}</td>
+                    <td className="p-3 font-mono font-bold text-stone-800">{eq.batteryHealthPercent}%</td>
+                    <td className="p-3 text-stone-500">{eq.assignedPatientName || 'None'}</td>
+                    <td className="p-3 font-mono text-stone-500">{eq.nextServiceDueDate}</td>
                   </tr>
                 ))}
               </tbody>
@@ -1085,34 +1085,34 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
 
       {/* TAB 4: STAFF & SHIFTS */}
       {adminTab === 'STAFF' && (
-        <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4">
+        <div className="bg-white border border-stone-200 rounded-xl p-5 shadow-sm space-y-4">
           <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-            <h2 className="text-sm font-bold text-slate-900 flex items-center space-x-2">
+            <h2 className="text-sm font-bold text-stone-900 flex items-center space-x-2">
               <Users className="w-4 h-4 text-cyan-600" />
               <span>Medical Roster & Emergency Duty Duty Officers</span>
             </h2>
 
-            <span className="text-xs font-bold text-slate-500">{staffList.length} staff members</span>
+            <span className="text-xs font-bold text-stone-500">{staffList.length} staff members</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {staffList.map((st) => (
-              <div key={st.id} className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex items-start justify-between">
+              <div key={st.id} className="p-4 rounded-xl border border-stone-200 bg-cream flex items-start justify-between">
                 <div>
                   <div className="flex items-center space-x-2">
-                    <span className="text-xs font-extrabold text-slate-900">{st.name}</span>
-                    <span className="text-[10px] font-bold bg-slate-200 px-2 py-0.5 rounded text-slate-700">
+                    <span className="text-xs font-extrabold text-stone-900">{st.name}</span>
+                    <span className="text-[10px] font-bold bg-stone-100 px-2 py-0.5 rounded text-stone-600">
                       {st.roleTitle}
                     </span>
                   </div>
-                  <p className="text-xs text-slate-600 mt-1">
+                  <p className="text-xs text-stone-500 mt-1">
                     Specialty: <strong>{st.specialty}</strong> • Dept: {st.department}
                   </p>
-                  <p className="text-xs text-slate-500 mt-0.5">
+                  <p className="text-xs text-stone-500 mt-0.5">
                     Shift: <strong>{st.shift}</strong> | Contact: <span className="font-mono">{st.contactNumber}</span>
                   </p>
                   {st.assignedWard && (
-                    <p className="text-[11px] text-sky-700 font-semibold mt-1">
+                    <p className="text-[11px] text-sky-400 font-semibold mt-1">
                       Assigned Ward: {st.assignedWard}
                     </p>
                   )}
@@ -1121,8 +1121,8 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
                 <span
                   className={`text-[10px] font-bold px-2.5 py-1 rounded-full ${
                     st.status === 'On-Duty'
-                      ? 'bg-emerald-100 text-emerald-800'
-                      : 'bg-amber-100 text-amber-800'
+                      ? 'bg-emerald-100 text-emerald-400'
+                      : 'bg-amber-100 text-amber-400'
                   }`}
                 >
                   {st.status}
@@ -1135,14 +1135,14 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
 
       {/* TAB 5: GEMINI AI ASSISTANT */}
       {adminTab === 'AI_ASSISTANT' && (
-        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm space-y-5">
+        <div className="bg-white border border-stone-200 rounded-xl p-6 shadow-sm space-y-5">
           <div className="flex items-center justify-between border-b border-slate-100 pb-4">
             <div>
-              <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+              <h2 className="text-base font-bold text-stone-900 flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-amber-500 fill-amber-500" />
                 <span>Gemini AI Hospital Operational Intelligence Assistant</span>
               </h2>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-stone-500 mt-0.5">
                 Evaluates hospital occupancy, incoming emergency triage severity, staff allocation, and generates operational warnings
               </p>
             </div>
@@ -1150,9 +1150,9 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
             <button
               onClick={handleRunAiAssistant}
               disabled={aiLoading}
-              className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow-sm transition-colors flex items-center space-x-2"
+              className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-stone-900 font-bold text-xs rounded-xl shadow-sm transition-colors flex items-center space-x-2"
             >
-              <Zap className="w-4 h-4 text-amber-300 fill-amber-300" />
+              <Zap className="w-4 h-4 text-amber-100 fill-amber-300" />
               <span>{aiLoading ? 'Evaluating Hospital...' : 'Run Hospital Risk Assessment'}</span>
             </button>
           </div>
@@ -1163,22 +1163,22 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
                 <span className="text-xs font-bold text-indigo-900">
                   Model Output Version: {aiAnalysis.modelVersion}
                 </span>
-                <span className="text-xs font-bold bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full border border-indigo-300">
+                <span className="text-xs font-bold bg-indigo-100 text-indigo-400 px-3 py-1 rounded-full border border-indigo-300">
                   Confidence: {aiAnalysis.confidenceScore}%
                 </span>
               </div>
 
               <div>
-                <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-1">Clinical Assessment Summary</h3>
-                <p className="text-xs text-slate-700 leading-relaxed bg-white p-3 rounded-lg border border-indigo-100">
+                <h3 className="text-xs font-bold text-stone-800 uppercase tracking-wider mb-1">Clinical Assessment Summary</h3>
+                <p className="text-xs text-stone-600 leading-relaxed bg-white p-3 rounded-lg border border-indigo-100">
                   {aiAnalysis.summary}
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                 <div className="bg-white p-3 rounded-lg border border-indigo-100 space-y-1">
-                  <strong className="text-slate-800 block">Suggested Clinical Actions:</strong>
-                  <ul className="list-disc list-inside space-y-1 text-slate-600">
+                  <strong className="text-stone-800 block">Suggested Clinical Actions:</strong>
+                  <ul className="list-disc list-inside space-y-1 text-stone-500">
                     {aiAnalysis.suggestedActions?.map((act: string, idx: number) => (
                       <li key={idx}>{act}</li>
                     ))}
@@ -1186,17 +1186,17 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
                 </div>
 
                 <div className="bg-white p-3 rounded-lg border border-indigo-100 space-y-1">
-                  <strong className="text-slate-800 block">Department Recommendation:</strong>
-                  <p className="text-slate-600">{aiAnalysis.suggestedDepartment}</p>
-                  <strong className="text-slate-800 block pt-1">Priority Logic:</strong>
-                  <p className="text-slate-600">{aiAnalysis.priorityLogic}</p>
+                  <strong className="text-stone-800 block">Department Recommendation:</strong>
+                  <p className="text-stone-500">{aiAnalysis.suggestedDepartment}</p>
+                  <strong className="text-stone-800 block pt-1">Priority Logic:</strong>
+                  <p className="text-stone-500">{aiAnalysis.priorityLogic}</p>
                 </div>
               </div>
             </div>
           ) : (
-            <div className="text-center py-10 bg-slate-50 rounded-xl border border-dashed border-slate-200 space-y-2">
+            <div className="text-center py-10 bg-cream rounded-xl border border-dashed border-stone-200 space-y-2">
               <Sparkles className="w-8 h-8 text-amber-400 mx-auto" />
-              <p className="text-xs text-slate-600 font-semibold">
+              <p className="text-xs text-stone-500 font-semibold">
                 Click "Run Hospital Risk Assessment" to evaluate operational parameters using Gemini 3.6 Flash
               </p>
             </div>
@@ -1206,32 +1206,32 @@ export const HospitalAdminDashboardView: React.FC<HospitalAdminDashboardViewProp
 
       {/* TAB 6: AUDIT HISTORY */}
       {adminTab === 'AUDIT_LOG' && (
-        <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4">
+        <div className="bg-white border border-stone-200 rounded-xl p-5 shadow-sm space-y-4">
           <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-            <h2 className="text-sm font-bold text-slate-900 flex items-center space-x-2">
-              <FileText className="w-4 h-4 text-slate-600" />
+            <h2 className="text-sm font-bold text-stone-900 flex items-center space-x-2">
+              <FileText className="w-4 h-4 text-stone-500" />
               <span>Hospital Action & Resource Audit Trail</span>
             </h2>
-            <span className="text-xs font-bold text-slate-500">{auditLogs.length} audit entries</span>
+            <span className="text-xs font-bold text-stone-500">{auditLogs.length} audit entries</span>
           </div>
 
           <div className="space-y-2 text-xs">
             {auditLogs.map((log) => (
-              <div key={log.id} className="bg-slate-50 p-3 rounded-lg border border-slate-200 flex items-start justify-between">
+              <div key={log.id} className="bg-cream p-3 rounded-lg border border-stone-200 flex items-start justify-between">
                 <div>
                   <div className="flex items-center space-x-2">
-                    <span className="font-bold text-slate-900">{log.performedBy}</span>
-                    <span className="text-[10px] font-mono bg-slate-200 px-1.5 py-0.5 rounded text-slate-700">
+                    <span className="font-bold text-stone-900">{log.performedBy}</span>
+                    <span className="text-[10px] font-mono bg-stone-100 px-1.5 py-0.5 rounded text-stone-600">
                       {log.userRole}
                     </span>
-                    <span className="text-[10px] font-bold text-sky-700 bg-sky-100 px-2 py-0.5 rounded">
+                    <span className="text-[10px] font-bold text-sky-400 bg-sky-100 px-2 py-0.5 rounded">
                       {log.category}
                     </span>
                   </div>
-                  <p className="text-slate-600 mt-1">{log.details}</p>
+                  <p className="text-stone-500 mt-1">{log.details}</p>
                 </div>
 
-                <span className="text-[10px] font-mono text-slate-400 whitespace-nowrap">
+                <span className="text-[10px] font-mono text-stone-500 whitespace-nowrap">
                   {new Date(log.timestamp).toLocaleTimeString()}
                 </span>
               </div>

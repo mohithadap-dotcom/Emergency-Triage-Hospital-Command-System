@@ -115,26 +115,26 @@ export const SmartDispatchEngine: React.FC<DispatchProps> = ({
   const getPriorityBadge = (p: string) => {
     switch (p) {
       case 'RED':
-        return 'bg-rose-600 text-white font-black animate-pulse';
+        return 'bg-rose-600 text-stone-900 font-black animate-pulse';
       case 'ORANGE':
-        return 'bg-orange-600 text-white font-black';
+        return 'bg-orange-600 text-stone-900 font-black';
       case 'YELLOW':
         return 'bg-amber-500 text-slate-950 font-bold';
       default:
-        return 'bg-emerald-600 text-white font-bold';
+        return 'bg-emerald-600 text-stone-900 font-bold';
     }
   };
 
   return (
-    <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 space-y-4">
+    <div className="bg-white rounded-lg border border-stone-200 shadow-sm p-4 space-y-4">
       {/* Title Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-stone-200 pb-3">
         <div>
-          <h2 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+          <h2 className="text-lg font-extrabold text-stone-900 flex items-center gap-2">
             <Zap className="w-5 h-5 text-amber-500" />
             AI Smart Dispatch Engine & Dynamic Ambulance Matching
           </h2>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-stone-500">
             Powered by Gemini 3.6 Flash. Matches nearest ready ICU/ALS 108 units to critical emergencies based on traffic, distance, & casualty severity.
           </p>
         </div>
@@ -151,11 +151,11 @@ export const SmartDispatchEngine: React.FC<DispatchProps> = ({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
         {/* Left Column: Active Incident Selector */}
         <div className="lg:col-span-4 space-y-3">
-          <div className="bg-slate-900 text-white p-3 rounded-lg flex items-center justify-between">
+          <div className="bg-white text-stone-900 p-3 rounded-lg flex items-center justify-between">
             <span className="font-mono font-bold text-xs text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
               <Flame className="w-4 h-4 text-rose-400" /> Live Emergency Queue
             </span>
-            <span className="bg-rose-600 text-white font-mono font-black text-[10px] px-2 py-0.5 rounded">
+            <span className="bg-rose-600 text-stone-900 font-mono font-black text-[10px] px-2 py-0.5 rounded">
               {incidents.filter((i) => i.status !== 'RESOLVED').length} Active
             </span>
           </div>
@@ -173,21 +173,21 @@ export const SmartDispatchEngine: React.FC<DispatchProps> = ({
                   className={`p-3 rounded-lg border cursor-pointer transition-all text-xs space-y-1.5 ${
                     isSelected
                       ? 'bg-sky-50 border-sky-600 shadow-md ring-1 ring-sky-500'
-                      : 'bg-slate-50 border-slate-200 hover:border-slate-300'
+                      : 'bg-cream border-stone-200 hover:border-stone-200'
                   }`}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-mono font-black text-slate-900">{inc.code}</span>
+                    <span className="font-mono font-black text-stone-900">{inc.code}</span>
                     <span className={`px-1.5 py-0.5 rounded text-[10px] font-black uppercase ${getPriorityBadge(inc.priority)}`}>
                       {inc.priority}
                     </span>
                   </div>
-                  <h4 className="font-bold text-slate-900">{inc.title}</h4>
-                  <div className="flex items-center justify-between text-[11px] text-slate-600">
+                  <h4 className="font-bold text-stone-900">{inc.title}</h4>
+                  <div className="flex items-center justify-between text-[11px] text-stone-500">
                     <span className="flex items-center gap-1">
-                      <MapPin className="w-3 h-3 text-sky-700" /> {inc.locationName}
+                      <MapPin className="w-3 h-3 text-sky-400" /> {inc.locationName}
                     </span>
-                    <span className="font-semibold text-rose-700">{inc.patientCount} Casualties</span>
+                    <span className="font-semibold text-rose-400">{inc.patientCount} Casualties</span>
                   </div>
                 </div>
               );
@@ -198,9 +198,9 @@ export const SmartDispatchEngine: React.FC<DispatchProps> = ({
         {/* Right Column: AI Dispatch Matching & Assignment Console */}
         <div className="lg:col-span-8 space-y-4">
           {currentIncident ? (
-            <div className="bg-slate-50 rounded-lg border border-slate-300 p-4 space-y-4">
+            <div className="bg-cream rounded-lg border border-stone-200 p-4 space-y-4">
               {/* Incident Summary Card */}
-              <div className="bg-slate-900 text-white p-3.5 rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="bg-white text-stone-900 p-3.5 rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
                   <div className="flex items-center space-x-2">
                     <span className="font-mono font-black text-amber-400 text-sm">{currentIncident.code}</span>
@@ -208,8 +208,8 @@ export const SmartDispatchEngine: React.FC<DispatchProps> = ({
                       {currentIncident.priority} TRIAGE
                     </span>
                   </div>
-                  <h3 className="text-base font-extrabold text-white mt-1">{currentIncident.title}</h3>
-                  <p className="text-xs text-slate-400 mt-0.5">
+                  <h3 className="text-base font-extrabold text-stone-900 mt-1">{currentIncident.title}</h3>
+                  <p className="text-xs text-stone-500 mt-0.5">
                     Location: {currentIncident.locationName}, {currentIncident.districtName} • Reported by: {currentIncident.reportedBy}
                   </p>
                 </div>
@@ -226,9 +226,9 @@ export const SmartDispatchEngine: React.FC<DispatchProps> = ({
 
               {loading && (
                 <div className="py-12 flex flex-col items-center justify-center space-y-3 bg-white rounded border p-6 text-center">
-                  <Activity className="w-8 h-8 text-sky-700 animate-spin" />
-                  <h4 className="font-bold text-slate-900 text-sm">Gemini 3.6 Smart Dispatcher Processing...</h4>
-                  <p className="text-xs text-slate-500 max-w-sm">
+                  <Activity className="w-8 h-8 text-sky-400 animate-spin" />
+                  <h4 className="font-bold text-stone-900 text-sm">Gemini 3.6 Smart Dispatcher Processing...</h4>
+                  <p className="text-xs text-stone-500 max-w-sm">
                     Evaluating GPS distances, unit equipment readiness, and traffic congestion models.
                   </p>
                 </div>
@@ -237,8 +237,8 @@ export const SmartDispatchEngine: React.FC<DispatchProps> = ({
               {recommendation && !loading && (
                 <div className="space-y-4">
                   {/* AI Match Banner */}
-                  <div className="bg-slate-950 text-white p-4 rounded-lg border border-sky-800 space-y-2">
-                    <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+                  <div className="bg-cream text-stone-900 p-4 rounded-lg border border-sky-800 space-y-2">
+                    <div className="flex items-center justify-between border-b border-stone-200 pb-2">
                       <span className="text-xs font-bold text-sky-400 font-mono flex items-center gap-1.5">
                         <Zap className="w-4 h-4 text-amber-400" /> GEMINI AI DISPATCH RECOMMENDATION
                       </span>
@@ -249,34 +249,34 @@ export const SmartDispatchEngine: React.FC<DispatchProps> = ({
 
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
                       <div>
-                        <span className="text-[10px] text-slate-400 font-mono uppercase">Primary Match Unit</span>
+                        <span className="text-[10px] text-stone-500 font-mono uppercase">Primary Match Unit</span>
                         <div className="text-base font-mono font-black text-sky-300">{recommendation.bestAmbulanceReg}</div>
-                        <span className="text-xs text-slate-300">{recommendation.bestAmbulanceType} Unit</span>
+                        <span className="text-xs text-stone-600">{recommendation.bestAmbulanceType} Unit</span>
                       </div>
 
                       <div>
-                        <span className="text-[10px] text-slate-400 font-mono uppercase">Estimated Response ETA</span>
+                        <span className="text-[10px] text-stone-500 font-mono uppercase">Estimated Response ETA</span>
                         <div className="text-base font-mono font-black text-amber-400">~{recommendation.estimatedEtaMin} MIN</div>
-                        <span className="text-xs text-slate-300">{recommendation.distanceKm} km distance</span>
+                        <span className="text-xs text-stone-600">{recommendation.distanceKm} km distance</span>
                       </div>
 
                       <div>
-                        <span className="text-[10px] text-slate-400 font-mono uppercase">Target Hospital</span>
-                        <div className="text-xs font-bold text-white truncate">{recommendation.recommendedHospitalName}</div>
+                        <span className="text-[10px] text-stone-500 font-mono uppercase">Target Hospital</span>
+                        <div className="text-xs font-bold text-stone-900 truncate">{recommendation.recommendedHospitalName}</div>
                         <span className="text-[11px] text-emerald-400">Capacity Verified</span>
                       </div>
                     </div>
 
-                    <p className="text-xs text-slate-300 italic bg-slate-900 p-2.5 rounded border border-slate-800">
+                    <p className="text-xs text-stone-600 italic bg-white p-2.5 rounded border border-stone-200">
                       "{recommendation.aiRationale}"
                     </p>
                   </div>
 
                   {/* Candidate Ambulances Selection List */}
-                  <div className="bg-white p-3.5 rounded-lg border border-slate-200 space-y-2 text-xs">
-                    <h4 className="font-extrabold text-slate-900 flex items-center justify-between">
+                  <div className="bg-white p-3.5 rounded-lg border border-stone-200 space-y-2 text-xs">
+                    <h4 className="font-extrabold text-stone-900 flex items-center justify-between">
                       <span>Select Response Ambulance Unit:</span>
-                      <span className="text-slate-500 text-[11px] font-normal">Ranked by proximity & equipment</span>
+                      <span className="text-stone-500 text-[11px] font-normal">Ranked by proximity & equipment</span>
                     </h4>
 
                     <div className="space-y-2">
@@ -293,7 +293,7 @@ export const SmartDispatchEngine: React.FC<DispatchProps> = ({
                               className={`p-3 rounded-lg border cursor-pointer transition-all flex items-center justify-between ${
                                 isSelected
                                   ? 'bg-sky-50 border-sky-600 ring-1 ring-sky-500'
-                                  : 'bg-slate-50 border-slate-200 hover:border-slate-300'
+                                  : 'bg-cream border-stone-200 hover:border-stone-200'
                               }`}
                             >
                               <div className="flex items-center space-x-3">
@@ -306,17 +306,17 @@ export const SmartDispatchEngine: React.FC<DispatchProps> = ({
                                 />
                                 <div>
                                   <div className="flex items-center space-x-2">
-                                    <span className="font-mono font-black text-slate-900 text-sm">{amb.registrationNo}</span>
-                                    <span className="font-bold text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded text-[10px]">
+                                    <span className="font-mono font-black text-stone-900 text-sm">{amb.registrationNo}</span>
+                                    <span className="font-bold text-amber-400 bg-amber-100 px-1.5 py-0.5 rounded text-[10px]">
                                       {amb.type}
                                     </span>
                                     {isBest && (
-                                      <span className="bg-emerald-600 text-white text-[10px] font-black px-1.5 py-0.5 rounded">
+                                      <span className="bg-emerald-600 text-stone-900 text-[10px] font-black px-1.5 py-0.5 rounded">
                                         AI TOP PICK
                                       </span>
                                     )}
                                   </div>
-                                  <span className="text-[11px] text-slate-500 block mt-0.5">
+                                  <span className="text-[11px] text-stone-500 block mt-0.5">
                                     Base: {amb.baseHospital} • Driver: {amb.driverName} ({amb.phone})
                                   </span>
                                 </div>
@@ -326,7 +326,7 @@ export const SmartDispatchEngine: React.FC<DispatchProps> = ({
                                 <span className="font-mono font-bold text-sky-900 text-xs block">
                                   {amb.status === 'AVAILABLE' ? 'READY' : amb.status}
                                 </span>
-                                <span className="text-[10px] text-slate-500">Fuel: {amb.fuelLevel ?? 100}%</span>
+                                <span className="text-[10px] text-stone-500">Fuel: {amb.fuelLevel ?? 100}%</span>
                               </div>
                             </div>
                           );
@@ -335,13 +335,13 @@ export const SmartDispatchEngine: React.FC<DispatchProps> = ({
                   </div>
 
                   {/* Destination Hospital Selection & Green Corridor Controls */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 bg-white p-3.5 rounded-lg border border-slate-200 text-xs">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 bg-white p-3.5 rounded-lg border border-stone-200 text-xs">
                     <div>
-                      <label className="block font-bold text-slate-800 mb-1">Target Receiving Hospital:</label>
+                      <label className="block font-bold text-stone-800 mb-1">Target Receiving Hospital:</label>
                       <select
                         value={selectedHospitalId}
                         onChange={(e) => setSelectedHospitalId(e.target.value)}
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded font-semibold text-slate-900"
+                        className="w-full px-3 py-2 bg-cream border border-stone-200 rounded font-semibold text-stone-900"
                       >
                         {hospitals.map((h) => (
                           <option key={h.id} value={h.id}>
@@ -356,7 +356,7 @@ export const SmartDispatchEngine: React.FC<DispatchProps> = ({
                         <span className="font-bold text-amber-900 block flex items-center gap-1">
                           <Zap className="w-3.5 h-3.5 text-amber-600" /> Green Corridor Traffic Override
                         </span>
-                        <span className="text-[11px] text-amber-700">Automates traffic light overrides along response path</span>
+                        <span className="text-[11px] text-amber-400">Automates traffic light overrides along response path</span>
                       </div>
                       <input
                         type="checkbox"
@@ -386,7 +386,7 @@ export const SmartDispatchEngine: React.FC<DispatchProps> = ({
               )}
             </div>
           ) : (
-            <div className="p-8 text-center text-slate-500 bg-slate-50 rounded border">
+            <div className="p-8 text-center text-stone-500 bg-cream rounded border">
               Select an emergency incident from the queue to run AI Smart Dispatch.
             </div>
           )}

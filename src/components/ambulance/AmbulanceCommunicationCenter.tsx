@@ -109,16 +109,16 @@ export const AmbulanceCommunicationCenter: React.FC<AmbulanceCommunicationCenter
   return (
     <div className="space-y-5">
       {/* Top Header */}
-      <div className="bg-slate-900 text-white p-5 rounded-2xl border border-slate-800 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-white text-stone-900 p-5 rounded-2xl border border-stone-200 shadow-lg shadow-stone-300/40 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center space-x-3">
           <div className="p-3 bg-sky-600 rounded-xl">
-            <Radio className="w-6 h-6 text-white animate-pulse" />
+            <Radio className="w-6 h-6 text-stone-900 animate-pulse" />
           </div>
           <div>
-            <h2 className="text-xl font-black tracking-tight text-white">
+            <h2 className="text-xl font-black tracking-tight text-stone-900">
               Cross-Agency Emergency Radio Communication Center
             </h2>
-            <p className="text-xs text-slate-300">
+            <p className="text-xs text-stone-600">
               Encrypted Real-Time Messaging: Ambulance ↔ Command ↔ Hospital ↔ Doctor ↔ Fleet Manager
             </p>
           </div>
@@ -126,18 +126,18 @@ export const AmbulanceCommunicationCenter: React.FC<AmbulanceCommunicationCenter
 
         <button
           onClick={handleEmergencyBroadcast}
-          className="bg-rose-600 hover:bg-rose-500 text-white font-black px-4 py-2 rounded-xl text-xs flex items-center space-x-2 uppercase shadow animate-pulse"
+          className="bg-rose-600 hover:bg-rose-500 text-stone-900 font-black px-4 py-2 rounded-xl text-xs flex items-center space-x-2 uppercase shadow animate-pulse"
         >
-          <Zap className="w-4 h-4 text-amber-300" />
+          <Zap className="w-4 h-4 text-amber-100" />
           <span>Emergency Radio Broadcast</span>
         </button>
       </div>
 
       {/* Main Radio Chat Layout */}
-      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-[480px]">
+      <div className="bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-[480px]">
         {/* Left Channels Sidebar */}
-        <div className="md:col-span-4 bg-slate-50 border-r border-slate-200 p-4 space-y-2">
-          <div className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider mb-2">
+        <div className="md:col-span-4 bg-cream border-r border-stone-200 p-4 space-y-2">
+          <div className="text-[10px] font-extrabold text-stone-500 uppercase tracking-wider mb-2">
             Select Radio Channel
           </div>
 
@@ -145,8 +145,8 @@ export const AmbulanceCommunicationCenter: React.FC<AmbulanceCommunicationCenter
             onClick={() => setActiveChannel('HOSPITAL')}
             className={`w-full text-left p-3 rounded-xl border transition flex items-center justify-between ${
               activeChannel === 'HOSPITAL'
-                ? 'bg-sky-600 text-white border-sky-500 font-bold shadow'
-                : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
+                ? 'bg-sky-600 text-stone-900 border-sky-500 font-bold shadow'
+                : 'bg-white text-stone-600 border-stone-200 hover:bg-stone-100'
             }`}
           >
             <div className="flex items-center space-x-2 text-xs">
@@ -160,7 +160,7 @@ export const AmbulanceCommunicationCenter: React.FC<AmbulanceCommunicationCenter
             className={`w-full text-left p-3 rounded-xl border transition flex items-center justify-between ${
               activeChannel === 'COMMAND'
                 ? 'bg-amber-500 text-slate-950 border-amber-400 font-bold shadow'
-                : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
+                : 'bg-white text-stone-600 border-stone-200 hover:bg-stone-100'
             }`}
           >
             <div className="flex items-center space-x-2 text-xs">
@@ -173,8 +173,8 @@ export const AmbulanceCommunicationCenter: React.FC<AmbulanceCommunicationCenter
             onClick={() => setActiveChannel('DOCTOR')}
             className={`w-full text-left p-3 rounded-xl border transition flex items-center justify-between ${
               activeChannel === 'DOCTOR'
-                ? 'bg-emerald-600 text-white border-emerald-500 font-bold shadow'
-                : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
+                ? 'bg-emerald-600 text-stone-900 border-emerald-500 font-bold shadow'
+                : 'bg-white text-stone-600 border-stone-200 hover:bg-stone-100'
             }`}
           >
             <div className="flex items-center space-x-2 text-xs">
@@ -187,8 +187,8 @@ export const AmbulanceCommunicationCenter: React.FC<AmbulanceCommunicationCenter
             onClick={() => setActiveChannel('FLEET_MANAGER')}
             className={`w-full text-left p-3 rounded-xl border transition flex items-center justify-between ${
               activeChannel === 'FLEET_MANAGER'
-                ? 'bg-indigo-600 text-white border-indigo-500 font-bold shadow'
-                : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
+                ? 'bg-indigo-600 text-stone-900 border-indigo-500 font-bold shadow'
+                : 'bg-white text-stone-600 border-stone-200 hover:bg-stone-100'
             }`}
           >
             <div className="flex items-center space-x-2 text-xs">
@@ -198,23 +198,23 @@ export const AmbulanceCommunicationCenter: React.FC<AmbulanceCommunicationCenter
           </button>
 
           {/* Quick Status Buttons */}
-          <div className="pt-4 border-t border-slate-200 space-y-1.5">
-            <div className="text-[10px] font-bold text-slate-400 uppercase">Quick Status Transmit</div>
+          <div className="pt-4 border-t border-stone-200 space-y-1.5">
+            <div className="text-[10px] font-bold text-stone-500 uppercase">Quick Status Transmit</div>
             <button
               onClick={() => handleSendQuickStatus('PATIENT LOADED & STABLE')}
-              className="w-full text-left p-2 bg-slate-200 hover:bg-slate-300 rounded-lg text-[11px] font-bold text-slate-800"
+              className="w-full text-left p-2 bg-stone-100 hover:bg-stone-100 rounded-lg text-[11px] font-bold text-stone-800"
             >
               + Patient Loaded & Stable
             </button>
             <button
               onClick={() => handleSendQuickStatus('5 MINS TO ER RAMP')}
-              className="w-full text-left p-2 bg-slate-200 hover:bg-slate-300 rounded-lg text-[11px] font-bold text-slate-800"
+              className="w-full text-left p-2 bg-stone-100 hover:bg-stone-100 rounded-lg text-[11px] font-bold text-stone-800"
             >
               + 5 Mins to ER Ramp
             </button>
             <button
               onClick={() => handleSendQuickStatus('TRAFFIC CLEARANCE REQUIRED')}
-              className="w-full text-left p-2 bg-slate-200 hover:bg-slate-300 rounded-lg text-[11px] font-bold text-slate-800"
+              className="w-full text-left p-2 bg-stone-100 hover:bg-stone-100 rounded-lg text-[11px] font-bold text-stone-800"
             >
               + Request Traffic Clearance
             </button>
@@ -222,17 +222,17 @@ export const AmbulanceCommunicationCenter: React.FC<AmbulanceCommunicationCenter
         </div>
 
         {/* Right Chat Conversation */}
-        <div className="md:col-span-8 p-4 flex flex-col justify-between space-y-4 bg-slate-50/50">
+        <div className="md:col-span-8 p-4 flex flex-col justify-between space-y-4 bg-cream/50">
           <div className="space-y-3 overflow-y-auto max-h-[360px] pr-2">
             {filteredMessages.map((m) => (
               <div
                 key={m.id}
                 className={`p-3.5 rounded-2xl max-w-xl text-xs space-y-1 shadow-sm ${
                   m.isEmergencyBroadcast
-                    ? 'bg-rose-600 text-white font-bold ml-auto border border-rose-400'
+                    ? 'bg-rose-600 text-stone-900 font-bold ml-auto border border-rose-400'
                     : m.senderId === session.user.id
-                    ? 'bg-slate-900 text-white ml-auto'
-                    : 'bg-white text-slate-900 border border-slate-200'
+                    ? 'bg-white text-stone-900 ml-auto'
+                    : 'bg-white text-stone-900 border border-stone-200'
                 }`}
               >
                 <div className="flex items-center justify-between text-[10px] opacity-80 border-b border-current/20 pb-1">
@@ -249,17 +249,17 @@ export const AmbulanceCommunicationCenter: React.FC<AmbulanceCommunicationCenter
           </div>
 
           {/* Message Input Bar */}
-          <form onSubmit={handleSendMessage} className="flex items-center space-x-2 bg-white p-2 rounded-xl border border-slate-300 shadow">
+          <form onSubmit={handleSendMessage} className="flex items-center space-x-2 bg-white p-2 rounded-xl border border-stone-200 shadow">
             <input
               type="text"
               placeholder={`Type message to ${activeChannel}...`}
               value={messageInput}
               onChange={(e) => setMessageInput(e.target.value)}
-              className="flex-1 bg-transparent px-3 py-2 text-xs text-slate-900 focus:outline-none font-medium"
+              className="flex-1 bg-transparent px-3 py-2 text-xs text-stone-900 focus:outline-none font-medium"
             />
             <button
               type="submit"
-              className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2 rounded-lg text-xs flex items-center space-x-1.5 shadow"
+              className="bg-emerald-600 hover:bg-emerald-500 text-stone-900 font-bold px-4 py-2 rounded-lg text-xs flex items-center space-x-1.5 shadow"
             >
               <Send className="w-3.5 h-3.5" />
               <span>Send</span>

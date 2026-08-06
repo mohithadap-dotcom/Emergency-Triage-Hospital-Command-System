@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-import { MapPin, ShieldAlert, Building2, Flame, BedDouble, AlertCircle } from 'lucide-react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import { Building2, Flame, Layers, MapPin, Radio, Truck } from 'lucide-react';
 import { District } from '../types';
 
 interface MapProps {
@@ -8,242 +10,168 @@ interface MapProps {
   onSelectDistrict: (id: string) => void;
 }
 
+type Basemap = 'voyager' | 'satellite' | 'dark';
+
+const TILE_LAYERS: Record<Basemap, { label: string; url: string; attribution: string }> = {
+  voyager: {
+    label: 'CartoDB Voyager',
+    url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+    attribution: '&copy; OpenStreetMap &copy; CARTO',
+  },
+  satellite: {
+    label: 'ESRI Satellite',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    attribution: 'Tiles &copy; Esri',
+  },
+  dark: {
+    label: 'CartoDB Dark',
+    url: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+    attribution: '&copy; OpenStreetMap &copy; CARTO',
+  },
+};
+
+const RISK_COLORS: Record<District['riskLevel'], string> = {
+  CRITICAL: '#DC2626',
+  HIGH: '#EA580C',
+  ELEVATED: '#D97706',
+  NORMAL: '#059669',
+};
+
 export const MaharashtraMapVisualizer: React.FC<MapProps> = ({
   districts,
   selectedDistrict,
   onSelectDistrict,
 }) => {
+  const mapElement = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<L.Map | null>(null);
+  const tileLayerRef = useRef<L.TileLayer | null>(null);
+  const markersRef = useRef<L.LayerGroup | null>(null);
+  const [basemap, setBasemap] = useState<Basemap>('voyager');
   const [hoveredDistrict, setHoveredDistrict] = useState<District | null>(null);
 
-  // Approximate relative SVG coordinates for Maharashtra Pilot Districts
-  const districtMapNodes = [
-    { id: 'mumbai', label: 'Mumbai', x: 120, y: 220, code: 'BOM' },
-    { id: 'pune', label: 'Pune', x: 210, y: 270, code: 'PUN' },
-    { id: 'nashik', label: 'Nashik', x: 210, y: 150, code: 'NSK' },
-    { id: 'amravati', label: 'Amravati', x: 440, y: 120, code: 'AMR' },
-    { id: 'wardha', label: 'Wardha', x: 530, y: 140, code: 'WRD' },
-    { id: 'nagpur', label: 'Nagpur', x: 590, y: 110, code: 'NGP' },
-    { id: 'chandrapur', label: 'Chandrapur', x: 610, y: 200, code: 'CHA' },
-  ];
+  const activeDistrict = useMemo(
+    () => districts.find((district) => district.id === selectedDistrict),
+    [districts, selectedDistrict],
+  );
 
-  const getRiskColor = (risk: District['riskLevel']) => {
-    switch (risk) {
-      case 'CRITICAL':
-        return { fill: '#DC2626', stroke: '#991B1B', text: '#FFFFFF', badge: 'bg-rose-600' };
-      case 'HIGH':
-        return { fill: '#EA580C', stroke: '#C2410C', text: '#FFFFFF', badge: 'bg-orange-600' };
-      case 'ELEVATED':
-        return { fill: '#D97706', stroke: '#B45309', text: '#FFFFFF', badge: 'bg-amber-600' };
-      default:
-        return { fill: '#059669', stroke: '#047857', text: '#FFFFFF', badge: 'bg-emerald-600' };
-    }
-  };
+  useEffect(() => {
+    if (!mapElement.current || mapRef.current) return;
+
+    const map = L.map(mapElement.current, {
+      zoomControl: true,
+      attributionControl: true,
+      preferCanvas: true,
+    }).setView([19.7515, 75.7139], 7);
+
+    mapRef.current = map;
+    markersRef.current = L.layerGroup().addTo(map);
+
+    return () => {
+      map.remove();
+      mapRef.current = null;
+      tileLayerRef.current = null;
+      markersRef.current = null;
+    };
+  }, []);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map) return;
+
+    tileLayerRef.current?.remove();
+    const layer = TILE_LAYERS[basemap];
+    tileLayerRef.current = L.tileLayer(layer.url, {
+      attribution: layer.attribution,
+      maxZoom: 19,
+      subdomains: 'abcd',
+    }).addTo(map);
+  }, [basemap]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    const markerLayer = markersRef.current;
+    if (!map || !markerLayer) return;
+
+    markerLayer.clearLayers();
+    const visibleDistricts = selectedDistrict === 'all'
+      ? districts
+      : districts.filter((district) => district.id === selectedDistrict);
+
+    visibleDistricts.forEach((district) => {
+      const color = RISK_COLORS[district.riskLevel];
+      const marker = L.marker([district.coordinates.lat, district.coordinates.lng], {
+        icon: L.divIcon({
+          className: 'rakshak-district-marker',
+          html: `<span style="background:${color};border-color:${color};">${district.code}</span>`,
+          iconSize: [44, 44],
+          iconAnchor: [22, 22],
+        }),
+        title: `${district.name} — ${district.riskLevel}`,
+      });
+
+      marker.on('click', () => onSelectDistrict(district.id));
+      marker.on('mouseover', () => setHoveredDistrict(district));
+      marker.on('mouseout', () => setHoveredDistrict(null));
+      marker.bindTooltip(
+        `<strong>${district.name}</strong><br/>${district.currentEmergencies} active emergencies · ${district.availableAmbulances} ambulances ready`,
+        { direction: 'top', offset: [0, -18], opacity: 0.95 },
+      );
+      marker.addTo(markerLayer);
+    });
+
+    const center = activeDistrict?.coordinates ?? { lat: 19.7515, lng: 75.7139 };
+    map.setView([center.lat, center.lng], selectedDistrict === 'all' ? 7 : 11, { animate: true });
+  }, [activeDistrict, districts, onSelectDistrict, selectedDistrict]);
 
   return (
-    <div className="bg-slate-900 text-white rounded-lg border border-slate-800 p-4 shadow-md relative overflow-hidden">
-      {/* Title Bar */}
-      <div className="flex items-center justify-between mb-2">
+    <div className="bg-white text-stone-900 rounded-lg border border-stone-200 p-4 shadow-md relative overflow-hidden">
+      <style>{`.rakshak-district-marker { background: transparent; border: 0; } .rakshak-district-marker span { display:flex; align-items:center; justify-content:center; width:38px; height:38px; border:3px solid; border-radius:999px; color:#fff; font:900 10px ui-monospace, SFMono-Regular, Menlo, monospace; box-shadow:0 0 0 4px rgba(255,255,255,.8), 0 4px 12px rgba(15,23,42,.35); } .rakshak-district-marker:hover span { transform:scale(1.12); }`}</style>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2">
         <div>
           <h3 className="text-sm font-extrabold text-amber-400 uppercase tracking-wider flex items-center gap-2">
             <MapPin className="w-4 h-4 text-sky-400" />
             Maharashtra State Pilot EOC Mesh Network Map
           </h3>
-          <p className="text-[11px] text-slate-400">
-            Interactive GIS Node topology for emergency triage & bed allocation tracking.
+          <p className="text-[11px] text-stone-500">
+            Leaflet / OpenStreetMap fallback telecasting layer for district emergency operations.
           </p>
         </div>
-
-        <div className="flex items-center space-x-3 text-[10px]">
-          <div className="flex items-center space-x-1">
-            <span className="w-2.5 h-2.5 rounded-full bg-rose-600 inline-block"></span>
-            <span className="text-slate-300">Critical</span>
-          </div>
-          <div className="flex items-center space-x-1">
-            <span className="w-2.5 h-2.5 rounded-full bg-orange-600 inline-block"></span>
-            <span className="text-slate-300">High Risk</span>
-          </div>
-          <div className="flex items-center space-x-1">
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-600 inline-block"></span>
-            <span className="text-slate-300">Elevated</span>
-          </div>
-          <div className="flex items-center space-x-1">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 inline-block"></span>
-            <span className="text-slate-300">Optimal</span>
-          </div>
+        <div className="flex items-center gap-2 text-[10px]">
+          <Radio className="w-3 h-3 text-emerald-500 animate-pulse" />
+          <span className="font-mono text-stone-600">LIVE SPATIAL FEED</span>
+          <select
+            value={basemap}
+            onChange={(event) => setBasemap(event.target.value as Basemap)}
+            className="px-2 py-1 bg-cream border border-stone-200 rounded font-semibold text-stone-700"
+            aria-label="Select GIS basemap"
+          >
+            {Object.entries(TILE_LAYERS).map(([key, layer]) => (
+              <option key={key} value={key}>{layer.label}</option>
+            ))}
+          </select>
         </div>
       </div>
 
-      {/* Map Canvas */}
-      <div className="relative w-full h-[320px] bg-slate-950 rounded border border-slate-800 flex items-center justify-center p-2">
-        <svg viewBox="0 0 750 360" className="w-full h-full max-h-[300px]">
-          {/* Background Map Outline abstraction */}
-          <path
-            d="M 60 180 L 140 100 L 250 80 L 400 60 L 680 50 L 730 180 L 680 320 L 520 330 L 350 300 L 220 320 L 110 260 Z"
-            fill="#0F172A"
-            stroke="#1E293B"
-            strokeWidth="3"
-            strokeDasharray="4 4"
-          />
+      <div className="flex flex-wrap gap-2 mb-2 text-[10px]">
+        <span className="inline-flex items-center gap-1 rounded bg-stone-100 px-2 py-1 text-stone-600"><Layers className="w-3 h-3" /> {selectedDistrict === 'all' ? 'Statewide' : activeDistrict?.name}</span>
+        <span className="inline-flex items-center gap-1 rounded bg-rose-50 px-2 py-1 text-rose-700"><Flame className="w-3 h-3" /> {districts.reduce((sum, d) => sum + d.currentEmergencies, 0)} emergencies</span>
+        <span className="inline-flex items-center gap-1 rounded bg-emerald-50 px-2 py-1 text-emerald-700"><Truck className="w-3 h-3" /> {districts.reduce((sum, d) => sum + d.availableAmbulances, 0)} ambulances ready</span>
+        <span className="inline-flex items-center gap-1 rounded bg-sky-50 px-2 py-1 text-sky-700"><Building2 className="w-3 h-3" /> {districts.reduce((sum, d) => sum + d.hospitalsCount, 0)} hospitals</span>
+      </div>
 
-          {/* Connection Lines between Nodes */}
-          {districtMapNodes.map((node, i) =>
-            districtMapNodes.slice(i + 1).map((targetNode, j) => (
-              <line
-                key={`${node.id}-${targetNode.id}`}
-                x1={node.x}
-                y1={node.y}
-                x2={targetNode.x}
-                y2={targetNode.y}
-                stroke="#334155"
-                strokeWidth="1.2"
-                strokeOpacity="0.4"
-              />
-            ))
-          )}
-
-          {/* District Nodes */}
-          {districtMapNodes.map((node) => {
-            const districtData = districts.find((d) => d.id === node.id);
-            if (!districtData) return null;
-
-            const isSelected = selectedDistrict === node.id;
-            const colors = getRiskColor(districtData.riskLevel);
-
-            return (
-              <g
-                key={node.id}
-                className="cursor-pointer transition-transform hover:scale-110"
-                onClick={() => onSelectDistrict(node.id)}
-                onMouseEnter={() => setHoveredDistrict(districtData)}
-                onMouseLeave={() => setHoveredDistrict(null)}
-              >
-                {/* Pulse Ring for Critical Nodes */}
-                {districtData.riskLevel === 'CRITICAL' && (
-                  <circle
-                    cx={node.x}
-                    cy={node.y}
-                    r="24"
-                    fill="none"
-                    stroke="#EF4444"
-                    strokeWidth="2"
-                    className="animate-ping opacity-75"
-                  />
-                )}
-
-                {/* Selection Halo */}
-                {isSelected && (
-                  <circle
-                    cx={node.x}
-                    cy={node.y}
-                    r="26"
-                    fill="none"
-                    stroke="#38BDF8"
-                    strokeWidth="3"
-                  />
-                )}
-
-                {/* Main Node Circle */}
-                <circle
-                  cx={node.x}
-                  cy={node.y}
-                  r="18"
-                  fill={colors.fill}
-                  stroke={isSelected ? '#38BDF8' : colors.stroke}
-                  strokeWidth="3"
-                  className="shadow-lg"
-                />
-
-                {/* District Code Text */}
-                <text
-                  x={node.x}
-                  y={node.y + 4}
-                  textAnchor="middle"
-                  fill="#FFFFFF"
-                  fontSize="10"
-                  fontWeight="900"
-                  fontFamily="monospace"
-                >
-                  {node.code}
-                </text>
-
-                {/* Label below node */}
-                <text
-                  x={node.x}
-                  y={node.y + 32}
-                  textAnchor="middle"
-                  fill={isSelected ? '#38BDF8' : '#94A3B8'}
-                  fontSize="11"
-                  fontWeight={isSelected ? '900' : '700'}
-                >
-                  {node.label}
-                </text>
-
-                {/* Emergency Counter Badge */}
-                <rect
-                  x={node.x + 8}
-                  y={node.y - 20}
-                  width="20"
-                  height="14"
-                  rx="4"
-                  fill="#0284C7"
-                  stroke="#38BDF8"
-                  strokeWidth="1"
-                />
-                <text
-                  x={node.x + 18}
-                  y={node.y - 10}
-                  textAnchor="middle"
-                  fill="#FFFFFF"
-                  fontSize="9"
-                  fontWeight="900"
-                >
-                  {districtData.currentEmergencies}
-                </text>
-              </g>
-            );
-          })}
-        </svg>
-
-        {/* Hover / Tooltip overlay */}
+      <div className="relative w-full h-[320px] rounded border border-stone-200 overflow-hidden bg-cream">
+        <div ref={mapElement} className="w-full h-full" aria-label="Interactive Maharashtra GIS fallback map" />
         {hoveredDistrict && (
-          <div className="absolute bottom-3 left-3 bg-slate-900/95 border border-sky-500/50 p-3 rounded-lg shadow-2xl backdrop-blur-sm text-xs w-64 z-20">
-            <div className="flex items-center justify-between border-b border-slate-700 pb-1 mb-2">
-              <span className="font-extrabold text-white text-sm">
-                {hoveredDistrict.name} ({hoveredDistrict.marathiName})
-              </span>
-              <span
-                className={`text-[10px] px-1.5 py-0.5 rounded font-bold uppercase ${
-                  getRiskColor(hoveredDistrict.riskLevel).badge
-                }`}
-              >
-                {hoveredDistrict.riskLevel}
-              </span>
+          <div className="absolute bottom-3 left-3 bg-white/95 border border-sky-500/50 p-3 rounded-lg shadow-lg text-xs w-64 z-[1000] pointer-events-none">
+            <div className="flex items-center justify-between border-b border-stone-200 pb-1 mb-2">
+              <span className="font-extrabold text-stone-900 text-sm">{hoveredDistrict.name} ({hoveredDistrict.marathiName})</span>
+              <span className="text-[10px] px-1.5 py-0.5 rounded font-bold text-white" style={{ backgroundColor: RISK_COLORS[hoveredDistrict.riskLevel] }}>{hoveredDistrict.riskLevel}</span>
             </div>
-            <div className="grid grid-cols-2 gap-2 text-slate-300">
-              <div>
-                <span className="text-slate-400 block text-[10px]">Emergencies:</span>
-                <span className="font-bold text-rose-400 text-sm">
-                  {hoveredDistrict.currentEmergencies}
-                </span>
-              </div>
-              <div>
-                <span className="text-slate-400 block text-[10px]">ICU Beds Free:</span>
-                <span className="font-bold text-sky-400 text-sm">
-                  {hoveredDistrict.availableIcuBeds} / {hoveredDistrict.totalIcuBeds}
-                </span>
-              </div>
-              <div>
-                <span className="text-slate-400 block text-[10px]">108 Ambulances:</span>
-                <span className="font-bold text-emerald-400">
-                  {hoveredDistrict.availableAmbulances} ready
-                </span>
-              </div>
-              <div>
-                <span className="text-slate-400 block text-[10px]">Avg Response:</span>
-                <span className="font-bold text-amber-400">
-                  {hoveredDistrict.avgResponseTimeMin} min
-                </span>
-              </div>
+            <div className="grid grid-cols-2 gap-2 text-stone-600">
+              <div><span className="text-stone-500 block text-[10px]">Emergencies:</span><span className="font-bold text-rose-600 text-sm">{hoveredDistrict.currentEmergencies}</span></div>
+              <div><span className="text-stone-500 block text-[10px]">ICU Beds Free:</span><span className="font-bold text-sky-600 text-sm">{hoveredDistrict.availableIcuBeds} / {hoveredDistrict.totalIcuBeds}</span></div>
+              <div><span className="text-stone-500 block text-[10px]">108 Ambulances:</span><span className="font-bold text-emerald-600">{hoveredDistrict.availableAmbulances} ready</span></div>
+              <div><span className="text-stone-500 block text-[10px]">Avg Response:</span><span className="font-bold text-amber-600">{hoveredDistrict.avgResponseTimeMin} min</span></div>
             </div>
           </div>
         )}

@@ -58,69 +58,61 @@ export const Header: React.FC<HeaderProps> = ({
   const activeDistrictObj = districts.find((d) => d.id === selectedDistrict);
 
   return (
-    <header className="bg-slate-900 text-white border-b-4 border-amber-500 shadow-md sticky top-0 z-50">
-      {/* Top Government Banner */}
-      <div className="bg-slate-950 px-4 py-1.5 border-b border-slate-800 text-xs flex flex-wrap items-center justify-between text-slate-300">
-        <div className="flex items-center space-x-3">
-          <div className="flex items-center space-x-2 font-semibold tracking-wide text-amber-400">
-            {/* Government Seal emblem simulation */}
-            <div className="w-5 h-5 rounded-full bg-amber-500 text-slate-950 flex items-center font-bold justify-center text-[10px] shadow">
+    <header className="bg-cream border-b border-stone-200 sticky top-0 z-50">
+      {/* Top Government Banner — quiet, dignified */}
+      <div className="px-6 md:px-8 py-2 border-b border-stone-200 flex flex-wrap items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 text-xs tracking-widest uppercase text-stone-500">
+            <div className="w-4 h-4 rounded-full bg-amber-500/80 text-slate-950 flex items-center font-bold justify-center text-[8px]">
               MH
             </div>
-            <span>महाराष्ट्र शासन | Government of Maharashtra</span>
+            <span>महाराष्ट्र शासन</span>
+            <span className="text-stone-600">·</span>
+            <span>Government of Maharashtra</span>
           </div>
-          <span className="text-slate-600">|</span>
-          <span className="font-mono text-slate-300">
-            State Emergency Operations Center (SEOC)
-          </span>
         </div>
 
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-1 text-emerald-400 font-mono">
-            <Server className="w-3.5 h-3.5" />
-            <span>SEOC Node #01 Active</span>
+        <div className="flex items-center gap-4 text-xs text-stone-500 font-mono">
+          <div className="flex items-center gap-1.5">
+            <Server className="w-3 h-3" />
+            <span>SEOC Node #01</span>
           </div>
-          <span className="text-slate-600">|</span>
-          <div className="flex items-center space-x-1 text-slate-300 font-mono">
-            <Clock className="w-3.5 h-3.5 text-amber-400" />
-            <span>{timeStr || '09:00:00 AM IST'}</span>
+          <span className="text-stone-800">|</span>
+          <div className="flex items-center gap-1.5">
+            <Clock className="w-3 h-3 text-amber-500/60" />
+            <span>{timeStr || '—'}</span>
           </div>
         </div>
       </div>
 
-      {/* Main EOC Header */}
-      <div className="px-4 py-3 flex flex-col md:flex-row md:items-center justify-between gap-3">
+      {/* Main Header — typography-led */}
+      <div className="px-6 md:px-8 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
         {/* Title & Branding */}
-        <div className="flex items-center space-x-3">
-          <div className="bg-rose-600 p-2.5 rounded-lg shadow-lg flex items-center justify-center border border-rose-400">
-            <ShieldAlert className="w-7 h-7 text-white animate-pulse" />
+        <div className="flex items-center gap-4">
+          <div className="bg-white border border-stone-200 p-2.5 rounded-lg">
+            <ShieldAlert className="w-6 h-6 text-amber-500/80" />
           </div>
           <div>
-            <div className="flex items-center space-x-2">
-              <h1 className="text-xl md:text-2xl font-black tracking-tight text-white flex items-center gap-2">
-                RAKSHAK AI
-                <span className="text-xs bg-amber-500 text-slate-950 font-extrabold px-2 py-0.5 rounded uppercase tracking-wider">
-                  EOC Platform
-                </span>
-              </h1>
-            </div>
-            <p className="text-xs text-slate-300 font-medium">
-              AI-Powered Emergency Response & Multi-Hospital Coordination Network
+            <h1 className="text-2xl md:text-3xl font-serif tracking-tight text-stone-900">
+              Rakshak AI
+            </h1>
+            <p className="text-xs text-stone-500 mt-0.5 tracking-wide">
+              Emergency Response & Multi-Hospital Coordination
             </p>
           </div>
         </div>
 
-        {/* Action Controls & RBAC Switcher */}
-        <div className="flex flex-wrap items-center gap-2.5">
-          {/* Multi-Portal Switcher Button */}
+        {/* Action Controls */}
+        <div className="flex flex-wrap items-center gap-3">
+          {/* Multi-Portal Switcher */}
           {onSwitchPortal && (
-            <div className="flex items-center space-x-1 bg-slate-950 p-1 rounded-md border border-slate-700 font-mono text-[11px]">
+            <div className="flex items-center bg-white border border-stone-200 p-0.5 rounded-md text-xs">
               <button
                 onClick={() => onSwitchPortal('GOVERNMENT')}
-                className={`px-2.5 py-1 rounded font-bold transition-all ${
+                className={`px-3 py-1.5 rounded font-medium transition-all duration-200 ${
                   activePortal === 'GOVERNMENT'
-                    ? 'bg-amber-500 text-slate-950 shadow'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
+                    : 'text-stone-500 hover:text-stone-600 border border-transparent'
                 }`}
               >
                 Government EOC
@@ -128,37 +120,38 @@ export const Header: React.FC<HeaderProps> = ({
 
               <button
                 onClick={() => onSwitchPortal('HOSPITAL')}
-                className={`px-2.5 py-1 rounded font-bold transition-all ${
+                className={`px-3 py-1.5 rounded font-medium transition-all duration-200 ${
                   activePortal === 'HOSPITAL'
-                    ? 'bg-sky-500 text-slate-950 shadow'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
+                    : 'text-stone-500 hover:text-stone-600 border border-transparent'
                 }`}
               >
                 Hospital Portal
               </button>
             </div>
           )}
-          {/* Pilot District Selector */}
+
+          {/* District Selector */}
           <div className="relative">
             <button
               onClick={() => {
                 setIsDistrictDropdownOpen(!isDistrictDropdownOpen);
                 setIsUserDropdownOpen(false);
               }}
-              className="bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-semibold px-3 py-2 rounded-md border border-slate-700 flex items-center space-x-2 transition-colors"
+              className="bg-white border border-stone-200 hover:border-stone-300 text-stone-600 text-xs font-medium px-4 py-2 rounded-md flex items-center gap-2 transition-colors duration-200"
             >
-              <Building2 className="w-3.5 h-3.5 text-sky-400" />
+              <Building2 className="w-3.5 h-3.5 text-stone-500" />
               <span>
                 {selectedDistrict === 'all'
-                  ? 'All Pilot Districts (7)'
-                  : `District: ${activeDistrictObj?.name || selectedDistrict}`}
+                  ? 'All Districts'
+                  : activeDistrictObj?.name || selectedDistrict}
               </span>
-              <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+              <ChevronDown className="w-3 h-3 text-stone-500" />
             </button>
 
             {isDistrictDropdownOpen && (
-              <div className="absolute right-0 mt-1 w-56 bg-slate-900 border border-slate-700 rounded-lg shadow-2xl py-1.5 z-50 text-xs">
-                <div className="px-3 py-1 font-bold text-slate-400 text-[10px] uppercase tracking-wider border-b border-slate-800">
+              <div className="absolute right-0 mt-2 w-56 bg-white border border-stone-200 rounded-lg py-1 z-50 shadow-lg shadow-stone-300/40">
+                <div className="label px-4 py-2 border-b border-stone-200">
                   Select Scope
                 </div>
                 <button
@@ -166,14 +159,14 @@ export const Header: React.FC<HeaderProps> = ({
                     onSelectDistrict('all');
                     setIsDistrictDropdownOpen(false);
                   }}
-                  className={`w-full text-left px-3 py-2 flex items-center justify-between hover:bg-slate-800 ${
-                    selectedDistrict === 'all' ? 'text-sky-400 font-bold bg-slate-800/50' : 'text-slate-200'
+                  className={`w-full text-left px-4 py-2.5 text-xs flex items-center justify-between transition-colors duration-150 hover:bg-stone-100/50 ${
+                    selectedDistrict === 'all' ? 'text-amber-400' : 'text-stone-500'
                   }`}
                 >
-                  <span>All Pilot Districts (7)</span>
-                  {selectedDistrict === 'all' && <Check className="w-3.5 h-3.5 text-sky-400" />}
+                  <span>All Pilot Districts</span>
+                  {selectedDistrict === 'all' && <Check className="w-3.5 h-3.5 text-amber-400" />}
                 </button>
-                <div className="border-t border-slate-800 my-1"></div>
+                <div className="border-t border-stone-200 my-0.5"></div>
                 {districts.map((d) => (
                   <button
                     key={d.id}
@@ -181,15 +174,15 @@ export const Header: React.FC<HeaderProps> = ({
                       onSelectDistrict(d.id);
                       setIsDistrictDropdownOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-2 flex items-center justify-between hover:bg-slate-800 ${
-                      selectedDistrict === d.id ? 'text-sky-400 font-bold bg-slate-800/50' : 'text-slate-200'
+                    className={`w-full text-left px-4 py-2.5 text-xs flex items-center justify-between transition-colors duration-150 hover:bg-stone-100/50 ${
+                      selectedDistrict === d.id ? 'text-amber-400' : 'text-stone-500'
                     }`}
                   >
                     <div>
-                      <span className="font-semibold">{d.name}</span>
-                      <span className="text-[10px] text-slate-400 ml-1.5">({d.marathiName})</span>
+                      <span className="font-medium text-stone-600">{d.name}</span>
+                      <span className="text-stone-500 ml-2">{d.marathiName}</span>
                     </div>
-                    {selectedDistrict === d.id && <Check className="w-3.5 h-3.5 text-sky-400" />}
+                    {selectedDistrict === d.id && <Check className="w-3.5 h-3.5 text-amber-400" />}
                   </button>
                 ))}
               </div>
@@ -203,20 +196,20 @@ export const Header: React.FC<HeaderProps> = ({
                 setIsUserDropdownOpen(!isUserDropdownOpen);
                 setIsDistrictDropdownOpen(false);
               }}
-              className="bg-sky-950 hover:bg-sky-900 border border-sky-700 text-sky-100 text-xs font-semibold px-3 py-2 rounded-md flex items-center space-x-2 transition-colors shadow-sm"
+              className="bg-white border border-stone-200 hover:border-stone-300 text-stone-600 text-xs font-medium px-4 py-2 rounded-md flex items-center gap-2 transition-colors duration-200"
             >
-              <UserCheck className="w-3.5 h-3.5 text-amber-400" />
+              <UserCheck className="w-3.5 h-3.5 text-amber-500/60" />
               <div className="text-left">
-                <div className="font-bold leading-tight">{currentUser.name}</div>
-                <div className="text-[10px] text-sky-300 font-mono">{currentUser.roleTitle}</div>
+                <div className="font-medium leading-tight text-stone-800">{currentUser.name}</div>
+                <div className="text-[10px] text-stone-500 font-mono">{currentUser.roleTitle}</div>
               </div>
-              <ChevronDown className="w-3.5 h-3.5 text-sky-300" />
+              <ChevronDown className="w-3 h-3 text-stone-500" />
             </button>
 
             {isUserDropdownOpen && (
-              <div className="absolute right-0 mt-1 w-72 bg-slate-900 border border-slate-700 rounded-lg shadow-2xl py-1.5 z-50 text-xs">
-                <div className="px-3 py-1 font-bold text-slate-400 text-[10px] uppercase tracking-wider border-b border-slate-800">
-                  Switch Active RBAC Role Profile
+              <div className="absolute right-0 mt-2 w-72 bg-white border border-stone-200 rounded-lg py-1 z-50 shadow-lg shadow-stone-300/40">
+                <div className="label px-4 py-2 border-b border-stone-200">
+                  Switch Role Profile
                 </div>
                 {userProfiles.map((user) => (
                   <button
@@ -225,28 +218,26 @@ export const Header: React.FC<HeaderProps> = ({
                       onSelectUser(user);
                       setIsUserDropdownOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-2 hover:bg-slate-800 transition-colors ${
-                      currentUser.id === user.id ? 'bg-sky-950/80 border-l-2 border-sky-400' : ''
+                    className={`w-full text-left px-4 py-3 transition-colors duration-150 hover:bg-stone-100/50 ${
+                      currentUser.id === user.id ? 'border-l-2 border-amber-500 bg-stone-100/30' : 'border-l-2 border-transparent'
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-slate-100">{user.name}</span>
-                      <span className="text-[9px] bg-slate-800 text-slate-300 font-mono px-1.5 py-0.5 rounded">
-                        {user.role}
-                      </span>
+                      <span className="font-medium text-sm text-stone-800">{user.name}</span>
+                      <span className="text-[10px] text-stone-500 font-mono">{user.role}</span>
                     </div>
-                    <div className="text-[11px] text-sky-400">{user.roleTitle}</div>
-                    <div className="text-[10px] text-slate-400 truncate">{user.organization}</div>
+                    <div className="text-xs text-amber-500/60 mt-0.5">{user.roleTitle}</div>
+                    <div className="text-[10px] text-stone-500 truncate mt-0.5">{user.organization}</div>
                   </button>
                 ))}
               </div>
             )}
           </div>
 
-          {/* System Health Status Indicator */}
-          <div className="bg-emerald-950/80 border border-emerald-700 text-emerald-300 text-xs px-2.5 py-1.5 rounded-md flex items-center space-x-1.5 font-mono">
-            <Activity className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
-            <span>Health: {systemHealthScore}%</span>
+          {/* System Health — quiet indicator */}
+          <div className="bg-white border border-stone-200 text-xs px-3 py-2 rounded-md flex items-center gap-2 font-mono text-stone-500">
+            <Activity className="w-3.5 h-3.5 text-emerald-500/60" />
+            <span>{systemHealthScore}%</span>
           </div>
         </div>
       </div>

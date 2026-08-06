@@ -163,17 +163,17 @@ export const MassCasualtyTriageView: React.FC<MassCasualtyTriageProps> = ({
   };
 
   return (
-    <div className="space-y-4 text-slate-900">
+    <div className="space-y-4 text-stone-900">
       {/* Top Banner */}
-      <div className="bg-slate-900 text-white rounded-lg p-4 border border-slate-800 shadow-md flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div className="bg-white text-stone-900 rounded-lg p-4 border border-stone-200 shadow-md flex flex-col md:flex-row md:items-center justify-between gap-3">
         <div>
           <div className="flex items-center space-x-2">
-            <span className="bg-rose-600 text-white text-[10px] font-black uppercase px-2 py-0.5 rounded tracking-wider animate-pulse">
+            <span className="bg-rose-600 text-stone-900 text-[10px] font-black uppercase px-2 py-0.5 rounded tracking-wider animate-pulse">
               Disaster START Protocol
             </span>
-            <span className="text-xs text-slate-400">Simple Triage and Rapid Treatment Workflow</span>
+            <span className="text-xs text-stone-500">Simple Triage and Rapid Treatment Workflow</span>
           </div>
-          <h2 className="text-lg font-extrabold text-white mt-1 flex items-center gap-2">
+          <h2 className="text-lg font-extrabold text-stone-900 mt-1 flex items-center gap-2">
             <ShieldAlert className="w-5 h-5 text-rose-500" />
             Mass Casualty Triage & Batch Victim Tracking
           </h2>
@@ -181,11 +181,11 @@ export const MassCasualtyTriageView: React.FC<MassCasualtyTriageProps> = ({
 
         {/* Select Incident dropdown */}
         <div className="flex items-center space-x-2">
-          <label className="text-xs font-bold text-slate-300">Active Incident:</label>
+          <label className="text-xs font-bold text-stone-600">Active Incident:</label>
           <select
             value={selectedIncidentId}
             onChange={(e) => setSelectedIncidentId(e.target.value)}
-            className="px-3 py-1.5 bg-slate-800 text-white text-xs rounded border border-slate-700 font-bold focus:outline-none focus:ring-2 focus:ring-rose-500"
+            className="px-3 py-1.5 bg-stone-100 text-stone-900 text-xs rounded border border-stone-300 font-bold focus:outline-none focus:ring-2 focus:ring-rose-500"
           >
             {incidents.map((i) => (
               <option key={i.id} value={i.id}>
@@ -198,7 +198,7 @@ export const MassCasualtyTriageView: React.FC<MassCasualtyTriageProps> = ({
 
       {/* Counter Statistics Cards */}
       <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-        <div className="bg-rose-600 text-white p-3 rounded-lg border border-rose-700 shadow-sm text-center">
+        <div className="bg-rose-600 text-stone-900 p-3 rounded-lg border border-rose-400 shadow-sm text-center">
           <span className="text-[10px] font-black uppercase tracking-wider block opacity-90">
             🔴 Immediate (Red)
           </span>
@@ -222,7 +222,7 @@ export const MassCasualtyTriageView: React.FC<MassCasualtyTriageProps> = ({
           <span className="text-[10px] block opacity-80 mt-0.5">Delayed Ward Care</span>
         </div>
 
-        <div className="bg-emerald-600 text-white p-3 rounded-lg border border-emerald-700 shadow-sm text-center">
+        <div className="bg-emerald-600 text-stone-900 p-3 rounded-lg border border-emerald-700 shadow-sm text-center">
           <span className="text-[10px] font-black uppercase tracking-wider block opacity-90">
             🟢 Minor (Green)
           </span>
@@ -230,7 +230,7 @@ export const MassCasualtyTriageView: React.FC<MassCasualtyTriageProps> = ({
           <span className="text-[10px] block opacity-80 mt-0.5">Walking Wounded</span>
         </div>
 
-        <div className="bg-slate-800 text-slate-200 p-3 rounded-lg border border-slate-900 shadow-sm text-center">
+        <div className="bg-stone-100 text-stone-800 p-3 rounded-lg border border-stone-200 shadow-sm text-center">
           <span className="text-[10px] font-black uppercase tracking-wider block opacity-70">
             ⚫ Expectant (Black)
           </span>
@@ -242,30 +242,30 @@ export const MassCasualtyTriageView: React.FC<MassCasualtyTriageProps> = ({
       {/* Main Grid: Add Tag Form & Victim Table */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Add Victim Form */}
-        <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm space-y-3">
-          <h3 className="text-xs font-extrabold text-slate-900 uppercase tracking-wider border-b pb-2 flex items-center space-x-1">
+        <div className="bg-white p-4 rounded-lg border border-stone-200 shadow-sm space-y-3">
+          <h3 className="text-xs font-extrabold text-stone-900 uppercase tracking-wider border-b pb-2 flex items-center space-x-1">
             <Plus className="w-4 h-4 text-rose-600" />
             <span>Tag New Field Victim</span>
           </h3>
 
           <form onSubmit={handleAddVictim} className="space-y-3 text-xs">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Triage Tag Number *</label>
+              <label className="block font-bold text-stone-600 mb-1">Triage Tag Number *</label>
               <input
                 type="text"
                 required
                 value={newTagNo}
                 onChange={(e) => setNewTagNo(e.target.value)}
-                className="w-full px-3 py-1.5 bg-slate-50 border border-slate-300 rounded font-mono font-bold text-slate-900"
+                className="w-full px-3 py-1.5 bg-cream border border-stone-200 rounded font-mono font-bold text-stone-900"
               />
             </div>
 
             <div>
-              <label className="block font-bold text-slate-700 mb-1">START Triage Tag Color *</label>
+              <label className="block font-bold text-stone-600 mb-1">START Triage Tag Color *</label>
               <select
                 value={newCategory}
                 onChange={(e) => setNewCategory(e.target.value as MassCasualtyVictim['triageCategory'])}
-                className="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded font-bold text-slate-900"
+                className="w-full px-2.5 py-1.5 bg-cream border border-stone-200 rounded font-bold text-stone-900"
               >
                 <option value="RED_CRITICAL">🔴 RED - Immediate (Resuscitation)</option>
                 <option value="ORANGE_SERIOUS">🟠 ORANGE - Very Urgent</option>
@@ -276,32 +276,32 @@ export const MassCasualtyTriageView: React.FC<MassCasualtyTriageProps> = ({
             </div>
 
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Age / Demographics</label>
+              <label className="block font-bold text-stone-600 mb-1">Age / Demographics</label>
               <input
                 type="text"
                 value={newAge}
                 onChange={(e) => setNewAge(e.target.value)}
-                className="w-full px-3 py-1.5 bg-slate-50 border border-slate-300 rounded font-medium text-slate-900"
+                className="w-full px-3 py-1.5 bg-cream border border-stone-200 rounded font-medium text-stone-900"
               />
             </div>
 
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Field Clinical Findings / Injuries</label>
+              <label className="block font-bold text-stone-600 mb-1">Field Clinical Findings / Injuries</label>
               <textarea
                 rows={2}
                 placeholder="e.g. Femur fracture, GCS 12, burns..."
                 value={newSymptoms}
                 onChange={(e) => setNewSymptoms(e.target.value)}
-                className="w-full px-3 py-1.5 bg-slate-50 border border-slate-300 rounded font-medium text-slate-900"
+                className="w-full px-3 py-1.5 bg-cream border border-stone-200 rounded font-medium text-stone-900"
               />
             </div>
 
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Assigned Hospital Facility</label>
+              <label className="block font-bold text-stone-600 mb-1">Assigned Hospital Facility</label>
               <select
                 value={newHospId}
                 onChange={(e) => setNewHospId(e.target.value)}
-                className="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-300 rounded font-semibold text-slate-800"
+                className="w-full px-2.5 py-1.5 bg-cream border border-stone-200 rounded font-semibold text-stone-800"
               >
                 {hospitals.map((h) => (
                   <option key={h.id} value={h.id}>
@@ -313,7 +313,7 @@ export const MassCasualtyTriageView: React.FC<MassCasualtyTriageProps> = ({
 
             <button
               type="submit"
-              className="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-2 rounded shadow transition-colors flex items-center justify-center space-x-1"
+              className="w-full bg-rose-600 hover:bg-rose-700 text-stone-900 font-bold py-2 rounded shadow transition-colors flex items-center justify-center space-x-1"
             >
               <Plus className="w-4 h-4" />
               <span>Register Victim Tag</span>
@@ -322,21 +322,21 @@ export const MassCasualtyTriageView: React.FC<MassCasualtyTriageProps> = ({
         </div>
 
         {/* Victim Table */}
-        <div className="lg:col-span-2 bg-white p-4 rounded-lg border border-slate-200 shadow-sm space-y-3">
+        <div className="lg:col-span-2 bg-white p-4 rounded-lg border border-stone-200 shadow-sm space-y-3">
           <div className="flex items-center justify-between border-b pb-2">
-            <h3 className="text-xs font-extrabold text-slate-900 uppercase tracking-wider flex items-center space-x-1.5">
+            <h3 className="text-xs font-extrabold text-stone-900 uppercase tracking-wider flex items-center space-x-1.5">
               <Users className="w-4 h-4 text-sky-600" />
               <span>Victim Triage Registry ({victims.length} Logged)</span>
             </h3>
-            <span className="text-xs font-bold text-slate-500">
-              Active Incident: <span className="text-slate-900">{activeIncident?.code}</span>
+            <span className="text-xs font-bold text-stone-500">
+              Active Incident: <span className="text-stone-900">{activeIncident?.code}</span>
             </span>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
-                <tr className="bg-slate-100 text-slate-700 uppercase font-black tracking-wider text-[10px] border-b border-slate-200">
+                <tr className="bg-stone-100 text-stone-600 uppercase font-black tracking-wider text-[10px] border-b border-stone-200">
                   <th className="p-2">Tag #</th>
                   <th className="p-2">Category Tag</th>
                   <th className="p-2">Age/Gender</th>
@@ -345,10 +345,10 @@ export const MassCasualtyTriageView: React.FC<MassCasualtyTriageProps> = ({
                   <th className="p-2 text-right">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 font-medium text-slate-800">
+              <tbody className="divide-y divide-stone-200 font-medium text-stone-800">
                 {victims.map((v) => (
-                  <tr key={v.id} className="hover:bg-slate-50 transition-colors">
-                    <td className="p-2 font-mono font-bold text-slate-900 whitespace-nowrap">
+                  <tr key={v.id} className="hover:bg-cream transition-colors">
+                    <td className="p-2 font-mono font-bold text-stone-900 whitespace-nowrap">
                       {v.tagNumber}
                     </td>
                     <td className="p-2">
@@ -362,14 +362,14 @@ export const MassCasualtyTriageView: React.FC<MassCasualtyTriageProps> = ({
                         }
                         className={`text-[11px] font-black px-2 py-1 rounded border ${
                           v.triageCategory === 'RED_CRITICAL'
-                            ? 'bg-rose-600 text-white'
+                            ? 'bg-rose-600 text-stone-900'
                             : v.triageCategory === 'ORANGE_SERIOUS'
                             ? 'bg-amber-500 text-slate-950'
                             : v.triageCategory === 'YELLOW_MODERATE'
                             ? 'bg-yellow-400 text-slate-950'
                             : v.triageCategory === 'GREEN_MINOR'
-                            ? 'bg-emerald-600 text-white'
-                            : 'bg-slate-800 text-white'
+                            ? 'bg-emerald-600 text-stone-900'
+                            : 'bg-stone-100 text-stone-900'
                         }`}
                       >
                         <option value="RED_CRITICAL">RED (Critical)</option>
@@ -379,14 +379,14 @@ export const MassCasualtyTriageView: React.FC<MassCasualtyTriageProps> = ({
                         <option value="BLACK_DECEASED">BLACK (Expectant)</option>
                       </select>
                     </td>
-                    <td className="p-2 text-slate-700 whitespace-nowrap">{v.ageGroup}</td>
-                    <td className="p-2 text-slate-800 font-medium max-w-[200px] truncate" title={v.symptoms}>
+                    <td className="p-2 text-stone-600 whitespace-nowrap">{v.ageGroup}</td>
+                    <td className="p-2 text-stone-800 font-medium max-w-[200px] truncate" title={v.symptoms}>
                       {v.symptoms}
                     </td>
-                    <td className="p-2 font-bold text-slate-900 whitespace-nowrap">
+                    <td className="p-2 font-bold text-stone-900 whitespace-nowrap">
                       {v.assignedHospitalName || 'Unassigned'}
                     </td>
-                    <td className="p-2 text-right font-mono text-[11px] text-slate-500">
+                    <td className="p-2 text-right font-mono text-[11px] text-stone-500">
                       {v.updatedAt}
                     </td>
                   </tr>

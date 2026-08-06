@@ -93,19 +93,19 @@ export const BedMatrixView: React.FC<BedMatrixViewProps> = ({
   const getStatusBadge = (status: BedStatus) => {
     switch (status) {
       case 'Available':
-        return 'bg-emerald-100 text-emerald-800 border-emerald-300 font-bold';
+        return 'bg-emerald-100 text-emerald-400 border-emerald-300 font-bold';
       case 'Reserved':
-        return 'bg-amber-100 text-amber-900 border-amber-300 font-bold animate-pulse';
+        return 'bg-amber-100 text-amber-900 border-amber-200 font-bold animate-pulse';
       case 'Occupied':
-        return 'bg-rose-100 text-rose-800 border-rose-300 font-bold';
+        return 'bg-rose-100 text-rose-400 border-rose-200 font-bold';
       case 'Cleaning':
-        return 'bg-sky-100 text-sky-800 border-sky-300 font-medium';
+        return 'bg-sky-100 text-sky-400 border-sky-300 font-medium';
       case 'Maintenance':
-        return 'bg-purple-100 text-purple-800 border-purple-300 font-medium';
+        return 'bg-purple-100 text-purple-400 border-purple-300 font-medium';
       case 'Blocked':
-        return 'bg-slate-200 text-slate-700 border-slate-300 font-medium';
+        return 'bg-stone-100 text-stone-600 border-stone-200 font-medium';
       default:
-        return 'bg-slate-100 text-slate-800 border-slate-200';
+        return 'bg-stone-100 text-stone-800 border-stone-200';
     }
   };
 
@@ -130,13 +130,13 @@ export const BedMatrixView: React.FC<BedMatrixViewProps> = ({
   return (
     <div className="space-y-4">
       {/* Filter Header Toolbar */}
-      <div className="bg-slate-900 text-white rounded-lg p-3.5 border border-slate-800 shadow-sm flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3">
+      <div className="bg-white text-stone-900 rounded-lg p-3.5 border border-stone-200 shadow-sm flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3">
         <div>
           <h3 className="text-sm font-extrabold flex items-center gap-2">
             <BedDouble className="w-4 h-4 text-emerald-400" />
             Interactive Multi-Hospital Bed Matrix (Building/Floor/Ward/Bed Telemetry)
           </h3>
-          <p className="text-[11px] text-slate-400">
+          <p className="text-[11px] text-stone-500">
             Real-time visual bed inventory tracking with lock-protection against double booking and instant reservation capabilities.
           </p>
         </div>
@@ -145,13 +145,13 @@ export const BedMatrixView: React.FC<BedMatrixViewProps> = ({
         <div className="flex flex-wrap items-center gap-2 w-full lg:w-auto">
           {/* Search Box */}
           <div className="relative flex-1 sm:w-48">
-            <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5" />
+            <Search className="w-3.5 h-3.5 text-stone-500 absolute left-2.5 top-2.5" />
             <input
               type="text"
               placeholder="Search ward, bed, patient..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-8 pr-3 py-1.5 text-xs bg-slate-800 border border-slate-700 text-slate-100 rounded focus:outline-none focus:ring-1 focus:ring-emerald-400 w-full"
+              className="pl-8 pr-3 py-1.5 text-xs bg-stone-100 border border-stone-300 text-stone-900 rounded focus:outline-none focus:ring-1 focus:ring-emerald-400 w-full"
             />
           </div>
 
@@ -159,7 +159,7 @@ export const BedMatrixView: React.FC<BedMatrixViewProps> = ({
           <select
             value={selectedHospitalId}
             onChange={(e) => setSelectedHospitalId(e.target.value)}
-            className="px-2.5 py-1.5 text-xs bg-slate-800 border border-slate-700 text-slate-100 rounded focus:outline-none focus:ring-1 focus:ring-emerald-400 font-semibold"
+            className="px-2.5 py-1.5 text-xs bg-stone-100 border border-stone-300 text-stone-900 rounded focus:outline-none focus:ring-1 focus:ring-emerald-400 font-semibold"
           >
             <option value="all">All Hospitals ({filteredHospitalsList.length})</option>
             {filteredHospitalsList.map((h) => (
@@ -173,7 +173,7 @@ export const BedMatrixView: React.FC<BedMatrixViewProps> = ({
           <select
             value={selectedBedType}
             onChange={(e) => setSelectedBedType(e.target.value)}
-            className="px-2.5 py-1.5 text-xs bg-slate-800 border border-slate-700 text-slate-100 rounded focus:outline-none focus:ring-1 focus:ring-emerald-400 font-semibold"
+            className="px-2.5 py-1.5 text-xs bg-stone-100 border border-stone-300 text-stone-900 rounded focus:outline-none focus:ring-1 focus:ring-emerald-400 font-semibold"
           >
             <option value="all">All Bed Types</option>
             <option value="ICU">ICU Beds</option>
@@ -187,7 +187,7 @@ export const BedMatrixView: React.FC<BedMatrixViewProps> = ({
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
-            className="px-2.5 py-1.5 text-xs bg-slate-800 border border-slate-700 text-slate-100 rounded focus:outline-none focus:ring-1 focus:ring-emerald-400 font-semibold"
+            className="px-2.5 py-1.5 text-xs bg-stone-100 border border-stone-300 text-stone-900 rounded focus:outline-none focus:ring-1 focus:ring-emerald-400 font-semibold"
           >
             <option value="all">All Statuses</option>
             <option value="Available">Available</option>
@@ -199,7 +199,7 @@ export const BedMatrixView: React.FC<BedMatrixViewProps> = ({
 
           <button
             onClick={fetchBeds}
-            className="p-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 rounded transition-colors"
+            className="p-1.5 bg-stone-100 hover:bg-slate-700 border border-stone-300 text-stone-600 rounded transition-colors"
             title="Refresh Bed Matrix"
           >
             <RefreshCw className="w-3.5 h-3.5" />
@@ -216,7 +216,7 @@ export const BedMatrixView: React.FC<BedMatrixViewProps> = ({
           </div>
           <button
             onClick={() => setErrorMsg(null)}
-            className="text-xs text-rose-700 font-bold hover:underline"
+            className="text-xs text-rose-400 font-bold hover:underline"
           >
             Dismiss
           </button>
@@ -225,11 +225,11 @@ export const BedMatrixView: React.FC<BedMatrixViewProps> = ({
 
       {/* Bed Matrix Cards Grid */}
       {loading ? (
-        <div className="p-12 text-center text-slate-500 text-xs font-mono">
+        <div className="p-12 text-center text-stone-500 text-xs font-mono">
           Syncing bed matrix hierarchy from hospital gateways...
         </div>
       ) : filteredBeds.length === 0 ? (
-        <div className="p-12 text-center bg-slate-50 border border-slate-200 rounded-lg text-slate-500 text-xs font-medium">
+        <div className="p-12 text-center bg-cream border border-stone-200 rounded-lg text-stone-500 text-xs font-medium">
           No beds found matching the selected criteria.
         </div>
       ) : (
@@ -238,12 +238,12 @@ export const BedMatrixView: React.FC<BedMatrixViewProps> = ({
             <div
               key={bed.id}
               onClick={() => setSelectedBedForDetail(bed)}
-              className="bg-white border border-slate-200 rounded-lg p-3 hover:shadow-md transition-all cursor-pointer relative group flex flex-col justify-between space-y-2.5"
+              className="bg-white border border-stone-200 rounded-lg p-3 hover:shadow-md transition-all cursor-pointer relative group flex flex-col justify-between space-y-2.5"
             >
               {/* Header: Hospital & Bed Number */}
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold text-sky-800 bg-sky-50 px-1.5 py-0.5 rounded border border-sky-200 truncate max-w-[160px]">
+                  <span className="text-[10px] font-bold text-sky-400 bg-sky-50 px-1.5 py-0.5 rounded border border-sky-200 truncate max-w-[160px]">
                     {bed.hospitalName}
                   </span>
                   <span
@@ -254,19 +254,19 @@ export const BedMatrixView: React.FC<BedMatrixViewProps> = ({
                 </div>
 
                 <div className="mt-2 flex items-baseline justify-between">
-                  <div className="text-sm font-black text-slate-900 flex items-center gap-1.5">
-                    <BedDouble className="w-4 h-4 text-slate-600" />
+                  <div className="text-sm font-black text-stone-900 flex items-center gap-1.5">
+                    <BedDouble className="w-4 h-4 text-stone-500" />
                     <span>{bed.bedNumber}</span>
                   </div>
-                  <span className="text-[10px] font-mono font-bold bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded">
+                  <span className="text-[10px] font-mono font-bold bg-stone-100 text-stone-600 px-1.5 py-0.5 rounded">
                     {bed.bedType}
                   </span>
                 </div>
 
-                <div className="text-[11px] text-slate-600 font-medium mt-1">
+                <div className="text-[11px] text-stone-500 font-medium mt-1">
                   {bed.building} • {bed.floor}
                 </div>
-                <div className="text-[10px] text-slate-500">
+                <div className="text-[10px] text-stone-500">
                   {bed.ward} ({bed.department})
                 </div>
               </div>
@@ -285,7 +285,7 @@ export const BedMatrixView: React.FC<BedMatrixViewProps> = ({
               )}
 
               {bed.status === 'Available' && (
-                <div className="bg-emerald-50 border border-emerald-200 rounded p-1.5 text-[10px] text-emerald-800 font-semibold flex items-center justify-between">
+                <div className="bg-emerald-50 border border-emerald-200 rounded p-1.5 text-[10px] text-emerald-400 font-semibold flex items-center justify-between">
                   <span>Ready for Dispatch</span>
                   {onReserveBedRequest && (
                     <button
@@ -293,7 +293,7 @@ export const BedMatrixView: React.FC<BedMatrixViewProps> = ({
                         e.stopPropagation();
                         onReserveBedRequest(bed);
                       }}
-                      className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-2 py-0.5 rounded text-[10px] transition-colors"
+                      className="bg-emerald-600 hover:bg-emerald-700 text-stone-900 font-bold px-2 py-0.5 rounded text-[10px] transition-colors"
                     >
                       Reserve Bed
                     </button>
@@ -301,7 +301,7 @@ export const BedMatrixView: React.FC<BedMatrixViewProps> = ({
                 </div>
               )}
 
-              <div className="text-[9px] text-slate-400 font-mono flex items-center justify-between border-t border-slate-100 pt-1.5">
+              <div className="text-[9px] text-stone-500 font-mono flex items-center justify-between border-t border-slate-100 pt-1.5">
                 <span>Room {bed.roomNumber}</span>
                 <span>Synced {bed.lastUpdated}</span>
               </div>
@@ -312,47 +312,47 @@ export const BedMatrixView: React.FC<BedMatrixViewProps> = ({
 
       {/* Bed Detail Modal */}
       {selectedBedForDetail && (
-        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl max-w-lg w-full border border-slate-200 shadow-xl overflow-hidden p-5 space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+        <div className="fixed inset-0 bg-white/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-xl max-w-lg w-full border border-stone-200 shadow-lg shadow-stone-300/40 overflow-hidden p-5 space-y-4">
+            <div className="flex items-center justify-between border-b border-stone-200 pb-3">
               <div>
-                <span className="text-[10px] font-bold text-sky-800 uppercase tracking-wider block">
+                <span className="text-[10px] font-bold text-sky-400 uppercase tracking-wider block">
                   {selectedBedForDetail.hospitalName}
                 </span>
-                <h3 className="text-base font-black text-slate-900 flex items-center gap-2">
-                  <BedDouble className="w-5 h-5 text-sky-700" />
+                <h3 className="text-base font-black text-stone-900 flex items-center gap-2">
+                  <BedDouble className="w-5 h-5 text-sky-400" />
                   {selectedBedForDetail.bedNumber} — {selectedBedForDetail.bedType} Bed
                 </h3>
               </div>
               <button
                 onClick={() => setSelectedBedForDetail(null)}
-                className="text-slate-400 hover:text-slate-600 font-extrabold text-sm"
+                className="text-stone-500 hover:text-stone-500 font-extrabold text-sm"
               >
                 ✕
               </button>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 text-xs bg-slate-50 p-3 rounded-lg border border-slate-200">
+            <div className="grid grid-cols-2 gap-3 text-xs bg-cream p-3 rounded-lg border border-stone-200">
               <div>
-                <span className="text-slate-400 font-bold block text-[10px]">Building & Floor</span>
-                <span className="font-semibold text-slate-800">
+                <span className="text-stone-500 font-bold block text-[10px]">Building & Floor</span>
+                <span className="font-semibold text-stone-800">
                   {selectedBedForDetail.building} ({selectedBedForDetail.floor})
                 </span>
               </div>
               <div>
-                <span className="text-slate-400 font-bold block text-[10px]">Ward & Department</span>
-                <span className="font-semibold text-slate-800">
+                <span className="text-stone-500 font-bold block text-[10px]">Ward & Department</span>
+                <span className="font-semibold text-stone-800">
                   {selectedBedForDetail.ward} / {selectedBedForDetail.department}
                 </span>
               </div>
               <div>
-                <span className="text-slate-400 font-bold block text-[10px]">Room Number</span>
-                <span className="font-mono font-bold text-slate-900">
+                <span className="text-stone-500 font-bold block text-[10px]">Room Number</span>
+                <span className="font-mono font-bold text-stone-900">
                   {selectedBedForDetail.roomNumber}
                 </span>
               </div>
               <div>
-                <span className="text-slate-400 font-bold block text-[10px]">Current Status</span>
+                <span className="text-stone-500 font-bold block text-[10px]">Current Status</span>
                 <span
                   className={`inline-block text-[10px] px-2 py-0.5 rounded border mt-0.5 ${getStatusBadge(
                     selectedBedForDetail.status
@@ -365,7 +365,7 @@ export const BedMatrixView: React.FC<BedMatrixViewProps> = ({
 
             {/* Quick Status Setter */}
             <div className="space-y-2">
-              <span className="text-xs font-bold text-slate-900 block">Override Bed Operational Status:</span>
+              <span className="text-xs font-bold text-stone-900 block">Override Bed Operational Status:</span>
               <div className="grid grid-cols-3 gap-2">
                 {(['Available', 'Reserved', 'Occupied', 'Cleaning', 'Maintenance', 'Blocked'] as BedStatus[]).map(
                   (st) => (
@@ -375,8 +375,8 @@ export const BedMatrixView: React.FC<BedMatrixViewProps> = ({
                       onClick={() => handleUpdateBedStatus(selectedBedForDetail.id, st)}
                       className={`px-2.5 py-1.5 rounded border text-xs font-bold transition-all ${
                         selectedBedForDetail.status === st
-                          ? 'bg-slate-900 text-white border-slate-900 ring-2 ring-amber-400'
-                          : 'bg-slate-50 text-slate-800 border-slate-300 hover:bg-slate-100'
+                          ? 'bg-white text-stone-900 border-stone-200 ring-2 ring-amber-400'
+                          : 'bg-cream text-stone-800 border-stone-200 hover:bg-stone-100'
                       }`}
                     >
                       {st}
@@ -386,7 +386,7 @@ export const BedMatrixView: React.FC<BedMatrixViewProps> = ({
               </div>
             </div>
 
-            <div className="flex items-center justify-end space-x-2 border-t border-slate-200 pt-3">
+            <div className="flex items-center justify-end space-x-2 border-t border-stone-200 pt-3">
               {selectedBedForDetail.status === 'Available' && onReserveBedRequest && (
                 <button
                   onClick={() => {
@@ -394,14 +394,14 @@ export const BedMatrixView: React.FC<BedMatrixViewProps> = ({
                     setSelectedBedForDetail(null);
                     onReserveBedRequest(b);
                   }}
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2 rounded text-xs transition-colors"
+                  className="bg-emerald-600 hover:bg-emerald-700 text-stone-900 font-bold px-4 py-2 rounded text-xs transition-colors"
                 >
                   Reserve This Bed Now
                 </button>
               )}
               <button
                 onClick={() => setSelectedBedForDetail(null)}
-                className="bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold px-4 py-2 rounded text-xs border border-slate-300"
+                className="bg-stone-100 hover:bg-stone-100 text-stone-800 font-bold px-4 py-2 rounded text-xs border border-stone-200"
               >
                 Close
               </button>

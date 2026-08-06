@@ -43,28 +43,28 @@ export const HospitalForecastingView: React.FC<HospitalForecastingViewProps> = (
   return (
     <div className="space-y-4">
       {/* Top Banner */}
-      <div className="bg-slate-900 text-white p-4 rounded-lg border border-slate-800 shadow-md flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-white text-stone-900 p-4 rounded-lg border border-stone-200 shadow-md flex flex-wrap items-center justify-between gap-4">
         <div>
           <div className="flex items-center space-x-2">
             <Building2 className="w-5 h-5 text-sky-400" />
-            <h3 className="text-base font-black text-white tracking-wide">Multi-Hospital AI Capacity Forecasting Engine</h3>
+            <h3 className="text-base font-black text-stone-900 tracking-wide">Multi-Hospital AI Capacity Forecasting Engine</h3>
             <span className="text-[10px] bg-sky-950 text-sky-300 font-mono px-2 py-0.5 rounded border border-sky-700">
               PREDICTIVE HORIZONS: 30M TO 24H
             </span>
           </div>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-stone-500 mt-1">
             Continuous predictive modeling for ICU occupancy, mechanical ventilator demand, emergency admissions, OT load & doctor shortages.
           </p>
         </div>
 
         {/* Horizon Selector */}
-        <div className="flex items-center space-x-1 bg-slate-950 p-1 rounded border border-slate-800 text-xs font-bold">
+        <div className="flex items-center space-x-1 bg-cream p-1 rounded border border-stone-200 text-xs font-bold">
           {(['30m', '1h', '2h', '6h', '24h'] as const).map((hz) => (
             <button
               key={hz}
               onClick={() => setForecastHorizon(hz)}
               className={`px-2.5 py-1 rounded transition ${
-                forecastHorizon === hz ? 'bg-sky-600 text-white shadow' : 'text-slate-400 hover:text-white'
+                forecastHorizon === hz ? 'bg-sky-600 text-stone-900 shadow' : 'text-stone-500 hover:text-stone-900'
               }`}
             >
               {hz.toUpperCase()}
@@ -75,8 +75,8 @@ export const HospitalForecastingView: React.FC<HospitalForecastingViewProps> = (
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Left Column: Hospital Selection Cards */}
-        <div className="bg-white p-3 rounded-lg border border-slate-200 shadow-sm space-y-3">
-          <h4 className="text-xs font-black uppercase text-slate-800 tracking-wider flex items-center justify-between border-b pb-2">
+        <div className="bg-white p-3 rounded-lg border border-stone-200 shadow-sm space-y-3">
+          <h4 className="text-xs font-black uppercase text-stone-800 tracking-wider flex items-center justify-between border-b pb-2">
             <span className="flex items-center gap-1.5">
               <Building2 className="w-4 h-4 text-sky-600" />
               State Tertiary Hospitals ({forecasts.length})
@@ -94,41 +94,41 @@ export const HospitalForecastingView: React.FC<HospitalForecastingViewProps> = (
                   key={h.hospitalId}
                   onClick={() => setSelectedHospital(h)}
                   className={`p-3 rounded-lg border text-xs cursor-pointer transition ${
-                    isSelected ? 'border-sky-600 bg-sky-50/50 shadow-sm' : 'border-slate-200 hover:border-slate-300 bg-white'
+                    isSelected ? 'border-sky-600 bg-sky-50/50 shadow-sm' : 'border-stone-200 hover:border-stone-200 bg-white'
                   }`}
                 >
                   <div className="flex items-start justify-between">
                     <div>
-                      <span className="font-black text-slate-900 block text-sm">{h.hospitalName}</span>
-                      <span className="text-[11px] text-slate-500 block">{h.district} District</span>
+                      <span className="font-black text-stone-900 block text-sm">{h.hospitalName}</span>
+                      <span className="text-[11px] text-stone-500 block">{h.district} District</span>
                     </div>
 
                     {isShortage ? (
-                      <span className="bg-rose-100 text-rose-800 border border-rose-300 px-2 py-0.5 rounded text-[10px] font-black animate-pulse">
+                      <span className="bg-rose-100 text-rose-400 border border-rose-200 px-2 py-0.5 rounded text-[10px] font-black animate-pulse">
                         CRITICAL SHORTAGE
                       </span>
                     ) : (
-                      <span className="bg-emerald-100 text-emerald-800 border border-emerald-300 px-2 py-0.5 rounded text-[10px] font-bold">
+                      <span className="bg-emerald-100 text-emerald-400 border border-emerald-300 px-2 py-0.5 rounded text-[10px] font-bold">
                         CAPACITY STABLE
                       </span>
                     )}
                   </div>
 
                   <div className="grid grid-cols-3 gap-1 mt-2.5 pt-2 border-t border-slate-100 text-center text-[10px]">
-                    <div className="bg-slate-50 p-1 rounded">
-                      <span className="text-slate-400 block">ICU Occupancy</span>
-                      <span className={`font-black ${hData.icuOccupancy > 90 ? 'text-rose-600' : 'text-slate-800'}`}>
+                    <div className="bg-cream p-1 rounded">
+                      <span className="text-stone-500 block">ICU Occupancy</span>
+                      <span className={`font-black ${hData.icuOccupancy > 90 ? 'text-rose-600' : 'text-stone-800'}`}>
                         {hData.icuOccupancy}%
                       </span>
                     </div>
 
-                    <div className="bg-slate-50 p-1 rounded">
-                      <span className="text-slate-400 block">Ventilators</span>
-                      <span className="font-bold text-slate-800">{hData.ventilatorDemand} Needed</span>
+                    <div className="bg-cream p-1 rounded">
+                      <span className="text-stone-500 block">Ventilators</span>
+                      <span className="font-bold text-stone-800">{hData.ventilatorDemand} Needed</span>
                     </div>
 
-                    <div className="bg-slate-50 p-1 rounded">
-                      <span className="text-slate-400 block">Exhaustion</span>
+                    <div className="bg-cream p-1 rounded">
+                      <span className="text-stone-500 block">Exhaustion</span>
                       <span className="font-black text-amber-600">{h.timeToExhaustionMin || 60}m</span>
                     </div>
                   </div>
@@ -142,17 +142,17 @@ export const HospitalForecastingView: React.FC<HospitalForecastingViewProps> = (
         {currentHospital && (
           <div className="lg:col-span-2 space-y-4">
             {/* Hospital Overview Card */}
-            <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm space-y-3">
+            <div className="bg-white p-4 rounded-lg border border-stone-200 shadow-sm space-y-3">
               <div className="flex flex-wrap items-center justify-between border-b pb-3 gap-2">
                 <div>
-                  <h3 className="text-base font-black text-slate-900">{currentHospital.hospitalName}</h3>
-                  <p className="text-xs text-slate-500">
+                  <h3 className="text-base font-black text-stone-900">{currentHospital.hospitalName}</h3>
+                  <p className="text-xs text-stone-500">
                     District: <strong>{currentHospital.district}</strong> • Target Horizon: <strong>{forecastHorizon.toUpperCase()}</strong>
                   </p>
                 </div>
 
                 {currentHospital.timeToExhaustionMin && (
-                  <div className="bg-rose-950 text-rose-100 px-3 py-1.5 rounded-lg border border-rose-800 text-right">
+                  <div className="bg-rose-950 text-white px-3 py-1.5 rounded-lg border border-rose-800 text-right">
                     <span className="text-[10px] text-rose-300 block font-mono uppercase">ICU Exhaustion Time</span>
                     <span className="text-sm font-black text-rose-400 flex items-center gap-1 justify-end animate-pulse">
                       <Clock className="w-4 h-4 text-rose-400" />
@@ -164,52 +164,52 @@ export const HospitalForecastingView: React.FC<HospitalForecastingViewProps> = (
 
               {/* Horizon Metrics Cards */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-                <div className="bg-slate-900 text-white p-3 rounded-lg border border-slate-800">
-                  <span className="text-[10px] text-slate-400 uppercase font-mono block">Predicted ICU Occupancy</span>
+                <div className="bg-white text-stone-900 p-3 rounded-lg border border-stone-200">
+                  <span className="text-[10px] text-stone-500 uppercase font-mono block">Predicted ICU Occupancy</span>
                   <span className="text-xl font-black text-rose-400 mt-1 block">
                     {getHorizonData(currentHospital).icuOccupancy}%
                   </span>
-                  <span className="text-[10px] text-slate-400 block mt-0.5">High Overload Risk</span>
+                  <span className="text-[10px] text-stone-500 block mt-0.5">High Overload Risk</span>
                 </div>
 
-                <div className="bg-slate-900 text-white p-3 rounded-lg border border-slate-800">
-                  <span className="text-[10px] text-slate-400 uppercase font-mono block">Ventilator Demand</span>
+                <div className="bg-white text-stone-900 p-3 rounded-lg border border-stone-200">
+                  <span className="text-[10px] text-stone-500 uppercase font-mono block">Ventilator Demand</span>
                   <span className="text-xl font-black text-amber-400 mt-1 block">
                     {getHorizonData(currentHospital).ventilatorDemand} Units
                   </span>
-                  <span className="text-[10px] text-slate-400 block mt-0.5">Mechanical Ventilation</span>
+                  <span className="text-[10px] text-stone-500 block mt-0.5">Mechanical Ventilation</span>
                 </div>
 
-                <div className="bg-slate-900 text-white p-3 rounded-lg border border-slate-800">
-                  <span className="text-[10px] text-slate-400 uppercase font-mono block">OT Demand</span>
+                <div className="bg-white text-stone-900 p-3 rounded-lg border border-stone-200">
+                  <span className="text-[10px] text-stone-500 uppercase font-mono block">OT Demand</span>
                   <span className="text-xl font-black text-sky-400 mt-1 block">
                     {getHorizonData(currentHospital).otDemand} Theatres
                   </span>
-                  <span className="text-[10px] text-slate-400 block mt-0.5">Emergency Surgeries</span>
+                  <span className="text-[10px] text-stone-500 block mt-0.5">Emergency Surgeries</span>
                 </div>
 
-                <div className="bg-slate-900 text-white p-3 rounded-lg border border-slate-800">
-                  <span className="text-[10px] text-slate-400 uppercase font-mono block">Emergency Admissions</span>
+                <div className="bg-white text-stone-900 p-3 rounded-lg border border-stone-200">
+                  <span className="text-[10px] text-stone-500 uppercase font-mono block">Emergency Admissions</span>
                   <span className="text-xl font-black text-emerald-400 mt-1 block">
                     +{getHorizonData(currentHospital).emergencyVolume} Patients
                   </span>
-                  <span className="text-[10px] text-slate-400 block mt-0.5">Predicted Surge</span>
+                  <span className="text-[10px] text-stone-500 block mt-0.5">Predicted Surge</span>
                 </div>
               </div>
 
               {/* Resource Shortages Status Matrix */}
-              <div className="bg-slate-50 p-3 rounded-md border border-slate-200 space-y-2">
-                <h4 className="text-xs font-bold text-slate-800 flex items-center justify-between">
+              <div className="bg-cream p-3 rounded-md border border-stone-200 space-y-2">
+                <h4 className="text-xs font-bold text-stone-800 flex items-center justify-between">
                   <span>Resource Shortage Warning System</span>
-                  <span className="text-[10px] font-mono text-slate-500">AI DETECTED RISKS</span>
+                  <span className="text-[10px] font-mono text-stone-500">AI DETECTED RISKS</span>
                 </h4>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
                   <div
                     className={`p-2 rounded border flex items-center gap-2 ${
                       currentHospital.predictedShortages.icuExhaustion
-                        ? 'bg-rose-100 border-rose-300 text-rose-900 font-bold'
-                        : 'bg-white border-slate-200 text-slate-600'
+                        ? 'bg-rose-100 border-rose-200 text-rose-900 font-bold'
+                        : 'bg-white border-stone-200 text-stone-500'
                     }`}
                   >
                     <AlertTriangle className="w-4 h-4 shrink-0 text-rose-600" />
@@ -222,8 +222,8 @@ export const HospitalForecastingView: React.FC<HospitalForecastingViewProps> = (
                   <div
                     className={`p-2 rounded border flex items-center gap-2 ${
                       currentHospital.predictedShortages.ventilatorShortage
-                        ? 'bg-rose-100 border-rose-300 text-rose-900 font-bold'
-                        : 'bg-white border-slate-200 text-slate-600'
+                        ? 'bg-rose-100 border-rose-200 text-rose-900 font-bold'
+                        : 'bg-white border-stone-200 text-stone-500'
                     }`}
                   >
                     <AlertTriangle className="w-4 h-4 shrink-0 text-amber-600" />
@@ -236,8 +236,8 @@ export const HospitalForecastingView: React.FC<HospitalForecastingViewProps> = (
                   <div
                     className={`p-2 rounded border flex items-center gap-2 ${
                       currentHospital.predictedShortages.bloodShortage
-                        ? 'bg-rose-100 border-rose-300 text-rose-900 font-bold'
-                        : 'bg-white border-slate-200 text-slate-600'
+                        ? 'bg-rose-100 border-rose-200 text-rose-900 font-bold'
+                        : 'bg-white border-stone-200 text-stone-500'
                     }`}
                   >
                     <AlertTriangle className="w-4 h-4 shrink-0 text-rose-600" />
@@ -252,18 +252,18 @@ export const HospitalForecastingView: React.FC<HospitalForecastingViewProps> = (
               {/* Forecast Charts Granularity Toggle */}
               <div className="space-y-3 pt-2 border-t">
                 <div className="flex items-center justify-between">
-                  <h4 className="text-xs font-black text-slate-800 tracking-wide flex items-center gap-1.5">
+                  <h4 className="text-xs font-black text-stone-800 tracking-wide flex items-center gap-1.5">
                     <BarChart3 className="w-4 h-4 text-sky-600" />
                     <span>Resource Demand Forecast Charts</span>
                   </h4>
 
-                  <div className="flex items-center space-x-1 bg-slate-100 p-0.5 rounded border border-slate-200 text-[11px] font-bold">
+                  <div className="flex items-center space-x-1 bg-stone-100 p-0.5 rounded border border-stone-200 text-[11px] font-bold">
                     {(['HOURLY', 'DAILY', 'WEEKLY'] as const).map((g) => (
                       <button
                         key={g}
                         onClick={() => setChartGranularity(g)}
                         className={`px-2 py-0.5 rounded transition ${
-                          chartGranularity === g ? 'bg-slate-900 text-white' : 'text-slate-600 hover:text-slate-900'
+                          chartGranularity === g ? 'bg-white text-stone-900' : 'text-stone-500 hover:text-stone-900'
                         }`}
                       >
                         {g}
@@ -274,13 +274,13 @@ export const HospitalForecastingView: React.FC<HospitalForecastingViewProps> = (
 
                 {/* Render Chart Data */}
                 {chartGranularity === 'HOURLY' && (
-                  <div className="bg-slate-900 text-white p-3 rounded-md border border-slate-800 space-y-2">
-                    <span className="text-[10px] text-slate-400 block font-mono">HOURLY EMERGENCY ADMISSIONS & ICU DEMAND</span>
+                  <div className="bg-white text-stone-900 p-3 rounded-md border border-stone-200 space-y-2">
+                    <span className="text-[10px] text-stone-500 block font-mono">HOURLY EMERGENCY ADMISSIONS & ICU DEMAND</span>
                     <div className="grid grid-cols-6 gap-2 text-center text-xs">
                       {currentHospital.hourlyForecast.map((item, idx) => (
-                        <div key={idx} className="bg-slate-950 p-2 rounded border border-slate-800">
+                        <div key={idx} className="bg-cream p-2 rounded border border-stone-200">
                           <span className="text-[10px] text-sky-400 block font-bold">{item.hour}</span>
-                          <span className="text-xs font-black text-amber-300 block">+{item.admissions} Adm</span>
+                          <span className="text-xs font-black text-amber-100 block">+{item.admissions} Adm</span>
                           <span className="text-[10px] text-rose-400 block">ICU {item.icuOccupancy}%</span>
                         </div>
                       ))}
@@ -289,12 +289,12 @@ export const HospitalForecastingView: React.FC<HospitalForecastingViewProps> = (
                 )}
 
                 {chartGranularity === 'DAILY' && (
-                  <div className="bg-slate-900 text-white p-3 rounded-md border border-slate-800 space-y-2">
-                    <span className="text-[10px] text-slate-400 block font-mono">7-DAY DAILY DOCTOR & NURSE STAFFING DEMAND</span>
+                  <div className="bg-white text-stone-900 p-3 rounded-md border border-stone-200 space-y-2">
+                    <span className="text-[10px] text-stone-500 block font-mono">7-DAY DAILY DOCTOR & NURSE STAFFING DEMAND</span>
                     <div className="grid grid-cols-7 gap-1.5 text-center text-xs">
                       {currentHospital.dailyForecast.map((item, idx) => (
-                        <div key={idx} className="bg-slate-950 p-2 rounded border border-slate-800">
-                          <span className="text-[10px] text-slate-300 block font-bold">{item.day}</span>
+                        <div key={idx} className="bg-cream p-2 rounded border border-stone-200">
+                          <span className="text-[10px] text-stone-600 block font-bold">{item.day}</span>
                           <span className="text-xs font-black text-sky-300 block">{item.admissions} Adm</span>
                           <span className="text-[10px] text-emerald-400 block">{item.doctorDemand} Docs</span>
                           <span className="text-[10px] text-purple-300 block">{item.nurseDemand} Nurses</span>
@@ -305,11 +305,11 @@ export const HospitalForecastingView: React.FC<HospitalForecastingViewProps> = (
                 )}
 
                 {chartGranularity === 'WEEKLY' && (
-                  <div className="bg-slate-900 text-white p-3 rounded-md border border-slate-800 space-y-2">
-                    <span className="text-[10px] text-slate-400 block font-mono">MONTHLY 4-WEEK EMERGENCY VOLUME TREND</span>
+                  <div className="bg-white text-stone-900 p-3 rounded-md border border-stone-200 space-y-2">
+                    <span className="text-[10px] text-stone-500 block font-mono">MONTHLY 4-WEEK EMERGENCY VOLUME TREND</span>
                     <div className="grid grid-cols-4 gap-2 text-center text-xs">
                       {currentHospital.weeklyForecast.map((item, idx) => (
-                        <div key={idx} className="bg-slate-950 p-3 rounded border border-slate-800">
+                        <div key={idx} className="bg-cream p-3 rounded border border-stone-200">
                           <span className="text-[10px] text-amber-400 block font-extrabold">{item.week}</span>
                           <span className="text-sm font-black text-sky-300 block">{item.emergencyVolume} Cases</span>
                           <span className="text-[10px] text-rose-400 block">Avg ICU {item.icuOccupancy}%</span>

@@ -47,7 +47,7 @@ export const HospitalGeminiAiView: React.FC<HospitalGeminiAiViewProps> = ({ hosp
   return (
     <div className="space-y-6 font-sans">
       {/* Header */}
-      <div className="bg-gradient-to-r from-sky-900 via-slate-900 to-indigo-950 text-white p-6 rounded-2xl shadow-xl border border-sky-800/50 space-y-4">
+      <div className="bg-gradient-to-r from-sky-900 via-slate-900 to-indigo-950 text-stone-900 p-6 rounded-2xl shadow-lg shadow-stone-300/40 border border-sky-200 space-y-4">
         <div className="flex items-center space-x-3">
           <div className="p-3 bg-sky-500/20 text-sky-400 rounded-2xl border border-sky-500/30">
             <Sparkles className="w-8 h-8" />
@@ -56,7 +56,7 @@ export const HospitalGeminiAiView: React.FC<HospitalGeminiAiViewProps> = ({ hosp
             <span className="text-[10px] font-mono font-bold bg-sky-500/20 text-sky-300 border border-sky-500/30 px-2.5 py-0.5 rounded-full uppercase">
               Powered by Google Gemini 2.5 Flash
             </span>
-            <h2 className="text-xl font-black tracking-tight text-white mt-1">
+            <h2 className="text-xl font-black tracking-tight text-stone-900 mt-1">
               AI Hospital Operational Intelligence & Risk Assistant
             </h2>
             <p className="text-xs text-sky-200">
@@ -81,8 +81,8 @@ export const HospitalGeminiAiView: React.FC<HospitalGeminiAiViewProps> = ({ hosp
       {/* Primary AI Risk Score & Insights */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Risk Score */}
-        <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-3">
-          <span className="text-[10px] uppercase font-extrabold text-slate-400 tracking-wider block">
+        <div className="bg-white border border-stone-200 rounded-2xl p-5 shadow-sm space-y-3">
+          <span className="text-[10px] uppercase font-extrabold text-stone-500 tracking-wider block">
             Calculated Hospital Risk Index
           </span>
           <div className="flex items-baseline space-x-2">
@@ -92,13 +92,13 @@ export const HospitalGeminiAiView: React.FC<HospitalGeminiAiViewProps> = ({ hosp
             </span>
           </div>
 
-          <p className="text-xs text-slate-600">
+          <p className="text-xs text-stone-500">
             High ICU surge probability driven by highway accident pre-arrivals and low remaining ventilator buffer ({hospital.availableVentilators} left).
           </p>
         </div>
 
         {/* Suggested Actions */}
-        <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-3 md:col-span-2">
+        <div className="bg-white border border-stone-200 rounded-2xl p-5 shadow-sm space-y-3 md:col-span-2">
           <span className="text-[10px] uppercase font-extrabold text-sky-600 tracking-wider block">
             AI Automated Operational Recommendations
           </span>
@@ -123,11 +123,11 @@ export const HospitalGeminiAiView: React.FC<HospitalGeminiAiViewProps> = ({ hosp
 
       {aiResponse && (
         <div className="bg-white border border-sky-300 rounded-2xl p-6 shadow-md space-y-3">
-          <h3 className="font-extrabold text-slate-900 text-sm flex items-center space-x-2">
+          <h3 className="font-extrabold text-stone-900 text-sm flex items-center space-x-2">
             <Bot className="w-5 h-5 text-sky-600" />
             <span>Gemini AI Telemetry Diagnostic Output</span>
           </h3>
-          <div className="text-xs text-slate-700 space-y-2 whitespace-pre-line font-medium leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200">
+          <div className="text-xs text-stone-600 space-y-2 whitespace-pre-line font-medium leading-relaxed bg-cream p-4 rounded-xl border border-stone-200">
             {aiResponse}
           </div>
         </div>

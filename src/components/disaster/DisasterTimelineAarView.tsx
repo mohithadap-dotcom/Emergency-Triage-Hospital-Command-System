@@ -44,20 +44,20 @@ End of Official Government Disaster Operations Log
 
   return (
     <div className="space-y-6">
-      <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="bg-white border border-stone-200 rounded-xl p-5 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+          <h2 className="text-lg font-bold text-stone-900 flex items-center gap-2">
             <Clock className="w-5 h-5 text-sky-600" />
             Command Timeline & After-Action Review (AAR) Audit Console
           </h2>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <p className="text-xs text-stone-500 mt-0.5">
             Immutable operation event log tracking declarations, dispatch decisions, AI recommendations, and response time metrics.
           </p>
         </div>
 
         <button
           onClick={handleExportAar}
-          className="bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs px-4 py-2.5 rounded-lg shadow flex items-center gap-2 transition-all"
+          className="bg-white hover:bg-stone-100 text-stone-900 font-extrabold text-xs px-4 py-2.5 rounded-lg shadow flex items-center gap-2 transition-all"
         >
           <Download className="w-4 h-4 text-amber-400" />
           <span>EXPORT OFFICIAL AAR AUDIT REPORT</span>
@@ -65,12 +65,12 @@ End of Official Government Disaster Operations Log
       </div>
 
       {/* Timeline List */}
-      <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4">
-        <h3 className="text-sm font-bold text-slate-900 border-b border-slate-200 pb-3">
+      <div className="bg-white border border-stone-200 rounded-xl p-5 shadow-sm space-y-4">
+        <h3 className="text-sm font-bold text-stone-900 border-b border-stone-200 pb-3">
           Chronological Incident Command Log ({timeline.length} Events Logged)
         </h3>
 
-        <div className="relative border-l-2 border-slate-200 ml-4 space-y-6 pl-6 py-2">
+        <div className="relative border-l-2 border-stone-200 ml-4 space-y-6 pl-6 py-2">
           {timeline.map((tl) => (
             <div key={tl.id} className="relative">
               <div
@@ -85,17 +85,17 @@ End of Official Government Disaster Operations Log
                 }`}
               ></div>
 
-              <div className="flex flex-wrap items-center justify-between font-mono text-xs text-slate-500">
-                <span className="font-bold text-slate-900">{tl.timestamp}</span>
-                <span className="bg-slate-100 px-2 py-0.5 rounded font-semibold text-slate-700">
+              <div className="flex flex-wrap items-center justify-between font-mono text-xs text-stone-500">
+                <span className="font-bold text-stone-900">{tl.timestamp}</span>
+                <span className="bg-stone-100 px-2 py-0.5 rounded font-semibold text-stone-600">
                   Role: {tl.role}
                 </span>
               </div>
 
               <div className="mt-1">
-                <span className="text-xs font-black text-slate-900 block">{tl.action}</span>
-                <p className="text-xs text-slate-600 leading-relaxed mt-0.5">{tl.details}</p>
-                <div className="text-[10px] text-slate-400 mt-1">Author: {tl.author}</div>
+                <span className="text-xs font-black text-stone-900 block">{tl.action}</span>
+                <p className="text-xs text-stone-500 leading-relaxed mt-0.5">{tl.details}</p>
+                <div className="text-[10px] text-stone-500 mt-1">Author: {tl.author}</div>
               </div>
             </div>
           ))}

@@ -147,15 +147,15 @@ export const GisOperationsView: React.FC<GisProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 space-y-4">
+    <div className="bg-white rounded-lg border border-stone-200 shadow-sm p-4 space-y-4">
       {/* Header Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-stone-200 pb-3">
         <div>
-          <h2 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
-            <Globe className="w-5 h-5 text-sky-700" />
+          <h2 className="text-lg font-extrabold text-stone-900 flex items-center gap-2">
+            <Globe className="w-5 h-5 text-sky-400" />
             GIS Command & Real-Time Emergency Spatial Mesh
           </h2>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-stone-500">
             Statewide Google Maps GIS tracking for 108 Emergency Ambulances, Live Incidents, and Hospitals across Maharashtra.
           </p>
         </div>
@@ -164,7 +164,7 @@ export const GisOperationsView: React.FC<GisProps> = ({
           <select
             value={selectedDistrict}
             onChange={(e) => onSelectDistrict(e.target.value)}
-            className="px-2.5 py-1.5 text-xs bg-slate-50 border border-slate-300 rounded-md font-semibold text-slate-800"
+            className="px-2.5 py-1.5 text-xs bg-cream border border-stone-200 rounded-md font-semibold text-stone-800"
           >
             <option value="all">All Pilot Districts (Statewide)</option>
             {districts.map((d) => (
@@ -177,14 +177,14 @@ export const GisOperationsView: React.FC<GisProps> = ({
       </div>
 
       {/* Map Control Toolbar & Layer Toggles */}
-      <div className="flex flex-wrap items-center justify-between gap-2 bg-slate-900 text-white p-2.5 rounded-lg text-xs">
+      <div className="flex flex-wrap items-center justify-between gap-2 bg-white text-stone-900 p-2.5 rounded-lg text-xs">
         <div className="flex items-center space-x-3">
           <span className="font-bold text-sky-400 font-mono flex items-center gap-1.5">
             <Layers className="w-4 h-4" />
             Active GIS Layers:
           </span>
 
-          <label className="flex items-center space-x-1.5 cursor-pointer bg-slate-800 hover:bg-slate-700 px-2.5 py-1 rounded">
+          <label className="flex items-center space-x-1.5 cursor-pointer bg-stone-100 hover:bg-slate-700 px-2.5 py-1 rounded">
             <input
               type="checkbox"
               checked={showAmbulances}
@@ -196,7 +196,7 @@ export const GisOperationsView: React.FC<GisProps> = ({
             </span>
           </label>
 
-          <label className="flex items-center space-x-1.5 cursor-pointer bg-slate-800 hover:bg-slate-700 px-2.5 py-1 rounded">
+          <label className="flex items-center space-x-1.5 cursor-pointer bg-stone-100 hover:bg-slate-700 px-2.5 py-1 rounded">
             <input
               type="checkbox"
               checked={showIncidents}
@@ -208,7 +208,7 @@ export const GisOperationsView: React.FC<GisProps> = ({
             </span>
           </label>
 
-          <label className="flex items-center space-x-1.5 cursor-pointer bg-slate-800 hover:bg-slate-700 px-2.5 py-1 rounded">
+          <label className="flex items-center space-x-1.5 cursor-pointer bg-stone-100 hover:bg-slate-700 px-2.5 py-1 rounded">
             <input
               type="checkbox"
               checked={showHospitals}
@@ -220,7 +220,7 @@ export const GisOperationsView: React.FC<GisProps> = ({
             </span>
           </label>
 
-          <label className="flex items-center space-x-1.5 cursor-pointer bg-slate-800 hover:bg-slate-700 px-2.5 py-1 rounded">
+          <label className="flex items-center space-x-1.5 cursor-pointer bg-stone-100 hover:bg-slate-700 px-2.5 py-1 rounded">
             <input
               type="checkbox"
               checked={showGreenCorridors}
@@ -233,7 +233,7 @@ export const GisOperationsView: React.FC<GisProps> = ({
           </label>
         </div>
 
-        <div className="flex items-center space-x-2 text-[11px] font-mono text-slate-300">
+        <div className="flex items-center space-x-2 text-[11px] font-mono text-stone-600">
           <span className="flex items-center gap-1">
             <Radio className="w-3 h-3 text-emerald-400 animate-pulse" />
             Live Telemetry Stream: Active
@@ -242,7 +242,7 @@ export const GisOperationsView: React.FC<GisProps> = ({
       </div>
 
       {/* Main Map Canvas Section */}
-      <div className="relative w-full h-[520px] bg-slate-900 rounded-lg overflow-hidden border border-slate-300">
+      <div className="relative w-full h-[520px] bg-white rounded-lg overflow-hidden border border-stone-200">
         {apiKey ? (
           <APIProvider apiKey={apiKey}>
             <Map
@@ -326,16 +326,16 @@ export const GisOperationsView: React.FC<GisProps> = ({
                   }}
                   onCloseClick={() => setSelectedAmbulance(null)}
                 >
-                  <div className="p-1 max-w-xs text-slate-900 space-y-2">
+                  <div className="p-1 max-w-xs text-stone-900 space-y-2">
                     <div className="flex items-center justify-between border-b pb-1">
                       <span className="font-extrabold text-xs font-mono bg-sky-100 text-sky-900 px-1.5 py-0.5 rounded">
                         {selectedAmbulance.registrationNo}
                       </span>
-                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800">
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-400">
                         {selectedAmbulance.status}
                       </span>
                     </div>
-                    <div className="text-xs space-y-1 text-slate-700">
+                    <div className="text-xs space-y-1 text-stone-600">
                       <div>
                         <strong>Type:</strong> {selectedAmbulance.type}
                       </div>
@@ -366,23 +366,23 @@ export const GisOperationsView: React.FC<GisProps> = ({
                   }}
                   onCloseClick={() => setSelectedHospital(null)}
                 >
-                  <div className="p-1 max-w-xs text-slate-900 space-y-2">
+                  <div className="p-1 max-w-xs text-stone-900 space-y-2">
                     <div className="border-b pb-1">
                       <h4 className="font-bold text-xs text-sky-900">{selectedHospital.name}</h4>
-                      <p className="text-[10px] text-slate-500">{selectedHospital.districtName} District • {selectedHospital.traumaCenterLevel}</p>
+                      <p className="text-[10px] text-stone-500">{selectedHospital.districtName} District • {selectedHospital.traumaCenterLevel}</p>
                     </div>
                     <div className="text-xs space-y-1">
                       <div className="flex justify-between">
                         <span>Free ICU Beds:</span>
-                        <strong className="text-emerald-700 font-mono">{selectedHospital.availableIcuBeds} / {selectedHospital.totalIcuBeds}</strong>
+                        <strong className="text-emerald-400 font-mono">{selectedHospital.availableIcuBeds} / {selectedHospital.totalIcuBeds}</strong>
                       </div>
                       <div className="flex justify-between">
                         <span>Ventilators:</span>
-                        <strong className="text-sky-700 font-mono">{selectedHospital.availableVentilators} / {selectedHospital.totalVentilators}</strong>
+                        <strong className="text-sky-400 font-mono">{selectedHospital.availableVentilators} / {selectedHospital.totalVentilators}</strong>
                       </div>
                       <div className="flex justify-between">
                         <span>ER Status:</span>
-                        <strong className="text-amber-700 font-mono">{selectedHospital.emergencyRoomStatus}</strong>
+                        <strong className="text-amber-400 font-mono">{selectedHospital.emergencyRoomStatus}</strong>
                       </div>
                     </div>
                   </div>
@@ -392,10 +392,10 @@ export const GisOperationsView: React.FC<GisProps> = ({
           </APIProvider>
         ) : (
           /* Fallback Spatial Mesh View if Key is not set */
-          <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center text-slate-300 space-y-3 bg-slate-950">
+          <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center text-stone-600 space-y-3 bg-cream">
             <Globe className="w-12 h-12 text-sky-400 animate-pulse" />
-            <h3 className="text-base font-bold text-white">Statewide GIS Topology Mesh Ready</h3>
-            <p className="text-xs text-slate-400 max-w-md">
+            <h3 className="text-base font-bold text-stone-900">Statewide GIS Topology Mesh Ready</h3>
+            <p className="text-xs text-stone-500 max-w-md">
               Configured with 7 district spatial nodes across Maharashtra. Connect Google Maps Platform Key in secrets to render live Google vector maps.
             </p>
           </div>
@@ -403,8 +403,8 @@ export const GisOperationsView: React.FC<GisProps> = ({
 
         {/* Floating AI Smart Dispatch Inspector Drawer */}
         {selectedIncident && (
-          <div className="absolute top-3 right-3 w-80 bg-slate-900/95 text-white border border-slate-700 rounded-lg shadow-2xl p-4 backdrop-blur-md z-20 space-y-3 text-xs">
-            <div className="flex items-center justify-between border-b border-slate-700 pb-2">
+          <div className="absolute top-3 right-3 w-80 bg-white/95 text-stone-900 border border-stone-300 rounded-lg shadow-lg shadow-stone-300/50 p-4 backdrop-blur-md z-20 space-y-3 text-xs">
+            <div className="flex items-center justify-between border-b border-stone-300 pb-2">
               <span className="font-extrabold text-amber-400 uppercase tracking-wider font-mono flex items-center gap-1.5">
                 <Zap className="w-4 h-4 text-amber-400" /> Smart Dispatcher
               </span>
@@ -413,21 +413,21 @@ export const GisOperationsView: React.FC<GisProps> = ({
                   setSelectedIncident(null);
                   setDispatchRecommendation(null);
                 }}
-                className="text-slate-400 hover:text-white font-bold"
+                className="text-stone-500 hover:text-stone-900 font-bold"
               >
                 ✕
               </button>
             </div>
 
-            <div className="bg-slate-800/80 p-2.5 rounded border border-slate-700 space-y-1">
+            <div className="bg-stone-100/80 p-2.5 rounded border border-stone-300 space-y-1">
               <div className="flex items-center justify-between">
                 <span className="font-mono font-black text-sky-400">{selectedIncident.code}</span>
-                <span className="px-1.5 py-0.5 rounded text-[10px] font-black uppercase bg-rose-600 text-white">
+                <span className="px-1.5 py-0.5 rounded text-[10px] font-black uppercase bg-rose-600 text-stone-900">
                   {selectedIncident.priority}
                 </span>
               </div>
-              <h4 className="font-bold text-white text-xs">{selectedIncident.title}</h4>
-              <p className="text-[11px] text-slate-300">{selectedIncident.locationName}, {selectedIncident.districtName}</p>
+              <h4 className="font-bold text-stone-900 text-xs">{selectedIncident.title}</h4>
+              <p className="text-[11px] text-stone-600">{selectedIncident.locationName}, {selectedIncident.districtName}</p>
             </div>
 
             {loadingDispatch && (
@@ -446,9 +446,9 @@ export const GisOperationsView: React.FC<GisProps> = ({
 
             {dispatchRecommendation && !loadingDispatch && !dispatchSuccessMsg && (
               <div className="space-y-3">
-                <div className="bg-slate-950 p-3 rounded border border-sky-800 space-y-2">
+                <div className="bg-cream p-3 rounded border border-sky-800 space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] text-slate-400 font-mono">RECOMMENDED UNIT</span>
+                    <span className="text-[10px] text-stone-500 font-mono">RECOMMENDED UNIT</span>
                     <span className="bg-sky-500 text-slate-950 font-black text-[10px] px-1.5 py-0.5 rounded">
                       {dispatchRecommendation.suitabilityScore}% MATCH
                     </span>
@@ -461,19 +461,19 @@ export const GisOperationsView: React.FC<GisProps> = ({
                       ETA ~{dispatchRecommendation.estimatedEtaMin} MIN
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-300 italic border-t border-slate-800 pt-1.5">
+                  <p className="text-[11px] text-stone-600 italic border-t border-stone-200 pt-1.5">
                     "{dispatchRecommendation.aiRationale}"
                   </p>
                 </div>
 
                 <div className="space-y-1.5 text-[11px]">
-                  <div className="flex justify-between text-slate-300">
+                  <div className="flex justify-between text-stone-600">
                     <span>Target Hospital:</span>
-                    <strong className="text-white">{dispatchRecommendation.recommendedHospitalName}</strong>
+                    <strong className="text-stone-900">{dispatchRecommendation.recommendedHospitalName}</strong>
                   </div>
-                  <div className="flex justify-between text-slate-300">
+                  <div className="flex justify-between text-stone-600">
                     <span>Green Corridor:</span>
-                    <strong className={dispatchRecommendation.greenCorridorRecommended ? 'text-amber-400' : 'text-slate-400'}>
+                    <strong className={dispatchRecommendation.greenCorridorRecommended ? 'text-amber-400' : 'text-stone-500'}>
                       {dispatchRecommendation.greenCorridorRecommended ? 'RECOMMENDED (ACTIVE)' : 'STANDARD ROUTE'}
                     </strong>
                   </div>

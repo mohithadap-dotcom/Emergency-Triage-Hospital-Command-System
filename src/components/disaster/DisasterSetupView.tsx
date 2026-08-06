@@ -41,37 +41,37 @@ export const DisasterSetupView: React.FC<DisasterSetupViewProps> = ({
   };
 
   return (
-    <div className="max-w-3xl mx-auto bg-white border border-slate-200 rounded-xl p-6 shadow-sm space-y-6">
-      <div className="border-b border-slate-200 pb-4">
-        <h2 className="text-xl font-black text-slate-900 flex items-center gap-2">
+    <div className="max-w-3xl mx-auto bg-white border border-stone-200 rounded-xl p-6 shadow-sm space-y-6">
+      <div className="border-b border-stone-200 pb-4">
+        <h2 className="text-xl font-black text-stone-900 flex items-center gap-2">
           <ShieldAlert className="w-6 h-6 text-rose-600 animate-pulse" />
           Declare State / District Level Disaster Incident
         </h2>
-        <p className="text-xs text-slate-500 mt-1">
+        <p className="text-xs text-stone-500 mt-1">
           Triggers Level-3 Emergency Protocols, Incident Command System (ICS), Green Corridors, and multi-hospital triage allocation.
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4 text-xs">
         <div>
-          <label className="block font-bold text-slate-700 mb-1">Disaster Event Title</label>
+          <label className="block font-bold text-stone-600 mb-1">Disaster Event Title</label>
           <input
             type="text"
             required
             placeholder="e.g. Mass Casualty Multi-Vehicle Collision on NH-48 Expressway (KM 62)"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-slate-900 font-bold"
+            className="w-full bg-cream border border-stone-200 rounded-lg p-2.5 text-stone-900 font-bold"
           />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Disaster Classification</label>
+            <label className="block font-bold text-stone-600 mb-1">Disaster Classification</label>
             <select
               value={type}
               onChange={(e) => setType(e.target.value as any)}
-              className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 font-bold text-slate-900"
+              className="w-full bg-cream border border-stone-200 rounded-lg p-2.5 font-bold text-stone-900"
             >
               <option value="MASS_CASUALTY">Mass Casualty Event</option>
               <option value="HIGHWAY_ACCIDENT">Highway Expressway Collision</option>
@@ -85,11 +85,11 @@ export const DisasterSetupView: React.FC<DisasterSetupViewProps> = ({
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Severity & Alert Level</label>
+            <label className="block font-bold text-stone-600 mb-1">Severity & Alert Level</label>
             <select
               value={severity}
               onChange={(e) => setSeverity(e.target.value as any)}
-              className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 font-bold text-slate-900"
+              className="w-full bg-cream border border-stone-200 rounded-lg p-2.5 font-bold text-stone-900"
             >
               <option value="LEVEL_3_RED_ALERT">LEVEL-3 STATE RED ALERT</option>
               <option value="LEVEL_2">LEVEL-2 DISTRICT ALERT</option>
@@ -98,11 +98,11 @@ export const DisasterSetupView: React.FC<DisasterSetupViewProps> = ({
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">District Location</label>
+            <label className="block font-bold text-stone-600 mb-1">District Location</label>
             <select
               value={districtId}
               onChange={(e) => setDistrictId(e.target.value)}
-              className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 font-bold text-slate-900"
+              className="w-full bg-cream border border-stone-200 rounded-lg p-2.5 font-bold text-stone-900"
             >
               {districts.map((d) => (
                 <option key={d.id} value={d.id}>
@@ -115,65 +115,65 @@ export const DisasterSetupView: React.FC<DisasterSetupViewProps> = ({
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Epicenter Location Name</label>
+            <label className="block font-bold text-stone-600 mb-1">Epicenter Location Name</label>
             <input
               type="text"
               required
               placeholder="e.g. NH-48 Expressway Toll Plaza KM 62"
               value={locationName}
               onChange={(e) => setLocationName(e.target.value)}
-              className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-slate-900"
+              className="w-full bg-cream border border-stone-200 rounded-lg p-2.5 text-stone-900"
             />
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Exclusion Radius (KM)</label>
+            <label className="block font-bold text-stone-600 mb-1">Exclusion Radius (KM)</label>
             <input
               type="number"
               step="0.5"
               value={radiusKm}
               onChange={(e) => setRadiusKm(Number(e.target.value))}
-              className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-slate-900 font-bold text-center"
+              className="w-full bg-cream border border-stone-200 rounded-lg p-2.5 text-stone-900 font-bold text-center"
             />
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Estimated Victims</label>
+            <label className="block font-bold text-stone-600 mb-1">Estimated Victims</label>
             <input
               type="number"
               value={estimatedVictims}
               onChange={(e) => setEstimatedVictims(Number(e.target.value))}
-              className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-slate-900 font-bold text-center text-rose-600"
+              className="w-full bg-cream border border-stone-200 rounded-lg p-2.5 text-stone-900 font-bold text-center text-rose-600"
             />
           </div>
         </div>
 
         <div>
-          <label className="block font-bold text-slate-700 mb-1">Special Hazards (Comma Separated)</label>
+          <label className="block font-bold text-stone-600 mb-1">Special Hazards (Comma Separated)</label>
           <input
             type="text"
             value={specialHazardsText}
             onChange={(e) => setSpecialHazardsText(e.target.value)}
             placeholder="e.g. Chemical rollover, diesel fire, severe traffic congestion"
-            className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-slate-900"
+            className="w-full bg-cream border border-stone-200 rounded-lg p-2.5 text-stone-900"
           />
         </div>
 
         <div>
-          <label className="block font-bold text-slate-700 mb-1">Detailed Situation Briefing</label>
+          <label className="block font-bold text-stone-600 mb-1">Detailed Situation Briefing</label>
           <textarea
             rows={3}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Brief description of the event, initial casualties, and state assistance required..."
-            className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-slate-900"
+            className="w-full bg-cream border border-stone-200 rounded-lg p-2.5 text-stone-900"
           ></textarea>
         </div>
 
         <div className="pt-3 flex justify-end">
           <button
             type="submit"
-            className="bg-rose-600 hover:bg-rose-500 text-white font-black text-xs px-6 py-3 rounded-lg shadow-lg flex items-center gap-2 transition-all transform hover:scale-105"
+            className="bg-rose-600 hover:bg-rose-500 text-stone-900 font-black text-xs px-6 py-3 rounded-lg shadow-lg flex items-center gap-2 transition-all transform hover:scale-105"
           >
             <ShieldAlert className="w-4 h-4" />
             <span>DECLARE LEVEL-3 DISASTER & ACTIVATE ICS</span>

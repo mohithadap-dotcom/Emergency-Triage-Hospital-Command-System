@@ -41,7 +41,7 @@ export const DisasterAiCommanderView: React.FC<DisasterAiCommanderViewProps> = (
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-white shadow-xl space-y-4">
+      <div className="bg-white border border-stone-200 rounded-xl p-5 text-stone-900 shadow-lg shadow-stone-300/40 space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <div className="flex items-center space-x-2">
@@ -50,10 +50,10 @@ export const DisasterAiCommanderView: React.FC<DisasterAiCommanderViewProps> = (
               </span>
               <span className="text-xs text-amber-400 font-mono font-bold">Statewide AI Disaster Commander</span>
             </div>
-            <h2 className="text-xl font-black text-white mt-1">
+            <h2 className="text-xl font-black text-stone-900 mt-1">
               National Disaster AI Decision Intelligence Engine
             </h2>
-            <p className="text-xs text-slate-300 mt-1">
+            <p className="text-xs text-stone-600 mt-1">
               Continuous real-time optimization of casualty routing, green corridors, field hospitals, and surge balancing.
             </p>
           </div>
@@ -69,15 +69,15 @@ export const DisasterAiCommanderView: React.FC<DisasterAiCommanderViewProps> = (
         </div>
 
         {geminiAnalysisText && (
-          <div className="bg-slate-950 border border-amber-500/50 p-4 rounded-lg text-xs font-mono text-amber-200 leading-relaxed whitespace-pre-wrap">
+          <div className="bg-cream border border-amber-500/50 p-4 rounded-lg text-xs font-mono text-amber-100 leading-relaxed whitespace-pre-wrap">
             {geminiAnalysisText}
           </div>
         )}
       </div>
 
       {/* Recommendations Feed */}
-      <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4">
-        <h3 className="text-sm font-bold text-slate-900 border-b border-slate-200 pb-3">
+      <div className="bg-white border border-stone-200 rounded-xl p-5 shadow-sm space-y-4">
+        <h3 className="text-sm font-bold text-stone-900 border-b border-stone-200 pb-3">
           Active AI Decision Intelligence Directives ({recommendations.length})
         </h3>
 
@@ -87,26 +87,26 @@ export const DisasterAiCommanderView: React.FC<DisasterAiCommanderViewProps> = (
               key={rec.id}
               className={`p-4 rounded-xl border space-y-3 transition-all ${
                 rec.status === 'EXECUTED'
-                  ? 'bg-slate-50 border-slate-200 text-slate-600'
-                  : 'bg-amber-50/50 border-amber-300 text-slate-900 shadow-sm'
+                  ? 'bg-cream border-stone-200 text-stone-500'
+                  : 'bg-amber-50/50 border-amber-200 text-stone-900 shadow-sm'
               }`}
             >
               <div className="flex items-center justify-between font-bold text-xs">
                 <span className="bg-amber-500 text-slate-950 px-2.5 py-0.5 rounded text-[10px] font-extrabold uppercase">
                   {rec.category}
                 </span>
-                <span className="text-[10px] text-slate-400 font-mono">{rec.timestamp}</span>
+                <span className="text-[10px] text-stone-500 font-mono">{rec.timestamp}</span>
               </div>
 
-              <h4 className="font-bold text-slate-900 text-sm">{rec.title}</h4>
-              <p className="text-xs text-slate-700 leading-relaxed">{rec.rationale}</p>
+              <h4 className="font-bold text-stone-900 text-sm">{rec.title}</h4>
+              <p className="text-xs text-stone-600 leading-relaxed">{rec.rationale}</p>
 
-              <div className="bg-white p-2.5 rounded border border-slate-200 font-mono text-[11px] text-sky-800 font-bold">
+              <div className="bg-white p-2.5 rounded border border-stone-200 font-mono text-[11px] text-sky-400 font-bold">
                 Suggested Action: {rec.suggestedAction}
               </div>
 
-              <div className="flex items-center justify-between pt-2 border-t border-slate-200 text-xs">
-                <span className="font-bold text-emerald-700">Impact: {rec.impactMetric}</span>
+              <div className="flex items-center justify-between pt-2 border-t border-stone-200 text-xs">
+                <span className="font-bold text-emerald-400">Impact: {rec.impactMetric}</span>
                 {rec.status === 'PENDING' ? (
                   <button
                     onClick={() => onExecuteRecommendation(rec.id)}

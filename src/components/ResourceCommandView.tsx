@@ -31,13 +31,13 @@ export const ResourceCommandView: React.FC<ResourceCommandProps> = ({
   );
 
   return (
-    <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 space-y-4">
-      <div className="border-b border-slate-200 pb-3">
-        <h2 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
-          <Box className="w-5 h-5 text-sky-700" />
+    <div className="bg-white rounded-lg border border-stone-200 shadow-sm p-4 space-y-4">
+      <div className="border-b border-stone-200 pb-3">
+        <h2 className="text-lg font-extrabold text-stone-900 flex items-center gap-2">
+          <Box className="w-5 h-5 text-sky-400" />
           Critical Medical Inventory & Resource Command Index
         </h2>
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-stone-500">
           Statewide real-time tracking of ventilator stocks, liquid medical oxygen generation plants, blood bank reserves & ECMO life-support systems.
         </p>
       </div>
@@ -46,46 +46,46 @@ export const ResourceCommandView: React.FC<ResourceCommandProps> = ({
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         <div className="bg-sky-50 border border-sky-200 p-3 rounded-lg">
           <span className="text-xs font-bold text-sky-900 uppercase block">ICU Beds Free</span>
-          <span className="text-2xl font-black font-mono text-sky-800 mt-1 block">
-            {availIcuBeds} <span className="text-xs text-slate-500 font-normal">/ {totalIcuBeds}</span>
+          <span className="text-2xl font-black font-mono text-sky-400 mt-1 block">
+            {availIcuBeds} <span className="text-xs text-stone-500 font-normal">/ {totalIcuBeds}</span>
           </span>
-          <span className="text-[10px] text-sky-700 font-medium">
+          <span className="text-[10px] text-sky-400 font-medium">
             {Math.round((availIcuBeds / (totalIcuBeds || 1)) * 100)}% Available
           </span>
         </div>
 
         <div className="bg-teal-50 border border-teal-200 p-3 rounded-lg">
           <span className="text-xs font-bold text-teal-900 uppercase block">Ventilators Ready</span>
-          <span className="text-2xl font-black font-mono text-teal-800 mt-1 block">
-            {availVentilators} <span className="text-xs text-slate-500 font-normal">/ {totalVentilators}</span>
+          <span className="text-2xl font-black font-mono text-teal-400 mt-1 block">
+            {availVentilators} <span className="text-xs text-stone-500 font-normal">/ {totalVentilators}</span>
           </span>
-          <span className="text-[10px] text-teal-700 font-medium">
+          <span className="text-[10px] text-teal-400 font-medium">
             {Math.round((availVentilators / (totalVentilators || 1)) * 100)}% Operational
           </span>
         </div>
 
         <div className="bg-rose-50 border border-rose-200 p-3 rounded-lg">
           <span className="text-xs font-bold text-rose-900 uppercase block">Blood Bank Reserves</span>
-          <span className="text-2xl font-black font-mono text-rose-800 mt-1 block">
-            {totalBloodUnits} <span className="text-xs text-slate-500 font-normal">Units</span>
+          <span className="text-2xl font-black font-mono text-rose-400 mt-1 block">
+            {totalBloodUnits} <span className="text-xs text-stone-500 font-normal">Units</span>
           </span>
-          <span className="text-[10px] text-rose-700 font-medium">All Blood Groups Synced</span>
+          <span className="text-[10px] text-rose-400 font-medium">All Blood Groups Synced</span>
         </div>
 
         <div className="bg-amber-50 border border-amber-200 p-3 rounded-lg">
           <span className="text-xs font-bold text-amber-900 uppercase block">Avg Oxygen Capacity</span>
-          <span className="text-2xl font-black font-mono text-amber-800 mt-1 block">
+          <span className="text-2xl font-black font-mono text-amber-400 mt-1 block">
             {avgOxygen}%
           </span>
-          <span className="text-[10px] text-amber-700 font-medium">Liquid Oxygen Plants Normal</span>
+          <span className="text-[10px] text-amber-400 font-medium">Liquid Oxygen Plants Normal</span>
         </div>
       </div>
 
       {/* Hospital Resource Breakdown Table */}
-      <div className="overflow-x-auto border border-slate-200 rounded-lg">
+      <div className="overflow-x-auto border border-stone-200 rounded-lg">
         <table className="w-full text-left border-collapse text-xs">
           <thead>
-            <tr className="bg-slate-900 text-slate-200 font-bold uppercase text-[10px] tracking-wider">
+            <tr className="bg-white text-stone-800 font-bold uppercase text-[10px] tracking-wider">
               <th className="p-3">Hospital Name</th>
               <th className="p-3">District</th>
               <th className="p-3">General Beds</th>
@@ -95,17 +95,17 @@ export const ResourceCommandView: React.FC<ResourceCommandProps> = ({
               <th className="p-3">Oxygen Plant Status</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-200 bg-white">
+          <tbody className="divide-y divide-stone-200 bg-white">
             {filteredHospitals.map((h) => (
-              <tr key={h.id} className="hover:bg-slate-50 font-medium">
-                <td className="p-3 font-extrabold text-slate-900">{h.name}</td>
-                <td className="p-3 font-bold text-sky-800">{h.districtName}</td>
-                <td className="p-3 font-mono text-slate-700">{h.availableGeneralBeds} / {h.totalBeds}</td>
+              <tr key={h.id} className="hover:bg-cream font-medium">
+                <td className="p-3 font-extrabold text-stone-900">{h.name}</td>
+                <td className="p-3 font-bold text-sky-400">{h.districtName}</td>
+                <td className="p-3 font-mono text-stone-600">{h.availableGeneralBeds} / {h.totalBeds}</td>
                 <td className="p-3 font-mono font-bold text-sky-900">{h.availableIcuBeds} / {h.totalIcuBeds}</td>
-                <td className="p-3 font-mono font-bold text-teal-800">{h.availableVentilators} / {h.totalVentilators}</td>
-                <td className="p-3 font-mono font-bold text-rose-700">{h.bloodUnitsAvailable} Units</td>
+                <td className="p-3 font-mono font-bold text-teal-400">{h.availableVentilators} / {h.totalVentilators}</td>
+                <td className="p-3 font-mono font-bold text-rose-400">{h.bloodUnitsAvailable} Units</td>
                 <td className="p-3">
-                  <span className="bg-emerald-100 text-emerald-800 font-bold text-[10px] px-2 py-0.5 rounded border border-emerald-300">
+                  <span className="bg-emerald-100 text-emerald-400 font-bold text-[10px] px-2 py-0.5 rounded border border-emerald-300">
                     O₂ {h.oxygenCapacityPercent}% Operational
                   </span>
                 </td>

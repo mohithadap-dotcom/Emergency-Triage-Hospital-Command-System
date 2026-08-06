@@ -39,9 +39,9 @@ export const DisasterCommandChatView: React.FC<DisasterCommandChatViewProps> = (
   };
 
   return (
-    <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm grid grid-cols-1 md:grid-cols-4 min-h-[500px]">
+    <div className="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm grid grid-cols-1 md:grid-cols-4 min-h-[500px]">
       {/* Left Sidebar: Channels */}
-      <div className="bg-slate-900 text-slate-300 p-4 border-r border-slate-800 space-y-4">
+      <div className="bg-white text-stone-600 p-4 border-r border-stone-200 space-y-4">
         <h3 className="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-2">
           <MessageSquare className="w-4 h-4 text-amber-400" />
           Command Channels
@@ -60,7 +60,7 @@ export const DisasterCommandChatView: React.FC<DisasterCommandChatViewProps> = (
               className={`w-full text-left px-3 py-2 rounded font-bold transition-all ${
                 activeChannel === ch.id
                   ? 'bg-amber-500 text-slate-950 shadow'
-                  : 'hover:bg-slate-800 text-slate-300'
+                  : 'hover:bg-stone-100 text-stone-600'
               }`}
             >
               {ch.label}
@@ -70,12 +70,12 @@ export const DisasterCommandChatView: React.FC<DisasterCommandChatViewProps> = (
       </div>
 
       {/* Right 3 Cols: Active Chat Feed */}
-      <div className="md:col-span-3 flex flex-col justify-between p-4 bg-slate-50">
-        <div className="border-b border-slate-200 pb-2 mb-3 flex items-center justify-between">
-          <span className="font-bold text-slate-900 text-xs uppercase">
+      <div className="md:col-span-3 flex flex-col justify-between p-4 bg-cream">
+        <div className="border-b border-stone-200 pb-2 mb-3 flex items-center justify-between">
+          <span className="font-bold text-stone-900 text-xs uppercase">
             Active Channel: {activeChannel}
           </span>
-          <span className="text-[10px] text-slate-500 font-mono">
+          <span className="text-[10px] text-stone-500 font-mono">
             Role: {activeIcsRole}
           </span>
         </div>
@@ -87,15 +87,15 @@ export const DisasterCommandChatView: React.FC<DisasterCommandChatViewProps> = (
               key={msg.id}
               className={`p-3 rounded-lg text-xs space-y-1 ${
                 msg.urgent
-                  ? 'bg-rose-50 border border-rose-300 text-rose-950 font-medium'
-                  : 'bg-white border border-slate-200 text-slate-800'
+                  ? 'bg-rose-50 border border-rose-200 text-rose-950 font-medium'
+                  : 'bg-white border border-stone-200 text-stone-800'
               }`}
             >
               <div className="flex items-center justify-between font-bold text-[11px]">
-                <span className={msg.urgent ? 'text-rose-700' : 'text-slate-900'}>
+                <span className={msg.urgent ? 'text-rose-400' : 'text-stone-900'}>
                   {msg.sender} [{msg.role}]
                 </span>
-                <span className="text-[10px] text-slate-400 font-mono">{msg.timestamp}</span>
+                <span className="text-[10px] text-stone-500 font-mono">{msg.timestamp}</span>
               </div>
               <p className="leading-relaxed">{msg.message}</p>
             </div>
@@ -110,7 +110,7 @@ export const DisasterCommandChatView: React.FC<DisasterCommandChatViewProps> = (
               placeholder={`Message #${activeChannel}...`}
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              className="flex-1 bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="flex-1 bg-white border border-stone-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-amber-500"
             />
             <button
               type="submit"
@@ -121,7 +121,7 @@ export const DisasterCommandChatView: React.FC<DisasterCommandChatViewProps> = (
             </button>
           </div>
 
-          <label className="flex items-center space-x-1.5 text-xs text-rose-700 font-bold cursor-pointer">
+          <label className="flex items-center space-x-1.5 text-xs text-rose-400 font-bold cursor-pointer">
             <input
               type="checkbox"
               checked={isUrgent}

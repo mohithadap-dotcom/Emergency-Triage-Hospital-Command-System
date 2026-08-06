@@ -286,9 +286,9 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
       case 'CRITICAL':
         return 'bg-purple-950 text-purple-200 border-purple-600 animate-pulse';
       case 'RED':
-        return 'bg-rose-900 text-rose-100 border-rose-500';
+        return 'bg-rose-600 text-white border-rose-500';
       case 'ORANGE':
-        return 'bg-amber-900 text-amber-200 border-amber-500';
+        return 'bg-amber-600 text-amber-100 border-amber-500';
       case 'YELLOW':
         return 'bg-yellow-900 text-yellow-200 border-yellow-500';
       case 'GREEN':
@@ -300,35 +300,35 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
   return (
     <div className="space-y-4">
       {/* State AI Intelligence Header Banner */}
-      <div className="bg-slate-950 text-white rounded-lg p-4 border border-slate-800 shadow-md flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-cream text-stone-900 rounded-lg p-4 border border-stone-200 shadow-md flex flex-wrap items-center justify-between gap-4">
         <div>
           <div className="flex items-center space-x-2">
             <BrainCircuit className="w-6 h-6 text-purple-400 animate-pulse" />
-            <h2 className="text-lg font-black tracking-wide text-white flex items-center gap-2">
+            <h2 className="text-lg font-black tracking-wide text-stone-900 flex items-center gap-2">
               National AI Decision Intelligence Engine
               <span className="text-[10px] font-mono bg-purple-900/80 text-purple-200 px-2 py-0.5 rounded border border-purple-600">
                 MODEL: GEMINI-3.6-FLASH
               </span>
             </h2>
           </div>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-stone-500 mt-1">
             Statewide emergency brain continuously monitoring multi-hospital resources, patient deterioration, district risk levels, disease clusters & fleet dispatch.
           </p>
         </div>
 
         <div className="flex items-center space-x-3 text-xs">
-          <div className="bg-slate-900 px-3 py-1.5 rounded border border-slate-800 flex items-center gap-2">
+          <div className="bg-white px-3 py-1.5 rounded border border-stone-200 flex items-center gap-2">
             <Sparkles className="w-4 h-4 text-amber-400" />
             <div>
-              <span className="text-[10px] text-slate-400 block">AI Engine Status</span>
+              <span className="text-[10px] text-stone-500 block">AI Engine Status</span>
               <span className="font-extrabold text-emerald-400">ONLINE (115ms)</span>
             </div>
           </div>
 
-          <div className="bg-slate-900 px-3 py-1.5 rounded border border-slate-800 flex items-center gap-2">
+          <div className="bg-white px-3 py-1.5 rounded border border-stone-200 flex items-center gap-2">
             <Award className="w-4 h-4 text-purple-400" />
             <div>
-              <span className="text-[10px] text-slate-400 block">Prediction Accuracy</span>
+              <span className="text-[10px] text-stone-500 block">Prediction Accuracy</span>
               <span className="font-extrabold text-purple-300">
                 {predictiveAnalytics?.overallPredictionAccuracy || 96.4}%
               </span>
@@ -338,7 +338,7 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
           <button
             onClick={fetchAiState}
             disabled={loading}
-            className="p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded border border-slate-700 transition"
+            className="p-2 bg-stone-100 hover:bg-slate-700 text-stone-600 rounded border border-stone-300 transition"
             title="Refresh AI Datasets"
           >
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
@@ -347,13 +347,13 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
       </div>
 
       {/* Primary Module Navigation Tabs */}
-      <div className="flex items-center space-x-1 border-b border-slate-200 pb-2 overflow-x-auto text-xs font-extrabold">
+      <div className="flex items-center space-x-1 border-b border-stone-200 pb-2 overflow-x-auto text-xs font-extrabold">
         <button
           onClick={() => setActiveSubTab('overview')}
           className={`px-3 py-1.5 rounded-md flex items-center gap-1.5 transition ${
             activeSubTab === 'overview'
-              ? 'bg-purple-700 text-white shadow'
-              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              ? 'bg-purple-700 text-stone-900 shadow'
+              : 'bg-stone-100 text-stone-600 hover:bg-stone-100'
           }`}
         >
           <BrainCircuit className="w-4 h-4" />
@@ -364,14 +364,14 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
           onClick={() => setActiveSubTab('patient-deterioration')}
           className={`px-3 py-1.5 rounded-md flex items-center gap-1.5 transition ${
             activeSubTab === 'patient-deterioration'
-              ? 'bg-rose-700 text-white shadow'
-              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              ? 'bg-rose-700 text-stone-900 shadow'
+              : 'bg-stone-100 text-stone-600 hover:bg-stone-100'
           }`}
         >
           <HeartPulse className="w-4 h-4" />
           <span>Patient Deterioration Engine</span>
           {patients.filter((p) => p.riskLevel === 'CRITICAL' || p.riskLevel === 'RED').length > 0 && (
-            <span className="bg-white text-rose-800 font-black px-1.5 py-0.2 rounded-full text-[10px]">
+            <span className="bg-white text-rose-400 font-black px-1.5 py-0.2 rounded-full text-[10px]">
               {patients.filter((p) => p.riskLevel === 'CRITICAL' || p.riskLevel === 'RED').length}
             </span>
           )}
@@ -381,8 +381,8 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
           onClick={() => setActiveSubTab('hospital-forecasting')}
           className={`px-3 py-1.5 rounded-md flex items-center gap-1.5 transition ${
             activeSubTab === 'hospital-forecasting'
-              ? 'bg-sky-700 text-white shadow'
-              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              ? 'bg-sky-700 text-stone-900 shadow'
+              : 'bg-stone-100 text-stone-600 hover:bg-stone-100'
           }`}
         >
           <Building2 className="w-4 h-4" />
@@ -393,8 +393,8 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
           onClick={() => setActiveSubTab('ambulance-demand')}
           className={`px-3 py-1.5 rounded-md flex items-center gap-1.5 transition ${
             activeSubTab === 'ambulance-demand'
-              ? 'bg-indigo-700 text-white shadow'
-              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              ? 'bg-indigo-700 text-stone-900 shadow'
+              : 'bg-stone-100 text-stone-600 hover:bg-stone-100'
           }`}
         >
           <Truck className="w-4 h-4" />
@@ -405,8 +405,8 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
           onClick={() => setActiveSubTab('district-risk')}
           className={`px-3 py-1.5 rounded-md flex items-center gap-1.5 transition ${
             activeSubTab === 'district-risk'
-              ? 'bg-rose-800 text-white shadow'
-              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              ? 'bg-rose-800 text-stone-900 shadow'
+              : 'bg-stone-100 text-stone-600 hover:bg-stone-100'
           }`}
         >
           <ShieldAlert className="w-4 h-4" />
@@ -418,7 +418,7 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
           className={`px-3 py-1.5 rounded-md flex items-center gap-1.5 transition ${
             activeSubTab === 'disease-clusters'
               ? 'bg-amber-600 text-slate-950 font-black shadow'
-              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              : 'bg-stone-100 text-stone-600 hover:bg-stone-100'
           }`}
         >
           <Flame className="w-4 h-4" />
@@ -429,8 +429,8 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
           onClick={() => setActiveSubTab('resource-balancer')}
           className={`px-3 py-1.5 rounded-md flex items-center gap-1.5 transition ${
             activeSubTab === 'resource-balancer'
-              ? 'bg-purple-800 text-white shadow'
-              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              ? 'bg-purple-800 text-stone-900 shadow'
+              : 'bg-stone-100 text-stone-600 hover:bg-stone-100'
           }`}
         >
           <Sliders className="w-4 h-4" />
@@ -441,8 +441,8 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
           onClick={() => setActiveSubTab('doctor-workspace')}
           className={`px-3 py-1.5 rounded-md flex items-center gap-1.5 transition ${
             activeSubTab === 'doctor-workspace'
-              ? 'bg-emerald-700 text-white shadow'
-              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              ? 'bg-emerald-700 text-stone-900 shadow'
+              : 'bg-stone-100 text-stone-600 hover:bg-stone-100'
           }`}
         >
           <Stethoscope className="w-4 h-4" />
@@ -453,8 +453,8 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
           onClick={() => setActiveSubTab('predictive-analytics')}
           className={`px-3 py-1.5 rounded-md flex items-center gap-1.5 transition ${
             activeSubTab === 'predictive-analytics'
-              ? 'bg-slate-800 text-white shadow'
-              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              ? 'bg-stone-100 text-stone-900 shadow'
+              : 'bg-stone-100 text-stone-600 hover:bg-stone-100'
           }`}
         >
           <BarChart3 className="w-4 h-4" />
@@ -465,8 +465,8 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
           onClick={() => setActiveSubTab('simulation')}
           className={`px-3 py-1.5 rounded-md flex items-center gap-1.5 transition ${
             activeSubTab === 'simulation'
-              ? 'bg-indigo-900 text-white shadow'
-              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              ? 'bg-indigo-900 text-stone-900 shadow'
+              : 'bg-stone-100 text-stone-600 hover:bg-stone-100'
           }`}
         >
           <Play className="w-4 h-4" />
@@ -490,55 +490,55 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
               <span className="text-[10px] text-purple-300 mt-1 block">Immediate Intervention Required</span>
             </div>
 
-            <div className="bg-slate-900 text-slate-100 p-3 rounded-lg border border-slate-800 shadow-sm">
-              <span className="text-[10px] text-slate-400 uppercase font-mono block">Hospital Shortage Alerts</span>
+            <div className="bg-white text-stone-900 p-3 rounded-lg border border-stone-200 shadow-sm">
+              <span className="text-[10px] text-stone-500 uppercase font-mono block">Hospital Shortage Alerts</span>
               <div className="flex items-baseline justify-between mt-1">
                 <span className="text-2xl font-black text-amber-400">{hospitalForecasts.filter((h) => h.predictedShortages.icuExhaustion).length}</span>
                 <Building2 className="w-5 h-5 text-amber-400" />
               </div>
-              <span className="text-[10px] text-slate-400 mt-1 block">30–120 Min ICU Exhaustion</span>
+              <span className="text-[10px] text-stone-500 mt-1 block">30–120 Min ICU Exhaustion</span>
             </div>
 
-            <div className="bg-slate-900 text-slate-100 p-3 rounded-lg border border-slate-800 shadow-sm">
-              <span className="text-[10px] text-slate-400 uppercase font-mono block">Critical Risk Districts</span>
+            <div className="bg-white text-stone-900 p-3 rounded-lg border border-stone-200 shadow-sm">
+              <span className="text-[10px] text-stone-500 uppercase font-mono block">Critical Risk Districts</span>
               <div className="flex items-baseline justify-between mt-1">
                 <span className="text-2xl font-black text-rose-300">
                   {districtRisks.filter((d) => d.riskLevel === 'CRITICAL' || d.riskLevel === 'HIGH').length}
                 </span>
                 <ShieldAlert className="w-5 h-5 text-rose-400" />
               </div>
-              <span className="text-[10px] text-slate-400 mt-1 block">Nagpur & Mumbai Top Ranked</span>
+              <span className="text-[10px] text-stone-500 mt-1 block">Nagpur & Mumbai Top Ranked</span>
             </div>
 
-            <div className="bg-slate-900 text-slate-100 p-3 rounded-lg border border-slate-800 shadow-sm">
-              <span className="text-[10px] text-slate-400 uppercase font-mono block">Active Disease Clusters</span>
+            <div className="bg-white text-stone-900 p-3 rounded-lg border border-stone-200 shadow-sm">
+              <span className="text-[10px] text-stone-500 uppercase font-mono block">Active Disease Clusters</span>
               <div className="flex items-baseline justify-between mt-1">
-                <span className="text-2xl font-black text-amber-300">{clusters.length}</span>
+                <span className="text-2xl font-black text-amber-100">{clusters.length}</span>
                 <Flame className="w-5 h-5 text-amber-400" />
               </div>
-              <span className="text-[10px] text-slate-400 mt-1 block">Spatial Epicenters Active</span>
+              <span className="text-[10px] text-stone-500 mt-1 block">Spatial Epicenters Active</span>
             </div>
 
-            <div className="bg-slate-900 text-slate-100 p-3 rounded-lg border border-slate-800 shadow-sm col-span-2 sm:col-span-1">
-              <span className="text-[10px] text-slate-400 uppercase font-mono block">Pending AI Commands</span>
+            <div className="bg-white text-stone-900 p-3 rounded-lg border border-stone-200 shadow-sm col-span-2 sm:col-span-1">
+              <span className="text-[10px] text-stone-500 uppercase font-mono block">Pending AI Commands</span>
               <div className="flex items-baseline justify-between mt-1">
                 <span className="text-2xl font-black text-purple-400">
                   {recommendations.filter((r) => !r.approved && !r.rejected).length}
                 </span>
                 <BrainCircuit className="w-5 h-5 text-purple-400" />
               </div>
-              <span className="text-[10px] text-slate-400 mt-1 block">Awaiting EOC Approval</span>
+              <span className="text-[10px] text-stone-500 mt-1 block">Awaiting EOC Approval</span>
             </div>
           </div>
 
           {/* Pending AI Command Recommendations */}
-          <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm space-y-3">
-            <h3 className="text-xs font-black uppercase text-slate-800 tracking-wider flex items-center justify-between border-b pb-2">
+          <div className="bg-white p-4 rounded-lg border border-stone-200 shadow-sm space-y-3">
+            <h3 className="text-xs font-black uppercase text-stone-800 tracking-wider flex items-center justify-between border-b pb-2">
               <span className="flex items-center gap-2">
                 <BrainCircuit className="w-4 h-4 text-purple-600" />
                 Pending AI Operational Command Recommendations
               </span>
-              <span className="text-[10px] font-mono bg-purple-100 text-purple-800 px-2 py-0.5 rounded">
+              <span className="text-[10px] font-mono bg-purple-100 text-purple-400 px-2 py-0.5 rounded">
                 HUMAN-IN-THE-LOOP REQUIRED
               </span>
             </h3>
@@ -552,8 +552,8 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
       {activeSubTab === 'patient-deterioration' && (
         <div className="space-y-4">
           {/* Interactive Patient Deterioration Simulator Input Form */}
-          <div className="bg-slate-900 text-white p-4 rounded-lg border border-slate-800 shadow-md space-y-3">
-            <h3 className="text-xs font-black uppercase tracking-wider text-purple-300 flex items-center justify-between border-b border-slate-800 pb-2">
+          <div className="bg-white text-stone-900 p-4 rounded-lg border border-stone-200 shadow-md space-y-3">
+            <h3 className="text-xs font-black uppercase tracking-wider text-purple-300 flex items-center justify-between border-b border-stone-200 pb-2">
               <span className="flex items-center gap-1.5">
                 <Activity className="w-4 h-4 text-rose-400" />
                 Ingest Patient Vitals Telemetry for AI Deterioration Risk Prediction
@@ -564,30 +564,30 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
             <form onSubmit={handleAnalyzeVitals} className="space-y-3">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
                 <div>
-                  <label className="text-[10px] text-slate-400 block mb-1">Patient Name</label>
+                  <label className="text-[10px] text-stone-500 block mb-1">Patient Name</label>
                   <input
                     type="text"
                     value={newPatientName}
                     onChange={(e) => setNewPatientName(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 rounded p-1.5 text-white"
+                    className="w-full bg-cream border border-stone-200 rounded p-1.5 text-stone-900"
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="text-[10px] text-slate-400 block mb-1">Age & Gender</label>
+                  <label className="text-[10px] text-stone-500 block mb-1">Age & Gender</label>
                   <div className="flex space-x-1">
                     <input
                       type="number"
                       value={newAge}
                       onChange={(e) => setNewAge(Number(e.target.value))}
-                      className="w-1/2 bg-slate-950 border border-slate-800 rounded p-1.5 text-white"
+                      className="w-1/2 bg-cream border border-stone-200 rounded p-1.5 text-stone-900"
                       required
                     />
                     <select
                       value={newGender}
                       onChange={(e) => setNewGender(e.target.value as any)}
-                      className="w-1/2 bg-slate-950 border border-slate-800 rounded p-1.5 text-white"
+                      className="w-1/2 bg-cream border border-stone-200 rounded p-1.5 text-stone-900"
                     >
                       <option value="MALE">MALE</option>
                       <option value="FEMALE">FEMALE</option>
@@ -597,12 +597,12 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
                 </div>
 
                 <div>
-                  <label className="text-[10px] text-slate-400 block mb-1">Heart Rate (bpm)</label>
+                  <label className="text-[10px] text-stone-500 block mb-1">Heart Rate (bpm)</label>
                   <input
                     type="number"
                     value={newHr}
                     onChange={(e) => setNewHr(Number(e.target.value))}
-                    className="w-full bg-slate-950 border border-slate-800 rounded p-1.5 text-white"
+                    className="w-full bg-cream border border-stone-200 rounded p-1.5 text-stone-900"
                     required
                   />
                 </div>
@@ -610,55 +610,55 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
                 <div>
-                  <label className="text-[10px] text-slate-400 block mb-1">BP Systolic/Diastolic</label>
+                  <label className="text-[10px] text-stone-500 block mb-1">BP Systolic/Diastolic</label>
                   <div className="flex space-x-1">
                     <input
                       type="number"
                       value={newBpSys}
                       onChange={(e) => setNewBpSys(Number(e.target.value))}
-                      className="w-1/2 bg-slate-950 border border-slate-800 rounded p-1.5 text-white"
+                      className="w-1/2 bg-cream border border-stone-200 rounded p-1.5 text-stone-900"
                       required
                     />
                     <input
                       type="number"
                       value={newBpDia}
                       onChange={(e) => setNewBpDia(Number(e.target.value))}
-                      className="w-1/2 bg-slate-950 border border-slate-800 rounded p-1.5 text-white"
+                      className="w-1/2 bg-cream border border-stone-200 rounded p-1.5 text-stone-900"
                       required
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-[10px] text-slate-400 block mb-1">SpO2 Oxygen (%)</label>
+                  <label className="text-[10px] text-stone-500 block mb-1">SpO2 Oxygen (%)</label>
                   <input
                     type="number"
                     value={newSpo2}
                     onChange={(e) => setNewSpo2(Number(e.target.value))}
-                    className="w-full bg-slate-950 border border-slate-800 rounded p-1.5 text-white"
+                    className="w-full bg-cream border border-stone-200 rounded p-1.5 text-stone-900"
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="text-[10px] text-slate-400 block mb-1">Respiratory Rate (/min)</label>
+                  <label className="text-[10px] text-stone-500 block mb-1">Respiratory Rate (/min)</label>
                   <input
                     type="number"
                     value={newRr}
                     onChange={(e) => setNewRr(Number(e.target.value))}
-                    className="w-full bg-slate-950 border border-slate-800 rounded p-1.5 text-white"
+                    className="w-full bg-cream border border-stone-200 rounded p-1.5 text-stone-900"
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="text-[10px] text-slate-400 block mb-1">Temperature (°C)</label>
+                  <label className="text-[10px] text-stone-500 block mb-1">Temperature (°C)</label>
                   <input
                     type="number"
                     step="0.1"
                     value={newTemp}
                     onChange={(e) => setNewTemp(Number(e.target.value))}
-                    className="w-full bg-slate-950 border border-slate-800 rounded p-1.5 text-white"
+                    className="w-full bg-cream border border-stone-200 rounded p-1.5 text-stone-900"
                     required
                   />
                 </div>
@@ -667,7 +667,7 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-rose-700 hover:bg-rose-600 text-white font-black text-xs rounded shadow flex items-center gap-2"
+                  className="px-4 py-2 bg-rose-700 hover:bg-rose-600 text-stone-900 font-black text-xs rounded shadow flex items-center gap-2"
                 >
                   <Sparkles className="w-4 h-4" />
                   <span>Run Gemini AI Patient Deterioration Risk Prediction</span>
@@ -681,24 +681,24 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
             {patients.map((p) => (
               <div
                 key={p.id}
-                className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm space-y-3 hover:border-slate-300 transition"
+                className="bg-white p-4 rounded-lg border border-stone-200 shadow-sm space-y-3 hover:border-stone-200 transition"
               >
                 <div className="flex flex-wrap items-center justify-between border-b pb-2 gap-2">
                   <div>
                     <div className="flex items-center gap-2">
-                      <h4 className="text-sm font-black text-slate-900">{p.patientName}</h4>
+                      <h4 className="text-sm font-black text-stone-900">{p.patientName}</h4>
                       <span className={`px-2 py-0.5 rounded text-[10px] font-black border ${getRiskBadge(p.riskLevel)}`}>
                         {p.riskLevel} RISK ({p.riskScore}/100)
                       </span>
                     </div>
-                    <p className="text-xs text-slate-500 mt-0.5">
+                    <p className="text-xs text-stone-500 mt-0.5">
                       Facility: <strong>{p.hospitalName}</strong> • Age: <strong>{p.age}</strong> ({p.gender})
                     </p>
                   </div>
 
                   <div className="flex items-center space-x-2">
-                    <div className="bg-slate-900 text-white px-3 py-1.5 rounded-lg border border-slate-800 text-right">
-                      <span className="text-[10px] text-slate-400 block font-mono uppercase">Predicted Deterioration</span>
+                    <div className="bg-white text-stone-900 px-3 py-1.5 rounded-lg border border-stone-200 text-right">
+                      <span className="text-[10px] text-stone-500 block font-mono uppercase">Predicted Deterioration</span>
                       <span className="text-xs font-black text-rose-400 flex items-center gap-1 justify-end">
                         <Clock className="w-3.5 h-3.5 text-rose-400 animate-pulse" />
                         {p.predictedDeteriorationTimeMin} MINUTES
@@ -708,12 +708,12 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
                     {!p.acknowledged ? (
                       <button
                         onClick={() => setSelectedPatientForOverride(p)}
-                        className="px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-white font-extrabold text-xs rounded shadow"
+                        className="px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-stone-900 font-extrabold text-xs rounded shadow"
                       >
                         Override / Acknowledge
                       </button>
                     ) : (
-                      <span className="bg-slate-100 text-slate-700 font-bold px-2.5 py-1 rounded text-xs border border-slate-300">
+                      <span className="bg-stone-100 text-stone-600 font-bold px-2.5 py-1 rounded text-xs border border-stone-200">
                         {p.overridden ? `Overridden (${p.acknowledgedBy})` : `Acknowledged (${p.acknowledgedBy})`}
                       </span>
                     )}
@@ -721,41 +721,41 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
                 </div>
 
                 {/* Vitals Breakdown */}
-                <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 bg-slate-50 p-2 rounded text-xs text-center border border-slate-200">
+                <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 bg-cream p-2 rounded text-xs text-center border border-stone-200">
                   <div>
-                    <span className="text-[10px] text-slate-400 block">HR</span>
-                    <span className="font-bold text-slate-900">{p.vitals.heartRate} bpm</span>
+                    <span className="text-[10px] text-stone-500 block">HR</span>
+                    <span className="font-bold text-stone-900">{p.vitals.heartRate} bpm</span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-slate-400 block">BP</span>
-                    <span className="font-bold text-slate-900">{p.vitals.bpSystolic}/{p.vitals.bpDiastolic}</span>
+                    <span className="text-[10px] text-stone-500 block">BP</span>
+                    <span className="font-bold text-stone-900">{p.vitals.bpSystolic}/{p.vitals.bpDiastolic}</span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-slate-400 block">SpO2</span>
-                    <span className={`font-black ${p.vitals.spo2 < 90 ? 'text-rose-600' : 'text-slate-900'}`}>
+                    <span className="text-[10px] text-stone-500 block">SpO2</span>
+                    <span className={`font-black ${p.vitals.spo2 < 90 ? 'text-rose-600' : 'text-stone-900'}`}>
                       {p.vitals.spo2}%
                     </span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-slate-400 block">RR</span>
-                    <span className="font-bold text-slate-900">{p.vitals.respiratoryRate}/m</span>
+                    <span className="text-[10px] text-stone-500 block">RR</span>
+                    <span className="font-bold text-stone-900">{p.vitals.respiratoryRate}/m</span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-slate-400 block">Temp</span>
-                    <span className="font-bold text-slate-900">{p.vitals.temperatureC}°C</span>
+                    <span className="text-[10px] text-stone-500 block">Temp</span>
+                    <span className="font-bold text-stone-900">{p.vitals.temperatureC}°C</span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-slate-400 block">Confidence</span>
-                    <span className="font-black text-purple-700">{p.confidenceScore}%</span>
+                    <span className="text-[10px] text-stone-500 block">Confidence</span>
+                    <span className="font-black text-purple-400">{p.confidenceScore}%</span>
                   </div>
                 </div>
 
                 {/* AI Explanation & Interventions */}
                 <div className="space-y-1.5 text-xs">
-                  <p className="text-slate-700 bg-purple-50/70 p-2.5 rounded border border-purple-200">
+                  <p className="text-stone-600 bg-purple-50/70 p-2.5 rounded border border-purple-200">
                     <strong>AI Clinical Explanation:</strong> {p.aiExplanation}
                   </p>
-                  <p className="text-slate-800 bg-rose-50/70 p-2.5 rounded border border-rose-200">
+                  <p className="text-stone-800 bg-rose-50/70 p-2.5 rounded border border-rose-200">
                     <strong>Recommended Urgent Intervention:</strong> {p.recommendedIntervention}
                   </p>
                 </div>
@@ -802,24 +802,24 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
 
       {/* SUB-TAB 10: EMERGENCY SIMULATION PANEL */}
       {activeSubTab === 'simulation' && (
-        <div className="bg-slate-950 text-white p-4 rounded-lg border border-slate-800 shadow-md space-y-4">
-          <div className="border-b border-slate-800 pb-2">
+        <div className="bg-cream text-stone-900 p-4 rounded-lg border border-stone-200 shadow-md space-y-4">
+          <div className="border-b border-stone-200 pb-2">
             <h3 className="text-sm font-black text-amber-400 flex items-center gap-2">
               <Play className="w-5 h-5 text-amber-400" />
               <span>State Emergency Operations Disaster Simulation Panel</span>
             </h3>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-stone-500 mt-0.5">
               Simulate high-impact mass casualty disasters, floods, highway collisions, or heatwaves to pressure-test district hospital capacities.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
             <div>
-              <label className="font-bold text-slate-300 block mb-1">Disaster Scenario</label>
+              <label className="font-bold text-stone-600 block mb-1">Disaster Scenario</label>
               <select
                 value={simScenario}
                 onChange={(e) => setSimScenario(e.target.value as any)}
-                className="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white font-bold"
+                className="w-full bg-white border border-stone-300 rounded p-2 text-stone-900 font-bold"
               >
                 <option value="MASS_CASUALTY">MASS CASUALTY EVENT</option>
                 <option value="HIGHWAY_ACCIDENT">HIGHWAY EXPRESSWAY COLLISION</option>
@@ -831,11 +831,11 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
             </div>
 
             <div>
-              <label className="font-bold text-slate-300 block mb-1">Target District</label>
+              <label className="font-bold text-stone-600 block mb-1">Target District</label>
               <select
                 value={simDistrict}
                 onChange={(e) => setSimDistrict(e.target.value)}
-                className="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white font-bold"
+                className="w-full bg-white border border-stone-300 rounded p-2 text-stone-900 font-bold"
               >
                 <option value="Nagpur">Nagpur</option>
                 <option value="Mumbai">Mumbai</option>
@@ -846,11 +846,11 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
             </div>
 
             <div>
-              <label className="font-bold text-slate-300 block mb-1">Simulated Intensity</label>
+              <label className="font-bold text-stone-600 block mb-1">Simulated Intensity</label>
               <select
                 value={simIntensity}
                 onChange={(e) => setSimIntensity(e.target.value as any)}
-                className="w-full bg-slate-900 border border-slate-700 rounded p-2 text-white font-bold"
+                className="w-full bg-white border border-stone-300 rounded p-2 text-stone-900 font-bold"
               >
                 <option value="MODERATE">MODERATE (20 Casualties)</option>
                 <option value="SEVERE">SEVERE (45 Casualties)</option>
@@ -872,10 +872,10 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
 
           {/* Simulation Result Output */}
           {simResult && (
-            <div className="bg-slate-900 p-4 rounded-lg border border-amber-500/50 space-y-3 mt-4">
-              <h4 className="text-xs font-black text-amber-300 uppercase tracking-wider flex items-center justify-between border-b border-slate-800 pb-2">
+            <div className="bg-white p-4 rounded-lg border border-amber-500/50 space-y-3 mt-4">
+              <h4 className="text-xs font-black text-amber-100 uppercase tracking-wider flex items-center justify-between border-b border-stone-200 pb-2">
                 <span>Simulation Outcome Report: {simResult.scenario.replace(/_/g, ' ')}</span>
-                <span className="text-[10px] text-slate-400 font-mono">DISTRICT: {simResult.district}</span>
+                <span className="text-[10px] text-stone-500 font-mono">DISTRICT: {simResult.district}</span>
               </h4>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
@@ -896,12 +896,12 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
 
                 <div className="bg-purple-900/60 p-2.5 rounded border border-purple-800">
                   <span className="text-[10px] text-purple-300 block">ICU Exhaustion Horizon</span>
-                  <span className="text-xl font-black text-amber-300">{simResult.predictedIcuExhaustionTimeMin} min</span>
+                  <span className="text-xl font-black text-amber-100">{simResult.predictedIcuExhaustionTimeMin} min</span>
                 </div>
               </div>
 
               <div className="bg-purple-900/40 p-3 rounded border border-purple-800 space-y-1.5">
-                <h4 className="text-xs font-bold text-amber-300">Generated AI Emergency Action Plan:</h4>
+                <h4 className="text-xs font-bold text-amber-100">Generated AI Emergency Action Plan:</h4>
                 <ul className="list-disc list-inside space-y-1 text-xs text-purple-200">
                   {simResult.aiActionPlan.map((act, i) => (
                     <li key={i}>{act}</li>
@@ -915,27 +915,27 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
 
       {/* Override Modal */}
       {selectedPatientForOverride && (
-        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg shadow-xl border border-slate-200 max-w-md w-full p-4 space-y-3">
-            <h3 className="text-sm font-black text-slate-900 flex items-center justify-between border-b pb-2">
+        <div className="fixed inset-0 bg-white/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg shadow-lg shadow-stone-300/40 border border-stone-200 max-w-md w-full p-4 space-y-3">
+            <h3 className="text-sm font-black text-stone-900 flex items-center justify-between border-b pb-2">
               <span>Medical Officer AI Prediction Override</span>
-              <button onClick={() => setSelectedPatientForOverride(null)} className="text-slate-400 hover:text-slate-600">
+              <button onClick={() => setSelectedPatientForOverride(null)} className="text-stone-500 hover:text-stone-500">
                 <X className="w-4 h-4" />
               </button>
             </h3>
 
-            <p className="text-xs text-slate-600">
+            <p className="text-xs text-stone-500">
               Overriding patient <strong>{selectedPatientForOverride.patientName}</strong> (Risk Score:{' '}
               {selectedPatientForOverride.riskScore}).
             </p>
 
             <div>
-              <label className="font-bold text-xs text-slate-700 block mb-1">Reason for Override (Clinical Justification)</label>
+              <label className="font-bold text-xs text-stone-600 block mb-1">Reason for Override (Clinical Justification)</label>
               <textarea
                 value={overrideReason}
                 onChange={(e) => setOverrideReason(e.target.value)}
                 placeholder="E.g., Patient responding well to initial fluid bolus; vitals stabilizing..."
-                className="w-full p-2 border border-slate-300 rounded text-xs"
+                className="w-full p-2 border border-stone-200 rounded text-xs"
                 rows={3}
                 required
               />
@@ -944,14 +944,14 @@ export const AiIntelligenceView: React.FC<AiIntelligenceProps> = ({
             <div className="flex justify-end space-x-2 pt-2">
               <button
                 onClick={() => setSelectedPatientForOverride(null)}
-                className="px-3 py-1.5 text-xs text-slate-600 font-bold hover:bg-slate-100 rounded"
+                className="px-3 py-1.5 text-xs text-stone-500 font-bold hover:bg-stone-100 rounded"
               >
                 Cancel
               </button>
 
               <button
                 onClick={() => handlePatientAckOrOverride(selectedPatientForOverride.id, true)}
-                className="px-4 py-1.5 text-xs bg-amber-600 hover:bg-amber-500 text-white font-black rounded shadow"
+                className="px-4 py-1.5 text-xs bg-amber-600 hover:bg-amber-500 text-stone-900 font-black rounded shadow"
               >
                 Submit Clinical Override
               </button>

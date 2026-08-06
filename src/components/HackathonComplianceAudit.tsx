@@ -191,7 +191,7 @@ export const HackathonComplianceAudit: React.FC<HackathonComplianceAuditProps> =
   return (
     <div className="space-y-6">
       {/* Banner */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 text-white shadow-xl relative overflow-hidden">
+      <div className="bg-white border border-stone-200 rounded-xl p-6 text-stone-900 shadow-lg shadow-stone-300/40 relative overflow-hidden">
         <div className="absolute right-0 top-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
           <div>
@@ -200,13 +200,13 @@ export const HackathonComplianceAudit: React.FC<HackathonComplianceAuditProps> =
                 <Award className="w-7 h-7" />
               </span>
               <div>
-                <h1 className="text-xl font-black tracking-tight text-white flex items-center gap-2">
+                <h1 className="text-xl font-black tracking-tight text-stone-900 flex items-center gap-2">
                   Hackathon Requirement Compliance & Audit Engine
                   <span className="px-3 py-0.5 rounded-full text-xs font-black bg-emerald-500 text-slate-950 border border-emerald-400">
                     10/10 VERIFIED
                   </span>
                 </h1>
-                <p className="text-xs text-slate-300 mt-1">
+                <p className="text-xs text-stone-600 mt-1">
                   Verified compliance against Maharashtra Emergency Response & NDMA ICCC Hackathon Problem Statement Specifications
                 </p>
               </div>
@@ -215,7 +215,7 @@ export const HackathonComplianceAudit: React.FC<HackathonComplianceAuditProps> =
 
           <button
             onClick={onTriggerDemo}
-            className="px-5 py-2.5 bg-gradient-to-r from-red-600 to-rose-600 text-white font-bold rounded-xl text-xs shadow-lg shadow-red-900/40 hover:brightness-110 transition-all flex items-center space-x-2 border border-red-400/30"
+            className="px-5 py-2.5 bg-gradient-to-r from-red-600 to-rose-600 text-stone-900 font-bold rounded-xl text-xs shadow-lg shadow-red-900/40 hover:brightness-110 transition-all flex items-center space-x-2 border border-red-400/30"
           >
             <Zap className="w-4 h-4 fill-current" />
             <span>Launch Hackathon Demo (1-Click)</span>
@@ -224,13 +224,13 @@ export const HackathonComplianceAudit: React.FC<HackathonComplianceAuditProps> =
       </div>
 
       {/* Compliance Matrix Grid */}
-      <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm space-y-4">
+      <div className="bg-white border border-stone-200 rounded-xl p-6 shadow-sm space-y-4">
         <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-          <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+          <h2 className="text-base font-bold text-stone-900 flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-emerald-600" />
             <span>Core Problem Statement Requirements Validation Matrix</span>
           </h2>
-          <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+          <span className="text-xs font-semibold text-emerald-400 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
             100% Production Ready
           </span>
         </div>
@@ -241,28 +241,28 @@ export const HackathonComplianceAudit: React.FC<HackathonComplianceAuditProps> =
             return (
               <div
                 key={item.id}
-                className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-slate-50 transition-all space-y-2"
+                className="p-4 rounded-xl border border-stone-200 bg-cream/50 hover:bg-cream transition-all space-y-2"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex items-center space-x-2.5">
-                    <span className="p-2 bg-emerald-100 text-emerald-800 rounded-lg">
+                    <span className="p-2 bg-emerald-100 text-emerald-400 rounded-lg">
                       <IconComp className="w-4 h-4" />
                     </span>
                     <div>
-                      <h3 className="text-xs font-bold text-slate-900">{item.title}</h3>
-                      <span className="text-[10px] text-slate-500 font-mono">{item.category}</span>
+                      <h3 className="text-xs font-bold text-stone-900">{item.title}</h3>
+                      <span className="text-[10px] text-stone-500 font-mono">{item.category}</span>
                     </div>
                   </div>
-                  <span className="flex items-center space-x-1 text-emerald-700 font-bold text-[10px] bg-emerald-100 px-2 py-0.5 rounded-full">
+                  <span className="flex items-center space-x-1 text-emerald-400 font-bold text-[10px] bg-emerald-100 px-2 py-0.5 rounded-full">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>VERIFIED</span>
                   </span>
                 </div>
 
-                <p className="text-xs text-slate-600 leading-relaxed">{item.description}</p>
+                <p className="text-xs text-stone-500 leading-relaxed">{item.description}</p>
 
-                <div className="bg-white p-2 rounded-lg border border-slate-200 text-[11px] text-slate-500 flex items-center space-x-1.5 font-mono">
-                  <span className="font-bold text-slate-700">Proof Log:</span>
+                <div className="bg-white p-2 rounded-lg border border-stone-200 text-[11px] text-stone-500 flex items-center space-x-1.5 font-mono">
+                  <span className="font-bold text-stone-600">Proof Log:</span>
                   <span className="truncate">{item.proof}</span>
                 </div>
               </div>
@@ -272,14 +272,14 @@ export const HackathonComplianceAudit: React.FC<HackathonComplianceAuditProps> =
       </div>
 
       {/* Reporting & Enterprise Data Exporter */}
-      <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm space-y-5">
+      <div className="bg-white border border-stone-200 rounded-xl p-6 shadow-sm space-y-5">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div>
-            <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+            <h2 className="text-base font-bold text-stone-900 flex items-center gap-2">
               <FileText className="w-5 h-5 text-red-600" />
               <span>Government Reporting & Enterprise Data Exporter</span>
             </h2>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="text-xs text-stone-500 mt-0.5">
               Generate official NDMA / SEOC compliance reports for emergency incidents, hospital load, and fleet statistics
             </p>
           </div>
@@ -288,7 +288,7 @@ export const HackathonComplianceAudit: React.FC<HackathonComplianceAuditProps> =
             <select
               value={selectedReportType}
               onChange={(e) => setSelectedReportType(e.target.value as any)}
-              className="px-3 py-2 border border-slate-300 rounded-lg text-xs font-semibold bg-slate-50"
+              className="px-3 py-2 border border-stone-200 rounded-lg text-xs font-semibold bg-cream"
             >
               <option value="INCIDENTS">Emergency Incidents Report</option>
               <option value="HOSPITALS">Hospital Capacity & ICU Beds</option>
@@ -299,7 +299,7 @@ export const HackathonComplianceAudit: React.FC<HackathonComplianceAuditProps> =
             <select
               value={exportFormat}
               onChange={(e) => setExportFormat(e.target.value as any)}
-              className="px-3 py-2 border border-slate-300 rounded-lg text-xs font-semibold bg-slate-50"
+              className="px-3 py-2 border border-stone-200 rounded-lg text-xs font-semibold bg-cream"
             >
               <option value="CSV">Export CSV</option>
               <option value="JSON">Export JSON</option>
@@ -308,7 +308,7 @@ export const HackathonComplianceAudit: React.FC<HackathonComplianceAuditProps> =
 
             <button
               onClick={handleExportData}
-              className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-lg text-xs transition-colors flex items-center space-x-1.5"
+              className="px-4 py-2 bg-white hover:bg-stone-100 text-stone-900 font-bold rounded-lg text-xs transition-colors flex items-center space-x-1.5"
             >
               <Download className="w-4 h-4 text-amber-400" />
               <span>Generate Report</span>
@@ -317,20 +317,20 @@ export const HackathonComplianceAudit: React.FC<HackathonComplianceAuditProps> =
         </div>
 
         {downloadSuccess && (
-          <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 p-3 rounded-lg text-xs font-semibold flex items-center space-x-2">
+          <div className="bg-emerald-50 border border-emerald-200 text-emerald-400 p-3 rounded-lg text-xs font-semibold flex items-center space-x-2">
             <CheckCircle2 className="w-4 h-4 text-emerald-600" />
             <span>{downloadSuccess}</span>
           </div>
         )}
 
-        <div className="bg-slate-50 rounded-xl p-4 border border-slate-200 text-xs text-slate-600 space-y-2">
-          <div className="font-bold text-slate-900 flex items-center space-x-1.5">
+        <div className="bg-cream rounded-xl p-4 border border-stone-200 text-xs text-stone-500 space-y-2">
+          <div className="font-bold text-stone-900 flex items-center space-x-1.5">
             <Lock className="w-3.5 h-3.5 text-amber-600" />
             <span>Role-Based Data Security Note</span>
           </div>
-          <p className="text-[11px] leading-relaxed text-slate-500">
+          <p className="text-[11px] leading-relaxed text-stone-500">
             Exported documents contain state emergency records authorized under active profile:{' '}
-            <strong className="text-slate-800">{currentUser.name} ({currentUser.roleTitle})</strong>. All data exports are appended with immutable cryptographic timestamp hashes for audit compliance.
+            <strong className="text-stone-800">{currentUser.name} ({currentUser.roleTitle})</strong>. All data exports are appended with immutable cryptographic timestamp hashes for audit compliance.
           </p>
         </div>
       </div>

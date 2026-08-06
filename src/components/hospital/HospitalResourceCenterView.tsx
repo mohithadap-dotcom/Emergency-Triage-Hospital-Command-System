@@ -84,23 +84,23 @@ export const HospitalResourceCenterView: React.FC<HospitalResourceCenterViewProp
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 font-sans">
-      <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-6">
+      <div className="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm space-y-6">
         <div className="flex items-start justify-between border-b border-slate-100 pb-4">
           <div>
             <div className="flex items-center space-x-2">
-              <span className="p-2 bg-sky-100 text-sky-700 rounded-xl">
+              <span className="p-2 bg-sky-100 text-sky-400 rounded-xl">
                 <RefreshCw className="w-5 h-5" />
               </span>
-              <h2 className="text-xl font-black text-slate-900">
+              <h2 className="text-xl font-black text-stone-900">
                 Single-Save Real-Time Resource Sync Center
               </h2>
             </div>
-            <p className="text-xs text-slate-500 mt-1 max-w-xl">
+            <p className="text-xs text-stone-500 mt-1 max-w-xl">
               Updating these figures immediately synchronizes with the State Emergency Operations Center, District DEOC, Ambulance Dispatch, and AI Routing Engines.
             </p>
           </div>
 
-          <span className="text-[10px] font-mono font-bold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full border border-emerald-300">
+          <span className="text-[10px] font-mono font-bold bg-emerald-100 text-emerald-400 px-3 py-1 rounded-full border border-emerald-300">
             State Synchronized: {hospital.lastSync}
           </span>
         </div>
@@ -114,8 +114,8 @@ export const HospitalResourceCenterView: React.FC<HospitalResourceCenterViewProp
 
         <form onSubmit={handleSaveAllResources} className="space-y-6">
           {/* Emergency Dept Status */}
-          <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
-            <label className="text-xs font-extrabold text-slate-800 uppercase tracking-wider block">
+          <div className="bg-cream p-4 rounded-xl border border-stone-200 space-y-2">
+            <label className="text-xs font-extrabold text-stone-800 uppercase tracking-wider block">
               Emergency Department Overall Operational Status
             </label>
             <div className="grid grid-cols-3 gap-3 text-xs font-bold">
@@ -124,8 +124,8 @@ export const HospitalResourceCenterView: React.FC<HospitalResourceCenterViewProp
                 onClick={() => setFormData({ ...formData, emergencyDeptStatus: 'NORMAL' })}
                 className={`p-3 rounded-xl border text-center transition-all ${
                   formData.emergencyDeptStatus === 'NORMAL'
-                    ? 'bg-emerald-600 text-white border-emerald-600 shadow-md'
-                    : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'
+                    ? 'bg-emerald-600 text-stone-900 border-emerald-600 shadow-md'
+                    : 'bg-white text-stone-600 border-stone-200 hover:bg-stone-100'
                 }`}
               >
                 NORMAL (Accepting All)
@@ -136,8 +136,8 @@ export const HospitalResourceCenterView: React.FC<HospitalResourceCenterViewProp
                 onClick={() => setFormData({ ...formData, emergencyDeptStatus: 'BUSY' })}
                 className={`p-3 rounded-xl border text-center transition-all ${
                   formData.emergencyDeptStatus === 'BUSY'
-                    ? 'bg-amber-500 text-white border-amber-500 shadow-md'
-                    : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'
+                    ? 'bg-amber-500 text-stone-900 border-amber-500 shadow-md'
+                    : 'bg-white text-stone-600 border-stone-200 hover:bg-stone-100'
                 }`}
               >
                 BUSY (High Traffic)
@@ -148,8 +148,8 @@ export const HospitalResourceCenterView: React.FC<HospitalResourceCenterViewProp
                 onClick={() => setFormData({ ...formData, emergencyDeptStatus: 'FULL' })}
                 className={`p-3 rounded-xl border text-center transition-all ${
                   formData.emergencyDeptStatus === 'FULL'
-                    ? 'bg-rose-600 text-white border-rose-600 shadow-md'
-                    : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'
+                    ? 'bg-rose-600 text-stone-900 border-rose-600 shadow-md'
+                    : 'bg-white text-stone-600 border-stone-200 hover:bg-stone-100'
                 }`}
               >
                 FULL (Divert Non-Critical)
@@ -159,113 +159,113 @@ export const HospitalResourceCenterView: React.FC<HospitalResourceCenterViewProp
 
           {/* Core Critical Beds & Vents */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-bold">
-            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1">
-              <label className="text-slate-600 uppercase text-[10px] tracking-wider block">Available ICU Beds</label>
+            <div className="bg-cream p-4 rounded-xl border border-stone-200 space-y-1">
+              <label className="text-stone-500 uppercase text-[10px] tracking-wider block">Available ICU Beds</label>
               <input
                 type="number"
                 min={0}
                 value={formData.availableIcuBeds}
                 onChange={(e) => setFormData({ ...formData, availableIcuBeds: Number(e.target.value) })}
-                className="w-full bg-white border border-slate-300 text-slate-900 text-lg font-black rounded-xl p-2.5"
+                className="w-full bg-white border border-stone-200 text-stone-900 text-lg font-black rounded-xl p-2.5"
               />
-              <span className="text-[10px] text-slate-400 font-medium">Out of {hospital.totalIcuBeds} Total Installed</span>
+              <span className="text-[10px] text-stone-500 font-medium">Out of {hospital.totalIcuBeds} Total Installed</span>
             </div>
 
-            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1">
-              <label className="text-slate-600 uppercase text-[10px] tracking-wider block">Available General Beds</label>
+            <div className="bg-cream p-4 rounded-xl border border-stone-200 space-y-1">
+              <label className="text-stone-500 uppercase text-[10px] tracking-wider block">Available General Beds</label>
               <input
                 type="number"
                 min={0}
                 value={formData.availableGeneralBeds}
                 onChange={(e) => setFormData({ ...formData, availableGeneralBeds: Number(e.target.value) })}
-                className="w-full bg-white border border-slate-300 text-slate-900 text-lg font-black rounded-xl p-2.5"
+                className="w-full bg-white border border-stone-200 text-stone-900 text-lg font-black rounded-xl p-2.5"
               />
-              <span className="text-[10px] text-slate-400 font-medium">Out of {hospital.totalBeds} Total Installed</span>
+              <span className="text-[10px] text-stone-500 font-medium">Out of {hospital.totalBeds} Total Installed</span>
             </div>
 
-            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1">
-              <label className="text-slate-600 uppercase text-[10px] tracking-wider block">Available Ventilators</label>
+            <div className="bg-cream p-4 rounded-xl border border-stone-200 space-y-1">
+              <label className="text-stone-500 uppercase text-[10px] tracking-wider block">Available Ventilators</label>
               <input
                 type="number"
                 min={0}
                 value={formData.availableVentilators}
                 onChange={(e) => setFormData({ ...formData, availableVentilators: Number(e.target.value) })}
-                className="w-full bg-white border border-slate-300 text-slate-900 text-lg font-black rounded-xl p-2.5"
+                className="w-full bg-white border border-stone-200 text-stone-900 text-lg font-black rounded-xl p-2.5"
               />
-              <span className="text-[10px] text-slate-400 font-medium">Out of {hospital.totalVentilators} Total Installed</span>
+              <span className="text-[10px] text-stone-500 font-medium">Out of {hospital.totalVentilators} Total Installed</span>
             </div>
           </div>
 
           {/* Duty Staff & OT */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-bold">
-            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1">
-              <label className="text-slate-600 uppercase text-[10px] tracking-wider block">Doctors On Duty</label>
+            <div className="bg-cream p-4 rounded-xl border border-stone-200 space-y-1">
+              <label className="text-stone-500 uppercase text-[10px] tracking-wider block">Doctors On Duty</label>
               <input
                 type="number"
                 min={0}
                 value={formData.doctorsOnDuty}
                 onChange={(e) => setFormData({ ...formData, doctorsOnDuty: Number(e.target.value) })}
-                className="w-full bg-white border border-slate-300 text-slate-900 text-lg font-black rounded-xl p-2.5"
+                className="w-full bg-white border border-stone-200 text-stone-900 text-lg font-black rounded-xl p-2.5"
               />
             </div>
 
-            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1">
-              <label className="text-slate-600 uppercase text-[10px] tracking-wider block">Nurses On Duty</label>
+            <div className="bg-cream p-4 rounded-xl border border-stone-200 space-y-1">
+              <label className="text-stone-500 uppercase text-[10px] tracking-wider block">Nurses On Duty</label>
               <input
                 type="number"
                 min={0}
                 value={formData.nursesOnDuty}
                 onChange={(e) => setFormData({ ...formData, nursesOnDuty: Number(e.target.value) })}
-                className="w-full bg-white border border-slate-300 text-slate-900 text-lg font-black rounded-xl p-2.5"
+                className="w-full bg-white border border-stone-200 text-stone-900 text-lg font-black rounded-xl p-2.5"
               />
             </div>
 
-            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1">
-              <label className="text-slate-600 uppercase text-[10px] tracking-wider block">Available Operation Theatres</label>
+            <div className="bg-cream p-4 rounded-xl border border-stone-200 space-y-1">
+              <label className="text-stone-500 uppercase text-[10px] tracking-wider block">Available Operation Theatres</label>
               <input
                 type="number"
                 min={0}
                 value={formData.operatingTheatresAvailable}
                 onChange={(e) => setFormData({ ...formData, operatingTheatresAvailable: Number(e.target.value) })}
-                className="w-full bg-white border border-slate-300 text-slate-900 text-lg font-black rounded-xl p-2.5"
+                className="w-full bg-white border border-stone-200 text-stone-900 text-lg font-black rounded-xl p-2.5"
               />
-              <span className="text-[10px] text-slate-400 font-medium">Out of {hospital.operatingTheatresTotal} Total OTs</span>
+              <span className="text-[10px] text-stone-500 font-medium">Out of {hospital.operatingTheatresTotal} Total OTs</span>
             </div>
           </div>
 
           {/* Blood & Oxygen */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-bold">
-            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1">
-              <label className="text-slate-600 uppercase text-[10px] tracking-wider block">Blood Bank Units Available</label>
+            <div className="bg-cream p-4 rounded-xl border border-stone-200 space-y-1">
+              <label className="text-stone-500 uppercase text-[10px] tracking-wider block">Blood Bank Units Available</label>
               <input
                 type="number"
                 min={0}
                 value={formData.bloodUnitsAvailable}
                 onChange={(e) => setFormData({ ...formData, bloodUnitsAvailable: Number(e.target.value) })}
-                className="w-full bg-white border border-slate-300 text-slate-900 text-lg font-black rounded-xl p-2.5"
+                className="w-full bg-white border border-stone-200 text-stone-900 text-lg font-black rounded-xl p-2.5"
               />
             </div>
 
-            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1">
-              <label className="text-slate-600 uppercase text-[10px] tracking-wider block">Oxygen Tank Level (%)</label>
+            <div className="bg-cream p-4 rounded-xl border border-stone-200 space-y-1">
+              <label className="text-stone-500 uppercase text-[10px] tracking-wider block">Oxygen Tank Level (%)</label>
               <input
                 type="number"
                 min={0}
                 max={100}
                 value={formData.oxygenCapacityPercent}
                 onChange={(e) => setFormData({ ...formData, oxygenCapacityPercent: Number(e.target.value) })}
-                className="w-full bg-white border border-slate-300 text-slate-900 text-lg font-black rounded-xl p-2.5"
+                className="w-full bg-white border border-stone-200 text-stone-900 text-lg font-black rounded-xl p-2.5"
               />
             </div>
 
-            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1">
-              <label className="text-slate-600 uppercase text-[10px] tracking-wider block">Oxygen Cylinders</label>
+            <div className="bg-cream p-4 rounded-xl border border-stone-200 space-y-1">
+              <label className="text-stone-500 uppercase text-[10px] tracking-wider block">Oxygen Cylinders</label>
               <input
                 type="number"
                 min={0}
                 value={formData.oxygenCylindersAvailable}
                 onChange={(e) => setFormData({ ...formData, oxygenCylindersAvailable: Number(e.target.value) })}
-                className="w-full bg-white border border-slate-300 text-slate-900 text-lg font-black rounded-xl p-2.5"
+                className="w-full bg-white border border-stone-200 text-stone-900 text-lg font-black rounded-xl p-2.5"
               />
             </div>
           </div>
@@ -274,7 +274,7 @@ export const HospitalResourceCenterView: React.FC<HospitalResourceCenterViewProp
           <button
             type="submit"
             disabled={saving}
-            className="w-full py-4 bg-sky-600 hover:bg-sky-500 text-white font-black text-sm rounded-xl shadow-lg transition-all flex items-center justify-center space-x-2 border border-sky-400"
+            className="w-full py-4 bg-sky-600 hover:bg-sky-500 text-stone-900 font-black text-sm rounded-xl shadow-lg transition-all flex items-center justify-center space-x-2 border border-sky-400"
           >
             <Save className="w-5 h-5" />
             <span>{saving ? 'Synchronizing State Network...' : 'SAVE & BROADCAST RESOURCE UPDATE'}</span>

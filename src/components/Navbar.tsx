@@ -51,28 +51,27 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const navItems: { id: NavTab; label: string; icon: React.FC<{ className?: string }>; badge?: number | string }[] = [
     { id: 'home', label: 'Home', icon: Home },
-    { id: 'ops', label: 'Emergency Operations', icon: ShieldAlert },
-    { id: 'incidents', label: 'Live Incidents', icon: Flame, badge: criticalIncidentsCount },
-    { id: 'hospitals', label: 'Hospital Network', icon: Building2 },
-    { id: 'resources', label: 'Resource Command', icon: Box },
-    { id: 'fleet', label: 'Ambulance Fleet', icon: Truck },
+    { id: 'ops', label: 'Operations', icon: ShieldAlert },
+    { id: 'incidents', label: 'Incidents', icon: Flame, badge: criticalIncidentsCount },
+    { id: 'hospitals', label: 'Hospitals', icon: Building2 },
+    { id: 'resources', label: 'Resources', icon: Box },
+    { id: 'fleet', label: 'Fleet', icon: Truck },
     { id: 'ai', label: 'AI Intelligence', icon: BrainCircuit },
-    { id: 'realtime', label: 'Real-Time & IoT', icon: Radio },
-    { id: 'gis', label: 'GIS Operations', icon: MapPin },
-    { id: 'disaster', label: 'Disaster Command', icon: Flame, badge: disasterModeActive ? 'ACTIVE' : undefined },
+    { id: 'realtime', label: 'Real-Time', icon: Radio },
+    { id: 'gis', label: 'GIS', icon: MapPin },
+    { id: 'disaster', label: 'Disaster', icon: Flame, badge: disasterModeActive ? 'ACTIVE' : undefined },
     { id: 'analytics', label: 'Analytics', icon: BarChart3 },
-    { id: 'audit', label: 'Hackathon Audit & Demo', icon: Award, badge: '100%' },
-    { id: 'admin', label: 'Administration', icon: Users },
-    { id: 'observability', label: 'Observability', icon: Activity },
+    { id: 'audit', label: 'Audit', icon: Award },
+    { id: 'admin', label: 'Admin', icon: Users },
+    { id: 'observability', label: 'System', icon: Activity },
     { id: 'settings', label: 'Settings', icon: Settings },
   ];
 
-
   return (
-    <nav className="bg-slate-800 text-slate-100 border-b border-slate-700 shadow-sm sticky top-[73px] z-40">
-      <div className="px-4 flex flex-wrap items-center justify-between gap-2 overflow-x-auto no-scrollbar">
+    <nav className="bg-cream border-b border-stone-200 sticky top-[89px] z-40">
+      <div className="px-6 md:px-8 flex items-center justify-between overflow-x-auto">
         {/* Nav Tabs */}
-        <div className="flex items-center space-x-1 py-1">
+        <div className="flex items-center gap-0.5 py-0">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
@@ -80,16 +79,16 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 key={item.id}
                 onClick={() => onTabChange(item.id)}
-                className={`flex items-center space-x-1.5 px-3 py-2 text-xs font-semibold rounded-md transition-all whitespace-nowrap ${
+                className={`relative flex items-center gap-1.5 px-3 py-3 text-xs font-medium tracking-wide transition-colors duration-200 whitespace-nowrap border-b-2 ${
                   isActive
-                    ? 'bg-sky-600 text-white shadow font-bold'
-                    : 'text-slate-300 hover:bg-slate-700 hover:text-white'
+                    ? 'text-amber-400 border-amber-500'
+                    : 'text-stone-500 border-transparent hover:text-stone-600'
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-slate-400'}`} />
+                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-amber-500/80' : 'text-stone-500'}`} />
                 <span>{item.label}</span>
                 {item.badge !== undefined && Number(item.badge) > 0 && (
-                  <span className="ml-1 bg-rose-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full animate-pulse">
+                  <span className="text-[10px] font-mono text-rose-400 ml-0.5">
                     {item.badge}
                   </span>
                 )}
@@ -98,19 +97,19 @@ export const Navbar: React.FC<NavbarProps> = ({
           })}
         </div>
 
-        {/* Disaster Mode Override Quick Switch */}
-        <div className="py-1 flex items-center">
+        {/* Disaster Mode Toggle — restrained but clear */}
+        <div className="py-2 flex items-center flex-shrink-0">
           <button
             onClick={onToggleDisasterMode}
-            className={`flex items-center space-x-2 px-3 py-1.5 text-xs font-black rounded-md border transition-all shadow-sm ${
+            className={`flex items-center gap-2 px-4 py-1.5 text-xs font-medium rounded-md border transition-colors duration-200 ${
               disasterModeActive
-                ? 'bg-rose-600 text-white border-rose-400 animate-bounce'
-                : 'bg-amber-950/80 text-amber-300 border-amber-600 hover:bg-amber-900'
+                ? 'bg-rose-950/40 text-rose-400 border-rose-200'
+                : 'bg-white text-stone-500 border-stone-200 hover:text-stone-600 hover:border-stone-300'
             }`}
           >
-            <AlertTriangle className="w-4 h-4 text-amber-400" />
+            <AlertTriangle className={`w-3.5 h-3.5 ${disasterModeActive ? 'text-rose-500' : 'text-stone-500'}`} />
             <span>
-              {disasterModeActive ? 'DISASTER MODE: ACTIVE (RED ALERT)' : 'DISASTER MODE: STANDBY'}
+              {disasterModeActive ? 'Disaster Mode Active' : 'Disaster Mode'}
             </span>
           </button>
         </div>

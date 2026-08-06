@@ -135,25 +135,25 @@ export const DriverWorkspaceView: React.FC<DriverWorkspaceProps> = ({
   const currentStepNum = activeMission ? getStageStepNumber(activeMission.status) : 1;
 
   return (
-    <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 space-y-4">
+    <div className="bg-white rounded-lg border border-stone-200 shadow-sm p-4 space-y-4">
       {/* Title & Unit Switcher */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-stone-200 pb-3">
         <div>
-          <h2 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
-            <Navigation className="w-5 h-5 text-sky-700" />
+          <h2 className="text-lg font-extrabold text-stone-900 flex items-center gap-2">
+            <Navigation className="w-5 h-5 text-sky-400" />
             108 Mobile Emergency Driver Workspace & Live Navigation
           </h2>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-stone-500">
             Field tablet console for ambulance drivers & paramedics. Manage mission lifecycle, turn-by-turn routing, & green corridors.
           </p>
         </div>
 
         <div className="flex items-center space-x-2">
-          <span className="text-xs font-bold text-slate-700">Simulate Unit:</span>
+          <span className="text-xs font-bold text-stone-600">Simulate Unit:</span>
           <select
             value={selectedAmbulanceId}
             onChange={(e) => setSelectedAmbulanceId(e.target.value)}
-            className="px-2.5 py-1.5 text-xs bg-slate-50 border border-slate-300 rounded-md font-mono font-bold text-slate-900"
+            className="px-2.5 py-1.5 text-xs bg-cream border border-stone-200 rounded-md font-mono font-bold text-stone-900"
           >
             {ambulances.map((a) => (
               <option key={a.id} value={a.id}>
@@ -169,11 +169,11 @@ export const DriverWorkspaceView: React.FC<DriverWorkspaceProps> = ({
           {/* Left Column: Mission Control & Stage Progress */}
           <div className="lg:col-span-7 space-y-4">
             {/* Active Mission Banner */}
-            <div className="bg-slate-900 text-white p-4 rounded-lg space-y-3">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+            <div className="bg-white text-stone-900 p-4 rounded-lg space-y-3">
+              <div className="flex items-center justify-between border-b border-stone-200 pb-2">
                 <div className="flex items-center space-x-2">
                   <span className="font-mono font-black text-amber-400 text-sm">{activeMission.missionCode}</span>
-                  <span className="bg-rose-600 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase">
+                  <span className="bg-rose-600 text-stone-900 text-[10px] font-black px-2 py-0.5 rounded uppercase">
                     {activeMission.priority} PRIORITY
                   </span>
                 </div>
@@ -186,56 +186,56 @@ export const DriverWorkspaceView: React.FC<DriverWorkspaceProps> = ({
               </div>
 
               <div className="space-y-1">
-                <span className="text-[10px] text-slate-400 font-mono uppercase">INCIDENT CALLOUT</span>
-                <h3 className="text-base font-extrabold text-white">{activeMission.incidentTitle}</h3>
-                <p className="text-xs text-slate-300 flex items-center gap-1">
+                <span className="text-[10px] text-stone-500 font-mono uppercase">INCIDENT CALLOUT</span>
+                <h3 className="text-base font-extrabold text-stone-900">{activeMission.incidentTitle}</h3>
+                <p className="text-xs text-stone-600 flex items-center gap-1">
                   <MapPin className="w-3.5 h-3.5 text-sky-400 shrink-0" /> {activeMission.incidentLocation}
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-2 text-xs pt-1 border-t border-slate-800 text-slate-300">
+              <div className="grid grid-cols-2 gap-2 text-xs pt-1 border-t border-stone-200 text-stone-600">
                 <div>
-                  <span className="text-[10px] text-slate-400 block">Patient Vitals/Condition:</span>
-                  <strong className="text-amber-300">{activeMission.patientCondition}</strong>
+                  <span className="text-[10px] text-stone-500 block">Patient Vitals/Condition:</span>
+                  <strong className="text-amber-100">{activeMission.patientCondition}</strong>
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-400 block">Receiving Hospital:</span>
+                  <span className="text-[10px] text-stone-500 block">Receiving Hospital:</span>
                   <strong className="text-sky-300 truncate block">{activeMission.hospitalName}</strong>
                 </div>
               </div>
             </div>
 
             {/* Mission Stage Stepper (6-Step Lifecycle) */}
-            <div className="bg-slate-50 p-4 rounded-lg border border-slate-300 space-y-3">
-              <h4 className="font-extrabold text-slate-900 text-xs uppercase tracking-wider flex items-center gap-1.5">
-                <Activity className="w-4 h-4 text-sky-700" /> Mission Stage Lifecycle Tracker
+            <div className="bg-cream p-4 rounded-lg border border-stone-200 space-y-3">
+              <h4 className="font-extrabold text-stone-900 text-xs uppercase tracking-wider flex items-center gap-1.5">
+                <Activity className="w-4 h-4 text-sky-400" /> Mission Stage Lifecycle Tracker
               </h4>
 
               <div className="grid grid-cols-6 gap-1.5 text-[10px] font-bold text-center">
-                <div className={`p-1.5 rounded border ${currentStepNum >= 1 ? 'bg-emerald-600 text-white border-emerald-700' : 'bg-white text-slate-400 border-slate-200'}`}>
+                <div className={`p-1.5 rounded border ${currentStepNum >= 1 ? 'bg-emerald-600 text-stone-900 border-emerald-700' : 'bg-white text-stone-500 border-stone-200'}`}>
                   1. Dispatched
                 </div>
-                <div className={`p-1.5 rounded border ${currentStepNum >= 2 ? 'bg-emerald-600 text-white border-emerald-700' : 'bg-white text-slate-400 border-slate-200'}`}>
+                <div className={`p-1.5 rounded border ${currentStepNum >= 2 ? 'bg-emerald-600 text-stone-900 border-emerald-700' : 'bg-white text-stone-500 border-stone-200'}`}>
                   2. En-Route
                 </div>
-                <div className={`p-1.5 rounded border ${currentStepNum >= 3 ? 'bg-emerald-600 text-white border-emerald-700' : 'bg-white text-slate-400 border-slate-200'}`}>
+                <div className={`p-1.5 rounded border ${currentStepNum >= 3 ? 'bg-emerald-600 text-stone-900 border-emerald-700' : 'bg-white text-stone-500 border-stone-200'}`}>
                   3. Reached
                 </div>
-                <div className={`p-1.5 rounded border ${currentStepNum >= 4 ? 'bg-emerald-600 text-white border-emerald-700' : 'bg-white text-slate-400 border-slate-200'}`}>
+                <div className={`p-1.5 rounded border ${currentStepNum >= 4 ? 'bg-emerald-600 text-stone-900 border-emerald-700' : 'bg-white text-stone-500 border-stone-200'}`}>
                   4. Loaded
                 </div>
-                <div className={`p-1.5 rounded border ${currentStepNum >= 5 ? 'bg-emerald-600 text-white border-emerald-700' : 'bg-white text-slate-400 border-slate-200'}`}>
+                <div className={`p-1.5 rounded border ${currentStepNum >= 5 ? 'bg-emerald-600 text-stone-900 border-emerald-700' : 'bg-white text-stone-500 border-stone-200'}`}>
                   5. To Hospital
                 </div>
-                <div className={`p-1.5 rounded border ${currentStepNum >= 6 ? 'bg-emerald-600 text-white border-emerald-700' : 'bg-white text-slate-400 border-slate-200'}`}>
+                <div className={`p-1.5 rounded border ${currentStepNum >= 6 ? 'bg-emerald-600 text-stone-900 border-emerald-700' : 'bg-white text-stone-500 border-stone-200'}`}>
                   6. Arrived
                 </div>
               </div>
 
               {/* Stage Advance Action Controls */}
-              <div className="bg-white p-3.5 rounded border border-slate-200 space-y-3 text-xs">
+              <div className="bg-white p-3.5 rounded border border-stone-200 space-y-3 text-xs">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-slate-800">Current Stage:</span>
+                  <span className="font-bold text-stone-800">Current Stage:</span>
                   <span className="font-mono font-black text-sky-900 bg-sky-100 px-2 py-0.5 rounded border border-sky-300 uppercase">
                     {activeMission.status.replace(/_/g, ' ')}
                   </span>
@@ -246,7 +246,7 @@ export const DriverWorkspaceView: React.FC<DriverWorkspaceProps> = ({
                     <button
                       onClick={() => handleAdvanceStage('EN_ROUTE_PATIENT')}
                       disabled={updatingStage}
-                      className="w-full bg-sky-600 hover:bg-sky-500 text-white font-black py-2.5 rounded shadow text-xs uppercase"
+                      className="w-full bg-sky-600 hover:bg-sky-500 text-stone-900 font-black py-2.5 rounded shadow text-xs uppercase"
                     >
                       Start En-Route to Patient Site
                     </button>
@@ -266,7 +266,7 @@ export const DriverWorkspaceView: React.FC<DriverWorkspaceProps> = ({
                     <button
                       onClick={() => handleAdvanceStage('PATIENT_LOADED')}
                       disabled={updatingStage}
-                      className="w-full bg-purple-600 hover:bg-purple-500 text-white font-black py-2.5 rounded shadow text-xs uppercase"
+                      className="w-full bg-purple-600 hover:bg-purple-500 text-stone-900 font-black py-2.5 rounded shadow text-xs uppercase"
                     >
                       Patient Secured & Loaded in Ambulance
                     </button>
@@ -276,7 +276,7 @@ export const DriverWorkspaceView: React.FC<DriverWorkspaceProps> = ({
                     <button
                       onClick={() => handleAdvanceStage('EN_ROUTE_HOSPITAL')}
                       disabled={updatingStage}
-                      className="w-full bg-sky-600 hover:bg-sky-500 text-white font-black py-2.5 rounded shadow text-xs uppercase"
+                      className="w-full bg-sky-600 hover:bg-sky-500 text-stone-900 font-black py-2.5 rounded shadow text-xs uppercase"
                     >
                       Start En-Route to Destination Hospital
                     </button>
@@ -296,7 +296,7 @@ export const DriverWorkspaceView: React.FC<DriverWorkspaceProps> = ({
                     <button
                       onClick={() => handleAdvanceStage('COMPLETED')}
                       disabled={updatingStage}
-                      className="w-full bg-slate-900 hover:bg-slate-800 text-white font-black py-2.5 rounded shadow text-xs uppercase"
+                      className="w-full bg-white hover:bg-stone-100 text-stone-900 font-black py-2.5 rounded shadow text-xs uppercase"
                     >
                       Close Mission & Set Unit Available
                     </button>
@@ -306,16 +306,16 @@ export const DriverWorkspaceView: React.FC<DriverWorkspaceProps> = ({
             </div>
 
             {/* Stage Timeline Log */}
-            <div className="bg-white p-3.5 rounded-lg border border-slate-200 text-xs space-y-2">
-              <h4 className="font-bold text-slate-900 font-mono text-xs uppercase">Mission Execution Timeline</h4>
+            <div className="bg-white p-3.5 rounded-lg border border-stone-200 text-xs space-y-2">
+              <h4 className="font-bold text-stone-900 font-mono text-xs uppercase">Mission Execution Timeline</h4>
               <div className="space-y-2 text-[11px]">
                 {activeMission.timeline?.map((evt, idx) => (
                   <div key={idx} className="flex items-start justify-between border-b border-slate-100 pb-1.5">
                     <div>
-                      <strong className="text-slate-900 block">{evt.title}</strong>
-                      <span className="text-slate-500">{evt.note} • By: {evt.actor}</span>
+                      <strong className="text-stone-900 block">{evt.title}</strong>
+                      <span className="text-stone-500">{evt.note} • By: {evt.actor}</span>
                     </div>
-                    <span className="font-mono text-slate-400 text-[10px]">{evt.timestamp}</span>
+                    <span className="font-mono text-stone-500 text-[10px]">{evt.timestamp}</span>
                   </div>
                 ))}
               </div>
@@ -324,8 +324,8 @@ export const DriverWorkspaceView: React.FC<DriverWorkspaceProps> = ({
 
           {/* Right Column: Turn-by-Turn Routing & ETA Display */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="bg-slate-900 text-white p-4 rounded-lg border border-slate-800 space-y-3 text-xs">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+            <div className="bg-white text-stone-900 p-4 rounded-lg border border-stone-200 space-y-3 text-xs">
+              <div className="flex items-center justify-between border-b border-stone-200 pb-2">
                 <span className="font-bold text-sky-400 font-mono flex items-center gap-1.5">
                   <Navigation className="w-4 h-4 text-sky-400" /> GIS Navigation & ETA
                 </span>
@@ -334,31 +334,31 @@ export const DriverWorkspaceView: React.FC<DriverWorkspaceProps> = ({
                 </span>
               </div>
 
-              <div className="grid grid-cols-2 gap-2 text-slate-300 font-mono text-xs">
-                <div className="bg-slate-950 p-2.5 rounded border border-slate-800">
-                  <span className="text-[10px] text-slate-400 block uppercase">Total Distance</span>
-                  <span className="text-sm font-black text-white">{routeDetails?.distanceKm || activeMission.totalDistanceKm} KM</span>
+              <div className="grid grid-cols-2 gap-2 text-stone-600 font-mono text-xs">
+                <div className="bg-cream p-2.5 rounded border border-stone-200">
+                  <span className="text-[10px] text-stone-500 block uppercase">Total Distance</span>
+                  <span className="text-sm font-black text-stone-900">{routeDetails?.distanceKm || activeMission.totalDistanceKm} KM</span>
                 </div>
-                <div className="bg-slate-950 p-2.5 rounded border border-slate-800">
-                  <span className="text-[10px] text-slate-400 block uppercase">Current Speed</span>
+                <div className="bg-cream p-2.5 rounded border border-stone-200">
+                  <span className="text-[10px] text-stone-500 block uppercase">Current Speed</span>
                   <span className="text-sm font-black text-emerald-400">{activeMission.currentSpeedKmH || 65} KM/H</span>
                 </div>
               </div>
 
               {/* Turn-by-Turn Instructions List */}
               <div className="space-y-2 pt-1">
-                <span className="text-[10px] font-mono text-slate-400 uppercase font-bold block">
+                <span className="text-[10px] font-mono text-stone-500 uppercase font-bold block">
                   Turn-By-Turn Route Guidance:
                 </span>
                 <div className="space-y-2 max-h-[300px] overflow-y-auto pr-1">
                   {routeDetails?.turnByTurnInstructions?.map((step, i) => (
-                    <div key={i} className="bg-slate-950 p-2.5 rounded border border-slate-800 space-y-1">
+                    <div key={i} className="bg-cream p-2.5 rounded border border-stone-200 space-y-1">
                       <div className="flex items-start justify-between">
-                        <span className="font-bold text-slate-200 text-xs flex items-center gap-1">
+                        <span className="font-bold text-stone-800 text-xs flex items-center gap-1">
                           <ArrowRight className="w-3.5 h-3.5 text-sky-400 shrink-0" /> {step.instruction}
                         </span>
                       </div>
-                      <div className="flex items-center justify-between text-[10px] font-mono text-slate-400">
+                      <div className="flex items-center justify-between text-[10px] font-mono text-stone-500">
                         <span>{step.distanceKm} km</span>
                         <span>Speed Limit: {step.speedLimitKmH} km/h</span>
                       </div>
@@ -370,7 +370,7 @@ export const DriverWorkspaceView: React.FC<DriverWorkspaceProps> = ({
           </div>
         </div>
       ) : (
-        <div className="p-8 text-center text-slate-500 bg-slate-50 rounded border">
+        <div className="p-8 text-center text-stone-500 bg-cream rounded border">
           No active mission assigned to Unit {currentAmbulance?.registrationNo}. Unit status is AVAILABLE.
         </div>
       )}

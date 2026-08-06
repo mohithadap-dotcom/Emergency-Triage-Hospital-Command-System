@@ -136,7 +136,7 @@ export const HospitalLoginView: React.FC<HospitalLoginViewProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between p-4 relative overflow-hidden font-sans">
+    <div className="min-h-screen bg-cream text-stone-900 flex flex-col justify-between p-4 relative overflow-hidden font-sans">
       {/* Background Lighting Effects */}
       <div className="absolute -top-40 -left-40 w-96 h-96 bg-sky-600/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-emerald-600/15 rounded-full blur-3xl pointer-events-none" />
@@ -148,13 +148,13 @@ export const HospitalLoginView: React.FC<HospitalLoginViewProps> = ({
             <Building2 className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-lg font-black text-white tracking-tight flex items-center gap-2">
+            <h1 className="text-lg font-black text-stone-900 tracking-tight flex items-center gap-2">
               <span>RAKSHAK AI</span>
               <span className="text-[10px] font-mono font-bold bg-sky-500/20 text-sky-400 border border-sky-500/30 px-2 py-0.5 rounded-full uppercase">
                 Hospital Portal
               </span>
             </h1>
-            <p className="text-[11px] text-slate-400 font-medium">
+            <p className="text-[11px] text-stone-500 font-medium">
               Independent Healthcare Resource Command System
             </p>
           </div>
@@ -163,7 +163,7 @@ export const HospitalLoginView: React.FC<HospitalLoginViewProps> = ({
         {onSwitchPortal && (
           <button
             onClick={() => onSwitchPortal('GOVERNMENT')}
-            className="px-3.5 py-1.5 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 text-xs font-bold rounded-xl transition-all flex items-center space-x-2"
+            className="px-3.5 py-1.5 bg-white hover:bg-stone-100 text-stone-600 hover:text-stone-900 border border-stone-300 text-xs font-bold rounded-xl transition-all flex items-center space-x-2"
           >
             <Activity className="w-3.5 h-3.5 text-amber-400" />
             <span>Return to Government EOC</span>
@@ -176,15 +176,15 @@ export const HospitalLoginView: React.FC<HospitalLoginViewProps> = ({
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-xl space-y-6"
+          className="bg-white/90 border border-stone-200 rounded-2xl p-6 md:p-8 shadow-lg shadow-stone-300/50 backdrop-blur-xl space-y-6"
         >
           {/* Header */}
           <div className="text-center space-y-2">
             <div className="inline-flex items-center justify-center p-3 bg-sky-500/10 text-sky-400 rounded-2xl border border-sky-500/20 mb-1">
               <ShieldCheck className="w-8 h-8" />
             </div>
-            <h2 className="text-xl font-black text-white">Hospital Operational Authentication</h2>
-            <p className="text-xs text-slate-400 max-w-xs mx-auto">
+            <h2 className="text-xl font-black text-stone-900">Hospital Operational Authentication</h2>
+            <p className="text-xs text-stone-500 max-w-xs mx-auto">
               Secure single sign-on for hospital administrators, ER coordinators, bed managers, and biomedical staff.
             </p>
           </div>
@@ -200,7 +200,7 @@ export const HospitalLoginView: React.FC<HospitalLoginViewProps> = ({
             <form onSubmit={handleVerifyCredentials} className="space-y-4 text-xs font-semibold">
               {/* Pilot Hospital Selection */}
               <div>
-                <label className="text-slate-300 block mb-1 font-bold uppercase tracking-wider text-[10px]">
+                <label className="text-stone-600 block mb-1 font-bold uppercase tracking-wider text-[10px]">
                   Select Pilot Medical Center
                 </label>
                 <div className="relative">
@@ -214,7 +214,7 @@ export const HospitalLoginView: React.FC<HospitalLoginViewProps> = ({
                         setEmail(`emergency@${hosp.name.toLowerCase().replace(/[^a-z]/g, '')}.gov.in`);
                       }
                     }}
-                    className="w-full bg-slate-950 border border-slate-700 text-white rounded-xl px-3.5 py-2.5 font-bold text-xs focus:outline-none focus:border-sky-500 transition-colors"
+                    className="w-full bg-cream border border-stone-300 text-stone-900 rounded-xl px-3.5 py-2.5 font-bold text-xs focus:outline-none focus:border-sky-500 transition-colors"
                   >
                     <optgroup label="Nagpur District Pilot Hospitals">
                       {hospitals.filter((h) => h.districtName === 'Nagpur').map((h) => (
@@ -251,28 +251,28 @@ export const HospitalLoginView: React.FC<HospitalLoginViewProps> = ({
               {/* Hospital Code & Role */}
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="text-slate-300 block mb-1 font-bold uppercase tracking-wider text-[10px]">
+                  <label className="text-stone-600 block mb-1 font-bold uppercase tracking-wider text-[10px]">
                     Hospital Code
                   </label>
                   <div className="relative">
-                    <Key className="w-3.5 h-3.5 text-slate-500 absolute left-3 top-3" />
+                    <Key className="w-3.5 h-3.5 text-stone-500 absolute left-3 top-3" />
                     <input
                       type="text"
                       value={hospitalCode}
                       onChange={(e) => setHospitalCode(e.target.value)}
-                      className="w-full bg-slate-950 border border-slate-700 text-white rounded-xl pl-9 pr-3 py-2 text-xs font-mono font-bold focus:outline-none focus:border-sky-500"
+                      className="w-full bg-cream border border-stone-300 text-stone-900 rounded-xl pl-9 pr-3 py-2 text-xs font-mono font-bold focus:outline-none focus:border-sky-500"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-slate-300 block mb-1 font-bold uppercase tracking-wider text-[10px]">
+                  <label className="text-stone-600 block mb-1 font-bold uppercase tracking-wider text-[10px]">
                     Assigned Admin Role
                   </label>
                   <select
                     value={selectedRole}
                     onChange={(e) => setSelectedRole(e.target.value as HospitalAdminRole)}
-                    className="w-full bg-slate-950 border border-slate-700 text-amber-400 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-sky-500"
+                    className="w-full bg-cream border border-stone-300 text-amber-400 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-sky-500"
                   >
                     <option value="HOSPITAL_ADMINISTRATOR">Hospital Administrator</option>
                     <option value="EMERGENCY_COORDINATOR">ER Coordinator</option>
@@ -287,31 +287,31 @@ export const HospitalLoginView: React.FC<HospitalLoginViewProps> = ({
 
               {/* Email & Password */}
               <div>
-                <label className="text-slate-300 block mb-1 font-bold uppercase tracking-wider text-[10px]">
+                <label className="text-stone-600 block mb-1 font-bold uppercase tracking-wider text-[10px]">
                   Institutional Email
                 </label>
                 <div className="relative">
-                  <Mail className="w-3.5 h-3.5 text-slate-500 absolute left-3 top-3" />
+                  <Mail className="w-3.5 h-3.5 text-stone-500 absolute left-3 top-3" />
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-700 text-white rounded-xl pl-9 pr-3 py-2 text-xs font-semibold focus:outline-none focus:border-sky-500"
+                    className="w-full bg-cream border border-stone-300 text-stone-900 rounded-xl pl-9 pr-3 py-2 text-xs font-semibold focus:outline-none focus:border-sky-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="text-slate-300 block mb-1 font-bold uppercase tracking-wider text-[10px]">
+                <label className="text-stone-600 block mb-1 font-bold uppercase tracking-wider text-[10px]">
                   Password
                 </label>
                 <div className="relative">
-                  <Lock className="w-3.5 h-3.5 text-slate-500 absolute left-3 top-3" />
+                  <Lock className="w-3.5 h-3.5 text-stone-500 absolute left-3 top-3" />
                   <input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-700 text-white rounded-xl pl-9 pr-3 py-2 text-xs font-semibold focus:outline-none focus:border-sky-500"
+                    className="w-full bg-cream border border-stone-300 text-stone-900 rounded-xl pl-9 pr-3 py-2 text-xs font-semibold focus:outline-none focus:border-sky-500"
                   />
                 </div>
               </div>
@@ -319,7 +319,7 @@ export const HospitalLoginView: React.FC<HospitalLoginViewProps> = ({
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 bg-sky-600 hover:bg-sky-500 text-white font-extrabold text-xs rounded-xl shadow-lg transition-all flex items-center justify-center space-x-2 border border-sky-400 mt-2"
+                className="w-full py-3 bg-sky-600 hover:bg-sky-500 text-stone-900 font-extrabold text-xs rounded-xl shadow-lg transition-all flex items-center justify-center space-x-2 border border-sky-400 mt-2"
               >
                 <span>{loading ? 'Authenticating...' : 'Proceed to Security Verification'}</span>
                 <ArrowRight className="w-4 h-4" />
@@ -332,13 +332,13 @@ export const HospitalLoginView: React.FC<HospitalLoginViewProps> = ({
                 <span className="text-[10px] font-bold text-sky-400 uppercase tracking-widest block">
                   MFA Token Step 2
                 </span>
-                <p className="text-xs text-slate-300">
-                  Enter the 6-digit Security Token generated by your hospital security key hardware or authenticator app for <strong className="text-white">{email}</strong>.
+                <p className="text-xs text-stone-600">
+                  Enter the 6-digit Security Token generated by your hospital security key hardware or authenticator app for <strong className="text-stone-900">{email}</strong>.
                 </p>
               </div>
 
               <div>
-                <label className="text-slate-300 block mb-1 font-bold uppercase tracking-wider text-[10px]">
+                <label className="text-stone-600 block mb-1 font-bold uppercase tracking-wider text-[10px]">
                   6-Digit MFA Security Code
                 </label>
                 <input
@@ -347,9 +347,9 @@ export const HospitalLoginView: React.FC<HospitalLoginViewProps> = ({
                   placeholder="884920"
                   value={mfaCode}
                   onChange={(e) => setMfaCode(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 text-center text-sky-400 text-xl font-mono font-extrabold tracking-widest rounded-xl py-3 focus:outline-none focus:border-sky-500"
+                  className="w-full bg-cream border border-stone-300 text-center text-sky-400 text-xl font-mono font-extrabold tracking-widest rounded-xl py-3 focus:outline-none focus:border-sky-500"
                 />
-                <span className="text-[10px] text-slate-500 mt-1 block text-center">
+                <span className="text-[10px] text-stone-500 mt-1 block text-center">
                   Demo mode: Enter any 6 digits (or click below to auto-verify)
                 </span>
               </div>
@@ -358,14 +358,14 @@ export const HospitalLoginView: React.FC<HospitalLoginViewProps> = ({
                 <button
                   type="button"
                   onClick={() => setStep('CREDENTIALS')}
-                  className="w-1/3 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs rounded-xl transition-all"
+                  className="w-1/3 py-2.5 bg-stone-100 hover:bg-slate-700 text-stone-600 font-bold text-xs rounded-xl transition-all"
                 >
                   Back
                 </button>
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-2/3 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs rounded-xl shadow-lg transition-all flex items-center justify-center space-x-2 border border-emerald-400"
+                  className="w-2/3 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-stone-900 font-extrabold text-xs rounded-xl shadow-lg transition-all flex items-center justify-center space-x-2 border border-emerald-400"
                 >
                   <span>{loading ? 'Verifying Session...' : 'Authenticate & Open Dashboard'}</span>
                   <CheckCircle2 className="w-4 h-4" />
@@ -375,8 +375,8 @@ export const HospitalLoginView: React.FC<HospitalLoginViewProps> = ({
           )}
 
           {/* Institutional Badge */}
-          <div className="pt-4 border-t border-slate-800 text-center">
-            <p className="text-[10px] text-slate-500">
+          <div className="pt-4 border-t border-stone-200 text-center">
+            <p className="text-[10px] text-stone-500">
               Authorized personnel only. All access, bed reservations, and resource updates are cryptographically audited and logged in real-time.
             </p>
           </div>
@@ -384,7 +384,7 @@ export const HospitalLoginView: React.FC<HospitalLoginViewProps> = ({
       </div>
 
       {/* Footer */}
-      <div className="max-w-7xl w-full mx-auto text-center py-3 text-[11px] text-slate-500 font-mono z-10">
+      <div className="max-w-7xl w-full mx-auto text-center py-3 text-[11px] text-stone-500 font-mono z-10">
         Government of Maharashtra • Public Health Department • Rakshak AI Multi-Portal Platform v1.0
       </div>
     </div>

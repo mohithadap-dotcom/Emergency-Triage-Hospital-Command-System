@@ -264,21 +264,21 @@ export const DisasterCommandPortal: React.FC<DisasterCommandPortalProps> = ({
   return (
     <div className="space-y-5 pb-12">
       {/* 1. Top Portal Command Banner */}
-      <div className="bg-slate-900 border-b-2 border-rose-600 rounded-xl p-4 text-white shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-white border-b-2 border-rose-600 rounded-xl p-4 text-stone-900 shadow-lg shadow-stone-300/40 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center space-x-3">
           <div className="bg-rose-600 p-3 rounded-lg shadow-lg flex items-center justify-center animate-pulse">
-            <Flame className="w-7 h-7 text-white" />
+            <Flame className="w-7 h-7 text-stone-900" />
           </div>
           <div>
             <div className="flex items-center space-x-2">
-              <h1 className="text-xl md:text-2xl font-black tracking-tight text-white flex items-center gap-2">
+              <h1 className="text-xl md:text-2xl font-black tracking-tight text-stone-900 flex items-center gap-2">
                 NATIONAL DISASTER RESPONSE
-                <span className="text-xs bg-rose-600 text-white font-black px-2.5 py-0.5 rounded uppercase tracking-wider shadow">
+                <span className="text-xs bg-rose-600 text-stone-900 font-black px-2.5 py-0.5 rounded uppercase tracking-wider shadow">
                   UNIFIED COMMAND
                 </span>
               </h1>
             </div>
-            <p className="text-xs text-slate-300 font-medium">
+            <p className="text-xs text-stone-600 font-medium">
               Statewide Incident Command System (ICS), Mass Casualty Triage & Multi-Hospital Surge Orchestration
             </p>
           </div>
@@ -303,14 +303,14 @@ export const DisasterCommandPortal: React.FC<DisasterCommandPortalProps> = ({
             <Zap className="w-4 h-4 fill-slate-950" />
             <span>{demoActiveText}</span>
           </div>
-          <span className="text-[10px] font-mono uppercase bg-slate-950 text-amber-400 px-2 py-0.5 rounded">
+          <span className="text-[10px] font-mono uppercase bg-cream text-amber-400 px-2 py-0.5 rounded">
             LEVEL-3 SIMULATION ACTIVE
           </span>
         </div>
       )}
 
       {/* 2. ICS Role Switcher Strip */}
-      <div className="bg-slate-950 border border-slate-800 rounded-xl p-3 flex flex-wrap items-center justify-between gap-2 text-xs">
+      <div className="bg-cream border border-stone-200 rounded-xl p-3 flex flex-wrap items-center justify-between gap-2 text-xs">
         <div className="flex items-center space-x-2 text-amber-400 font-bold">
           <Users className="w-4 h-4" />
           <span>Active ICS Command Role:</span>
@@ -324,7 +324,7 @@ export const DisasterCommandPortal: React.FC<DisasterCommandPortalProps> = ({
               className={`px-3 py-1.5 rounded-md font-bold transition-all whitespace-nowrap ${
                 activeIcsRole === r.id
                   ? 'bg-amber-500 text-slate-950 shadow-md transform scale-105 font-black'
-                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white'
+                  : 'bg-stone-100 text-stone-600 hover:bg-slate-700 hover:text-stone-900'
               }`}
             >
               {r.title}
@@ -334,7 +334,7 @@ export const DisasterCommandPortal: React.FC<DisasterCommandPortalProps> = ({
       </div>
 
       {/* 3. Sub-Module Navigation Tabs */}
-      <div className="flex items-center space-x-1 border-b border-slate-200 overflow-x-auto pb-1 no-scrollbar">
+      <div className="flex items-center space-x-1 border-b border-stone-200 overflow-x-auto pb-1 no-scrollbar">
         {subTabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeSubTab === tab.id;
@@ -345,13 +345,13 @@ export const DisasterCommandPortal: React.FC<DisasterCommandPortalProps> = ({
               className={`flex items-center space-x-1.5 px-3.5 py-2.5 text-xs font-bold rounded-t-lg transition-all whitespace-nowrap border-b-2 ${
                 isActive
                   ? 'bg-white text-rose-600 border-rose-600 shadow-sm font-extrabold'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200 border-transparent'
+                  : 'bg-stone-100 text-stone-500 hover:bg-stone-100 border-transparent'
               }`}
             >
-              <Icon className={`w-4 h-4 ${isActive ? 'text-rose-600' : 'text-slate-400'}`} />
+              <Icon className={`w-4 h-4 ${isActive ? 'text-rose-600' : 'text-stone-500'}`} />
               <span>{tab.label}</span>
               {tab.badge !== undefined && tab.badge > 0 && (
-                <span className="ml-1 bg-rose-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
+                <span className="ml-1 bg-rose-600 text-stone-900 text-[10px] font-bold px-1.5 py-0.5 rounded-full">
                   {tab.badge}
                 </span>
               )}

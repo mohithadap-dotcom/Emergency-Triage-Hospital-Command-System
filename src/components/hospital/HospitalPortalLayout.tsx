@@ -152,30 +152,30 @@ export const HospitalPortalLayout: React.FC<HospitalPortalLayoutProps> = ({
   ];
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-900 font-sans flex flex-col antialiased">
+    <div className="min-h-screen bg-stone-100 text-stone-900 font-sans flex flex-col antialiased">
       {/* Standalone Top Bar */}
-      <header className="bg-slate-950 text-white border-b border-slate-800 sticky top-0 z-40 shadow-md">
+      <header className="bg-cream text-stone-900 border-b border-stone-200 sticky top-0 z-40 shadow-md">
         <div className="max-w-[1600px] mx-auto px-4 py-2.5 flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-1.5 text-slate-400 hover:text-white rounded-lg bg-slate-900"
+              className="lg:hidden p-1.5 text-stone-500 hover:text-stone-900 rounded-lg bg-white"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
 
             <div className="flex items-center space-x-2.5">
-              <div className="p-2 bg-sky-600 text-white rounded-xl shadow-sm">
+              <div className="p-2 bg-sky-600 text-stone-900 rounded-xl shadow-sm">
                 <Building2 className="w-5 h-5" />
               </div>
               <div>
-                <h1 className="text-sm font-black text-white leading-none flex items-center gap-2">
+                <h1 className="text-sm font-black text-stone-900 leading-none flex items-center gap-2">
                   <span>{currentHospital.name}</span>
                   <span className="text-[10px] font-mono bg-sky-500/20 text-sky-400 border border-sky-500/30 px-2 py-0.5 rounded-full uppercase">
                     Hospital Portal
                   </span>
                 </h1>
-                <p className="text-[11px] text-slate-400 font-medium mt-0.5">
+                <p className="text-[11px] text-stone-500 font-medium mt-0.5">
                   {currentHospital.districtName} District • {currentHospital.traumaLevel} Center
                 </p>
               </div>
@@ -184,10 +184,10 @@ export const HospitalPortalLayout: React.FC<HospitalPortalLayoutProps> = ({
 
           <div className="flex items-center space-x-3 text-xs">
             {/* User Session Badge */}
-            <div className="hidden sm:flex items-center space-x-2 bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-800">
+            <div className="hidden sm:flex items-center space-x-2 bg-white px-3 py-1.5 rounded-xl border border-stone-200">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
               <div className="text-left">
-                <span className="text-[10px] text-slate-400 block leading-none">{userSession.email}</span>
+                <span className="text-[10px] text-stone-500 block leading-none">{userSession.email}</span>
                 <span className="text-[11px] font-bold text-amber-400 leading-none">{userSession.roleTitle}</span>
               </div>
             </div>
@@ -196,7 +196,7 @@ export const HospitalPortalLayout: React.FC<HospitalPortalLayoutProps> = ({
             {onSwitchPortal && (
               <button
                 onClick={() => onSwitchPortal('GOVERNMENT')}
-                className="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 font-bold rounded-xl transition-all flex items-center space-x-1.5"
+                className="px-3 py-1.5 bg-white hover:bg-stone-100 text-stone-600 hover:text-stone-900 border border-stone-300 font-bold rounded-xl transition-all flex items-center space-x-1.5"
               >
                 <ArrowRightLeft className="w-3.5 h-3.5 text-amber-400" />
                 <span className="hidden md:inline">Government EOC</span>
@@ -205,7 +205,7 @@ export const HospitalPortalLayout: React.FC<HospitalPortalLayoutProps> = ({
 
             <button
               onClick={onLogout}
-              className="px-3 py-1.5 bg-rose-950/60 hover:bg-rose-900 text-rose-300 border border-rose-800/80 font-bold rounded-xl transition-all flex items-center space-x-1"
+              className="px-3 py-1.5 bg-rose-950/60 hover:bg-rose-600 text-rose-300 border border-rose-800/80 font-bold rounded-xl transition-all flex items-center space-x-1"
             >
               <LogOut className="w-3.5 h-3.5" />
               <span>Logout</span>
@@ -218,12 +218,12 @@ export const HospitalPortalLayout: React.FC<HospitalPortalLayoutProps> = ({
       <div className="flex-1 max-w-[1600px] w-full mx-auto flex flex-col lg:flex-row">
         {/* Left Navigation Sidebar */}
         <aside
-          className={`lg:w-64 bg-white border-r border-slate-200 p-3 shrink-0 lg:block ${
+          className={`lg:w-64 bg-white border-r border-stone-200 p-3 shrink-0 lg:block ${
             mobileMenuOpen ? 'block' : 'hidden'
           }`}
         >
           <div className="space-y-1">
-            <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest px-3 py-1 block">
+            <span className="text-[10px] font-extrabold text-stone-500 uppercase tracking-widest px-3 py-1 block">
               Hospital Navigation
             </span>
 
@@ -236,8 +236,8 @@ export const HospitalPortalLayout: React.FC<HospitalPortalLayoutProps> = ({
                 }}
                 className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all ${
                   activeTab === item.id
-                    ? 'bg-sky-600 text-white shadow-md shadow-sky-600/20'
-                    : 'text-slate-700 hover:bg-slate-100'
+                    ? 'bg-sky-600 text-stone-900 shadow-md shadow-sky-600/20'
+                    : 'text-stone-600 hover:bg-stone-100'
                 }`}
               >
                 <div className="flex items-center space-x-2.5">
@@ -248,7 +248,7 @@ export const HospitalPortalLayout: React.FC<HospitalPortalLayoutProps> = ({
                 {item.badge && (
                   <span
                     className={`px-1.5 py-0.5 text-[10px] font-extrabold rounded-full ${
-                      activeTab === item.id ? 'bg-white text-sky-800' : 'bg-rose-100 text-rose-800'
+                      activeTab === item.id ? 'bg-white text-sky-400' : 'bg-rose-100 text-rose-400'
                     }`}
                   >
                     {item.badge}
@@ -264,45 +264,45 @@ export const HospitalPortalLayout: React.FC<HospitalPortalLayoutProps> = ({
           {activeTab === 'home' && (
             <div className="space-y-6 font-sans">
               {/* Operational Status Overview */}
-              <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-4">
+              <div className="bg-white border border-stone-200 rounded-2xl p-5 shadow-sm space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
                   <div>
-                    <h2 className="text-lg font-black text-slate-900">
+                    <h2 className="text-lg font-black text-stone-900">
                       Operational Emergency Command Center
                     </h2>
-                    <p className="text-xs text-slate-500 mt-0.5">
+                    <p className="text-xs text-stone-500 mt-0.5">
                       Live status telemetry for {currentHospital.name} ({currentHospital.districtName})
                     </p>
                   </div>
 
-                  <span className="px-3 py-1 rounded-full text-xs font-black bg-emerald-100 text-emerald-800 border border-emerald-300">
+                  <span className="px-3 py-1 rounded-full text-xs font-black bg-emerald-100 text-emerald-400 border border-emerald-300">
                     ER Status: {currentHospital.emergencyDeptStatus}
                   </span>
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-bold">
-                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                    <span className="text-[10px] text-slate-400 uppercase block">Available ICU Beds</span>
+                  <div className="bg-cream p-4 rounded-xl border border-stone-200">
+                    <span className="text-[10px] text-stone-500 uppercase block">Available ICU Beds</span>
                     <span className="text-2xl font-black text-emerald-600">{currentHospital.availableIcuBeds}</span>
-                    <span className="text-[10px] text-slate-400 block font-normal">Out of {currentHospital.totalIcuBeds} Installed</span>
+                    <span className="text-[10px] text-stone-500 block font-normal">Out of {currentHospital.totalIcuBeds} Installed</span>
                   </div>
 
-                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                    <span className="text-[10px] text-slate-400 uppercase block">Available General Beds</span>
+                  <div className="bg-cream p-4 rounded-xl border border-stone-200">
+                    <span className="text-[10px] text-stone-500 uppercase block">Available General Beds</span>
                     <span className="text-2xl font-black text-sky-600">{currentHospital.availableGeneralBeds}</span>
-                    <span className="text-[10px] text-slate-400 block font-normal">Out of {currentHospital.totalBeds} Installed</span>
+                    <span className="text-[10px] text-stone-500 block font-normal">Out of {currentHospital.totalBeds} Installed</span>
                   </div>
 
-                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                    <span className="text-[10px] text-slate-400 uppercase block">Available Ventilators</span>
+                  <div className="bg-cream p-4 rounded-xl border border-stone-200">
+                    <span className="text-[10px] text-stone-500 uppercase block">Available Ventilators</span>
                     <span className="text-2xl font-black text-indigo-600">{currentHospital.availableVentilators}</span>
-                    <span className="text-[10px] text-slate-400 block font-normal">Out of {currentHospital.totalVentilators} Installed</span>
+                    <span className="text-[10px] text-stone-500 block font-normal">Out of {currentHospital.totalVentilators} Installed</span>
                   </div>
 
-                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                    <span className="text-[10px] text-slate-400 uppercase block">On-Duty Doctors</span>
-                    <span className="text-2xl font-black text-slate-900">{currentHospital.doctorsOnDuty}</span>
-                    <span className="text-[10px] text-slate-400 block font-normal">{currentHospital.nursesOnDuty} Nurses</span>
+                  <div className="bg-cream p-4 rounded-xl border border-stone-200">
+                    <span className="text-[10px] text-stone-500 uppercase block">On-Duty Doctors</span>
+                    <span className="text-2xl font-black text-stone-900">{currentHospital.doctorsOnDuty}</span>
+                    <span className="text-[10px] text-stone-500 block font-normal">{currentHospital.nursesOnDuty} Nurses</span>
                   </div>
                 </div>
               </div>

@@ -75,7 +75,7 @@ export const AmbulancePortalLayout: React.FC<AmbulancePortalLayoutProps> = ({
       label: 'Active Mission',
       icon: Zap,
       badge: activeMission ? '1 Active' : null,
-      badgeColor: 'bg-rose-500 text-white',
+      badgeColor: 'bg-rose-500 text-stone-900',
     },
     { id: 'maps', label: 'Google Maps Nav', icon: Navigation, badge: 'Corridor' },
     { id: 'vitals', label: 'Patient Vitals', icon: Activity, badge: 'IoT Live' },
@@ -90,36 +90,36 @@ export const AmbulancePortalLayout: React.FC<AmbulancePortalLayoutProps> = ({
   ];
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-900 font-sans antialiased flex flex-col">
+    <div className="min-h-screen bg-stone-100 text-stone-900 font-sans antialiased flex flex-col">
       {/* Top Hackathon Pune Accident Simulation Bar */}
       <AmbulanceHackathonDemoBar onTriggerDemoStep={onTriggerDemoStep} />
 
       {/* Main Header */}
-      <header className="bg-slate-950 text-white border-b border-slate-800 sticky top-0 z-30 shadow-md">
+      <header className="bg-cream text-stone-900 border-b border-stone-200 sticky top-0 z-30 shadow-md">
         <div className="max-w-[1700px] mx-auto px-4 py-3 flex items-center justify-between gap-3">
           {/* Brand & Call-sign */}
           <div className="flex items-center space-x-3">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 bg-slate-900 rounded-lg text-slate-300 hover:text-white"
+              className="lg:hidden p-2 bg-white rounded-lg text-stone-600 hover:text-stone-900"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
 
-            <div className="w-9 h-9 rounded-lg bg-emerald-600 flex items-center justify-center font-black text-white text-base shadow border border-emerald-400">
+            <div className="w-9 h-9 rounded-lg bg-emerald-600 flex items-center justify-center font-black text-stone-900 text-base shadow border border-emerald-400">
               108
             </div>
 
             <div>
               <div className="flex items-center space-x-2">
-                <span className="font-mono font-black text-sm text-white tracking-wider">
+                <span className="font-mono font-black text-sm text-stone-900 tracking-wider">
                   {user.vehicleCallsign} ({user.vehicleRegNo})
                 </span>
                 <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold px-2 py-0.5 rounded uppercase">
                   {user.districtName}
                 </span>
               </div>
-              <div className="text-[11px] text-slate-400 font-medium">
+              <div className="text-[11px] text-stone-500 font-medium">
                 {user.name} ({user.roleTitle}) • {user.shiftName}
               </div>
             </div>
@@ -131,7 +131,7 @@ export const AmbulancePortalLayout: React.FC<AmbulancePortalLayoutProps> = ({
               onClick={() => setActiveTab('current_mission')}
               className="hidden md:flex items-center space-x-2 bg-rose-600/20 border border-rose-500/40 text-rose-300 px-3 py-1.5 rounded-xl text-xs font-extrabold hover:bg-rose-600/30 transition animate-pulse"
             >
-              <Zap className="w-3.5 h-3.5 text-amber-300" />
+              <Zap className="w-3.5 h-3.5 text-amber-100" />
               <span>DISPATCHED: {activeMission.incidentTitle.slice(0, 32)}...</span>
             </button>
           )}
@@ -139,22 +139,22 @@ export const AmbulancePortalLayout: React.FC<AmbulancePortalLayoutProps> = ({
           {/* User Session & Switch Portal Controls */}
           <div className="flex items-center space-x-2 text-xs font-mono">
             {/* Multi-Portal Navigation Dropdown */}
-            <div className="hidden sm:flex items-center space-x-1 bg-slate-900 p-1 rounded-lg border border-slate-800">
+            <div className="hidden sm:flex items-center space-x-1 bg-white p-1 rounded-lg border border-stone-200">
               <button
                 onClick={() => onSwitchPortal('GOVERNMENT')}
-                className="px-2.5 py-1 text-slate-400 hover:text-white rounded"
+                className="px-2.5 py-1 text-stone-500 hover:text-stone-900 rounded"
               >
                 Govt EOC
               </button>
               <button
                 onClick={() => onSwitchPortal('HOSPITAL')}
-                className="px-2.5 py-1 text-slate-400 hover:text-white rounded"
+                className="px-2.5 py-1 text-stone-500 hover:text-stone-900 rounded"
               >
                 Hospital
               </button>
               <button
                 onClick={() => onSwitchPortal('AMBULANCE')}
-                className="px-2.5 py-1 bg-emerald-600 text-white font-bold rounded shadow"
+                className="px-2.5 py-1 bg-emerald-600 text-stone-900 font-bold rounded shadow"
               >
                 Ambulance
               </button>
@@ -162,7 +162,7 @@ export const AmbulancePortalLayout: React.FC<AmbulancePortalLayoutProps> = ({
 
             <button
               onClick={onLogout}
-              className="p-2 bg-slate-900 hover:bg-rose-900/40 border border-slate-800 hover:border-rose-500/50 rounded-lg text-slate-300 hover:text-rose-300 transition"
+              className="p-2 bg-white hover:bg-rose-600/40 border border-stone-200 hover:border-rose-500/50 rounded-lg text-stone-600 hover:text-rose-300 transition"
               title="Logout Shift Session"
             >
               <LogOut className="w-4 h-4" />
@@ -177,9 +177,9 @@ export const AmbulancePortalLayout: React.FC<AmbulancePortalLayoutProps> = ({
         <aside
           className={`${
             mobileMenuOpen ? 'block' : 'hidden'
-          } lg:block w-full lg:w-64 bg-slate-900 border-r border-slate-800 p-3 space-y-1 shrink-0`}
+          } lg:block w-full lg:w-64 bg-white border-r border-stone-200 p-3 space-y-1 shrink-0`}
         >
-          <div className="text-[10px] font-extrabold text-slate-500 uppercase tracking-wider px-3 py-2 font-mono">
+          <div className="text-[10px] font-extrabold text-stone-500 uppercase tracking-wider px-3 py-2 font-mono">
             108 EMS Tablet Controls
           </div>
 
@@ -196,8 +196,8 @@ export const AmbulancePortalLayout: React.FC<AmbulancePortalLayoutProps> = ({
                 }}
                 className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl font-bold text-xs transition ${
                   isActive
-                    ? 'bg-emerald-600 text-white shadow-md'
-                    : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                    ? 'bg-emerald-600 text-stone-900 shadow-md'
+                    : 'text-stone-600 hover:bg-stone-100 hover:text-stone-900'
                 }`}
               >
                 <div className="flex items-center space-x-2.5">
@@ -208,7 +208,7 @@ export const AmbulancePortalLayout: React.FC<AmbulancePortalLayoutProps> = ({
                 {item.badge && (
                   <span
                     className={`text-[9px] font-mono font-black px-2 py-0.5 rounded-full ${
-                      item.badgeColor || 'bg-slate-800 text-slate-300 border border-slate-700'
+                      item.badgeColor || 'bg-stone-100 text-stone-600 border border-stone-300'
                     }`}
                   >
                     {item.badge}

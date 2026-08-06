@@ -55,22 +55,22 @@ export const AnalyticsView: React.FC<AnalyticsProps> = ({ districts, hospitals }
   const COLORS = ['#0284C7', '#D97706', '#16A34A', '#7C3AED'];
 
   return (
-    <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 space-y-4">
-      <div className="border-b border-slate-200 pb-3">
-        <h2 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
-          <BarChart3 className="w-5 h-5 text-sky-700" />
+    <div className="bg-white rounded-lg border border-stone-200 shadow-sm p-4 space-y-4">
+      <div className="border-b border-stone-200 pb-3">
+        <h2 className="text-lg font-extrabold text-stone-900 flex items-center gap-2">
+          <BarChart3 className="w-5 h-5 text-sky-400" />
           State Emergency Analytics & Response Intelligence
         </h2>
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-stone-500">
           Statewide comparative analysis of response times, ICU bed occupancy ratios & healthcare capacity stress factors.
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* District Active Emergencies vs ICU Availability Bar Chart */}
-        <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-          <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-3 flex items-center gap-1.5">
-            <Activity className="w-4 h-4 text-sky-700" />
+        <div className="bg-cream p-4 rounded-lg border border-stone-200">
+          <h3 className="text-xs font-bold text-stone-800 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+            <Activity className="w-4 h-4 text-sky-400" />
             District Active Emergencies vs Available ICU Beds
           </h3>
           <div className="h-64 w-full">
@@ -90,9 +90,9 @@ export const AnalyticsView: React.FC<AnalyticsProps> = ({ districts, hospitals }
         </div>
 
         {/* 108 Fleet Response Time Trend Line Chart */}
-        <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-          <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-3 flex items-center gap-1.5">
-            <TrendingUp className="w-4 h-4 text-emerald-700" />
+        <div className="bg-cream p-4 rounded-lg border border-stone-200">
+          <h3 className="text-xs font-bold text-stone-800 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+            <TrendingUp className="w-4 h-4 text-emerald-400" />
             MEMS 108 Average Dispatch Response Time (Minutes)
           </h3>
           <div className="h-64 w-full">

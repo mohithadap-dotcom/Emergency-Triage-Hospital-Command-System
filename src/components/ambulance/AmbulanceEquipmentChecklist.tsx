@@ -106,16 +106,16 @@ export const AmbulanceEquipmentChecklist: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="bg-slate-900 text-white p-5 rounded-2xl border border-slate-800 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-white text-stone-900 p-5 rounded-2xl border border-stone-200 shadow-lg shadow-stone-300/40 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center space-x-3">
           <div className="p-3 bg-emerald-600 rounded-xl">
-            <CheckSquare className="w-6 h-6 text-white" />
+            <CheckSquare className="w-6 h-6 text-stone-900" />
           </div>
           <div>
-            <h2 className="text-xl font-black tracking-tight text-white">
+            <h2 className="text-xl font-black tracking-tight text-stone-900">
               Medical Equipment Inventory & Checklist
             </h2>
-            <p className="text-xs text-slate-300">
+            <p className="text-xs text-stone-600">
               Shift Check-In / Check-Out Log • All critical life support gear verified
             </p>
           </div>
@@ -130,29 +130,29 @@ export const AmbulanceEquipmentChecklist: React.FC = () => {
       </div>
 
       {/* Equipment List */}
-      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-        <div className="p-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between text-xs font-bold text-slate-700 uppercase">
+      <div className="bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden">
+        <div className="p-4 bg-cream border-b border-stone-200 flex items-center justify-between text-xs font-bold text-stone-600 uppercase">
           <span>Equipment Name & Serial No</span>
           <span>Category</span>
           <span>Power / Capacity</span>
           <span>Action Status</span>
         </div>
 
-        <div className="divide-y divide-slate-200">
+        <div className="divide-y divide-stone-200">
           {items.map((it) => (
             <div key={it.id} className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
               <div>
-                <div className="font-extrabold text-slate-900">{it.name}</div>
-                <div className="text-[10px] text-slate-500 font-mono">
+                <div className="font-extrabold text-stone-900">{it.name}</div>
+                <div className="text-[10px] text-stone-500 font-mono">
                   S/N: {it.serialNo} • Checked by: {it.lastCheckedBy} ({it.lastCheckedTimestamp})
                 </div>
               </div>
 
-              <span className="bg-slate-100 text-slate-700 px-2.5 py-1 rounded font-bold font-mono text-[10px] w-max">
+              <span className="bg-stone-100 text-stone-600 px-2.5 py-1 rounded font-bold font-mono text-[10px] w-max">
                 {it.category}
               </span>
 
-              <span className="font-mono font-bold text-emerald-700">
+              <span className="font-mono font-bold text-emerald-400">
                 {it.batteryOrLevelPercent ? `${it.batteryOrLevelPercent}% Ready` : 'Ready'}
               </span>
 
@@ -161,8 +161,8 @@ export const AmbulanceEquipmentChecklist: React.FC = () => {
                   onClick={() => toggleItemStatus(it.id, 'CHECKED_IN')}
                   className={`px-3 py-1.5 rounded-lg font-bold text-[11px] ${
                     it.status === 'CHECKED_IN'
-                      ? 'bg-emerald-600 text-white'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                      ? 'bg-emerald-600 text-stone-900'
+                      : 'bg-stone-100 text-stone-500 hover:bg-stone-100'
                   }`}
                 >
                   Check In
@@ -173,7 +173,7 @@ export const AmbulanceEquipmentChecklist: React.FC = () => {
                   className={`px-3 py-1.5 rounded-lg font-bold text-[11px] ${
                     it.status === 'MAINTENANCE_REQUIRED'
                       ? 'bg-amber-500 text-slate-950'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                      : 'bg-stone-100 text-stone-500 hover:bg-stone-100'
                   }`}
                 >
                   Maintenance
@@ -183,8 +183,8 @@ export const AmbulanceEquipmentChecklist: React.FC = () => {
                   onClick={() => toggleItemStatus(it.id, 'REPLACEMENT_REQUESTED')}
                   className={`px-3 py-1.5 rounded-lg font-bold text-[11px] ${
                     it.status === 'REPLACEMENT_REQUESTED'
-                      ? 'bg-rose-600 text-white'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                      ? 'bg-rose-600 text-stone-900'
+                      : 'bg-stone-100 text-stone-500 hover:bg-stone-100'
                   }`}
                 >
                   Request Replace

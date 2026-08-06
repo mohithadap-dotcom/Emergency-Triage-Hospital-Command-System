@@ -34,13 +34,13 @@ export const DisasterGisMapView: React.FC<DisasterGisMapViewProps> = ({
   return (
     <div className="space-y-4">
       {/* Top Map Controls Header */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-4 text-white shadow-md flex flex-wrap items-center justify-between gap-3">
+      <div className="bg-white border border-stone-200 rounded-xl p-4 text-stone-900 shadow-md flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h2 className="text-base font-bold text-white flex items-center gap-2">
+          <h2 className="text-base font-bold text-stone-900 flex items-center gap-2">
             <MapPin className="w-5 h-5 text-amber-400 animate-bounce" />
             Disaster Command GIS Spatial Operations Map ({disaster.districtName} Sector)
           </h2>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-stone-500">
             Real-time tracking of Red Exclusion Zone ({disaster.radiusKm} km radius), Emergency Green Corridor, and Receiving Hospitals.
           </p>
         </div>
@@ -52,7 +52,7 @@ export const DisasterGisMapView: React.FC<DisasterGisMapViewProps> = ({
             className={`px-2.5 py-1.5 rounded font-bold border transition-colors ${
               showExclusionZone
                 ? 'bg-rose-950 text-rose-300 border-rose-600'
-                : 'bg-slate-800 text-slate-400 border-slate-700'
+                : 'bg-stone-100 text-stone-500 border-stone-300'
             }`}
           >
             Red Zone ({disaster.radiusKm} km)
@@ -62,7 +62,7 @@ export const DisasterGisMapView: React.FC<DisasterGisMapViewProps> = ({
             className={`px-2.5 py-1.5 rounded font-bold border transition-colors ${
               showGreenCorridor
                 ? 'bg-emerald-950 text-emerald-300 border-emerald-600'
-                : 'bg-slate-800 text-slate-400 border-slate-700'
+                : 'bg-stone-100 text-stone-500 border-stone-300'
             }`}
           >
             Green Corridor
@@ -71,8 +71,8 @@ export const DisasterGisMapView: React.FC<DisasterGisMapViewProps> = ({
             onClick={() => setShowFieldUnits(!showFieldUnits)}
             className={`px-2.5 py-1.5 rounded font-bold border transition-colors ${
               showFieldUnits
-                ? 'bg-amber-950 text-amber-300 border-amber-600'
-                : 'bg-slate-800 text-slate-400 border-slate-700'
+                ? 'bg-amber-950 text-amber-100 border-amber-600'
+                : 'bg-stone-100 text-stone-500 border-stone-300'
             }`}
           >
             Field Tents ({fieldHospitals.length})
@@ -82,7 +82,7 @@ export const DisasterGisMapView: React.FC<DisasterGisMapViewProps> = ({
             className={`px-2.5 py-1.5 rounded font-bold border transition-colors ${
               showAmbulances
                 ? 'bg-sky-950 text-sky-300 border-sky-600'
-                : 'bg-slate-800 text-slate-400 border-slate-700'
+                : 'bg-stone-100 text-stone-500 border-stone-300'
             }`}
           >
             Ambulances ({ambulances.length})
@@ -91,14 +91,14 @@ export const DisasterGisMapView: React.FC<DisasterGisMapViewProps> = ({
       </div>
 
       {/* Main Interactive Map Canvas Container */}
-      <div className="relative w-full h-[520px] bg-slate-950 rounded-xl overflow-hidden border border-slate-800 shadow-xl flex items-center justify-center">
+      <div className="relative w-full h-[520px] bg-cream rounded-xl overflow-hidden border border-stone-200 shadow-lg shadow-stone-300/40 flex items-center justify-center">
         {/* Simulated High-Tech Tactical Radar Map Visualizer */}
         <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:16px_16px] opacity-40"></div>
 
         {/* Circular Exclusion Radius Overlay */}
         {showExclusionZone && (
           <div className="absolute w-72 h-72 rounded-full border-2 border-rose-500 bg-rose-500/10 animate-pulse flex items-center justify-center pointer-events-none">
-            <span className="text-[10px] font-mono text-rose-400 font-bold bg-slate-950/80 px-2 py-0.5 rounded border border-rose-500">
+            <span className="text-[10px] font-mono text-rose-400 font-bold bg-cream/80 px-2 py-0.5 rounded border border-rose-500">
               EXCLUSION ZONE RADIUS ({disaster.radiusKm} KM)
             </span>
           </div>
@@ -106,17 +106,17 @@ export const DisasterGisMapView: React.FC<DisasterGisMapViewProps> = ({
 
         {/* Outer Perimeter Staging Ring */}
         <div className="absolute w-[440px] h-[440px] rounded-full border border-dashed border-amber-500/40 pointer-events-none flex items-start justify-center pt-2">
-          <span className="text-[9px] font-mono text-amber-400 font-bold bg-slate-900 px-2 py-0.5 rounded">
+          <span className="text-[9px] font-mono text-amber-400 font-bold bg-white px-2 py-0.5 rounded">
             STAGING PERIMETER & TRAFFIC DIVERSION LINE
           </span>
         </div>
 
         {/* Center Disaster Epicenter Pin */}
         <div className="absolute z-20 flex flex-col items-center">
-          <div className="bg-rose-600 text-white p-2.5 rounded-full shadow-2xl border-2 border-white animate-bounce">
-            <Flame className="w-6 h-6 text-white" />
+          <div className="bg-rose-600 text-stone-900 p-2.5 rounded-full shadow-lg shadow-stone-300/50 border-2 border-white animate-bounce">
+            <Flame className="w-6 h-6 text-stone-900" />
           </div>
-          <div className="bg-slate-950 text-amber-400 border border-amber-500 text-xs font-black px-2.5 py-1 rounded shadow mt-1">
+          <div className="bg-cream text-amber-400 border border-amber-500 text-xs font-black px-2.5 py-1 rounded shadow mt-1">
             EPICENTER: {disaster.locationName}
           </div>
         </div>
@@ -169,7 +169,7 @@ export const DisasterGisMapView: React.FC<DisasterGisMapViewProps> = ({
                 <Building2 className="w-3.5 h-3.5" />
                 <span>FIELD TENT #{idx + 1}</span>
               </div>
-              <span className="text-[9px] text-amber-200 bg-slate-900/90 px-1.5 py-0.5 rounded mt-0.5 font-mono">
+              <span className="text-[9px] text-amber-100 bg-white/90 px-1.5 py-0.5 rounded mt-0.5 font-mono">
                 {fh.occupiedBeds}/{fh.totalCapacity} Beds
               </span>
             </div>
@@ -190,10 +190,10 @@ export const DisasterGisMapView: React.FC<DisasterGisMapViewProps> = ({
                   : 'top-[30%] left-[60%]'
               }`}
             >
-              <div className="bg-sky-600 text-white p-1.5 rounded-full shadow-lg border border-sky-300 animate-pulse">
+              <div className="bg-sky-600 text-stone-900 p-1.5 rounded-full shadow-lg border border-sky-300 animate-pulse">
                 <Truck className="w-3.5 h-3.5" />
               </div>
-              <span className="text-[9px] text-sky-200 bg-slate-950 px-1.5 py-0.5 rounded mt-0.5 font-mono font-bold">
+              <span className="text-[9px] text-sky-200 bg-cream px-1.5 py-0.5 rounded mt-0.5 font-mono font-bold">
                 {amb.registrationNo} (ALS)
               </span>
             </div>
@@ -211,19 +211,19 @@ export const DisasterGisMapView: React.FC<DisasterGisMapViewProps> = ({
                 : 'top-[18%] right-[22%]'
             }`}
           >
-            <div className="bg-indigo-600 text-white p-2 rounded-lg shadow-xl border-2 border-indigo-300 flex items-center gap-1">
+            <div className="bg-indigo-600 text-stone-900 p-2 rounded-lg shadow-lg shadow-stone-300/40 border-2 border-indigo-300 flex items-center gap-1">
               <Building2 className="w-4 h-4 text-amber-400" />
               <span className="font-extrabold text-[11px]">{h.name}</span>
             </div>
-            <span className="text-[10px] text-emerald-400 font-mono bg-slate-950 border border-slate-800 px-2 py-0.5 rounded mt-0.5 font-bold">
+            <span className="text-[10px] text-emerald-400 font-mono bg-cream border border-stone-200 px-2 py-0.5 rounded mt-0.5 font-bold">
               {h.availableIcuBeds} ICU Beds Free • ER: {h.emergencyDeptStatus}
             </span>
           </div>
         ))}
 
         {/* Live Legend Box */}
-        <div className="absolute bottom-3 left-3 bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-lg p-3 text-xs text-slate-300 space-y-1.5 shadow-xl pointer-events-auto">
-          <div className="font-bold text-white text-[11px] uppercase tracking-wider mb-1 border-b border-slate-800 pb-1">
+        <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-md border border-stone-200 rounded-lg p-3 text-xs text-stone-600 space-y-1.5 shadow-lg shadow-stone-300/40 pointer-events-auto">
+          <div className="font-bold text-stone-900 text-[11px] uppercase tracking-wider mb-1 border-b border-stone-200 pb-1">
             GIS Tactical Legend
           </div>
           <div className="flex items-center space-x-2">

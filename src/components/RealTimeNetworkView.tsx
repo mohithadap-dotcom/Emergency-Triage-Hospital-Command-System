@@ -382,7 +382,7 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
   return (
     <div className="space-y-6">
       {/* Header Banner */}
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-white shadow-xl relative overflow-hidden">
+      <div className="bg-white border border-stone-200 rounded-xl p-5 text-stone-900 shadow-lg shadow-stone-300/40 relative overflow-hidden">
         <div className="absolute -right-12 -top-12 w-64 h-64 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
           <div>
@@ -391,13 +391,13 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
                 <Radio className="w-6 h-6 animate-pulse" />
               </span>
               <div>
-                <h1 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+                <h1 className="text-xl font-bold tracking-tight text-stone-900 flex items-center gap-2">
                   Real-Time Emergency Network & IoT Gateway
                   <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
                     WebSocket SSE Connected
                   </span>
                 </h1>
-                <p className="text-xs text-slate-400 mt-0.5">
+                <p className="text-xs text-stone-500 mt-0.5">
                   Synchronized EOC telemetry gateway, IoT medical device streaming, FCM push alerts & intra-agency channels
                 </p>
               </div>
@@ -409,8 +409,8 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
             <div
               className={`px-3 py-1.5 rounded-lg text-xs font-medium flex items-center space-x-1.5 border ${
                 isOnline
-                  ? 'bg-emerald-950/40 text-emerald-300 border-emerald-800/50'
-                  : 'bg-amber-950/60 text-amber-300 border-amber-800/60'
+                  ? 'bg-emerald-950/40 text-emerald-300 border-emerald-200'
+                  : 'bg-amber-950/60 text-amber-100 border-amber-800/60'
               }`}
             >
               {isOnline ? <Wifi className="w-3.5 h-3.5 text-emerald-400" /> : <WifiOff className="w-3.5 h-3.5 text-amber-400" />}
@@ -420,7 +420,7 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
             {/* FCM Trigger */}
             <button
               onClick={() => setShowFcmModal(true)}
-              className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-lg text-xs font-medium transition-colors flex items-center space-x-1.5"
+              className="px-3 py-1.5 bg-stone-100 hover:bg-slate-700 text-stone-800 border border-stone-300 rounded-lg text-xs font-medium transition-colors flex items-center space-x-1.5"
             >
               <Bell className="w-3.5 h-3.5 text-amber-400" />
               <span>Test FCM Push</span>
@@ -432,8 +432,8 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
               disabled={disasterLoading}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center space-x-1.5 border ${
                 disasterActive
-                  ? 'bg-red-600 text-white border-red-500 shadow-lg shadow-red-900/40 animate-pulse'
-                  : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
+                  ? 'bg-red-600 text-stone-900 border-red-500 shadow-lg shadow-red-900/40 animate-pulse'
+                  : 'bg-stone-100 text-stone-600 border-stone-300 hover:bg-slate-700'
               }`}
             >
               <ShieldAlert className="w-3.5 h-3.5 text-red-400" />
@@ -443,7 +443,7 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
             {/* Start Live Demo Simulation */}
             <button
               onClick={() => setActiveTab('DEMO_SIMULATION')}
-              className="px-3.5 py-1.5 bg-gradient-to-r from-red-600 to-rose-600 text-white font-semibold rounded-lg text-xs shadow-md shadow-red-900/30 hover:brightness-110 transition-all flex items-center space-x-1.5"
+              className="px-3.5 py-1.5 bg-gradient-to-r from-red-600 to-rose-600 text-stone-900 font-semibold rounded-lg text-xs shadow-md shadow-red-900/30 hover:brightness-110 transition-all flex items-center space-x-1.5"
             >
               <Zap className="w-3.5 h-3.5 fill-current" />
               <span>Start Live Simulation</span>
@@ -453,13 +453,13 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
       </div>
 
       {/* Main Tabs Navigation */}
-      <div className="flex border-b border-slate-200 bg-white rounded-xl shadow-sm px-4 pt-2 overflow-x-auto">
+      <div className="flex border-b border-stone-200 bg-white rounded-xl shadow-sm px-4 pt-2 overflow-x-auto">
         <button
           onClick={() => setActiveTab('IOT_GATEWAY')}
           className={`px-4 py-3 text-xs font-semibold flex items-center space-x-2 border-b-2 transition-colors whitespace-nowrap ${
             activeTab === 'IOT_GATEWAY'
               ? 'border-red-600 text-red-600'
-              : 'border-transparent text-slate-500 hover:text-slate-800'
+              : 'border-transparent text-stone-500 hover:text-stone-800'
           }`}
         >
           <Activity className="w-4 h-4" />
@@ -474,12 +474,12 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
           className={`px-4 py-3 text-xs font-semibold flex items-center space-x-2 border-b-2 transition-colors whitespace-nowrap ${
             activeTab === 'AGENCY_COMMUNICATION'
               ? 'border-red-600 text-red-600'
-              : 'border-transparent text-slate-500 hover:text-slate-800'
+              : 'border-transparent text-stone-500 hover:text-stone-800'
           }`}
         >
           <MessageSquare className="w-4 h-4" />
           <span>Intra-Agency Network</span>
-          <span className="px-1.5 py-0.5 rounded-full text-[10px] bg-slate-100 text-slate-700">
+          <span className="px-1.5 py-0.5 rounded-full text-[10px] bg-stone-100 text-stone-600">
             {messages.length}
           </span>
         </button>
@@ -489,13 +489,13 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
           className={`px-4 py-3 text-xs font-semibold flex items-center space-x-2 border-b-2 transition-colors whitespace-nowrap ${
             activeTab === 'DEMO_SIMULATION'
               ? 'border-red-600 text-red-600'
-              : 'border-transparent text-slate-500 hover:text-slate-800'
+              : 'border-transparent text-stone-500 hover:text-stone-800'
           }`}
         >
           <Zap className="w-4 h-4" />
           <span>Automated Demo Engine</span>
           {demoState.active && (
-            <span className="px-1.5 py-0.5 rounded-full text-[10px] bg-emerald-100 text-emerald-700 font-bold animate-pulse">
+            <span className="px-1.5 py-0.5 rounded-full text-[10px] bg-emerald-100 text-emerald-400 font-bold animate-pulse">
               RUNNING Step {demoState.currentStepIndex}/8
             </span>
           )}
@@ -506,13 +506,13 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
           className={`px-4 py-3 text-xs font-semibold flex items-center space-x-2 border-b-2 transition-colors whitespace-nowrap ${
             activeTab === 'DISASTER_MODE'
               ? 'border-red-600 text-red-600'
-              : 'border-transparent text-slate-500 hover:text-slate-800'
+              : 'border-transparent text-stone-500 hover:text-stone-800'
           }`}
         >
           <ShieldAlert className="w-4 h-4" />
           <span>Disaster & Mass Casualty</span>
           {disasterActive && (
-            <span className="px-1.5 py-0.5 rounded-full text-[10px] bg-red-100 text-red-700 font-bold">
+            <span className="px-1.5 py-0.5 rounded-full text-[10px] bg-red-100 text-red-400 font-bold">
               ACTIVE
             </span>
           )}
@@ -523,7 +523,7 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
           className={`px-4 py-3 text-xs font-semibold flex items-center space-x-2 border-b-2 transition-colors whitespace-nowrap ${
             activeTab === 'SYSTEM_HEALTH'
               ? 'border-red-600 text-red-600'
-              : 'border-transparent text-slate-500 hover:text-slate-800'
+              : 'border-transparent text-stone-500 hover:text-stone-800'
           }`}
         >
           <Server className="w-4 h-4" />
@@ -534,21 +534,21 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
       {/* TAB 1: IOT GATEWAY & LIVE TELEMETRY STREAM */}
       {activeTab === 'IOT_GATEWAY' && (
         <div className="space-y-6">
-          <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="bg-white border border-stone-200 rounded-xl p-5 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+              <h3 className="text-base font-bold text-stone-900 flex items-center gap-2">
                 IoT Medical Device Streaming Gateway
-                <span className="px-2 py-0.5 bg-slate-100 text-slate-600 text-xs rounded-full font-normal">
+                <span className="px-2 py-0.5 bg-stone-100 text-stone-500 text-xs rounded-full font-normal">
                   Adapter protocol: MQTT / WebSockets JSON
                 </span>
               </h3>
-              <p className="text-xs text-slate-500 mt-1">
+              <p className="text-xs text-stone-500 mt-1">
                 Continuous vitals streaming from ECGs, Pulse Oximeters, and Transport Ventilators with automatic Gemini AI deterioration evaluation
               </p>
             </div>
             <button
               onClick={fetchIotStreams}
-              className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg flex items-center space-x-1.5 transition-colors"
+              className="px-3 py-1.5 bg-stone-100 hover:bg-stone-100 text-stone-600 text-xs font-semibold rounded-lg flex items-center space-x-1.5 transition-colors"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${loadingIot ? 'animate-spin' : ''}`} />
               <span>Refresh Gateway</span>
@@ -564,25 +564,25 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
                   stream.status === 'CRITICAL_ALARM'
                     ? 'border-red-400 ring-2 ring-red-500/20'
                     : stream.status === 'WARNING'
-                    ? 'border-amber-300'
-                    : 'border-slate-200'
+                    ? 'border-amber-200'
+                    : 'border-stone-200'
                 }`}
               >
                 {/* Header info */}
                 <div className="flex items-start justify-between border-b border-slate-100 pb-3 mb-3">
                   <div>
                     <div className="flex items-center space-x-2">
-                      <span className="text-xs font-bold text-slate-900">{stream.deviceName}</span>
+                      <span className="text-xs font-bold text-stone-900">{stream.deviceName}</span>
                     </div>
-                    <span className="text-[10px] text-slate-500 font-mono">{stream.serialNumber}</span>
+                    <span className="text-[10px] text-stone-500 font-mono">{stream.serialNumber}</span>
                   </div>
                   <span
                     className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
                       stream.status === 'CRITICAL_ALARM'
-                        ? 'bg-red-100 text-red-700 animate-pulse'
+                        ? 'bg-red-100 text-red-400 animate-pulse'
                         : stream.status === 'WARNING'
-                        ? 'bg-amber-100 text-amber-700'
-                        : 'bg-emerald-100 text-emerald-700'
+                        ? 'bg-amber-100 text-amber-400'
+                        : 'bg-emerald-100 text-emerald-400'
                     }`}
                   >
                     {stream.status}
@@ -590,11 +590,11 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
                 </div>
 
                 {/* Patient & Ambulance details */}
-                <div className="bg-slate-50 rounded-lg p-2.5 mb-3 text-xs space-y-1 border border-slate-100">
-                  <div className="flex justify-between font-semibold text-slate-800">
+                <div className="bg-cream rounded-lg p-2.5 mb-3 text-xs space-y-1 border border-slate-100">
+                  <div className="flex justify-between font-semibold text-stone-800">
                     <span>Patient: {stream.patientName}</span>
                   </div>
-                  <div className="flex justify-between text-slate-500 text-[11px]">
+                  <div className="flex justify-between text-stone-500 text-[11px]">
                     <span>Ambulance: {stream.ambulanceRegNo}</span>
                     <span>Hospital: {stream.hospitalName?.split(' ')[0]}</span>
                   </div>
@@ -607,7 +607,7 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
                       <Heart className="w-3.5 h-3.5 animate-bounce" />
                       <span>Heart Rate</span>
                     </div>
-                    <div className="text-xl font-black text-rose-700 mt-1">
+                    <div className="text-xl font-black text-rose-400 mt-1">
                       {stream.vitals.heartRate} <span className="text-xs font-normal">bpm</span>
                     </div>
                   </div>
@@ -617,21 +617,21 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
                       <Activity className="w-3.5 h-3.5" />
                       <span>SpO2 Oxygen</span>
                     </div>
-                    <div className="text-xl font-black text-blue-700 mt-1">
+                    <div className="text-xl font-black text-blue-400 mt-1">
                       {stream.vitals.spo2}%
                     </div>
                   </div>
 
                   <div className="bg-emerald-50 border border-emerald-100 rounded-lg p-2.5 text-center">
-                    <div className="text-emerald-700 text-xs font-medium">Blood Pressure</div>
-                    <div className="text-base font-black text-emerald-800 mt-1">
+                    <div className="text-emerald-400 text-xs font-medium">Blood Pressure</div>
+                    <div className="text-base font-black text-emerald-400 mt-1">
                       {stream.vitals.bpSystolic}/{stream.vitals.bpDiastolic} <span className="text-[10px] font-normal">mmHg</span>
                     </div>
                   </div>
 
                   <div className="bg-purple-50 border border-purple-100 rounded-lg p-2.5 text-center">
-                    <div className="text-purple-700 text-xs font-medium">Resp. Rate</div>
-                    <div className="text-base font-black text-purple-800 mt-1">
+                    <div className="text-purple-400 text-xs font-medium">Resp. Rate</div>
+                    <div className="text-base font-black text-purple-400 mt-1">
                       {stream.vitals.respiratoryRate} <span className="text-[10px] font-normal">/min</span>
                     </div>
                   </div>
@@ -639,32 +639,32 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
 
                 {/* AI Alarm Banner if active */}
                 {stream.aiAlertTriggered && (
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-2.5 mb-3 text-xs text-red-800">
-                    <div className="font-bold flex items-center gap-1 text-red-700 mb-1">
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-2.5 mb-3 text-xs text-red-400">
+                    <div className="font-bold flex items-center gap-1 text-red-400 mb-1">
                       <AlertTriangle className="w-3.5 h-3.5" />
                       <span>Gemini AI Vital Anomaly Alarm</span>
                     </div>
-                    <p className="text-[11px] leading-tight text-red-700">{stream.aiAlertReason}</p>
+                    <p className="text-[11px] leading-tight text-red-400">{stream.aiAlertReason}</p>
                   </div>
                 )}
 
                 {/* Footer simulation action controls */}
                 <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-                  <span className="text-[10px] text-slate-400">
+                  <span className="text-[10px] text-stone-500">
                     Batt: {stream.batteryLevelPercent}% | Sig: {stream.signalQualityPercent}%
                   </span>
                   <div className="flex gap-1.5">
                     <button
                       onClick={() => handleSimulateIotPing(stream.id, false)}
                       disabled={simulatingPingId === stream.id}
-                      className="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded text-[11px] font-medium transition-colors"
+                      className="px-2 py-1 bg-stone-100 hover:bg-stone-100 text-stone-600 rounded text-[11px] font-medium transition-colors"
                     >
                       Normal Ping
                     </button>
                     <button
                       onClick={() => handleSimulateIotPing(stream.id, true)}
                       disabled={simulatingPingId === stream.id}
-                      className="px-2 py-1 bg-red-100 hover:bg-red-200 text-red-700 rounded text-[11px] font-bold transition-colors"
+                      className="px-2 py-1 bg-red-100 hover:bg-red-200 text-red-400 rounded text-[11px] font-bold transition-colors"
                     >
                       Simulate Drop
                     </button>
@@ -680,8 +680,8 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
       {activeTab === 'AGENCY_COMMUNICATION' && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Channels & Filters Column */}
-          <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4">
-            <h3 className="text-sm font-bold text-slate-900 flex items-center space-x-2">
+          <div className="bg-white border border-stone-200 rounded-xl p-5 shadow-sm space-y-4">
+            <h3 className="text-sm font-bold text-stone-900 flex items-center space-x-2">
               <Radio className="w-4 h-4 text-red-600 animate-pulse" />
               <span>Agency Channels</span>
             </h3>
@@ -699,19 +699,19 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
                   onClick={() => setActiveChannel(ch.id)}
                   className={`w-full text-left p-2.5 rounded-lg text-xs transition-colors border ${
                     activeChannel === ch.id
-                      ? 'bg-red-50 text-red-700 border-red-200 font-bold'
-                      : 'bg-slate-50 text-slate-700 border-transparent hover:bg-slate-100'
+                      ? 'bg-red-50 text-red-400 border-red-200 font-bold'
+                      : 'bg-cream text-stone-600 border-transparent hover:bg-stone-100'
                   }`}
                 >
                   <div className="font-semibold">{ch.name}</div>
-                  <div className="text-[10px] text-slate-400 font-normal">{ch.desc}</div>
+                  <div className="text-[10px] text-stone-500 font-normal">{ch.desc}</div>
                 </button>
               ))}
             </div>
           </div>
 
           {/* Messages Feed & Composer Column */}
-          <div className="lg:col-span-2 bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4 flex flex-col justify-between min-h-[500px]">
+          <div className="lg:col-span-2 bg-white border border-stone-200 rounded-xl p-5 shadow-sm space-y-4 flex flex-col justify-between min-h-[500px]">
             {/* Message Feed */}
             <div className="space-y-3 overflow-y-auto max-h-[420px] pr-2">
               {filteredMessages.map((msg) => (
@@ -722,25 +722,25 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
                       ? 'bg-red-50/60 border-red-200 text-red-950'
                       : msg.priority === 'URGENT'
                       ? 'bg-amber-50/60 border-amber-200 text-amber-950'
-                      : 'bg-slate-50 border-slate-200 text-slate-800'
+                      : 'bg-cream border-stone-200 text-stone-800'
                   }`}
                 >
                   <div className="flex items-center justify-between font-semibold">
                     <div className="flex items-center space-x-2">
-                      <span className="text-slate-900 font-bold">{msg.senderName}</span>
-                      <span className="text-[10px] px-2 py-0.5 rounded bg-white border border-slate-200 font-mono text-slate-600">
+                      <span className="text-stone-900 font-bold">{msg.senderName}</span>
+                      <span className="text-[10px] px-2 py-0.5 rounded bg-white border border-stone-200 font-mono text-stone-500">
                         {msg.senderBadge}
                       </span>
                     </div>
-                    <span className="text-[10px] text-slate-400 font-mono">
+                    <span className="text-[10px] text-stone-500 font-mono">
                       {new Date(msg.timestamp).toLocaleTimeString()}
                     </span>
                   </div>
 
                   <p className="text-xs leading-relaxed font-normal">{msg.messageText}</p>
 
-                  <div className="flex items-center justify-between text-[10px] text-slate-400 pt-1 border-t border-slate-200/60">
-                    <span className="font-medium text-slate-500">To: {msg.recipientGroup}</span>
+                  <div className="flex items-center justify-between text-[10px] text-stone-500 pt-1 border-t border-stone-200/60">
+                    <span className="font-medium text-stone-500">To: {msg.recipientGroup}</span>
                     <div className="flex items-center space-x-1 text-emerald-600">
                       <CheckCheck className="w-3.5 h-3.5" />
                       <span>Read by {msg.readBy.length} units</span>
@@ -751,12 +751,12 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
             </div>
 
             {/* Composer Bar */}
-            <form onSubmit={handleSendMessage} className="pt-3 border-t border-slate-200 space-y-2">
+            <form onSubmit={handleSendMessage} className="pt-3 border-t border-stone-200 space-y-2">
               <div className="flex gap-2 text-xs">
                 <select
                   value={newMessageChannel}
                   onChange={(e) => setNewMessageChannel(e.target.value)}
-                  className="px-2.5 py-1.5 border border-slate-300 rounded-lg bg-slate-50 text-slate-800 font-medium text-xs focus:outline-none focus:ring-1 focus:ring-red-500"
+                  className="px-2.5 py-1.5 border border-stone-200 rounded-lg bg-cream text-stone-800 font-medium text-xs focus:outline-none focus:ring-1 focus:ring-red-500"
                 >
                   <option value="EOC_TO_HOSPITAL">EOC ↔ Hospital Desk</option>
                   <option value="DISPATCHER_TO_AMBULANCE">Dispatcher ↔ Ambulance</option>
@@ -767,14 +767,14 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
                 <select
                   value={newMessagePriority}
                   onChange={(e) => setNewMessagePriority(e.target.value as any)}
-                  className="px-2.5 py-1.5 border border-slate-300 rounded-lg bg-slate-50 text-slate-800 font-medium text-xs focus:outline-none focus:ring-1 focus:ring-red-500"
+                  className="px-2.5 py-1.5 border border-stone-200 rounded-lg bg-cream text-stone-800 font-medium text-xs focus:outline-none focus:ring-1 focus:ring-red-500"
                 >
                   <option value="NORMAL">Normal Priority</option>
                   <option value="URGENT">Urgent Priority</option>
                   <option value="CRITICAL_EMERGENCY">Critical Emergency</option>
                 </select>
 
-                <label className="flex items-center space-x-1.5 text-xs text-slate-600 font-medium cursor-pointer ml-auto">
+                <label className="flex items-center space-x-1.5 text-xs text-stone-500 font-medium cursor-pointer ml-auto">
                   <input
                     type="checkbox"
                     checked={isBroadcast}
@@ -791,12 +791,12 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
                   placeholder="Type agency dispatch message or emergency broadcast..."
                   value={newMessageText}
                   onChange={(e) => setNewMessageText(e.target.value)}
-                  className="flex-1 px-3 py-2 border border-slate-300 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500"
+                  className="flex-1 px-3 py-2 border border-stone-200 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500"
                 />
                 <button
                   type="submit"
                   disabled={sendingMsg}
-                  className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg text-xs transition-colors flex items-center space-x-1.5 shadow-sm"
+                  className="px-4 py-2 bg-red-600 hover:bg-red-700 text-stone-900 font-semibold rounded-lg text-xs transition-colors flex items-center space-x-1.5 shadow-sm"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>Transmit</span>
@@ -809,14 +809,14 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
 
       {/* TAB 3: AUTOMATED DEMO SIMULATION ENGINE */}
       {activeTab === 'DEMO_SIMULATION' && (
-        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm space-y-6">
+        <div className="bg-white border border-stone-200 rounded-xl p-6 shadow-sm space-y-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-5">
             <div>
-              <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+              <h3 className="text-lg font-bold text-stone-900 flex items-center gap-2">
                 <Zap className="w-5 h-5 text-red-600 fill-current" />
                 <span>Automated Hackathon End-to-End Simulation Engine</span>
               </h3>
-              <p className="text-xs text-slate-500 mt-1">
+              <p className="text-xs text-stone-500 mt-1">
                 Single-click automated demonstration script progressing through Pune Expressway crash, AI triage, smart dispatch, IoT vital drops, hospital ICU pre-reservation, and Green Corridor activation.
               </p>
             </div>
@@ -825,7 +825,7 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
               {!demoState.active ? (
                 <button
                   onClick={startDemoSimulation}
-                  className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg text-xs shadow-md shadow-red-900/20 transition-all flex items-center space-x-2"
+                  className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-stone-900 font-bold rounded-lg text-xs shadow-md shadow-red-900/20 transition-all flex items-center space-x-2"
                 >
                   <Play className="w-4 h-4 fill-current" />
                   <span>Start Live Emergency Simulation</span>
@@ -834,7 +834,7 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
                 <>
                   <button
                     onClick={pauseDemoSimulation}
-                    className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg text-xs transition-colors flex items-center space-x-1.5"
+                    className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-stone-900 font-semibold rounded-lg text-xs transition-colors flex items-center space-x-1.5"
                   >
                     {demoState.paused ? <Play className="w-3.5 h-3.5" /> : <Pause className="w-3.5 h-3.5" />}
                     <span>{demoState.paused ? 'Resume' : 'Pause'}</span>
@@ -842,7 +842,7 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
 
                   <button
                     onClick={resetDemoSimulation}
-                    className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold rounded-lg text-xs transition-colors flex items-center space-x-1.5"
+                    className="px-4 py-2 bg-stone-100 hover:bg-stone-100 text-stone-600 font-semibold rounded-lg text-xs transition-colors flex items-center space-x-1.5"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
                     <span>Reset</span>
@@ -854,7 +854,7 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
 
           {/* Stepper Timeline */}
           <div className="space-y-4">
-            <div className="flex items-center justify-between text-xs font-semibold text-slate-700">
+            <div className="flex items-center justify-between text-xs font-semibold text-stone-600">
               <span>Simulation Timeline Progress</span>
               <span>
                 {demoState.active ? `Elapsed: ${demoState.elapsedSeconds}s (Step ${demoState.currentStepIndex}/8)` : 'Ready'}
@@ -871,15 +871,15 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
                       ? 'bg-emerald-50 border-emerald-200 text-emerald-950'
                       : step.status === 'IN_PROGRESS'
                       ? 'bg-red-50 border-red-300 text-red-950 ring-2 ring-red-500/30'
-                      : 'bg-slate-50 border-slate-200 text-slate-500 hover:bg-slate-100'
+                      : 'bg-cream border-stone-200 text-stone-500 hover:bg-stone-100'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-bold text-slate-900 text-xs">{step.title}</span>
+                    <span className="font-bold text-stone-900 text-xs">{step.title}</span>
                     {step.status === 'COMPLETED' && <CheckCircle2 className="w-4 h-4 text-emerald-600" />}
                     {step.status === 'IN_PROGRESS' && <RefreshCw className="w-4 h-4 text-red-600 animate-spin" />}
                   </div>
-                  <p className="text-[11px] text-slate-600 leading-snug">{step.description}</p>
+                  <p className="text-[11px] text-stone-500 leading-snug">{step.description}</p>
                 </div>
               ))}
             </div>
@@ -889,14 +889,14 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
 
       {/* TAB 4: DISASTER & MASS CASUALTY ENGINE */}
       {activeTab === 'DISASTER_MODE' && (
-        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm space-y-6">
+        <div className="bg-white border border-stone-200 rounded-xl p-6 shadow-sm space-y-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-4">
             <div>
-              <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+              <h3 className="text-base font-bold text-stone-900 flex items-center gap-2">
                 <ShieldAlert className="w-5 h-5 text-red-600" />
                 <span>Statewide Disaster Mode & Mass Casualty Redistribution</span>
               </h3>
-              <p className="text-xs text-slate-500 mt-1">
+              <p className="text-xs text-stone-500 mt-1">
                 Activates emergency mass casualty protocols, multi-district hospital triage overload management, and regional resource redistribution.
               </p>
             </div>
@@ -905,7 +905,7 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
               <select
                 value={disasterScenario}
                 onChange={(e) => setDisasterScenario(e.target.value)}
-                className="px-3 py-2 border border-slate-300 rounded-lg text-xs font-medium bg-slate-50"
+                className="px-3 py-2 border border-stone-200 rounded-lg text-xs font-medium bg-cream"
               >
                 <option value="MASS_CASUALTY">Samruddhi Expressway Mass Casualty</option>
                 <option value="FLOOD">Vidarbha Monsoon Flood Emergency</option>
@@ -918,8 +918,8 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
                 disabled={disasterLoading}
                 className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${
                   disasterActive
-                    ? 'bg-slate-900 text-white hover:bg-slate-800'
-                    : 'bg-red-600 text-white hover:bg-red-700 shadow-sm'
+                    ? 'bg-white text-stone-900 hover:bg-stone-100'
+                    : 'bg-red-600 text-stone-900 hover:bg-red-700 shadow-sm'
                 }`}
               >
                 {disasterActive ? 'Deactivate Disaster Mode' : 'Activate Selected Scenario'}
@@ -930,21 +930,21 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
             <div className="p-4 bg-red-50 border border-red-200 rounded-xl space-y-1">
               <div className="font-bold text-red-900">1. Automated Triage Escalation</div>
-              <p className="text-red-700 text-[11px]">
+              <p className="text-red-400 text-[11px]">
                 All incoming emergency dispatches automatically override to Priority RED Trauma protocol.
               </p>
             </div>
 
             <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl space-y-1">
               <div className="font-bold text-amber-900">2. Emergency ICU Bed Lockout</div>
-              <p className="text-amber-700 text-[11px]">
+              <p className="text-amber-400 text-[11px]">
                 Hospitals within 40km radius automatically freeze 20% of general ICU beds for incoming disaster victims.
               </p>
             </div>
 
             <div className="p-4 bg-blue-50 border border-blue-200 rounded-xl space-y-1">
               <div className="font-bold text-blue-900">3. Statewide Green Corridors</div>
-              <p className="text-blue-700 text-[11px]">
+              <p className="text-blue-400 text-[11px]">
                 Traffic control rooms across Nagpur & Pune override signal lights for all MEMS 108 dispatches.
               </p>
             </div>
@@ -954,15 +954,15 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
 
       {/* TAB 5: OBSERVABILITY & SYSTEM HEALTH */}
       {activeTab === 'SYSTEM_HEALTH' && (
-        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm space-y-6">
+        <div className="bg-white border border-stone-200 rounded-xl p-6 shadow-sm space-y-6">
           <div className="flex items-center justify-between border-b border-slate-100 pb-4">
-            <h3 className="text-base font-bold text-slate-900 flex items-center space-x-2">
+            <h3 className="text-base font-bold text-stone-900 flex items-center space-x-2">
               <Server className="w-5 h-5 text-red-600" />
               <span>Rakshak Operations & System Observability</span>
             </h3>
             <button
               onClick={fetchObservability}
-              className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg flex items-center space-x-1.5"
+              className="px-3 py-1.5 bg-stone-100 hover:bg-stone-100 text-stone-600 text-xs font-semibold rounded-lg flex items-center space-x-1.5"
             >
               <RefreshCw className="w-3.5 h-3.5" />
               <span>Ping Metrics</span>
@@ -970,29 +970,29 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
-              <div className="text-slate-500 text-xs font-medium">Server Uptime</div>
-              <div className="text-xl font-black text-slate-900 mt-1">
+            <div className="p-4 bg-cream border border-stone-200 rounded-xl">
+              <div className="text-stone-500 text-xs font-medium">Server Uptime</div>
+              <div className="text-xl font-black text-stone-900 mt-1">
                 {observability ? `${Math.floor(observability.uptimeSeconds / 60)} mins` : '100%'}
               </div>
             </div>
 
-            <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
-              <div className="text-slate-500 text-xs font-medium">PostgreSQL Latency</div>
+            <div className="p-4 bg-cream border border-stone-200 rounded-xl">
+              <div className="text-stone-500 text-xs font-medium">PostgreSQL Latency</div>
               <div className="text-xl font-black text-emerald-600 mt-1">
                 {observability ? `${observability.postgres.latencyMs} ms` : '3.4 ms'}
               </div>
             </div>
 
-            <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
-              <div className="text-slate-500 text-xs font-medium">Gemini AI Latency</div>
+            <div className="p-4 bg-cream border border-stone-200 rounded-xl">
+              <div className="text-stone-500 text-xs font-medium">Gemini AI Latency</div>
               <div className="text-xl font-black text-blue-600 mt-1">
                 {observability ? `${observability.geminiAi.latencyMs} ms` : '180 ms'}
               </div>
             </div>
 
-            <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
-              <div className="text-slate-500 text-xs font-medium">WebSocket Throughput</div>
+            <div className="p-4 bg-cream border border-stone-200 rounded-xl">
+              <div className="text-stone-500 text-xs font-medium">WebSocket Throughput</div>
               <div className="text-xl font-black text-purple-600 mt-1">
                 {observability ? `${observability.webSockets.messagesPerSec} msg/s` : '128 msg/s'}
               </div>
@@ -1003,16 +1003,16 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
 
       {/* FCM Test Modal */}
       {showFcmModal && (
-        <div className="fixed inset-0 bg-slate-950/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
-            <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+        <div className="fixed inset-0 bg-cream/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-lg shadow-stone-300/50 space-y-4">
+            <h3 className="text-base font-bold text-stone-900 flex items-center gap-2">
               <Bell className="w-5 h-5 text-amber-500" />
               <span>Trigger Test FCM Web Push Notification</span>
             </h3>
 
             <div className="space-y-3 text-xs">
               <div>
-                <label className="block text-slate-600 font-semibold mb-1">Alert Title</label>
+                <label className="block text-stone-500 font-semibold mb-1">Alert Title</label>
                 <input
                   type="text"
                   value={fcmTitle}
@@ -1022,7 +1022,7 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
               </div>
 
               <div>
-                <label className="block text-slate-600 font-semibold mb-1">Message Body</label>
+                <label className="block text-stone-500 font-semibold mb-1">Message Body</label>
                 <textarea
                   value={fcmBody}
                   onChange={(e) => setFcmBody(e.target.value)}
@@ -1034,13 +1034,13 @@ export const RealTimeNetworkView: React.FC<RealTimeNetworkViewProps> = ({
             <div className="flex justify-end gap-2 pt-2">
               <button
                 onClick={() => setShowFcmModal(false)}
-                className="px-4 py-2 bg-slate-100 text-slate-700 font-semibold rounded-lg text-xs"
+                className="px-4 py-2 bg-stone-100 text-stone-600 font-semibold rounded-lg text-xs"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSendFcm}
-                className="px-4 py-2 bg-red-600 text-white font-bold rounded-lg text-xs"
+                className="px-4 py-2 bg-red-600 text-stone-900 font-bold rounded-lg text-xs"
               >
                 Push FCM Alert
               </button>

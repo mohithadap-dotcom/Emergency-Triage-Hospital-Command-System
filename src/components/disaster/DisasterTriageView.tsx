@@ -83,20 +83,20 @@ export const DisasterTriageView: React.FC<DisasterTriageViewProps> = ({
   return (
     <div className="space-y-6">
       {/* Header & Quick Action Bar */}
-      <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="bg-white border border-stone-200 rounded-xl p-5 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+          <h2 className="text-lg font-bold text-stone-900 flex items-center gap-2">
             <HeartPulse className="w-5 h-5 text-rose-600" />
             START / Jump Multi-Casualty Triage Console
           </h2>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <p className="text-xs text-stone-500 mt-0.5">
             Real-time tagging, vital signs tracking, and automated casualty destination matching.
           </p>
         </div>
 
         <button
           onClick={() => setIsTagModalOpen(true)}
-          className="bg-rose-600 hover:bg-rose-500 text-white font-extrabold text-xs px-4 py-2.5 rounded-lg shadow flex items-center gap-2 transition-all transform hover:scale-105"
+          className="bg-rose-600 hover:bg-rose-500 text-stone-900 font-extrabold text-xs px-4 py-2.5 rounded-lg shadow flex items-center gap-2 transition-all transform hover:scale-105"
         >
           <Plus className="w-4 h-4" />
           <span>TAG NEW CASUALTY AT SCENE</span>
@@ -104,15 +104,15 @@ export const DisasterTriageView: React.FC<DisasterTriageViewProps> = ({
       </div>
 
       {/* Filter & Search Bar */}
-      <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div className="bg-cream border border-stone-200 rounded-xl p-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
         {/* Category Pill Filters */}
         <div className="flex items-center space-x-1.5 overflow-x-auto pb-1 md:pb-0">
           <button
             onClick={() => setFilterCategory('all')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
               filterCategory === 'all'
-                ? 'bg-slate-800 text-white shadow'
-                : 'bg-white text-slate-700 hover:bg-slate-200 border border-slate-300'
+                ? 'bg-stone-100 text-stone-900 shadow'
+                : 'bg-white text-stone-600 hover:bg-stone-100 border border-stone-200'
             }`}
           >
             All Casualties ({victims.length})
@@ -121,8 +121,8 @@ export const DisasterTriageView: React.FC<DisasterTriageViewProps> = ({
             onClick={() => setFilterCategory('RED')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
               filterCategory === 'RED'
-                ? 'bg-rose-600 text-white shadow'
-                : 'bg-rose-50 text-rose-800 hover:bg-rose-100 border border-rose-300'
+                ? 'bg-rose-600 text-stone-900 shadow'
+                : 'bg-rose-50 text-rose-400 hover:bg-rose-100 border border-rose-200'
             }`}
           >
             RED Immediate ({victims.filter((v) => v.category === 'RED').length})
@@ -132,7 +132,7 @@ export const DisasterTriageView: React.FC<DisasterTriageViewProps> = ({
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
               filterCategory === 'YELLOW'
                 ? 'bg-amber-500 text-slate-950 shadow'
-                : 'bg-amber-50 text-amber-900 hover:bg-amber-100 border border-amber-300'
+                : 'bg-amber-50 text-amber-900 hover:bg-amber-100 border border-amber-200'
             }`}
           >
             YELLOW Delayed ({victims.filter((v) => v.category === 'YELLOW').length})
@@ -141,7 +141,7 @@ export const DisasterTriageView: React.FC<DisasterTriageViewProps> = ({
             onClick={() => setFilterCategory('GREEN')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
               filterCategory === 'GREEN'
-                ? 'bg-emerald-600 text-white shadow'
+                ? 'bg-emerald-600 text-stone-900 shadow'
                 : 'bg-emerald-50 text-emerald-900 hover:bg-emerald-100 border border-emerald-300'
             }`}
           >
@@ -151,8 +151,8 @@ export const DisasterTriageView: React.FC<DisasterTriageViewProps> = ({
             onClick={() => setFilterCategory('BLACK')}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
               filterCategory === 'BLACK'
-                ? 'bg-slate-800 text-white shadow'
-                : 'bg-slate-100 text-slate-800 hover:bg-slate-200 border border-slate-300'
+                ? 'bg-stone-100 text-stone-900 shadow'
+                : 'bg-stone-100 text-stone-800 hover:bg-stone-100 border border-stone-200'
             }`}
           >
             BLACK Deceased ({victims.filter((v) => v.category === 'BLACK').length})
@@ -161,13 +161,13 @@ export const DisasterTriageView: React.FC<DisasterTriageViewProps> = ({
 
         {/* Search */}
         <div className="relative min-w-[240px]">
-          <Search className="w-4 h-4 absolute left-3 top-2.5 text-slate-400" />
+          <Search className="w-4 h-4 absolute left-3 top-2.5 text-stone-500" />
           <input
             type="text"
             placeholder="Search by tag # or injuries..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-white border border-slate-300 rounded-lg pl-9 pr-3 py-1.5 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-rose-500"
+            className="w-full bg-white border border-stone-200 rounded-lg pl-9 pr-3 py-1.5 text-xs text-stone-900 focus:outline-none focus:ring-2 focus:ring-rose-500"
           />
         </div>
       </div>
@@ -179,12 +179,12 @@ export const DisasterTriageView: React.FC<DisasterTriageViewProps> = ({
             key={v.id}
             className={`bg-white border rounded-xl p-4 shadow-sm hover:shadow-md transition-all space-y-3 ${
               v.category === 'RED'
-                ? 'border-l-4 border-l-rose-600 border-slate-200'
+                ? 'border-l-4 border-l-rose-600 border-stone-200'
                 : v.category === 'YELLOW'
-                ? 'border-l-4 border-l-amber-500 border-slate-200'
+                ? 'border-l-4 border-l-amber-500 border-stone-200'
                 : v.category === 'GREEN'
-                ? 'border-l-4 border-l-emerald-500 border-slate-200'
-                : 'border-l-4 border-l-slate-800 border-slate-200'
+                ? 'border-l-4 border-l-emerald-500 border-stone-200'
+                : 'border-l-4 border-l-slate-800 border-stone-200'
             }`}
           >
             <div className="flex items-center justify-between">
@@ -192,32 +192,32 @@ export const DisasterTriageView: React.FC<DisasterTriageViewProps> = ({
                 <span
                   className={`font-black text-xs px-2.5 py-1 rounded shadow ${
                     v.category === 'RED'
-                      ? 'bg-rose-600 text-white animate-pulse'
+                      ? 'bg-rose-600 text-stone-900 animate-pulse'
                       : v.category === 'YELLOW'
                       ? 'bg-amber-500 text-slate-950 font-bold'
                       : v.category === 'GREEN'
-                      ? 'bg-emerald-600 text-white'
-                      : 'bg-slate-800 text-white'
+                      ? 'bg-emerald-600 text-stone-900'
+                      : 'bg-stone-100 text-stone-900'
                   }`}
                 >
                   {v.tagNumber}
                 </span>
-                <span className="font-bold text-slate-900 text-sm">{v.ageGender}</span>
+                <span className="font-bold text-stone-900 text-sm">{v.ageGender}</span>
               </div>
 
               <div className="flex items-center space-x-2">
-                <span className="bg-slate-100 text-slate-700 font-mono text-[11px] font-bold px-2 py-0.5 rounded">
+                <span className="bg-stone-100 text-stone-600 font-mono text-[11px] font-bold px-2 py-0.5 rounded">
                   AI Score: {v.aiPriorityScore}
                 </span>
                 <span
                   className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase ${
                     v.transportStatus === 'EN_ROUTE'
-                      ? 'bg-sky-100 text-sky-800'
+                      ? 'bg-sky-100 text-sky-400'
                       : v.transportStatus === 'STAGED'
-                      ? 'bg-amber-100 text-amber-800'
+                      ? 'bg-amber-100 text-amber-400'
                       : v.transportStatus === 'ADMITTED'
-                      ? 'bg-emerald-100 text-emerald-800'
-                      : 'bg-slate-100 text-slate-700'
+                      ? 'bg-emerald-100 text-emerald-400'
+                      : 'bg-stone-100 text-stone-600'
                   }`}
                 >
                   {v.transportStatus}
@@ -225,39 +225,39 @@ export const DisasterTriageView: React.FC<DisasterTriageViewProps> = ({
               </div>
             </div>
 
-            <p className="text-xs text-slate-800 font-medium leading-relaxed">{v.injuriesDescription}</p>
+            <p className="text-xs text-stone-800 font-medium leading-relaxed">{v.injuriesDescription}</p>
 
             {/* Vitals Ribbon */}
-            <div className="bg-slate-50 border border-slate-200 rounded-lg p-2.5 font-mono text-[11px] grid grid-cols-4 gap-2 text-center">
+            <div className="bg-cream border border-stone-200 rounded-lg p-2.5 font-mono text-[11px] grid grid-cols-4 gap-2 text-center">
               <div>
-                <span className="text-[10px] text-slate-400 block">HEART RATE</span>
-                <span className={`font-bold ${v.vitals.hr > 120 ? 'text-rose-600' : 'text-slate-800'}`}>
+                <span className="text-[10px] text-stone-500 block">HEART RATE</span>
+                <span className={`font-bold ${v.vitals.hr > 120 ? 'text-rose-600' : 'text-stone-800'}`}>
                   {v.vitals.hr} bpm
                 </span>
               </div>
               <div>
-                <span className="text-[10px] text-slate-400 block">BLOOD PRESS.</span>
-                <span className="font-bold text-slate-800">{v.vitals.bp}</span>
+                <span className="text-[10px] text-stone-500 block">BLOOD PRESS.</span>
+                <span className="font-bold text-stone-800">{v.vitals.bp}</span>
               </div>
               <div>
-                <span className="text-[10px] text-slate-400 block">SPO2 %</span>
-                <span className={`font-bold ${v.vitals.spo2 < 90 ? 'text-rose-600 font-black' : 'text-slate-800'}`}>
+                <span className="text-[10px] text-stone-500 block">SPO2 %</span>
+                <span className={`font-bold ${v.vitals.spo2 < 90 ? 'text-rose-600 font-black' : 'text-stone-800'}`}>
                   {v.vitals.spo2}%
                 </span>
               </div>
               <div>
-                <span className="text-[10px] text-slate-400 block">RESP RATE</span>
-                <span className="font-bold text-slate-800">{v.vitals.rr}/min</span>
+                <span className="text-[10px] text-stone-500 block">RESP RATE</span>
+                <span className="font-bold text-stone-800">{v.vitals.rr}/min</span>
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center justify-between text-xs text-slate-500 pt-1 border-t border-slate-100 gap-2">
+            <div className="flex flex-wrap items-center justify-between text-xs text-stone-500 pt-1 border-t border-slate-100 gap-2">
               <span className="flex items-center gap-1">
                 <Building2 className="w-3.5 h-3.5 text-sky-600" />
-                Destination: <strong className="text-slate-800">{v.assignedHospitalName || 'Unassigned'}</strong>
+                Destination: <strong className="text-stone-800">{v.assignedHospitalName || 'Unassigned'}</strong>
               </span>
               {v.assignedAmbulanceReg && (
-                <span className="flex items-center gap-1 text-sky-700 font-bold">
+                <span className="flex items-center gap-1 text-sky-400 font-bold">
                   <Truck className="w-3.5 h-3.5" />
                   Unit: {v.assignedAmbulanceReg}
                 </span>
@@ -275,16 +275,16 @@ export const DisasterTriageView: React.FC<DisasterTriageViewProps> = ({
 
       {/* Modal for Tagging New Casualty */}
       {isTagModalOpen && (
-        <div className="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white border border-slate-300 rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-              <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+        <div className="fixed inset-0 bg-cream/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white border border-stone-200 rounded-2xl max-w-lg w-full p-6 shadow-lg shadow-stone-300/50 space-y-4">
+            <div className="flex items-center justify-between border-b border-stone-200 pb-3">
+              <h3 className="text-base font-bold text-stone-900 flex items-center gap-2">
                 <Tag className="w-5 h-5 text-rose-600" />
                 START Triage Field Tagging Form
               </h3>
               <button
                 onClick={() => setIsTagModalOpen(false)}
-                className="text-slate-400 hover:text-slate-600 text-lg font-bold"
+                className="text-stone-500 hover:text-stone-500 text-lg font-bold"
               >
                 ✕
               </button>
@@ -293,22 +293,22 @@ export const DisasterTriageView: React.FC<DisasterTriageViewProps> = ({
             <form onSubmit={handleSubmitTag} className="space-y-3 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Tag Identifier</label>
+                  <label className="block font-bold text-stone-600 mb-1">Tag Identifier</label>
                   <input
                     type="text"
                     required
                     value={newTagNumber}
                     onChange={(e) => setNewTagNumber(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 rounded p-2 text-slate-900 font-bold"
+                    className="w-full bg-cream border border-stone-200 rounded p-2 text-stone-900 font-bold"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Triage Priority Level</label>
+                  <label className="block font-bold text-stone-600 mb-1">Triage Priority Level</label>
                   <select
                     value={newCategory}
                     onChange={(e) => setNewCategory(e.target.value as any)}
-                    className="w-full bg-slate-50 border border-slate-300 rounded p-2 font-bold"
+                    className="w-full bg-cream border border-stone-200 rounded p-2 font-bold"
                   >
                     <option value="RED">RED — Immediate / Critical</option>
                     <option value="YELLOW">YELLOW — Delayed / Serious</option>
@@ -320,90 +320,90 @@ export const DisasterTriageView: React.FC<DisasterTriageViewProps> = ({
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Age & Gender</label>
+                  <label className="block font-bold text-stone-600 mb-1">Age & Gender</label>
                   <input
                     type="text"
                     required
                     value={newAgeGender}
                     onChange={(e) => setNewAgeGender(e.target.value)}
                     placeholder="e.g. 35M or 24F"
-                    className="w-full bg-slate-50 border border-slate-300 rounded p-2 text-slate-900"
+                    className="w-full bg-cream border border-stone-200 rounded p-2 text-stone-900"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Triage Scene Location</label>
+                  <label className="block font-bold text-stone-600 mb-1">Triage Scene Location</label>
                   <input
                     type="text"
                     value={newLocation}
                     onChange={(e) => setNewLocation(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-300 rounded p-2 text-slate-900"
+                    className="w-full bg-cream border border-stone-200 rounded p-2 text-stone-900"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block font-bold text-slate-700 mb-1">Injury / Clinical Description</label>
+                <label className="block font-bold text-stone-600 mb-1">Injury / Clinical Description</label>
                 <textarea
                   required
                   rows={2}
                   value={newInjuries}
                   onChange={(e) => setNewInjuries(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-300 rounded p-2 text-slate-900"
+                  className="w-full bg-cream border border-stone-200 rounded p-2 text-stone-900"
                 ></textarea>
               </div>
 
               {/* Vitals Form Grid */}
-              <div className="bg-slate-50 border border-slate-200 rounded p-3">
-                <span className="block font-bold text-slate-800 text-[11px] mb-2 uppercase tracking-wider">
+              <div className="bg-cream border border-stone-200 rounded p-3">
+                <span className="block font-bold text-stone-800 text-[11px] mb-2 uppercase tracking-wider">
                   Initial Vital Signs
                 </span>
                 <div className="grid grid-cols-4 gap-2 text-[11px]">
                   <div>
-                    <label className="block text-slate-500 mb-1">HR (bpm)</label>
+                    <label className="block text-stone-500 mb-1">HR (bpm)</label>
                     <input
                       type="number"
                       value={newHr}
                       onChange={(e) => setNewHr(Number(e.target.value))}
-                      className="w-full bg-white border border-slate-300 rounded p-1 text-center font-bold"
+                      className="w-full bg-white border border-stone-200 rounded p-1 text-center font-bold"
                     />
                   </div>
                   <div>
-                    <label className="block text-slate-500 mb-1">BP (mmHg)</label>
+                    <label className="block text-stone-500 mb-1">BP (mmHg)</label>
                     <input
                       type="text"
                       value={newBp}
                       onChange={(e) => setNewBp(e.target.value)}
-                      className="w-full bg-white border border-slate-300 rounded p-1 text-center font-bold"
+                      className="w-full bg-white border border-stone-200 rounded p-1 text-center font-bold"
                     />
                   </div>
                   <div>
-                    <label className="block text-slate-500 mb-1">SpO2 %</label>
+                    <label className="block text-stone-500 mb-1">SpO2 %</label>
                     <input
                       type="number"
                       value={newSpo2}
                       onChange={(e) => setNewSpo2(Number(e.target.value))}
-                      className="w-full bg-white border border-slate-300 rounded p-1 text-center font-bold text-rose-600"
+                      className="w-full bg-white border border-stone-200 rounded p-1 text-center font-bold text-rose-600"
                     />
                   </div>
                   <div>
-                    <label className="block text-slate-500 mb-1">Resp Rate</label>
+                    <label className="block text-stone-500 mb-1">Resp Rate</label>
                     <input
                       type="number"
                       value={newRr}
                       onChange={(e) => setNewRr(Number(e.target.value))}
-                      className="w-full bg-white border border-slate-300 rounded p-1 text-center font-bold"
+                      className="w-full bg-white border border-stone-200 rounded p-1 text-center font-bold"
                     />
                   </div>
                 </div>
               </div>
 
               <div>
-                <label className="block font-bold text-slate-700 mb-1">Assigned Receiving Trauma Center</label>
+                <label className="block font-bold text-stone-600 mb-1">Assigned Receiving Trauma Center</label>
                 <select
                   value={newAssignedHosp}
                   onChange={(e) => setNewAssignedHosp(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-300 rounded p-2 font-bold"
+                  className="w-full bg-cream border border-stone-200 rounded p-2 font-bold"
                 >
                   {hospitals.map((h) => (
                     <option key={h.id} value={h.id}>
@@ -414,13 +414,13 @@ export const DisasterTriageView: React.FC<DisasterTriageViewProps> = ({
               </div>
 
               <div>
-                <label className="block font-bold text-slate-700 mb-1">Special Directives / Alert Notes</label>
+                <label className="block font-bold text-stone-600 mb-1">Special Directives / Alert Notes</label>
                 <input
                   type="text"
                   placeholder="e.g. Needs immediate blood transfusion or chest tube thoracostomy"
                   value={newNotes}
                   onChange={(e) => setNewNotes(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-300 rounded p-2 text-slate-900"
+                  className="w-full bg-cream border border-stone-200 rounded p-2 text-stone-900"
                 />
               </div>
 
@@ -428,13 +428,13 @@ export const DisasterTriageView: React.FC<DisasterTriageViewProps> = ({
                 <button
                   type="button"
                   onClick={() => setIsTagModalOpen(false)}
-                  className="px-4 py-2 bg-slate-100 text-slate-700 font-bold rounded hover:bg-slate-200"
+                  className="px-4 py-2 bg-stone-100 text-stone-600 font-bold rounded hover:bg-stone-100"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-rose-600 text-white font-extrabold rounded hover:bg-rose-500 shadow"
+                  className="px-4 py-2 bg-rose-600 text-stone-900 font-extrabold rounded hover:bg-rose-500 shadow"
                 >
                   Confirm Triage Tag
                 </button>

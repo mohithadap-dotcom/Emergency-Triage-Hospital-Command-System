@@ -77,21 +77,21 @@ export const AmbulanceAiAssistantView: React.FC<AmbulanceAiAssistantViewProps> =
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-950 text-white p-5 rounded-2xl border-2 border-indigo-500/80 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-950 text-stone-900 p-5 rounded-2xl border-2 border-indigo-500/80 shadow-lg shadow-stone-300/40 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center space-x-3">
           <div className="p-3 bg-indigo-600 rounded-xl shadow-lg">
-            <Sparkles className="w-6 h-6 text-amber-300 animate-spin" style={{ animationDuration: '6s' }} />
+            <Sparkles className="w-6 h-6 text-amber-100 animate-spin" style={{ animationDuration: '6s' }} />
           </div>
           <div>
             <div className="flex items-center space-x-2">
-              <h2 className="text-xl font-black tracking-tight text-white">
+              <h2 className="text-xl font-black tracking-tight text-stone-900">
                 Google Gemini AI EMS Assistant
               </h2>
               <span className="bg-indigo-500/20 text-indigo-300 text-[10px] font-mono font-bold px-2 py-0.5 rounded border border-indigo-500/30">
                 GEMINI-3.6-FLASH
               </span>
             </div>
-            <p className="text-xs text-slate-300">
+            <p className="text-xs text-stone-600">
               Transport Risk Assessment • Route Optimization • Pre-Arrival Hospital Preparation
             </p>
           </div>
@@ -108,7 +108,7 @@ export const AmbulanceAiAssistantView: React.FC<AmbulanceAiAssistantViewProps> =
       </div>
 
       {/* Safety Notice Banner */}
-      <div className="bg-amber-500/10 border border-amber-500/30 p-3 rounded-xl text-amber-200 text-xs flex items-center space-x-2">
+      <div className="bg-amber-500/10 border border-amber-500/30 p-3 rounded-xl text-amber-100 text-xs flex items-center space-x-2">
         <Info className="w-4 h-4 text-amber-400 shrink-0" />
         <span>
           <strong>Clinical Disclaimer:</strong> The AI EMS Assistant provides decision support to optimize logistics, route selection, and hospital preparation. It never diagnoses conditions or prescribes medical treatment. Human review required.
@@ -118,44 +118,44 @@ export const AmbulanceAiAssistantView: React.FC<AmbulanceAiAssistantViewProps> =
       {/* Main AI Output Cards */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         {/* Risk Score & Facility */}
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-          <h3 className="text-xs font-black text-slate-800 uppercase tracking-wider flex items-center gap-1.5 border-b pb-2">
+        <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm space-y-4">
+          <h3 className="text-xs font-black text-stone-800 uppercase tracking-wider flex items-center gap-1.5 border-b pb-2">
             <Shield className="w-4 h-4 text-indigo-600" />
             <span>Transport Risk & Reception</span>
           </h3>
 
           <div className="space-y-3">
-            <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-center">
-              <span className="text-[10px] text-slate-500 font-bold block uppercase">Transport Risk Score</span>
-              <span className="text-3xl font-black text-rose-700 font-mono">{recommendation.transportRiskScore} / 100</span>
+            <div className="p-3 bg-cream rounded-xl border border-stone-200 text-center">
+              <span className="text-[10px] text-stone-500 font-bold block uppercase">Transport Risk Score</span>
+              <span className="text-3xl font-black text-rose-400 font-mono">{recommendation.transportRiskScore} / 100</span>
               <span className="text-[10px] text-rose-600 font-bold block mt-0.5">HIGH TRANSPORT RISK</span>
             </div>
 
             <div className="p-3 bg-sky-50 rounded-xl border border-sky-200">
-              <span className="text-[10px] text-sky-800 font-bold block uppercase mb-1">Optimal Hospital Match</span>
+              <span className="text-[10px] text-sky-400 font-bold block uppercase mb-1">Optimal Hospital Match</span>
               <span className="font-extrabold text-sky-950 text-sm block">{recommendation.suggestedHospitalName}</span>
             </div>
 
-            <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
-              <span className="text-[10px] text-slate-500 font-bold block uppercase mb-1">Recommended Route</span>
-              <span className="font-semibold text-slate-800 text-xs">{recommendation.suggestedRoute}</span>
+            <div className="p-3 bg-cream rounded-xl border border-stone-200">
+              <span className="text-[10px] text-stone-500 font-bold block uppercase mb-1">Recommended Route</span>
+              <span className="font-semibold text-stone-800 text-xs">{recommendation.suggestedRoute}</span>
             </div>
           </div>
         </div>
 
         {/* Suggested Equipment & Preparation */}
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-          <h3 className="text-xs font-black text-slate-800 uppercase tracking-wider flex items-center gap-1.5 border-b pb-2">
+        <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm space-y-4">
+          <h3 className="text-xs font-black text-stone-800 uppercase tracking-wider flex items-center gap-1.5 border-b pb-2">
             <Zap className="w-4 h-4 text-amber-600" />
             <span>Suggested Equipment & Preparation</span>
           </h3>
 
           <div className="space-y-3 text-xs">
             <div>
-              <span className="font-bold text-slate-700 block mb-1.5">Required Equipment Checklist:</span>
+              <span className="font-bold text-stone-600 block mb-1.5">Required Equipment Checklist:</span>
               <div className="space-y-1.5">
                 {recommendation.suggestedEquipment.map((eq, i) => (
-                  <div key={i} className="flex items-center space-x-2 p-2 bg-slate-50 rounded-lg text-slate-800 font-medium">
+                  <div key={i} className="flex items-center space-x-2 p-2 bg-cream rounded-lg text-stone-800 font-medium">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                     <span>{eq}</span>
                   </div>
@@ -164,7 +164,7 @@ export const AmbulanceAiAssistantView: React.FC<AmbulanceAiAssistantViewProps> =
             </div>
 
             <div>
-              <span className="font-bold text-slate-700 block mb-1.5">Hospital Pre-Arrival Steps:</span>
+              <span className="font-bold text-stone-600 block mb-1.5">Hospital Pre-Arrival Steps:</span>
               <div className="space-y-1.5">
                 {recommendation.suggestedPreparation.map((prep, i) => (
                   <div key={i} className="p-2 bg-indigo-50 rounded-lg text-indigo-900 font-medium text-[11px]">
@@ -177,7 +177,7 @@ export const AmbulanceAiAssistantView: React.FC<AmbulanceAiAssistantViewProps> =
         </div>
 
         {/* Clinical Reasoning & Confidence */}
-        <div className="bg-slate-900 text-white p-5 rounded-2xl border border-slate-800 shadow-sm space-y-4">
+        <div className="bg-white text-stone-900 p-5 rounded-2xl border border-stone-200 shadow-sm space-y-4">
           <h3 className="text-xs font-black text-indigo-300 uppercase tracking-wider flex items-center gap-1.5 border-b border-indigo-900 pb-2">
             <Brain className="w-4 h-4 text-amber-400" />
             <span>AI Reasoning & Explainability</span>
@@ -185,21 +185,21 @@ export const AmbulanceAiAssistantView: React.FC<AmbulanceAiAssistantViewProps> =
 
           <div className="space-y-3 text-xs">
             <div>
-              <span className="text-slate-400 font-bold block mb-1">Patient Summary:</span>
-              <p className="text-slate-200 leading-relaxed bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+              <span className="text-stone-500 font-bold block mb-1">Patient Summary:</span>
+              <p className="text-stone-800 leading-relaxed bg-cream p-2.5 rounded-lg border border-stone-200">
                 {recommendation.patientSummary}
               </p>
             </div>
 
             <div>
-              <span className="text-slate-400 font-bold block mb-1">Arrival Summary:</span>
-              <p className="text-slate-200 leading-relaxed bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+              <span className="text-stone-500 font-bold block mb-1">Arrival Summary:</span>
+              <p className="text-stone-800 leading-relaxed bg-cream p-2.5 rounded-lg border border-stone-200">
                 {recommendation.arrivalSummary}
               </p>
             </div>
 
-            <div className="pt-2 border-t border-slate-800 flex items-center justify-between font-mono">
-              <span className="text-slate-400">Confidence Score:</span>
+            <div className="pt-2 border-t border-stone-200 flex items-center justify-between font-mono">
+              <span className="text-stone-500">Confidence Score:</span>
               <span className="text-emerald-400 font-bold text-sm">{recommendation.confidenceScore}%</span>
             </div>
           </div>

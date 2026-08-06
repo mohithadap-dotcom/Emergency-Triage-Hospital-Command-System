@@ -400,23 +400,23 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
   return (
     <div className="space-y-4">
       {/* Top Banner Header */}
-      <div className="bg-gradient-to-r from-slate-900 via-sky-950 to-indigo-950 text-white rounded-2xl p-5 shadow-lg border border-slate-800">
+      <div className="bg-white text-stone-900 rounded-2xl p-5 shadow-sm border border-stone-200">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
             <div className="flex items-center space-x-2">
-              <span className="bg-sky-500/20 text-sky-300 border border-sky-400/30 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+              <span className="bg-sky-50 text-sky-600 border border-sky-200 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">
                 Phase 10 Multi-Hospital Coordination Network
               </span>
-              <span className="text-xs font-mono font-bold text-sky-200">
+              <span className="text-xs font-mono font-bold text-sky-600">
                 ⚡ Statewide Real-Time Sync Active
               </span>
             </div>
 
-            <h1 className="text-2xl font-black tracking-tight mt-1 text-white flex items-center gap-2.5">
-              <Building2 className="w-7 h-7 text-sky-400" />
+            <h1 className="text-2xl font-black tracking-tight mt-1 text-stone-900 flex items-center gap-2.5">
+              <Building2 className="w-7 h-7 text-sky-500" />
               Statewide Multi-Hospital Resource Operations & Command
             </h1>
-            <p className="text-xs text-slate-300 mt-1 max-w-3xl">
+            <p className="text-xs text-stone-500 mt-1 max-w-3xl">
               Eliminating hospital fragmentation across Maharashtra. Continuous resource exchange, statewide AI resource balancing, patient transfer command, and emergency diversion control.
             </p>
           </div>
@@ -425,79 +425,79 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
             <button
               onClick={handleRunAiOptimization}
               disabled={aiRunning}
-              className="bg-sky-500 hover:bg-sky-400 text-slate-950 font-black text-xs px-4 py-2.5 rounded-xl shadow-md flex items-center gap-2 transition-all transform active:scale-95 disabled:opacity-50"
+              className="bg-sky-500 hover:bg-sky-600 text-white font-black text-xs px-4 py-2.5 rounded-xl shadow-sm flex items-center gap-2 transition-all transform active:scale-95 disabled:opacity-50"
             >
-              <Zap className="w-4 h-4 fill-slate-950" />
+              <Zap className="w-4 h-4 fill-white" />
               {aiRunning ? 'Generating Allocation...' : 'Run Statewide AI Resource Balancer'}
             </button>
 
             <button
               onClick={fetchCoordinationData}
-              className="bg-slate-800/80 hover:bg-slate-700 text-slate-200 p-2.5 rounded-xl border border-slate-700 transition-colors"
+              className="bg-stone-50 hover:bg-stone-100 text-stone-600 p-2.5 rounded-xl border border-stone-200 transition-colors"
               title="Refresh Statewide Feeds"
             >
-              <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin text-sky-400' : ''}`} />
+              <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin text-sky-500' : ''}`} />
             </button>
           </div>
         </div>
 
         {/* High-Level Network KPIs Bar */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3 mt-5 pt-4 border-t border-slate-800/80">
-          <div className="bg-slate-900/60 rounded-xl p-2.5 border border-slate-800">
-            <span className="text-[10px] uppercase font-bold text-slate-400 block">Connected Hospitals</span>
-            <span className="text-lg font-black text-white">{totalConnected} Facilities</span>
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3 mt-5 pt-4 border-t border-stone-200">
+          <div className="bg-stone-50 rounded-xl p-2.5 border border-stone-200">
+            <span className="text-[10px] uppercase font-bold text-stone-500 block">Connected Hospitals</span>
+            <span className="text-lg font-black text-stone-900">{totalConnected} Facilities</span>
           </div>
 
-          <div className="bg-slate-900/60 rounded-xl p-2.5 border border-slate-800">
-            <span className="text-[10px] uppercase font-bold text-slate-400 block">Total Network Beds</span>
+          <div className="bg-stone-50 rounded-xl p-2.5 border border-stone-200">
+            <span className="text-[10px] uppercase font-bold text-stone-500 block">Total Network Beds</span>
             <span className="text-lg font-black text-sky-400">{totalBeds} Beds</span>
           </div>
 
-          <div className="bg-slate-900/60 rounded-xl p-2.5 border border-slate-800">
-            <span className="text-[10px] uppercase font-bold text-slate-400 block">Available ICU Beds</span>
+          <div className="bg-stone-50 rounded-xl p-2.5 border border-stone-200">
+            <span className="text-[10px] uppercase font-bold text-stone-500 block">Available ICU Beds</span>
             <span className="text-lg font-black text-emerald-400">{availIcuBeds} / {totalIcuBeds}</span>
           </div>
 
-          <div className="bg-slate-900/60 rounded-xl p-2.5 border border-slate-800">
-            <span className="text-[10px] uppercase font-bold text-slate-400 block">Available Ventilators</span>
+          <div className="bg-stone-50 rounded-xl p-2.5 border border-stone-200">
+            <span className="text-[10px] uppercase font-bold text-stone-500 block">Available Ventilators</span>
             <span className="text-lg font-black text-indigo-400">{availVent} / {totalVent}</span>
           </div>
 
-          <div className="bg-slate-900/60 rounded-xl p-2.5 border border-slate-800">
-            <span className="text-[10px] uppercase font-bold text-slate-400 block">Saturated Facilities</span>
+          <div className="bg-stone-50 rounded-xl p-2.5 border border-stone-200">
+            <span className="text-[10px] uppercase font-bold text-stone-500 block">Saturated Facilities</span>
             <span className="text-lg font-black text-rose-400">{saturatedCount} Overloaded</span>
           </div>
 
-          <div className="bg-slate-900/60 rounded-xl p-2.5 border border-slate-800">
-            <span className="text-[10px] uppercase font-bold text-slate-400 block">Active Transfers</span>
+          <div className="bg-stone-50 rounded-xl p-2.5 border border-stone-200">
+            <span className="text-[10px] uppercase font-bold text-stone-500 block">Active Transfers</span>
             <span className="text-lg font-black text-amber-400">{transferWorkflows.filter(w => w.status !== 'COMPLETED').length} Cases</span>
           </div>
 
-          <div className="bg-slate-900/60 rounded-xl p-2.5 border border-slate-800">
-            <span className="text-[10px] uppercase font-bold text-slate-400 block">Resource Exchange</span>
+          <div className="bg-stone-50 rounded-xl p-2.5 border border-stone-200">
+            <span className="text-[10px] uppercase font-bold text-stone-500 block">Resource Exchange</span>
             <span className="text-lg font-black text-sky-300">{exchanges.filter(e => e.status === 'PENDING').length} Pending</span>
           </div>
 
-          <div className="bg-slate-900/60 rounded-xl p-2.5 border border-slate-800">
-            <span className="text-[10px] uppercase font-bold text-slate-400 block">State Reservations</span>
+          <div className="bg-stone-50 rounded-xl p-2.5 border border-stone-200">
+            <span className="text-[10px] uppercase font-bold text-stone-500 block">State Reservations</span>
             <span className="text-lg font-black text-emerald-300">{stateReservations.filter(r => r.status === 'ACTIVE').length} Active</span>
           </div>
         </div>
       </div>
 
       {/* Navigation Sub-Tabs Bar */}
-      <div className="flex items-center space-x-1 border-b border-slate-200 overflow-x-auto bg-slate-50 p-1.5 rounded-xl text-xs font-bold text-slate-700">
+      <div className="flex items-center space-x-1 border-b border-stone-200 overflow-x-auto bg-cream p-1.5 rounded-xl text-xs font-bold text-stone-600">
         <button
           onClick={() => setActiveTab('NETWORK_COMMAND')}
           className={`px-3 py-2 rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap ${
             activeTab === 'NETWORK_COMMAND'
-              ? 'bg-slate-900 text-white shadow'
-              : 'hover:bg-slate-200 text-slate-700'
+              ? 'bg-white text-stone-900 shadow'
+              : 'hover:bg-stone-100 text-stone-600'
           }`}
         >
           <Building2 className="w-3.5 h-3.5 text-sky-400" />
           <span>Live Hospital Network</span>
-          <span className="bg-sky-500 text-white text-[9px] font-black px-1.5 py-0.2 rounded-full">
+          <span className="bg-sky-500 text-stone-900 text-[9px] font-black px-1.5 py-0.2 rounded-full">
             {filteredHospitals.length}
           </span>
         </button>
@@ -506,8 +506,8 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
           onClick={() => setActiveTab('RESOURCE_BALANCER')}
           className={`px-3 py-2 rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap ${
             activeTab === 'RESOURCE_BALANCER'
-              ? 'bg-slate-900 text-white shadow'
-              : 'hover:bg-slate-200 text-slate-700'
+              ? 'bg-white text-stone-900 shadow'
+              : 'hover:bg-stone-100 text-stone-600'
           }`}
         >
           <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
@@ -518,13 +518,13 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
           onClick={() => setActiveTab('RESOURCE_EXCHANGE')}
           className={`px-3 py-2 rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap ${
             activeTab === 'RESOURCE_EXCHANGE'
-              ? 'bg-slate-900 text-white shadow'
-              : 'hover:bg-slate-200 text-slate-700'
+              ? 'bg-white text-stone-900 shadow'
+              : 'hover:bg-stone-100 text-stone-600'
           }`}
         >
           <ArrowLeftRight className="w-3.5 h-3.5 text-emerald-400" />
           <span>Resource Exchange</span>
-          <span className="bg-emerald-500 text-white text-[9px] font-black px-1.5 py-0.2 rounded-full">
+          <span className="bg-emerald-500 text-stone-900 text-[9px] font-black px-1.5 py-0.2 rounded-full">
             {exchanges.filter(e => e.status === 'PENDING').length}
           </span>
         </button>
@@ -533,13 +533,13 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
           onClick={() => setActiveTab('TRANSFER_COMMAND')}
           className={`px-3 py-2 rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap ${
             activeTab === 'TRANSFER_COMMAND'
-              ? 'bg-slate-900 text-white shadow'
-              : 'hover:bg-slate-200 text-slate-700'
+              ? 'bg-white text-stone-900 shadow'
+              : 'hover:bg-stone-100 text-stone-600'
           }`}
         >
           <Truck className="w-3.5 h-3.5 text-indigo-400" />
           <span>Patient Transfer Command</span>
-          <span className="bg-indigo-500 text-white text-[9px] font-black px-1.5 py-0.2 rounded-full">
+          <span className="bg-indigo-500 text-stone-900 text-[9px] font-black px-1.5 py-0.2 rounded-full">
             {transferWorkflows.length}
           </span>
         </button>
@@ -548,8 +548,8 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
           onClick={() => setActiveTab('DIVERSION_ENGINE')}
           className={`px-3 py-2 rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap ${
             activeTab === 'DIVERSION_ENGINE'
-              ? 'bg-slate-900 text-white shadow'
-              : 'hover:bg-slate-200 text-slate-700'
+              ? 'bg-white text-stone-900 shadow'
+              : 'hover:bg-stone-100 text-stone-600'
           }`}
         >
           <ShieldAlert className="w-3.5 h-3.5 text-rose-400" />
@@ -560,8 +560,8 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
           onClick={() => setActiveTab('DISTRICT_MATRIX')}
           className={`px-3 py-2 rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap ${
             activeTab === 'DISTRICT_MATRIX'
-              ? 'bg-slate-900 text-white shadow'
-              : 'hover:bg-slate-200 text-slate-700'
+              ? 'bg-white text-stone-900 shadow'
+              : 'hover:bg-stone-100 text-stone-600'
           }`}
         >
           <MapPin className="w-3.5 h-3.5 text-amber-400" />
@@ -572,8 +572,8 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
           onClick={() => setActiveTab('HOSPITAL_COMPARISON')}
           className={`px-3 py-2 rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap ${
             activeTab === 'HOSPITAL_COMPARISON'
-              ? 'bg-slate-900 text-white shadow'
-              : 'hover:bg-slate-200 text-slate-700'
+              ? 'bg-white text-stone-900 shadow'
+              : 'hover:bg-stone-100 text-stone-600'
           }`}
         >
           <Sliders className="w-3.5 h-3.5 text-sky-400" />
@@ -584,8 +584,8 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
           onClick={() => setActiveTab('RESOURCE_RESERVATION')}
           className={`px-3 py-2 rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap ${
             activeTab === 'RESOURCE_RESERVATION'
-              ? 'bg-slate-900 text-white shadow'
-              : 'hover:bg-slate-200 text-slate-700'
+              ? 'bg-white text-stone-900 shadow'
+              : 'hover:bg-stone-100 text-stone-600'
           }`}
         >
           <Lock className="w-3.5 h-3.5 text-emerald-400" />
@@ -596,8 +596,8 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
           onClick={() => setActiveTab('COLLABORATION_CENTER')}
           className={`px-3 py-2 rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap ${
             activeTab === 'COLLABORATION_CENTER'
-              ? 'bg-slate-900 text-white shadow'
-              : 'hover:bg-slate-200 text-slate-700'
+              ? 'bg-white text-stone-900 shadow'
+              : 'hover:bg-stone-100 text-stone-600'
           }`}
         >
           <Radio className="w-3.5 h-3.5 text-purple-400" />
@@ -608,8 +608,8 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
           onClick={() => setActiveTab('STATE_ANALYTICS')}
           className={`px-3 py-2 rounded-lg transition-all flex items-center gap-1.5 whitespace-nowrap ${
             activeTab === 'STATE_ANALYTICS'
-              ? 'bg-slate-900 text-white shadow'
-              : 'hover:bg-slate-200 text-slate-700'
+              ? 'bg-white text-stone-900 shadow'
+              : 'hover:bg-stone-100 text-stone-600'
           }`}
         >
           <BarChart3 className="w-3.5 h-3.5 text-teal-400" />
@@ -619,7 +619,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
 
       {/* AI Recommendation Banner if generated */}
       {aiResults && (
-        <div className="bg-gradient-to-r from-amber-500/10 via-sky-500/10 to-indigo-500/10 border border-amber-300 rounded-xl p-4 space-y-2">
+        <div className="bg-gradient-to-r from-amber-500/10 via-sky-500/10 to-indigo-500/10 border border-amber-200 rounded-xl p-4 space-y-2">
           <div className="flex items-center justify-between">
             <span className="text-xs font-black uppercase text-amber-900 flex items-center gap-1.5">
               <Zap className="w-4 h-4 text-amber-600 fill-amber-500" />
@@ -627,15 +627,15 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
             </span>
             <button
               onClick={() => setAiResults(null)}
-              className="text-xs text-slate-500 hover:text-slate-900 font-bold"
+              className="text-xs text-stone-500 hover:text-stone-900 font-bold"
             >
               Dismiss
             </button>
           </div>
-          <p className="text-xs font-semibold text-slate-800">{aiResults.recommendation}</p>
+          <p className="text-xs font-semibold text-stone-800">{aiResults.recommendation}</p>
           <div className="flex flex-wrap gap-2 pt-1">
             {aiResults.diversions.map((div, i) => (
-              <span key={i} className="bg-white border border-amber-300 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded shadow-sm">
+              <span key={i} className="bg-white border border-amber-200 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded shadow-sm">
                 • {div}
               </span>
             ))}
@@ -647,24 +647,24 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
       {activeTab === 'NETWORK_COMMAND' && (
         <div className="space-y-4">
           {/* Controls Bar */}
-          <div className="bg-white rounded-xl border border-slate-200 p-3.5 flex flex-col md:flex-row items-center justify-between gap-3 shadow-sm">
+          <div className="bg-white rounded-xl border border-stone-200 p-3.5 flex flex-col md:flex-row items-center justify-between gap-3 shadow-sm">
             <div className="relative w-full md:w-96">
-              <Search className="w-4 h-4 absolute left-3 top-2.5 text-slate-400" />
+              <Search className="w-4 h-4 absolute left-3 top-2.5 text-stone-500" />
               <input
                 type="text"
                 placeholder="Search hospital by name, district, or address..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-stone-200 focus:outline-none focus:ring-2 focus:ring-sky-500"
               />
             </div>
 
             <div className="flex items-center space-x-2 w-full md:w-auto">
-              <Filter className="w-3.5 h-3.5 text-slate-500" />
+              <Filter className="w-3.5 h-3.5 text-stone-500" />
               <select
                 value={districtFilter}
                 onChange={(e) => setDistrictFilter(e.target.value)}
-                className="text-xs font-bold text-slate-800 bg-slate-100 border border-slate-300 rounded-lg px-2.5 py-1.5 focus:outline-none"
+                className="text-xs font-bold text-stone-800 bg-stone-100 border border-stone-200 rounded-lg px-2.5 py-1.5 focus:outline-none"
               >
                 <option value="all">All Maharashtra Districts</option>
                 {districts.map((d) => (
@@ -685,26 +685,26 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
               return (
                 <div
                   key={hospital.id}
-                  className="bg-white rounded-xl border border-slate-200 p-4 shadow-sm hover:shadow-md transition-all space-y-3 relative overflow-hidden"
+                  className="bg-white rounded-xl border border-stone-200 p-4 shadow-sm hover:shadow-md transition-all space-y-3 relative overflow-hidden"
                 >
                   <div className="flex items-start justify-between">
                     <div>
-                      <span className="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">
+                      <span className="bg-stone-100 text-stone-600 text-[10px] font-bold px-2 py-0.5 rounded uppercase">
                         {hospital.districtName} • {hospital.type}
                       </span>
-                      <h3 className="text-sm font-black text-slate-900 mt-1">{hospital.name}</h3>
-                      <p className="text-[11px] text-slate-500 flex items-center gap-1 mt-0.5">
-                        <MapPin className="w-3 h-3 text-slate-400" /> {hospital.address}
+                      <h3 className="text-sm font-black text-stone-900 mt-1">{hospital.name}</h3>
+                      <p className="text-[11px] text-stone-500 flex items-center gap-1 mt-0.5">
+                        <MapPin className="w-3 h-3 text-stone-500" /> {hospital.address}
                       </p>
                     </div>
 
                     <span
                       className={`text-[10px] font-black px-2 py-1 rounded uppercase ${
                         hospital.emergencyDeptStatus === 'FULL'
-                          ? 'bg-rose-600 text-white animate-pulse'
+                          ? 'bg-rose-600 text-stone-900 animate-pulse'
                           : hospital.emergencyDeptStatus === 'DIVERTING'
-                          ? 'bg-amber-500 text-white'
-                          : 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                          ? 'bg-amber-500 text-stone-900'
+                          : 'bg-emerald-100 text-emerald-400 border border-emerald-300'
                       }`}
                     >
                       {hospital.emergencyDeptStatus === 'FULL' ? 'ER SATURATED' : hospital.emergencyDeptStatus}
@@ -712,12 +712,12 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                   </div>
 
                   {/* Bed & Medical Resource Capacity Stats */}
-                  <div className="grid grid-cols-3 gap-2 bg-slate-50 p-2.5 rounded-lg border border-slate-100 text-center">
+                  <div className="grid grid-cols-3 gap-2 bg-cream p-2.5 rounded-lg border border-slate-100 text-center">
                     <div>
-                      <span className="text-[9px] font-extrabold text-slate-500 uppercase block">Occupancy</span>
+                      <span className="text-[9px] font-extrabold text-stone-500 uppercase block">Occupancy</span>
                       <span
                         className={`text-xs font-black ${
-                          occRate > 85 ? 'text-rose-600' : 'text-slate-900'
+                          occRate > 85 ? 'text-rose-600' : 'text-stone-900'
                         }`}
                       >
                         {occRate}% ({hospital.totalBeds - hospital.availableGeneralBeds}/{hospital.totalBeds})
@@ -725,14 +725,14 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                     </div>
 
                     <div>
-                      <span className="text-[9px] font-extrabold text-slate-500 uppercase block">Available ICU</span>
+                      <span className="text-[9px] font-extrabold text-stone-500 uppercase block">Available ICU</span>
                       <span className="text-xs font-black text-emerald-600">
                         {hospital.availableIcuBeds} / {hospital.totalIcuBeds}
                       </span>
                     </div>
 
                     <div>
-                      <span className="text-[9px] font-extrabold text-slate-500 uppercase block">Ventilators</span>
+                      <span className="text-[9px] font-extrabold text-stone-500 uppercase block">Ventilators</span>
                       <span className="text-xs font-black text-indigo-600">
                         {hospital.availableVentilators} / {hospital.totalVentilators}
                       </span>
@@ -740,11 +740,11 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                   </div>
 
                   {/* Staffing & Operational Info */}
-                  <div className="flex items-center justify-between text-[11px] text-slate-600 border-t border-slate-100 pt-2">
+                  <div className="flex items-center justify-between text-[11px] text-stone-500 border-t border-slate-100 pt-2">
                     <span className="flex items-center gap-1 font-bold">
-                      <Users className="w-3.5 h-3.5 text-slate-400" /> {hospital.doctorsOnDuty} Doctors / {hospital.nursesOnDuty} Nurses
+                      <Users className="w-3.5 h-3.5 text-stone-500" /> {hospital.doctorsOnDuty} Doctors / {hospital.nursesOnDuty} Nurses
                     </span>
-                    <span className="font-mono text-slate-500">Sync: {hospital.lastSync}</span>
+                    <span className="font-mono text-stone-500">Sync: {hospital.lastSync}</span>
                   </div>
 
                   {/* Quick Action Bar */}
@@ -754,7 +754,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                         setReqHospitalId(hospital.id);
                         setShowExchangeModal(true);
                       }}
-                      className="flex-1 bg-sky-50 hover:bg-sky-100 text-sky-800 border border-sky-200 text-xs font-bold py-1.5 rounded-lg transition-colors flex items-center justify-center gap-1"
+                      className="flex-1 bg-sky-50 hover:bg-sky-100 text-sky-400 border border-sky-200 text-xs font-bold py-1.5 rounded-lg transition-colors flex items-center justify-center gap-1"
                     >
                       <ArrowLeftRight className="w-3 h-3 text-sky-600" /> Request Resource
                     </button>
@@ -764,7 +764,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                         setTrfSourceHospId(hospital.id);
                         setShowTransferModal(true);
                       }}
-                      className="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-800 border border-indigo-200 text-xs font-bold py-1.5 rounded-lg transition-colors flex items-center justify-center gap-1"
+                      className="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-400 border border-indigo-200 text-xs font-bold py-1.5 rounded-lg transition-colors flex items-center justify-center gap-1"
                     >
                       <Truck className="w-3 h-3 text-indigo-600" /> Initiate Transfer
                     </button>
@@ -778,14 +778,14 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
 
       {/* SUB-VIEW 2: AI RESOURCE BALANCER */}
       {activeTab === 'RESOURCE_BALANCER' && (
-        <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-5">
-          <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+        <div className="bg-white rounded-xl border border-stone-200 p-5 shadow-sm space-y-5">
+          <div className="flex items-center justify-between border-b border-stone-200 pb-3">
             <div>
-              <h2 className="text-base font-black text-slate-900 flex items-center gap-2">
+              <h2 className="text-base font-black text-stone-900 flex items-center gap-2">
                 <Zap className="w-5 h-5 text-amber-500 fill-amber-500" />
                 Statewide AI Resource Optimization & Redistribution Engine
               </h2>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-stone-500 mt-0.5">
                 Continuously analyzes ICU, ventilator, doctor, and ER queue pressure across 7 major Maharashtra urban hubs.
               </p>
             </div>
@@ -793,17 +793,17 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
             <button
               onClick={handleRunAiOptimization}
               disabled={aiRunning}
-              className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-4 py-2 rounded-lg flex items-center gap-2 shadow"
+              className="bg-white hover:bg-stone-100 text-stone-900 font-bold text-xs px-4 py-2 rounded-lg flex items-center gap-2 shadow"
             >
-              <Sparkles className="w-4 h-4 text-amber-300" />
+              <Sparkles className="w-4 h-4 text-amber-100" />
               {aiRunning ? 'Analyzing statewide capacity...' : 'Execute Live AI Analysis'}
             </button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Realtime Overload Risk Ranking */}
-            <div className="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-3">
-              <h3 className="text-xs font-black text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+            <div className="bg-cream rounded-xl p-4 border border-stone-200 space-y-3">
+              <h3 className="text-xs font-black text-stone-800 uppercase tracking-wider flex items-center gap-1.5">
                 <ShieldAlert className="w-4 h-4 text-rose-600" />
                 Hospital Overload Risk Ranking
               </h3>
@@ -814,27 +814,27 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                   return (
                     <div
                       key={h.id}
-                      className="bg-white rounded-lg p-2.5 border border-slate-200 flex items-center justify-between shadow-sm"
+                      className="bg-white rounded-lg p-2.5 border border-stone-200 flex items-center justify-between shadow-sm"
                     >
                       <div className="flex items-center space-x-2.5">
-                        <span className="w-5 h-5 rounded-full bg-slate-900 text-white font-black text-[10px] flex items-center justify-center">
+                        <span className="w-5 h-5 rounded-full bg-white text-stone-900 font-black text-[10px] flex items-center justify-center">
                           #{idx + 1}
                         </span>
                         <div>
-                          <span className="text-xs font-bold text-slate-900 block">{h.name}</span>
-                          <span className="text-[10px] text-slate-500">{h.districtName} • {h.traumaLevel}</span>
+                          <span className="text-xs font-bold text-stone-900 block">{h.name}</span>
+                          <span className="text-[10px] text-stone-500">{h.districtName} • {h.traumaLevel}</span>
                         </div>
                       </div>
 
                       <div className="text-right">
                         <span
                           className={`text-xs font-black px-2 py-0.5 rounded ${
-                            occ > 85 ? 'bg-rose-100 text-rose-800' : 'bg-emerald-100 text-emerald-800'
+                            occ > 85 ? 'bg-rose-100 text-rose-400' : 'bg-emerald-100 text-emerald-400'
                           }`}
                         >
                           {occ}% Occupancy
                         </span>
-                        <span className="text-[10px] text-slate-400 block mt-0.5">ICU Free: {h.availableIcuBeds}</span>
+                        <span className="text-[10px] text-stone-500 block mt-0.5">ICU Free: {h.availableIcuBeds}</span>
                       </div>
                     </div>
                   );
@@ -843,30 +843,30 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
             </div>
 
             {/* AI Optimization Predictions & Suggested Diversions */}
-            <div className="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-3">
-              <h3 className="text-xs font-black text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+            <div className="bg-cream rounded-xl p-4 border border-stone-200 space-y-3">
+              <h3 className="text-xs font-black text-stone-800 uppercase tracking-wider flex items-center gap-1.5">
                 <Sparkles className="w-4 h-4 text-indigo-600" />
                 Suggested Statewide Diversion & Redistribution Actions
               </h3>
 
-              <div className="space-y-2.5 text-xs text-slate-800 font-medium">
+              <div className="space-y-2.5 text-xs text-stone-800 font-medium">
                 <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
                   <span className="font-bold text-amber-900 block">⚡ Vidarbha Zone Action</span>
-                  <p className="text-[11px] text-amber-800 mt-0.5">
+                  <p className="text-[11px] text-amber-400 mt-0.5">
                     Transfer 3 transport ventilators from AIIMS Nagpur to GMC Nagpur due to sudden surge in respiratory trauma admissions.
                   </p>
                 </div>
 
                 <div className="bg-sky-50 border border-sky-200 rounded-lg p-3">
                   <span className="font-bold text-sky-900 block">⚡ Mumbai Metropolitan Action</span>
-                  <p className="text-[11px] text-sky-800 mt-0.5">
+                  <p className="text-[11px] text-sky-400 mt-0.5">
                     Activate diversion protocol for KEM Hospital ER; route incoming non-trauma ambulances to Lilavati Hospital and Cooper Hospital.
                   </p>
                 </div>
 
                 <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-3">
                   <span className="font-bold text-indigo-900 block">⚡ Pune Regional Action</span>
-                  <p className="text-[11px] text-indigo-800 mt-0.5">
+                  <p className="text-[11px] text-indigo-400 mt-0.5">
                     Sassoon General Hospital operating theatres at 90% utilization. Standby referral agreement triggered with Jehangir Hospital for neurosurgery.
                   </p>
                 </div>
@@ -878,30 +878,30 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
 
       {/* SUB-VIEW 3: INTER-HOSPITAL RESOURCE EXCHANGE */}
       {activeTab === 'RESOURCE_EXCHANGE' && (
-        <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+        <div className="bg-white rounded-xl border border-stone-200 p-5 shadow-sm space-y-4">
+          <div className="flex items-center justify-between border-b border-stone-200 pb-3">
             <div>
-              <h2 className="text-base font-black text-slate-900 flex items-center gap-2">
+              <h2 className="text-base font-black text-stone-900 flex items-center gap-2">
                 <ArrowLeftRight className="w-5 h-5 text-emerald-600" />
                 Inter-Hospital Resource Sharing & Exchange Hub
               </h2>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-stone-500 mt-0.5">
                 Statewide requisition platform for ICU beds, ventilators, blood units, oxygen, doctors, and nurses.
               </p>
             </div>
 
             <button
               onClick={() => setShowExchangeModal(true)}
-              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3.5 py-2 rounded-lg shadow flex items-center gap-1.5 transition-colors"
+              className="bg-emerald-600 hover:bg-emerald-700 text-stone-900 font-bold text-xs px-3.5 py-2 rounded-lg shadow flex items-center gap-1.5 transition-colors"
             >
               <Plus className="w-4 h-4" /> Request Resource Exchange
             </button>
           </div>
 
           {/* Exchanges List Table */}
-          <div className="overflow-x-auto border border-slate-200 rounded-xl">
+          <div className="overflow-x-auto border border-stone-200 rounded-xl">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-100 text-slate-700 font-extrabold border-b border-slate-200 uppercase text-[10px] tracking-wider">
+              <thead className="bg-stone-100 text-stone-600 font-extrabold border-b border-stone-200 uppercase text-[10px] tracking-wider">
                 <tr>
                   <th className="p-3">Exchange ID</th>
                   <th className="p-3">Requesting Hospital</th>
@@ -913,28 +913,28 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                 </tr>
               </thead>
 
-              <tbody className="divide-y divide-slate-200 font-medium text-slate-800">
+              <tbody className="divide-y divide-stone-200 font-medium text-stone-800">
                 {exchanges.map((item) => (
-                  <tr key={item.id} className="hover:bg-slate-50 transition-colors">
-                    <td className="p-3 font-mono font-bold text-slate-600">{item.id}</td>
+                  <tr key={item.id} className="hover:bg-cream transition-colors">
+                    <td className="p-3 font-mono font-bold text-stone-500">{item.id}</td>
                     <td className="p-3">
-                      <span className="font-bold block text-slate-900">{item.requestingHospitalName}</span>
-                      <span className="text-[10px] text-slate-500">{item.requestingDistrict} District</span>
+                      <span className="font-bold block text-stone-900">{item.requestingHospitalName}</span>
+                      <span className="text-[10px] text-stone-500">{item.requestingDistrict} District</span>
                     </td>
 
                     <td className="p-3">
-                      <span className="bg-slate-100 text-slate-900 font-black px-2 py-0.5 rounded mr-1">
+                      <span className="bg-stone-100 text-stone-900 font-black px-2 py-0.5 rounded mr-1">
                         {item.quantity} x {item.resourceCategory}
                       </span>
-                      <span className="text-[11px] text-slate-500 block mt-0.5">{item.resourceDetails}</span>
+                      <span className="text-[11px] text-stone-500 block mt-0.5">{item.resourceDetails}</span>
                     </td>
 
                     <td className="p-3">
                       <span
                         className={`text-[10px] font-extrabold px-2 py-0.5 rounded ${
                           item.priority === 'RED'
-                            ? 'bg-rose-100 text-rose-800 border border-rose-300'
-                            : 'bg-amber-100 text-amber-800 border border-amber-300'
+                            ? 'bg-rose-100 text-rose-400 border border-rose-200'
+                            : 'bg-amber-100 text-amber-400 border border-amber-200'
                         }`}
                       >
                         {item.priority}
@@ -943,11 +943,11 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
 
                     <td className="p-3">
                       {item.fulfillingHospitalName ? (
-                        <span className="font-bold text-emerald-800 flex items-center gap-1">
+                        <span className="font-bold text-emerald-400 flex items-center gap-1">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> {item.fulfillingHospitalName}
                         </span>
                       ) : (
-                        <span className="text-slate-400 italic">Unassigned</span>
+                        <span className="text-stone-500 italic">Unassigned</span>
                       )}
                     </td>
 
@@ -955,12 +955,12 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                       <span
                         className={`text-[10px] font-extrabold px-2 py-0.5 rounded uppercase ${
                           item.status === 'PENDING'
-                            ? 'bg-amber-100 text-amber-800 border border-amber-300 animate-pulse'
+                            ? 'bg-amber-100 text-amber-400 border border-amber-200 animate-pulse'
                             : item.status === 'ACCEPTED'
-                            ? 'bg-sky-100 text-sky-800 border border-sky-300'
+                            ? 'bg-sky-100 text-sky-400 border border-sky-300'
                             : item.status === 'IN_TRANSIT'
-                            ? 'bg-indigo-100 text-indigo-800 border border-indigo-300'
-                            : 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                            ? 'bg-indigo-100 text-indigo-400 border border-indigo-300'
+                            : 'bg-emerald-100 text-emerald-400 border border-emerald-300'
                         }`}
                       >
                         {item.status}
@@ -971,7 +971,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                       {item.status === 'PENDING' && (
                         <button
                           onClick={() => handleUpdateExchangeStatus(item.id, 'ACCEPTED', hospitals[1]?.id)}
-                          className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[10px] px-2.5 py-1 rounded shadow"
+                          className="bg-emerald-600 hover:bg-emerald-700 text-stone-900 font-bold text-[10px] px-2.5 py-1 rounded shadow"
                         >
                           Fulfill Request
                         </button>
@@ -980,7 +980,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                       {item.status === 'ACCEPTED' && (
                         <button
                           onClick={() => handleUpdateExchangeStatus(item.id, 'IN_TRANSIT')}
-                          className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-[10px] px-2.5 py-1 rounded shadow"
+                          className="bg-indigo-600 hover:bg-indigo-700 text-stone-900 font-bold text-[10px] px-2.5 py-1 rounded shadow"
                         >
                           Dispatch Transit
                         </button>
@@ -989,14 +989,14 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                       {item.status === 'IN_TRANSIT' && (
                         <button
                           onClick={() => handleUpdateExchangeStatus(item.id, 'COMPLETED')}
-                          className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-[10px] px-2.5 py-1 rounded shadow"
+                          className="bg-white hover:bg-stone-100 text-stone-900 font-bold text-[10px] px-2.5 py-1 rounded shadow"
                         >
                           Mark Delivered
                         </button>
                       )}
 
                       {item.status === 'COMPLETED' && (
-                        <span className="text-[10px] text-slate-400 font-bold">Fulfilled</span>
+                        <span className="text-[10px] text-stone-500 font-bold">Fulfilled</span>
                       )}
                     </td>
                   </tr>
@@ -1009,21 +1009,21 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
 
       {/* SUB-VIEW 4: PATIENT TRANSFER COMMAND */}
       {activeTab === 'TRANSFER_COMMAND' && (
-        <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+        <div className="bg-white rounded-xl border border-stone-200 p-5 shadow-sm space-y-4">
+          <div className="flex items-center justify-between border-b border-stone-200 pb-3">
             <div>
-              <h2 className="text-base font-black text-slate-900 flex items-center gap-2">
+              <h2 className="text-base font-black text-stone-900 flex items-center gap-2">
                 <Truck className="w-5 h-5 text-indigo-600" />
                 Inter-Hospital Patient Transfer Workflow Command
               </h2>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-stone-500 mt-0.5">
                 End-to-end multi-stage transfer tracking: Request → Review → AI Match → Bed Reserved → Ambulance Dispatched → Corridor Approved → In Transit → Arrived.
               </p>
             </div>
 
             <button
               onClick={() => setShowTransferModal(true)}
-              className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs px-3.5 py-2 rounded-lg shadow flex items-center gap-1.5 transition-colors"
+              className="bg-indigo-600 hover:bg-indigo-700 text-stone-900 font-bold text-xs px-3.5 py-2 rounded-lg shadow flex items-center gap-1.5 transition-colors"
             >
               <Plus className="w-4 h-4" /> Initiate Patient Transfer
             </button>
@@ -1034,50 +1034,50 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
             {transferWorkflows.map((wf) => (
               <div
                 key={wf.id}
-                className="bg-slate-50 rounded-xl border border-slate-200 p-4 space-y-3 relative overflow-hidden"
+                className="bg-cream rounded-xl border border-stone-200 p-4 space-y-3 relative overflow-hidden"
               >
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-200 pb-2.5">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-stone-200 pb-2.5">
                   <div className="flex items-center space-x-2.5">
                     <span className="font-mono font-black text-xs text-indigo-900 bg-indigo-100 px-2 py-0.5 rounded border border-indigo-200">
                       {wf.transferCode}
                     </span>
-                    <h3 className="text-sm font-black text-slate-900">
+                    <h3 className="text-sm font-black text-stone-900">
                       {wf.patientName} ({wf.patientAgeGender || '45M'})
                     </h3>
                     <span
                       className={`text-[10px] font-extrabold px-2 py-0.5 rounded ${
                         wf.priority === 'RED'
-                          ? 'bg-rose-100 text-rose-800 border border-rose-300'
-                          : 'bg-amber-100 text-amber-800'
+                          ? 'bg-rose-100 text-rose-400 border border-rose-200'
+                          : 'bg-amber-100 text-amber-400'
                       }`}
                     >
                       Priority {wf.priority}
                     </span>
                   </div>
 
-                  <div className="flex items-center space-x-2 text-xs font-bold text-slate-700">
+                  <div className="flex items-center space-x-2 text-xs font-bold text-stone-600">
                     <span>{wf.sourceHospitalName}</span>
-                    <ChevronRight className="w-4 h-4 text-slate-400" />
+                    <ChevronRight className="w-4 h-4 text-stone-500" />
                     <span className="text-indigo-900 font-extrabold">{wf.destinationHospitalName}</span>
                   </div>
                 </div>
 
                 {/* Clinical Reason & AI Justification */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
-                  <div className="bg-white p-2.5 rounded-lg border border-slate-200">
-                    <span className="text-[10px] uppercase font-extrabold text-slate-500 block">Transfer Reason</span>
-                    <p className="text-slate-800 font-medium">{wf.reason}</p>
+                  <div className="bg-white p-2.5 rounded-lg border border-stone-200">
+                    <span className="text-[10px] uppercase font-extrabold text-stone-500 block">Transfer Reason</span>
+                    <p className="text-stone-800 font-medium">{wf.reason}</p>
                   </div>
 
                   <div className="bg-sky-50 p-2.5 rounded-lg border border-sky-200">
-                    <span className="text-[10px] uppercase font-extrabold text-sky-800 block">AI Specialty Recommendation</span>
+                    <span className="text-[10px] uppercase font-extrabold text-sky-400 block">AI Specialty Recommendation</span>
                     <p className="text-sky-900 font-medium text-[11px]">{wf.aiRecommendationDetails}</p>
                   </div>
                 </div>
 
                 {/* Multi-Stage Timeline Bar */}
                 <div className="pt-2">
-                  <span className="text-[10px] uppercase font-extrabold text-slate-500 block mb-2">Workflow Stage Tracker</span>
+                  <span className="text-[10px] uppercase font-extrabold text-stone-500 block mb-2">Workflow Stage Tracker</span>
                   <div className="flex items-center space-x-1 overflow-x-auto pb-1">
                     {wf.timeline.map((stage, idx) => (
                       <div
@@ -1085,14 +1085,14 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                         className={`flex-1 min-w-[110px] p-2 rounded-lg border text-center transition-all ${
                           stage.completed
                             ? 'bg-emerald-50 border-emerald-300 text-emerald-900'
-                            : 'bg-white border-slate-200 text-slate-400'
+                            : 'bg-white border-stone-200 text-stone-500'
                         }`}
                       >
                         <div className="flex items-center justify-center gap-1 mb-0.5">
                           {stage.completed ? (
                             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                           ) : (
-                            <Clock className="w-3.5 h-3.5 text-slate-300" />
+                            <Clock className="w-3.5 h-3.5 text-stone-600" />
                           )}
                           <span className="text-[10px] font-black uppercase">{stage.stage}</span>
                         </div>
@@ -1106,7 +1106,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                 <div className="flex justify-end pt-1">
                   <button
                     onClick={() => handleAdvanceTransferStage(wf.id, 'IN_TRANSIT')}
-                    className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow flex items-center gap-1"
+                    className="bg-indigo-600 hover:bg-indigo-700 text-stone-900 font-bold text-xs px-3 py-1.5 rounded-lg shadow flex items-center gap-1"
                   >
                     <Truck className="w-3.5 h-3.5" /> Advance Stage & Dispatch Corridor
                   </button>
@@ -1119,24 +1119,24 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
 
       {/* SUB-VIEW 5: EMERGENCY DIVERSION ENGINE */}
       {activeTab === 'DIVERSION_ENGINE' && (
-        <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+        <div className="bg-white rounded-xl border border-stone-200 p-5 shadow-sm space-y-4">
+          <div className="flex items-center justify-between border-b border-stone-200 pb-3">
             <div>
-              <h2 className="text-base font-black text-slate-900 flex items-center gap-2">
+              <h2 className="text-base font-black text-stone-900 flex items-center gap-2">
                 <ShieldAlert className="w-5 h-5 text-rose-600" />
                 Automated Emergency Diversion Control Engine
               </h2>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-stone-500 mt-0.5">
                 Calculates alternate tertiary care destinations when Hospital A reaches critical capacity (&gt;85% occupancy).
               </p>
             </div>
 
             <div className="flex items-center space-x-2">
-              <span className="text-xs font-bold text-slate-700">Select Overloaded Hospital:</span>
+              <span className="text-xs font-bold text-stone-600">Select Overloaded Hospital:</span>
               <select
                 value={selectedDiversionSourceId}
                 onChange={(e) => setSelectedDiversionSourceId(e.target.value)}
-                className="text-xs font-bold text-slate-900 bg-slate-100 border border-slate-300 rounded-lg px-3 py-1.5 focus:outline-none"
+                className="text-xs font-bold text-stone-900 bg-stone-100 border border-stone-200 rounded-lg px-3 py-1.5 focus:outline-none"
               >
                 {hospitals.map((h) => (
                   <option key={h.id} value={h.id}>
@@ -1152,7 +1152,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
               <div
                 className={`p-4 rounded-xl border ${
                   diversionData.diversionActive
-                    ? 'bg-rose-50 border-rose-300 text-rose-900'
+                    ? 'bg-rose-50 border-rose-200 text-rose-900'
                     : 'bg-emerald-50 border-emerald-300 text-emerald-900'
                 }`}
               >
@@ -1171,7 +1171,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                 <p className="text-xs mt-1 font-medium">{diversionData.diversionReason}</p>
               </div>
 
-              <h3 className="text-xs font-black uppercase text-slate-800 tracking-wider">
+              <h3 className="text-xs font-black uppercase text-stone-800 tracking-wider">
                 Recommended Alternate Destination Hospitals (Hospital B & C)
               </h3>
 
@@ -1179,33 +1179,33 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                 {diversionData.recommendedDiversions.map((opt, idx) => (
                   <div
                     key={opt.hospitalId}
-                    className="bg-slate-50 rounded-xl border border-slate-200 p-3.5 space-y-2 relative"
+                    className="bg-cream rounded-xl border border-stone-200 p-3.5 space-y-2 relative"
                   >
                     <span className="bg-sky-500 text-slate-950 font-black text-[10px] px-2 py-0.5 rounded uppercase absolute top-3 right-3">
                       Rank #{idx + 1} • AI Score {opt.aiScore}/100
                     </span>
 
-                    <h4 className="text-xs font-black text-slate-900 pr-20">{opt.hospitalName}</h4>
-                    <p className="text-[11px] text-slate-500 font-bold">{opt.districtName} • {opt.traumaLevel}</p>
+                    <h4 className="text-xs font-black text-stone-900 pr-20">{opt.hospitalName}</h4>
+                    <p className="text-[11px] text-stone-500 font-bold">{opt.districtName} • {opt.traumaLevel}</p>
 
-                    <div className="grid grid-cols-2 gap-2 text-[11px] bg-white p-2 rounded border border-slate-200">
+                    <div className="grid grid-cols-2 gap-2 text-[11px] bg-white p-2 rounded border border-stone-200">
                       <div>
-                        <span className="text-[9px] uppercase font-bold text-slate-400 block">Available ICU</span>
-                        <span className="font-extrabold text-emerald-700">{opt.availableIcu} Beds</span>
+                        <span className="text-[9px] uppercase font-bold text-stone-500 block">Available ICU</span>
+                        <span className="font-extrabold text-emerald-400">{opt.availableIcu} Beds</span>
                       </div>
                       <div>
-                        <span className="text-[9px] uppercase font-bold text-slate-400 block">Transit Time</span>
-                        <span className="font-extrabold text-indigo-700">{opt.travelTimeMin} mins ({opt.distanceKm} km)</span>
+                        <span className="text-[9px] uppercase font-bold text-stone-500 block">Transit Time</span>
+                        <span className="font-extrabold text-indigo-400">{opt.travelTimeMin} mins ({opt.distanceKm} km)</span>
                       </div>
                     </div>
 
-                    <p className="text-[10px] text-slate-600 bg-sky-50 p-2 rounded border border-sky-100 font-medium">
+                    <p className="text-[10px] text-stone-500 bg-sky-50 p-2 rounded border border-sky-100 font-medium">
                       💡 {opt.divertReason}
                     </p>
 
                     <button
                       onClick={() => alert(`Diversion corridor activated to ${opt.hospitalName}`)}
-                      className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-1.5 rounded-lg transition-colors flex items-center justify-center gap-1"
+                      className="w-full bg-white hover:bg-stone-100 text-stone-900 font-bold text-xs py-1.5 rounded-lg transition-colors flex items-center justify-center gap-1"
                     >
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Route Ambulances Here
                     </button>
@@ -1219,13 +1219,13 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
 
       {/* SUB-VIEW 6: DISTRICT COORDINATION MATRIX */}
       {activeTab === 'DISTRICT_MATRIX' && (
-        <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-4">
-          <div className="border-b border-slate-200 pb-3">
-            <h2 className="text-base font-black text-slate-900 flex items-center gap-2">
+        <div className="bg-white rounded-xl border border-stone-200 p-5 shadow-sm space-y-4">
+          <div className="border-b border-stone-200 pb-3">
+            <h2 className="text-base font-black text-stone-900 flex items-center gap-2">
               <MapPin className="w-5 h-5 text-amber-500" />
               Statewide District Health Coordination Matrix
             </h2>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="text-xs text-stone-500 mt-0.5">
               Comparative load analysis across Nagpur, Pune, Mumbai, Nashik, Wardha, Amravati, and Chandrapur.
             </p>
           </div>
@@ -1239,45 +1239,45 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
               return (
                 <div
                   key={d.id}
-                  className="bg-slate-50 rounded-xl border border-slate-200 p-4 space-y-3 hover:border-slate-300 transition-colors"
+                  className="bg-cream rounded-xl border border-stone-200 p-4 space-y-3 hover:border-stone-200 transition-colors"
                 >
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="text-sm font-black text-slate-900">{d.name} District</h3>
-                      <span className="text-[10px] font-bold text-slate-500">{distHospitals.length} Connected Hospitals</span>
+                      <h3 className="text-sm font-black text-stone-900">{d.name} District</h3>
+                      <span className="text-[10px] font-bold text-stone-500">{distHospitals.length} Connected Hospitals</span>
                     </div>
 
                     <span
                       className={`text-xs font-black px-2.5 py-1 rounded-full uppercase ${
                         d.riskLevel === 'CRITICAL'
-                          ? 'bg-rose-100 text-rose-800 border border-rose-300'
-                          : 'bg-emerald-100 text-emerald-800'
+                          ? 'bg-rose-100 text-rose-400 border border-rose-200'
+                          : 'bg-emerald-100 text-emerald-400'
                       }`}
                     >
                       Risk Score {d.riskScore}/100
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-2 bg-white p-2.5 rounded-lg border border-slate-200 text-center text-xs">
+                  <div className="grid grid-cols-3 gap-2 bg-white p-2.5 rounded-lg border border-stone-200 text-center text-xs">
                     <div>
-                      <span className="text-[9px] font-extrabold uppercase text-slate-400 block">Emergencies</span>
+                      <span className="text-[9px] font-extrabold uppercase text-stone-500 block">Emergencies</span>
                       <span className="font-black text-rose-600">{distIncidents.length} Active</span>
                     </div>
 
                     <div>
-                      <span className="text-[9px] font-extrabold uppercase text-slate-400 block">ICU Available</span>
+                      <span className="text-[9px] font-extrabold uppercase text-stone-500 block">ICU Available</span>
                       <span className="font-black text-emerald-600">{availIcu} Beds</span>
                     </div>
 
                     <div>
-                      <span className="text-[9px] font-extrabold uppercase text-slate-400 block">Ambulances</span>
+                      <span className="text-[9px] font-extrabold uppercase text-stone-500 block">Ambulances</span>
                       <span className="font-black text-sky-600">{d.activeAmbulances} Units</span>
                     </div>
                   </div>
 
                   <button
                     onClick={() => onSelectDistrict(d.id)}
-                    className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-1.5 rounded-lg transition-colors flex items-center justify-center gap-1"
+                    className="w-full bg-white hover:bg-stone-100 text-stone-900 font-bold text-xs py-1.5 rounded-lg transition-colors flex items-center justify-center gap-1"
                   >
                     View {d.name} Detailed Command <ChevronRight className="w-3.5 h-3.5" />
                   </button>
@@ -1290,22 +1290,22 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
 
       {/* SUB-VIEW 7: HOSPITAL COMPARISON TOOL */}
       {activeTab === 'HOSPITAL_COMPARISON' && (
-        <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+        <div className="bg-white rounded-xl border border-stone-200 p-5 shadow-sm space-y-4">
+          <div className="flex items-center justify-between border-b border-stone-200 pb-3">
             <div>
-              <h2 className="text-base font-black text-slate-900 flex items-center gap-2">
+              <h2 className="text-base font-black text-stone-900 flex items-center gap-2">
                 <Sliders className="w-5 h-5 text-sky-600" />
                 Statewide Side-by-Side Hospital Comparison Engine
               </h2>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-stone-500 mt-0.5">
                 Compare ICU beds, ventilators, doctors, nurses, ER queue, trauma level, and AI coordination scores.
               </p>
             </div>
           </div>
 
           {/* Selector checkboxes */}
-          <div className="flex flex-wrap items-center gap-2 bg-slate-50 p-3 rounded-xl border border-slate-200">
-            <span className="text-xs font-bold text-slate-700 mr-2">Select Hospitals to Compare:</span>
+          <div className="flex flex-wrap items-center gap-2 bg-cream p-3 rounded-xl border border-stone-200">
+            <span className="text-xs font-bold text-stone-600 mr-2">Select Hospitals to Compare:</span>
             {hospitals.map((h) => {
               const isChecked = compareHospIds.includes(h.id);
               return (
@@ -1324,8 +1324,8 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                   }}
                   className={`text-xs font-bold px-3 py-1 rounded-lg border transition-all ${
                     isChecked
-                      ? 'bg-slate-900 text-white border-slate-900 shadow-sm'
-                      : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'
+                      ? 'bg-white text-stone-900 border-stone-200 shadow-sm'
+                      : 'bg-white text-stone-600 border-stone-200 hover:bg-stone-100'
                   }`}
                 >
                   {isChecked ? '✓ ' : '+ '} {h.name}
@@ -1335,17 +1335,17 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
           </div>
 
           {/* Comparison Matrix Table */}
-          <div className="overflow-x-auto border border-slate-200 rounded-xl">
+          <div className="overflow-x-auto border border-stone-200 rounded-xl">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-100 text-slate-700 font-extrabold border-b border-slate-200 uppercase text-[10px]">
+              <thead className="bg-stone-100 text-stone-600 font-extrabold border-b border-stone-200 uppercase text-[10px]">
                 <tr>
                   <th className="p-3 w-48">Metric / Parameter</th>
                   {comparisonMetrics.map((m) => (
-                    <th key={m.hospitalId} className="p-3 text-center border-l border-slate-200">
-                      <span className="font-black text-slate-900 block text-xs">{m.name}</span>
-                      <span className="text-[10px] text-slate-500">{m.district} • {m.traumaLevel}</span>
+                    <th key={m.hospitalId} className="p-3 text-center border-l border-stone-200">
+                      <span className="font-black text-stone-900 block text-xs">{m.name}</span>
+                      <span className="text-[10px] text-stone-500">{m.district} • {m.traumaLevel}</span>
                       {m.isBestChoice && (
-                        <span className="bg-emerald-500 text-white text-[9px] font-black px-2 py-0.5 rounded-full uppercase block mt-1">
+                        <span className="bg-emerald-500 text-stone-900 text-[9px] font-black px-2 py-0.5 rounded-full uppercase block mt-1">
                           ★ RECOMMENDED BEST CHOICE
                         </span>
                       )}
@@ -1354,20 +1354,20 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                 </tr>
               </thead>
 
-              <tbody className="divide-y divide-slate-200 font-medium text-slate-800">
+              <tbody className="divide-y divide-stone-200 font-medium text-stone-800">
                 <tr>
-                  <td className="p-3 font-bold text-slate-700 bg-slate-50">AI Coordination Score</td>
+                  <td className="p-3 font-bold text-stone-600 bg-cream">AI Coordination Score</td>
                   {comparisonMetrics.map((m) => (
-                    <td key={m.hospitalId} className="p-3 text-center font-black text-sm text-indigo-900 border-l border-slate-200">
+                    <td key={m.hospitalId} className="p-3 text-center font-black text-sm text-indigo-900 border-l border-stone-200">
                       {m.aiCoordinationScore} / 100
                     </td>
                   ))}
                 </tr>
 
                 <tr>
-                  <td className="p-3 font-bold text-slate-700 bg-slate-50">Occupancy Rate</td>
+                  <td className="p-3 font-bold text-stone-600 bg-cream">Occupancy Rate</td>
                   {comparisonMetrics.map((m) => (
-                    <td key={m.hospitalId} className="p-3 text-center font-extrabold border-l border-slate-200">
+                    <td key={m.hospitalId} className="p-3 text-center font-extrabold border-l border-stone-200">
                       <span className={m.occupancyPercent > 85 ? 'text-rose-600' : 'text-emerald-600'}>
                         {m.occupancyPercent}%
                       </span>
@@ -1376,36 +1376,36 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                 </tr>
 
                 <tr>
-                  <td className="p-3 font-bold text-slate-700 bg-slate-50">Available ICU Beds</td>
+                  <td className="p-3 font-bold text-stone-600 bg-cream">Available ICU Beds</td>
                   {comparisonMetrics.map((m) => (
-                    <td key={m.hospitalId} className="p-3 text-center font-black text-emerald-700 border-l border-slate-200">
+                    <td key={m.hospitalId} className="p-3 text-center font-black text-emerald-400 border-l border-stone-200">
                       {m.availableIcuBeds} Beds
                     </td>
                   ))}
                 </tr>
 
                 <tr>
-                  <td className="p-3 font-bold text-slate-700 bg-slate-50">Available Ventilators</td>
+                  <td className="p-3 font-bold text-stone-600 bg-cream">Available Ventilators</td>
                   {comparisonMetrics.map((m) => (
-                    <td key={m.hospitalId} className="p-3 text-center font-black text-indigo-700 border-l border-slate-200">
+                    <td key={m.hospitalId} className="p-3 text-center font-black text-indigo-400 border-l border-stone-200">
                       {m.availableVentilators} Units
                     </td>
                   ))}
                 </tr>
 
                 <tr>
-                  <td className="p-3 font-bold text-slate-700 bg-slate-50">Doctors & Nurses Duty Staff</td>
+                  <td className="p-3 font-bold text-stone-600 bg-cream">Doctors & Nurses Duty Staff</td>
                   {comparisonMetrics.map((m) => (
-                    <td key={m.hospitalId} className="p-3 text-center font-bold text-slate-800 border-l border-slate-200">
+                    <td key={m.hospitalId} className="p-3 text-center font-bold text-stone-800 border-l border-stone-200">
                       {m.doctorsOnDuty} Doctors / {m.nursesOnDuty} Nurses
                     </td>
                   ))}
                 </tr>
 
                 <tr>
-                  <td className="p-3 font-bold text-slate-700 bg-slate-50">Emergency Queue Count</td>
+                  <td className="p-3 font-bold text-stone-600 bg-cream">Emergency Queue Count</td>
                   {comparisonMetrics.map((m) => (
-                    <td key={m.hospitalId} className="p-3 text-center font-bold text-slate-800 border-l border-slate-200">
+                    <td key={m.hospitalId} className="p-3 text-center font-bold text-stone-800 border-l border-stone-200">
                       {m.emergencyQueueCount} Incoming Patients
                     </td>
                   ))}
@@ -1418,30 +1418,30 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
 
       {/* SUB-VIEW 8: RESOURCE RESERVATION ENGINE */}
       {activeTab === 'RESOURCE_RESERVATION' && (
-        <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+        <div className="bg-white rounded-xl border border-stone-200 p-5 shadow-sm space-y-4">
+          <div className="flex items-center justify-between border-b border-stone-200 pb-3">
             <div>
-              <h2 className="text-base font-black text-slate-900 flex items-center gap-2">
+              <h2 className="text-base font-black text-stone-900 flex items-center gap-2">
                 <Lock className="w-5 h-5 text-emerald-600" />
                 Statewide Resource Reservation Engine
               </h2>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-stone-500 mt-0.5">
                 Pre-reserve ICU beds, ventilators, operation theatres, doctors, and response teams with double-booking protection.
               </p>
             </div>
 
             <button
               onClick={() => setShowReservationModal(true)}
-              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3.5 py-2 rounded-lg shadow flex items-center gap-1.5 transition-colors"
+              className="bg-emerald-600 hover:bg-emerald-700 text-stone-900 font-bold text-xs px-3.5 py-2 rounded-lg shadow flex items-center gap-1.5 transition-colors"
             >
               <Plus className="w-4 h-4" /> Reserve Resource
             </button>
           </div>
 
           {/* Reservation List Table */}
-          <div className="overflow-x-auto border border-slate-200 rounded-xl">
+          <div className="overflow-x-auto border border-stone-200 rounded-xl">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-100 text-slate-700 font-extrabold border-b border-slate-200 uppercase text-[10px]">
+              <thead className="bg-stone-100 text-stone-600 font-extrabold border-b border-stone-200 uppercase text-[10px]">
                 <tr>
                   <th className="p-3">Reservation Code</th>
                   <th className="p-3">Hospital Name</th>
@@ -1453,29 +1453,29 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                 </tr>
               </thead>
 
-              <tbody className="divide-y divide-slate-200 font-medium text-slate-800">
+              <tbody className="divide-y divide-stone-200 font-medium text-stone-800">
                 {stateReservations.map((res) => (
-                  <tr key={res.id} className="hover:bg-slate-50 transition-colors">
+                  <tr key={res.id} className="hover:bg-cream transition-colors">
                     <td className="p-3 font-mono font-bold text-indigo-900">{res.reservationCode}</td>
-                    <td className="p-3 font-black text-slate-900">{res.hospitalName}</td>
+                    <td className="p-3 font-black text-stone-900">{res.hospitalName}</td>
                     <td className="p-3">
-                      <span className="font-bold text-slate-900 block">{res.resourceType}</span>
-                      <span className="text-[10px] text-slate-500">{res.resourceDetails}</span>
+                      <span className="font-bold text-stone-900 block">{res.resourceType}</span>
+                      <span className="text-[10px] text-stone-500">{res.resourceDetails}</span>
                     </td>
 
                     <td className="p-3">
-                      <span className="font-bold text-slate-900 block">{res.patientName}</span>
-                      <span className="text-[10px] text-slate-500 font-mono">{res.patientOrIncidentCode}</span>
+                      <span className="font-bold text-stone-900 block">{res.patientName}</span>
+                      <span className="text-[10px] text-stone-500 font-mono">{res.patientOrIncidentCode}</span>
                     </td>
 
-                    <td className="p-3 text-slate-600">{res.reservedBy}</td>
+                    <td className="p-3 text-stone-500">{res.reservedBy}</td>
 
                     <td className="p-3">
                       <span
                         className={`text-[10px] font-extrabold px-2 py-0.5 rounded uppercase ${
                           res.status === 'ACTIVE'
-                            ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
-                            : 'bg-slate-100 text-slate-600'
+                            ? 'bg-emerald-100 text-emerald-400 border border-emerald-300'
+                            : 'bg-stone-100 text-stone-500'
                         }`}
                       >
                         {res.status}
@@ -1487,13 +1487,13 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                         <div className="flex items-center space-x-1">
                           <button
                             onClick={() => handleReservationAction(res.id, 'RELEASE')}
-                            className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-[10px] px-2 py-1 rounded"
+                            className="bg-white hover:bg-stone-100 text-stone-900 font-bold text-[10px] px-2 py-1 rounded"
                           >
                             Release
                           </button>
                           <button
                             onClick={() => handleReservationAction(res.id, 'CANCEL')}
-                            className="bg-rose-100 hover:bg-rose-200 text-rose-800 font-bold text-[10px] px-2 py-1 rounded"
+                            className="bg-rose-100 hover:bg-rose-200 text-rose-400 font-bold text-[10px] px-2 py-1 rounded"
                           >
                             Cancel
                           </button>
@@ -1510,20 +1510,20 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
 
       {/* SUB-VIEW 9: HOSPITAL COLLABORATION CENTER */}
       {activeTab === 'COLLABORATION_CENTER' && (
-        <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-4">
-          <div className="border-b border-slate-200 pb-3">
-            <h2 className="text-base font-black text-slate-900 flex items-center gap-2">
+        <div className="bg-white rounded-xl border border-stone-200 p-5 shadow-sm space-y-4">
+          <div className="border-b border-stone-200 pb-3">
+            <h2 className="text-base font-black text-stone-900 flex items-center gap-2">
               <Radio className="w-5 h-5 text-purple-600" />
               Statewide Inter-Hospital Collaboration & Broadcast Network
             </h2>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="text-xs text-stone-500 mt-0.5">
               Secure broadcast communication channel for emergency notifications, blood bank requests, and disaster referrals.
             </p>
           </div>
 
           {/* New Broadcast Form */}
-          <form onSubmit={handleCreateBroadcast} className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
-            <h3 className="text-xs font-black uppercase text-slate-800">Publish Broadcast Announcement</h3>
+          <form onSubmit={handleCreateBroadcast} className="bg-cream p-4 rounded-xl border border-stone-200 space-y-3">
+            <h3 className="text-xs font-black uppercase text-stone-800">Publish Broadcast Announcement</h3>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <input
@@ -1531,14 +1531,14 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                 placeholder="Broadcast Title..."
                 value={broadcastTitle}
                 onChange={(e) => setBroadcastTitle(e.target.value)}
-                className="text-xs font-bold p-2 border border-slate-300 rounded-lg focus:outline-none"
+                className="text-xs font-bold p-2 border border-stone-200 rounded-lg focus:outline-none"
                 required
               />
 
               <select
                 value={broadcastType}
                 onChange={(e) => setBroadcastType(e.target.value as any)}
-                className="text-xs font-bold p-2 border border-slate-300 rounded-lg focus:outline-none"
+                className="text-xs font-bold p-2 border border-stone-200 rounded-lg focus:outline-none"
               >
                 <option value="ANNOUNCEMENT">Announcement</option>
                 <option value="CRITICAL_ALERT">Critical Alert</option>
@@ -1549,7 +1549,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
               <select
                 value={broadcastUrgency}
                 onChange={(e) => setBroadcastUrgency(e.target.value as any)}
-                className="text-xs font-bold p-2 border border-slate-300 rounded-lg focus:outline-none"
+                className="text-xs font-bold p-2 border border-stone-200 rounded-lg focus:outline-none"
               >
                 <option value="NORMAL">Normal Urgency</option>
                 <option value="HIGH">High Urgency</option>
@@ -1561,13 +1561,13 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
               placeholder="Broadcast Message Content..."
               value={broadcastContent}
               onChange={(e) => setBroadcastContent(e.target.value)}
-              className="w-full text-xs font-medium p-2 border border-slate-300 rounded-lg focus:outline-none h-20"
+              className="w-full text-xs font-medium p-2 border border-stone-200 rounded-lg focus:outline-none h-20"
               required
             />
 
             <button
               type="submit"
-              className="bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs px-4 py-2 rounded-lg shadow flex items-center gap-1.5"
+              className="bg-purple-600 hover:bg-purple-700 text-stone-900 font-bold text-xs px-4 py-2 rounded-lg shadow flex items-center gap-1.5"
             >
               <Send className="w-3.5 h-3.5" /> Broadcast to All Hospitals
             </button>
@@ -1580,12 +1580,12 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                 key={b.id}
                 className={`p-4 rounded-xl border ${
                   b.urgency === 'CRITICAL'
-                    ? 'bg-rose-50 border-rose-300'
-                    : 'bg-slate-50 border-slate-200'
+                    ? 'bg-rose-50 border-rose-200'
+                    : 'bg-cream border-stone-200'
                 } space-y-2`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-black text-xs text-slate-900 flex items-center gap-1.5">
+                  <span className="font-black text-xs text-stone-900 flex items-center gap-1.5">
                     <Radio className="w-4 h-4 text-purple-600" /> {b.title}
                   </span>
 
@@ -1594,9 +1594,9 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                   </span>
                 </div>
 
-                <p className="text-xs text-slate-800 font-medium">{b.content}</p>
+                <p className="text-xs text-stone-800 font-medium">{b.content}</p>
 
-                <div className="flex items-center justify-between text-[10px] text-slate-500 pt-1 border-t border-slate-200/60">
+                <div className="flex items-center justify-between text-[10px] text-stone-500 pt-1 border-t border-stone-200/60">
                   <span>District: {b.senderDistrict}</span>
                   <span>Read Receipts: {b.readReceipts.length} Facilities Acknowledged</span>
                 </div>
@@ -1608,40 +1608,40 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
 
       {/* SUB-VIEW 10: STATE RESOURCE ANALYTICS */}
       {activeTab === 'STATE_ANALYTICS' && (
-        <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-4">
-          <div className="border-b border-slate-200 pb-3">
-            <h2 className="text-base font-black text-slate-900 flex items-center gap-2">
+        <div className="bg-white rounded-xl border border-stone-200 p-5 shadow-sm space-y-4">
+          <div className="border-b border-stone-200 pb-3">
+            <h2 className="text-base font-black text-stone-900 flex items-center gap-2">
               <BarChart3 className="w-5 h-5 text-teal-600" />
               Statewide Multi-Hospital Resource Analytics
             </h2>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="text-xs text-stone-500 mt-0.5">
               Operational analytics, transfer success rate, ICU utilization trends, and AI recommendation accuracy metrics.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="bg-teal-50 border border-teal-200 rounded-xl p-4">
-              <span className="text-[10px] font-extrabold text-teal-800 uppercase block">Transfer Success Rate</span>
+              <span className="text-[10px] font-extrabold text-teal-400 uppercase block">Transfer Success Rate</span>
               <span className="text-2xl font-black text-teal-900 mt-1 block">98.4%</span>
-              <span className="text-[10px] text-teal-700 mt-0.5 block">Avg Transit Time: 14 mins</span>
+              <span className="text-[10px] text-teal-400 mt-0.5 block">Avg Transit Time: 14 mins</span>
             </div>
 
             <div className="bg-sky-50 border border-sky-200 rounded-xl p-4">
-              <span className="text-[10px] font-extrabold text-sky-800 uppercase block">AI Balancer Accuracy</span>
+              <span className="text-[10px] font-extrabold text-sky-400 uppercase block">AI Balancer Accuracy</span>
               <span className="text-2xl font-black text-sky-900 mt-1 block">96.2%</span>
-              <span className="text-[10px] text-sky-700 mt-0.5 block">Zero double booking errors</span>
+              <span className="text-[10px] text-sky-400 mt-0.5 block">Zero double booking errors</span>
             </div>
 
             <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-4">
-              <span className="text-[10px] font-extrabold text-indigo-800 uppercase block">Avg ICU Wait Time</span>
+              <span className="text-[10px] font-extrabold text-indigo-400 uppercase block">Avg ICU Wait Time</span>
               <span className="text-2xl font-black text-indigo-900 mt-1 block">4.2 Mins</span>
-              <span className="text-[10px] text-indigo-700 mt-0.5 block">Pre-allocation active</span>
+              <span className="text-[10px] text-indigo-400 mt-0.5 block">Pre-allocation active</span>
             </div>
 
             <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
-              <span className="text-[10px] font-extrabold text-emerald-800 uppercase block">Resource Exchanges</span>
+              <span className="text-[10px] font-extrabold text-emerald-400 uppercase block">Resource Exchanges</span>
               <span className="text-2xl font-black text-emerald-900 mt-1 block">142 Requests</span>
-              <span className="text-[10px] text-emerald-700 mt-0.5 block">Inter-hospital sharing</span>
+              <span className="text-[10px] text-emerald-400 mt-0.5 block">Inter-hospital sharing</span>
             </div>
           </div>
         </div>
@@ -1649,15 +1649,15 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
 
       {/* MODAL 1: REQUEST RESOURCE EXCHANGE */}
       {showExchangeModal && (
-        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl border border-slate-200">
+        <div className="fixed inset-0 bg-white/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-lg shadow-stone-300/50 border border-stone-200">
             <div className="flex items-center justify-between border-b pb-3">
-              <h3 className="text-sm font-black text-slate-900 flex items-center gap-2">
+              <h3 className="text-sm font-black text-stone-900 flex items-center gap-2">
                 <ArrowLeftRight className="w-5 h-5 text-emerald-600" /> Request Inter-Hospital Resource
               </h3>
               <button
                 onClick={() => setShowExchangeModal(false)}
-                className="text-slate-400 hover:text-slate-700 font-bold"
+                className="text-stone-500 hover:text-stone-600 font-bold"
               >
                 ✕
               </button>
@@ -1665,7 +1665,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
 
             <form onSubmit={handleCreateExchange} className="space-y-3 text-xs">
               <div>
-                <label className="font-bold text-slate-700 block mb-1">Requesting Hospital</label>
+                <label className="font-bold text-stone-600 block mb-1">Requesting Hospital</label>
                 <select
                   value={reqHospitalId}
                   onChange={(e) => setReqHospitalId(e.target.value)}
@@ -1681,7 +1681,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="font-bold text-slate-700 block mb-1">Category</label>
+                  <label className="font-bold text-stone-600 block mb-1">Category</label>
                   <select
                     value={reqCategory}
                     onChange={(e) => setReqCategory(e.target.value as any)}
@@ -1699,7 +1699,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                 </div>
 
                 <div>
-                  <label className="font-bold text-slate-700 block mb-1">Quantity</label>
+                  <label className="font-bold text-stone-600 block mb-1">Quantity</label>
                   <input
                     type="number"
                     min={1}
@@ -1712,7 +1712,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
               </div>
 
               <div>
-                <label className="font-bold text-slate-700 block mb-1">Resource Details & Requirements</label>
+                <label className="font-bold text-stone-600 block mb-1">Resource Details & Requirements</label>
                 <textarea
                   placeholder="E.g. High-Flow Transport Ventilators compatible with pediatric care..."
                   value={reqDetails}
@@ -1726,13 +1726,13 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                 <button
                   type="button"
                   onClick={() => setShowExchangeModal(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-100 text-slate-700 font-bold"
+                  className="px-4 py-2 rounded-lg bg-stone-100 text-stone-600 font-bold"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-lg bg-emerald-600 text-white font-bold shadow"
+                  className="px-4 py-2 rounded-lg bg-emerald-600 text-stone-900 font-bold shadow"
                 >
                   Broadcast Requisition
                 </button>
@@ -1744,15 +1744,15 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
 
       {/* MODAL 2: PATIENT TRANSFER WORKFLOW */}
       {showTransferModal && (
-        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl border border-slate-200">
+        <div className="fixed inset-0 bg-white/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-lg shadow-stone-300/50 border border-stone-200">
             <div className="flex items-center justify-between border-b pb-3">
-              <h3 className="text-sm font-black text-slate-900 flex items-center gap-2">
+              <h3 className="text-sm font-black text-stone-900 flex items-center gap-2">
                 <Truck className="w-5 h-5 text-indigo-600" /> Initiate Patient Transfer Command
               </h3>
               <button
                 onClick={() => setShowTransferModal(false)}
-                className="text-slate-400 hover:text-slate-700 font-bold"
+                className="text-stone-500 hover:text-stone-600 font-bold"
               >
                 ✕
               </button>
@@ -1761,7 +1761,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
             <form onSubmit={handleCreateTransferWorkflow} className="space-y-3 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="font-bold text-slate-700 block mb-1">Patient Name</label>
+                  <label className="font-bold text-stone-600 block mb-1">Patient Name</label>
                   <input
                     type="text"
                     placeholder="Patient Name..."
@@ -1773,7 +1773,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                 </div>
 
                 <div>
-                  <label className="font-bold text-slate-700 block mb-1">Age / Gender</label>
+                  <label className="font-bold text-stone-600 block mb-1">Age / Gender</label>
                   <input
                     type="text"
                     value={trfPatientAgeGender}
@@ -1785,7 +1785,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="font-bold text-slate-700 block mb-1">Source Hospital</label>
+                  <label className="font-bold text-stone-600 block mb-1">Source Hospital</label>
                   <select
                     value={trfSourceHospId}
                     onChange={(e) => setTrfSourceHospId(e.target.value)}
@@ -1800,7 +1800,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                 </div>
 
                 <div>
-                  <label className="font-bold text-slate-700 block mb-1">Destination Hospital</label>
+                  <label className="font-bold text-stone-600 block mb-1">Destination Hospital</label>
                   <select
                     value={trfDestHospId}
                     onChange={(e) => setTrfDestHospId(e.target.value)}
@@ -1816,7 +1816,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
               </div>
 
               <div>
-                <label className="font-bold text-slate-700 block mb-1">Clinical Transfer Justification</label>
+                <label className="font-bold text-stone-600 block mb-1">Clinical Transfer Justification</label>
                 <textarea
                   placeholder="Multi-organ trauma requiring tertiary ECMO support..."
                   value={trfReason}
@@ -1830,13 +1830,13 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                 <button
                   type="button"
                   onClick={() => setShowTransferModal(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-100 text-slate-700 font-bold"
+                  className="px-4 py-2 rounded-lg bg-stone-100 text-stone-600 font-bold"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-lg bg-indigo-600 text-white font-bold shadow"
+                  className="px-4 py-2 rounded-lg bg-indigo-600 text-stone-900 font-bold shadow"
                 >
                   Start Transfer Workflow
                 </button>
@@ -1848,29 +1848,29 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
 
       {/* MODAL 3: STATE RESOURCE RESERVATION */}
       {showReservationModal && (
-        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl border border-slate-200">
+        <div className="fixed inset-0 bg-white/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-lg shadow-stone-300/50 border border-stone-200">
             <div className="flex items-center justify-between border-b pb-3">
-              <h3 className="text-sm font-black text-slate-900 flex items-center gap-2">
+              <h3 className="text-sm font-black text-stone-900 flex items-center gap-2">
                 <Lock className="w-5 h-5 text-emerald-600" /> State Resource Reservation (Anti Double-Booking)
               </h3>
               <button
                 onClick={() => setShowReservationModal(false)}
-                className="text-slate-400 hover:text-slate-700 font-bold"
+                className="text-stone-500 hover:text-stone-600 font-bold"
               >
                 ✕
               </button>
             </div>
 
             {resError && (
-              <div className="bg-rose-50 border border-rose-300 text-rose-900 text-xs p-3 rounded-lg font-bold">
+              <div className="bg-rose-50 border border-rose-200 text-rose-900 text-xs p-3 rounded-lg font-bold">
                 {resError}
               </div>
             )}
 
             <form onSubmit={handleCreateReservation} className="space-y-3 text-xs">
               <div>
-                <label className="font-bold text-slate-700 block mb-1">Target Hospital</label>
+                <label className="font-bold text-stone-600 block mb-1">Target Hospital</label>
                 <select
                   value={resHospId}
                   onChange={(e) => setResHospId(e.target.value)}
@@ -1886,7 +1886,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="font-bold text-slate-700 block mb-1">Resource Type</label>
+                  <label className="font-bold text-stone-600 block mb-1">Resource Type</label>
                   <select
                     value={resType}
                     onChange={(e) => setResType(e.target.value as any)}
@@ -1901,7 +1901,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                 </div>
 
                 <div>
-                  <label className="font-bold text-slate-700 block mb-1">Patient Name</label>
+                  <label className="font-bold text-stone-600 block mb-1">Patient Name</label>
                   <input
                     type="text"
                     placeholder="Patient Name..."
@@ -1914,7 +1914,7 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
               </div>
 
               <div>
-                <label className="font-bold text-slate-700 block mb-1">Resource Details</label>
+                <label className="font-bold text-stone-600 block mb-1">Resource Details</label>
                 <input
                   type="text"
                   value={resDetails}
@@ -1927,13 +1927,13 @@ export const StateHospitalCommandCenterView: React.FC<StateHospitalCommandCenter
                 <button
                   type="button"
                   onClick={() => setShowReservationModal(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-100 text-slate-700 font-bold"
+                  className="px-4 py-2 rounded-lg bg-stone-100 text-stone-600 font-bold"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-lg bg-emerald-600 text-white font-bold shadow"
+                  className="px-4 py-2 rounded-lg bg-emerald-600 text-stone-900 font-bold shadow"
                 >
                   Lock Reservation
                 </button>

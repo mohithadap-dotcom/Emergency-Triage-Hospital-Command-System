@@ -94,9 +94,9 @@ export const HospitalEmergencyQueueView: React.FC<HospitalEmergencyQueueViewProp
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="bg-rose-900 text-white p-5 rounded-2xl shadow-md border border-rose-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-rose-600 text-stone-900 p-5 rounded-2xl shadow-md border border-rose-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="space-y-1">
-          <span className="text-[10px] font-mono font-extrabold uppercase bg-rose-800/80 text-rose-200 border border-rose-700 px-2.5 py-0.5 rounded-full">
+          <span className="text-[10px] font-mono font-extrabold uppercase bg-rose-800/80 text-rose-200 border border-rose-400 px-2.5 py-0.5 rounded-full">
             Live Emergency Queue
           </span>
           <h2 className="text-xl font-black tracking-tight flex items-center gap-2">
@@ -133,7 +133,7 @@ export const HospitalEmergencyQueueView: React.FC<HospitalEmergencyQueueViewProp
             <div
               key={req.id}
               className={`bg-white border rounded-2xl p-5 shadow-sm space-y-4 transition-all ${
-                req.priority === 'CRITICAL' ? 'border-rose-400 bg-rose-50/20' : 'border-slate-200'
+                req.priority === 'CRITICAL' ? 'border-rose-400 bg-rose-50/20' : 'border-stone-200'
               }`}
             >
               <div className="flex items-start justify-between border-b border-slate-100 pb-3">
@@ -142,36 +142,36 @@ export const HospitalEmergencyQueueView: React.FC<HospitalEmergencyQueueViewProp
                     <span
                       className={`px-2 py-0.5 rounded text-[10px] font-black uppercase ${
                         req.priority === 'CRITICAL'
-                          ? 'bg-rose-600 text-white'
+                          ? 'bg-rose-600 text-stone-900'
                           : req.priority === 'HIGH'
-                          ? 'bg-amber-500 text-white'
-                          : 'bg-sky-600 text-white'
+                          ? 'bg-amber-500 text-stone-900'
+                          : 'bg-sky-600 text-stone-900'
                       }`}
                     >
                       {req.priority} Emergency
                     </span>
-                    <span className="text-xs font-mono font-bold text-slate-400">{req.incidentCode}</span>
+                    <span className="text-xs font-mono font-bold text-stone-500">{req.incidentCode}</span>
                   </div>
-                  <h3 className="font-extrabold text-slate-900 text-base mt-1">{req.incidentTitle}</h3>
-                  <p className="text-xs text-slate-600 font-medium mt-0.5">
-                    Patient: <strong className="text-slate-900">{req.patientName}</strong>
+                  <h3 className="font-extrabold text-stone-900 text-base mt-1">{req.incidentTitle}</h3>
+                  <p className="text-xs text-stone-500 font-medium mt-0.5">
+                    Patient: <strong className="text-stone-900">{req.patientName}</strong>
                   </p>
                 </div>
 
                 <div className="text-right">
-                  <span className="text-xs font-mono font-black text-rose-700 bg-rose-100 px-3 py-1 rounded-xl border border-rose-200 block">
+                  <span className="text-xs font-mono font-black text-rose-400 bg-rose-100 px-3 py-1 rounded-xl border border-rose-200 block">
                     ETA: {req.etaMinutes} MINS
                   </span>
-                  <span className="text-[10px] text-slate-400 font-medium block mt-1">
+                  <span className="text-[10px] text-stone-500 font-medium block mt-1">
                     {req.assignedAmbulanceRegNo}
                   </span>
                 </div>
               </div>
 
               {/* Clinical Summary */}
-              <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-xs space-y-2">
+              <div className="bg-cream p-3.5 rounded-xl border border-stone-200 text-xs space-y-2">
                 <p>
-                  <strong className="text-slate-700">Symptoms:</strong> {req.symptoms}
+                  <strong className="text-stone-600">Symptoms:</strong> {req.symptoms}
                 </p>
                 <p className="text-sky-900 font-semibold bg-sky-50 p-2 rounded border border-sky-200">
                   <strong>AI Triage Assessment:</strong> {req.triageSummary}
@@ -180,8 +180,8 @@ export const HospitalEmergencyQueueView: React.FC<HospitalEmergencyQueueViewProp
 
               {/* Actions */}
               <div className="flex items-center justify-between pt-2">
-                <span className="text-xs font-bold text-slate-500">
-                  Status: <strong className="text-slate-900">{req.status}</strong>
+                <span className="text-xs font-bold text-stone-500">
+                  Status: <strong className="text-stone-900">{req.status}</strong>
                 </span>
 
                 <div className="flex items-center gap-2">
@@ -189,7 +189,7 @@ export const HospitalEmergencyQueueView: React.FC<HospitalEmergencyQueueViewProp
                     <>
                       <button
                         onClick={() => handleAction(req.id, 'ACCEPTED')}
-                        className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-extrabold rounded-xl shadow-sm transition-all flex items-center space-x-1"
+                        className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-stone-900 text-xs font-extrabold rounded-xl shadow-sm transition-all flex items-center space-x-1"
                       >
                         <CheckCircle2 className="w-4 h-4" />
                         <span>Accept Emergency</span>
@@ -197,7 +197,7 @@ export const HospitalEmergencyQueueView: React.FC<HospitalEmergencyQueueViewProp
 
                       <button
                         onClick={() => handleAction(req.id, 'TRANSFER_REQUESTED')}
-                        className="px-3 py-2 bg-amber-500 hover:bg-amber-400 text-white text-xs font-extrabold rounded-xl shadow-sm transition-all flex items-center space-x-1"
+                        className="px-3 py-2 bg-amber-500 hover:bg-amber-400 text-stone-900 text-xs font-extrabold rounded-xl shadow-sm transition-all flex items-center space-x-1"
                       >
                         <ArrowRightLeft className="w-4 h-4" />
                         <span>Divert / Transfer</span>
@@ -206,7 +206,7 @@ export const HospitalEmergencyQueueView: React.FC<HospitalEmergencyQueueViewProp
                   )}
 
                   {req.status === 'ACCEPTED' && (
-                    <span className="text-xs font-bold text-emerald-700 bg-emerald-100 border border-emerald-300 px-3 py-1 rounded-lg flex items-center space-x-1">
+                    <span className="text-xs font-bold text-emerald-400 bg-emerald-100 border border-emerald-300 px-3 py-1 rounded-lg flex items-center space-x-1">
                       <CheckCircle2 className="w-4 h-4" />
                       <span>Trauma Bay & ICU Reserved</span>
                     </span>
@@ -218,55 +218,55 @@ export const HospitalEmergencyQueueView: React.FC<HospitalEmergencyQueueViewProp
         </div>
 
         {/* Right Column: ER Preparation Checklist */}
-        <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-4 h-fit">
-          <h3 className="text-base font-bold text-slate-900 flex items-center space-x-2 border-b border-slate-100 pb-3">
+        <div className="bg-white border border-stone-200 rounded-2xl p-5 shadow-sm space-y-4 h-fit">
+          <h3 className="text-base font-bold text-stone-900 flex items-center space-x-2 border-b border-slate-100 pb-3">
             <ClipboardList className="w-5 h-5 text-sky-600" />
             <span>Emergency Arrival Checklist</span>
           </h3>
 
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-stone-500">
             Verify trauma bay preparation before ambulance arrival at hospital gate:
           </p>
 
           <div className="space-y-3 text-xs font-bold">
-            <label className="flex items-center space-x-3 p-3 bg-slate-50 rounded-xl border border-slate-200 cursor-pointer">
+            <label className="flex items-center space-x-3 p-3 bg-cream rounded-xl border border-stone-200 cursor-pointer">
               <input
                 type="checkbox"
                 checked={prepChecklist.traumaBayPrepped}
                 onChange={(e) => setPrepChecklist({ ...prepChecklist, traumaBayPrepped: e.target.checked })}
                 className="w-4 h-4 text-emerald-600 rounded"
               />
-              <span className="text-slate-800">Trauma Bay & Resuscitation Equipment Ready</span>
+              <span className="text-stone-800">Trauma Bay & Resuscitation Equipment Ready</span>
             </label>
 
-            <label className="flex items-center space-x-3 p-3 bg-slate-50 rounded-xl border border-slate-200 cursor-pointer">
+            <label className="flex items-center space-x-3 p-3 bg-cream rounded-xl border border-stone-200 cursor-pointer">
               <input
                 type="checkbox"
                 checked={prepChecklist.ventilatorStandby}
                 onChange={(e) => setPrepChecklist({ ...prepChecklist, ventilatorStandby: e.target.checked })}
                 className="w-4 h-4 text-emerald-600 rounded"
               />
-              <span className="text-slate-800">Mechanical Ventilator Calibrated & On Standby</span>
+              <span className="text-stone-800">Mechanical Ventilator Calibrated & On Standby</span>
             </label>
 
-            <label className="flex items-center space-x-3 p-3 bg-slate-50 rounded-xl border border-slate-200 cursor-pointer">
+            <label className="flex items-center space-x-3 p-3 bg-cream rounded-xl border border-stone-200 cursor-pointer">
               <input
                 type="checkbox"
                 checked={prepChecklist.bloodMatched}
                 onChange={(e) => setPrepChecklist({ ...prepChecklist, bloodMatched: e.target.checked })}
                 className="w-4 h-4 text-emerald-600 rounded"
               />
-              <span className="text-slate-800">Blood Bank Pre-Alerted (O-Negative Units)</span>
+              <span className="text-stone-800">Blood Bank Pre-Alerted (O-Negative Units)</span>
             </label>
 
-            <label className="flex items-center space-x-3 p-3 bg-slate-50 rounded-xl border border-slate-200 cursor-pointer">
+            <label className="flex items-center space-x-3 p-3 bg-cream rounded-xl border border-stone-200 cursor-pointer">
               <input
                 type="checkbox"
                 checked={prepChecklist.traumaSurgeonNotified}
                 onChange={(e) => setPrepChecklist({ ...prepChecklist, traumaSurgeonNotified: e.target.checked })}
                 className="w-4 h-4 text-emerald-600 rounded"
               />
-              <span className="text-slate-800">Trauma Lead & Anesthetist Standing By in ER</span>
+              <span className="text-stone-800">Trauma Lead & Anesthetist Standing By in ER</span>
             </label>
           </div>
         </div>

@@ -18,13 +18,13 @@ export const AlertBanner: React.FC<AlertBannerProps> = ({
     <div
       className={`px-4 py-2.5 shadow-md flex items-center justify-between transition-colors border-b ${
         disasterModeActive
-          ? 'bg-rose-900 text-rose-100 border-rose-700 animate-pulse'
-          : 'bg-amber-900 text-amber-100 border-amber-700'
+          ? 'bg-rose-600 text-white border-rose-400 animate-pulse'
+          : 'bg-amber-600 text-white border-amber-400'
       }`}
     >
       <div className="flex items-center space-x-3 text-xs md:text-sm">
-        <div className="flex items-center space-x-1.5 font-bold uppercase tracking-wider bg-black/30 px-2 py-1 rounded border border-white/20">
-          <Radio className="w-4 h-4 text-amber-300 animate-ping" />
+        <div className="flex items-center space-x-1.5 font-bold uppercase tracking-wider bg-stone-900/10 px-2 py-1 rounded border border-stone-300">
+          <Radio className="w-4 h-4 text-amber-100 animate-ping" />
           <span>{disasterModeActive ? 'STATEWIDE LEVEL 3 RED ALERT' : 'ACTIVE EMERGENCY BROADCAST'}</span>
         </div>
 
@@ -38,7 +38,7 @@ export const AlertBanner: React.FC<AlertBannerProps> = ({
       <div className="flex items-center space-x-3 text-xs">
         <button
           onClick={onNavigateToIncidents}
-          className="bg-white/20 hover:bg-white/30 text-white font-bold px-3 py-1.5 rounded flex items-center space-x-1 transition-colors"
+          className="bg-white/20 hover:bg-white/30 text-stone-900 font-bold px-3 py-1.5 rounded flex items-center space-x-1 transition-colors"
         >
           <span>View Triage Dispatch</span>
           <ArrowRight className="w-3.5 h-3.5" />
@@ -46,7 +46,7 @@ export const AlertBanner: React.FC<AlertBannerProps> = ({
         {!disasterModeActive && (
           <button
             onClick={() => setDismissed(true)}
-            className="text-amber-200 hover:text-white p-1"
+            className="text-amber-100 hover:text-stone-900 p-1"
             title="Acknowledge Broadcast"
           >
             <X className="w-4 h-4" />

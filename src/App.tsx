@@ -333,7 +333,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-900 font-sans flex flex-col antialiased selection:bg-amber-400 selection:text-slate-950">
+    <div className="min-h-screen bg-cream text-stone-700 font-sans flex flex-col antialiased">
       {/* 1. Official Government Header & RBAC Switcher */}
       <Header
         currentUser={currentUser}
@@ -363,7 +363,7 @@ export default function App() {
       />
 
       {/* 4. Main EOC Operations Area */}
-      <main className="flex-1 p-3 md:p-5 max-w-[1600px] w-full mx-auto">
+      <main className="flex-1 px-6 py-8 md:px-8 md:py-10 max-w-[1440px] w-full mx-auto">
         {activeTab === 'home' && (
           <HomeDashboard
             metrics={metrics}

@@ -80,15 +80,15 @@ export const AmbulanceFleetView: React.FC<AmbulanceFleetProps> = ({
       case 'DISPATCHED':
         return 'bg-amber-500 text-slate-950 font-black animate-pulse';
       case 'IN_TRANSIT':
-        return 'bg-sky-600 text-white font-black';
+        return 'bg-sky-600 text-stone-900 font-black';
       case 'TRANSPORTING':
-        return 'bg-purple-600 text-white font-black animate-pulse';
+        return 'bg-purple-600 text-stone-900 font-black animate-pulse';
       case 'AVAILABLE':
-        return 'bg-emerald-100 text-emerald-800 border-emerald-300 font-bold';
+        return 'bg-emerald-100 text-emerald-400 border-emerald-300 font-bold';
       case 'MAINTENANCE':
-        return 'bg-rose-100 text-rose-800 border-rose-300 font-bold';
+        return 'bg-rose-100 text-rose-400 border-rose-200 font-bold';
       default:
-        return 'bg-slate-200 text-slate-700 font-semibold';
+        return 'bg-stone-100 text-stone-600 font-semibold';
     }
   };
 
@@ -140,15 +140,15 @@ export const AmbulanceFleetView: React.FC<AmbulanceFleetProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-4 space-y-4">
+    <div className="bg-white rounded-lg border border-stone-200 shadow-sm p-4 space-y-4">
       {/* Title & Top Action Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-stone-200 pb-3">
         <div>
-          <h2 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
-            <Truck className="w-5 h-5 text-sky-700" />
+          <h2 className="text-lg font-extrabold text-stone-900 flex items-center gap-2">
+            <Truck className="w-5 h-5 text-sky-400" />
             Maharashtra Emergency Medical Services (MEMS 108) Fleet Command Platform
           </h2>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-stone-500">
             Real-time GPS telemetry, ALS (Advanced Life Support) ICU units, Gemini AI dispatching & driver navigation.
           </p>
         </div>
@@ -167,13 +167,13 @@ export const AmbulanceFleetView: React.FC<AmbulanceFleetProps> = ({
       </div>
 
       {/* Navigation Sub-Tabs Bar */}
-      <div className="flex items-center space-x-1 border-b border-slate-200 pb-2 text-xs">
+      <div className="flex items-center space-x-1 border-b border-stone-200 pb-2 text-xs">
         <button
           onClick={() => setActiveSubTab('registry')}
           className={`px-3 py-1.5 rounded-md font-extrabold flex items-center gap-1.5 ${
             activeSubTab === 'registry'
-              ? 'bg-sky-600 text-white shadow'
-              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              ? 'bg-sky-600 text-stone-900 shadow'
+              : 'bg-stone-100 text-stone-600 hover:bg-stone-100'
           }`}
         >
           <Truck className="w-4 h-4" />
@@ -185,7 +185,7 @@ export const AmbulanceFleetView: React.FC<AmbulanceFleetProps> = ({
           className={`px-3 py-1.5 rounded-md font-extrabold flex items-center gap-1.5 ${
             activeSubTab === 'smart-dispatch'
               ? 'bg-amber-500 text-slate-950 shadow'
-              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              : 'bg-stone-100 text-stone-600 hover:bg-stone-100'
           }`}
         >
           <Zap className="w-4 h-4 text-slate-950" />
@@ -196,8 +196,8 @@ export const AmbulanceFleetView: React.FC<AmbulanceFleetProps> = ({
           onClick={() => setActiveSubTab('driver-workspace')}
           className={`px-3 py-1.5 rounded-md font-extrabold flex items-center gap-1.5 ${
             activeSubTab === 'driver-workspace'
-              ? 'bg-emerald-600 text-white shadow'
-              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              ? 'bg-emerald-600 text-stone-900 shadow'
+              : 'bg-stone-100 text-stone-600 hover:bg-stone-100'
           }`}
         >
           <Navigation className="w-4 h-4" />
@@ -231,43 +231,43 @@ export const AmbulanceFleetView: React.FC<AmbulanceFleetProps> = ({
         <>
 
       {/* Fleet Executive Readiness Metrics Banner */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-slate-900 text-white p-3.5 rounded-lg">
-        <div className="border-r border-slate-800 pr-2">
-          <span className="text-[10px] font-bold text-slate-400 font-mono uppercase">Total Registered Units</span>
-          <div className="text-xl font-black text-white font-mono mt-0.5">{totalUnits} Units</div>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-white text-stone-900 p-3.5 rounded-lg">
+        <div className="border-r border-stone-200 pr-2">
+          <span className="text-[10px] font-bold text-stone-500 font-mono uppercase">Total Registered Units</span>
+          <div className="text-xl font-black text-stone-900 font-mono mt-0.5">{totalUnits} Units</div>
           <span className="text-[10px] text-sky-400">Statewide Network</span>
         </div>
 
-        <div className="border-r border-slate-800 pr-2">
+        <div className="border-r border-stone-200 pr-2">
           <span className="text-[10px] font-bold text-emerald-400 font-mono uppercase">Available & Ready</span>
           <div className="text-xl font-black text-emerald-400 font-mono mt-0.5">{availableUnits}</div>
           <span className="text-[10px] text-emerald-300">{readinessRate}% Readiness Rate</span>
         </div>
 
-        <div className="border-r border-slate-800 pr-2">
+        <div className="border-r border-stone-200 pr-2">
           <span className="text-[10px] font-bold text-amber-400 font-mono uppercase">Dispatched / En-Route</span>
           <div className="text-xl font-black text-amber-400 font-mono mt-0.5">{dispatchedUnits + transportingUnits}</div>
-          <span className="text-[10px] text-amber-300">Active Response Runs</span>
+          <span className="text-[10px] text-amber-100">Active Response Runs</span>
         </div>
 
         <div>
           <span className="text-[10px] font-bold text-sky-400 font-mono uppercase">Avg Dispatch Response</span>
           <div className="text-xl font-black text-sky-300 font-mono mt-0.5">6.8 MIN</div>
-          <span className="text-[10px] text-slate-400">Target &lt; 8.0 Min</span>
+          <span className="text-[10px] text-stone-500">Target &lt; 8.0 Min</span>
         </div>
       </div>
 
       {/* Filter Toolbar */}
-      <div className="flex flex-wrap items-center justify-between gap-2 bg-slate-50 p-2.5 rounded-lg border border-slate-200 text-xs">
+      <div className="flex flex-wrap items-center justify-between gap-2 bg-cream p-2.5 rounded-lg border border-stone-200 text-xs">
         <div className="flex flex-wrap items-center gap-3">
           <div className="flex items-center space-x-1.5">
-            <span className="font-bold text-slate-700 flex items-center gap-1">
-              <MapPin className="w-3.5 h-3.5 text-sky-700" /> District:
+            <span className="font-bold text-stone-600 flex items-center gap-1">
+              <MapPin className="w-3.5 h-3.5 text-sky-400" /> District:
             </span>
             <select
               value={selectedDistrict}
               onChange={(e) => onSelectDistrict(e.target.value)}
-              className="px-2 py-1 text-xs bg-white border border-slate-300 rounded font-semibold text-slate-800"
+              className="px-2 py-1 text-xs bg-white border border-stone-200 rounded font-semibold text-stone-800"
             >
               <option value="all">All Pilot Districts</option>
               {districts.map((d) => (
@@ -279,11 +279,11 @@ export const AmbulanceFleetView: React.FC<AmbulanceFleetProps> = ({
           </div>
 
           <div className="flex items-center space-x-1.5">
-            <span className="font-bold text-slate-700">Status:</span>
+            <span className="font-bold text-stone-600">Status:</span>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-2 py-1 text-xs bg-white border border-slate-300 rounded font-semibold text-slate-800"
+              className="px-2 py-1 text-xs bg-white border border-stone-200 rounded font-semibold text-stone-800"
             >
               <option value="all">All Statuses</option>
               <option value="AVAILABLE">AVAILABLE</option>
@@ -295,11 +295,11 @@ export const AmbulanceFleetView: React.FC<AmbulanceFleetProps> = ({
           </div>
 
           <div className="flex items-center space-x-1.5">
-            <span className="font-bold text-slate-700">Type:</span>
+            <span className="font-bold text-stone-600">Type:</span>
             <select
               value={typeFilter}
               onChange={(e) => setTypeFilter(e.target.value)}
-              className="px-2 py-1 text-xs bg-white border border-slate-300 rounded font-semibold text-slate-800"
+              className="px-2 py-1 text-xs bg-white border border-stone-200 rounded font-semibold text-stone-800"
             >
               <option value="all">All Types</option>
               <option value="ALS">ALS (Advanced Life Support)</option>
@@ -310,7 +310,7 @@ export const AmbulanceFleetView: React.FC<AmbulanceFleetProps> = ({
           </div>
         </div>
 
-        <span className="text-slate-500 font-mono text-[11px]">
+        <span className="text-stone-500 font-mono text-[11px]">
           Showing <strong>{filteredAmbulances.length}</strong> of {totalUnits} ambulances
         </span>
       </div>
@@ -320,11 +320,11 @@ export const AmbulanceFleetView: React.FC<AmbulanceFleetProps> = ({
         {filteredAmbulances.map((amb) => (
           <div
             key={amb.id}
-            className="bg-slate-50/90 rounded-lg border border-slate-200 p-3.5 flex flex-col justify-between hover:border-sky-500 transition-all shadow-2xs space-y-3"
+            className="bg-cream/90 rounded-lg border border-stone-200 p-3.5 flex flex-col justify-between hover:border-sky-500 transition-all shadow-2xs space-y-3"
           >
             <div>
-              <div className="flex items-center justify-between border-b border-slate-200 pb-2">
-                <span className="font-mono font-black text-slate-900 text-sm bg-white px-2 py-0.5 rounded border border-slate-300">
+              <div className="flex items-center justify-between border-b border-stone-200 pb-2">
+                <span className="font-mono font-black text-stone-900 text-sm bg-white px-2 py-0.5 rounded border border-stone-200">
                   {amb.registrationNo}
                 </span>
                 <span className={`text-[10px] px-2 py-0.5 rounded uppercase ${getStatusBadge(amb.status)}`}>
@@ -335,12 +335,12 @@ export const AmbulanceFleetView: React.FC<AmbulanceFleetProps> = ({
               {/* Fuel Level & Telemetry Bar */}
               <div className="mt-2.5 space-y-1.5 text-xs">
                 <div className="flex items-center justify-between text-[11px]">
-                  <span className="text-slate-500 font-semibold flex items-center gap-1">
-                    <Gauge className="w-3.5 h-3.5 text-slate-600" /> Fuel Level:
+                  <span className="text-stone-500 font-semibold flex items-center gap-1">
+                    <Gauge className="w-3.5 h-3.5 text-stone-500" /> Fuel Level:
                   </span>
-                  <span className="font-mono font-bold text-slate-800">{amb.fuelLevel ?? 100}%</span>
+                  <span className="font-mono font-bold text-stone-800">{amb.fuelLevel ?? 100}%</span>
                 </div>
-                <div className="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
+                <div className="w-full h-1.5 bg-stone-100 rounded-full overflow-hidden">
                   <div
                     className={`h-full ${
                       (amb.fuelLevel ?? 100) > 50
@@ -353,53 +353,53 @@ export const AmbulanceFleetView: React.FC<AmbulanceFleetProps> = ({
                   ></div>
                 </div>
 
-                <div className="flex items-center justify-between text-slate-700 pt-1">
-                  <span className="text-slate-500">District Base:</span>
-                  <span className="font-bold text-sky-800">{amb.districtName}</span>
+                <div className="flex items-center justify-between text-stone-600 pt-1">
+                  <span className="text-stone-500">District Base:</span>
+                  <span className="font-bold text-sky-400">{amb.districtName}</span>
                 </div>
-                <div className="flex items-center justify-between text-slate-700">
-                  <span className="text-slate-500">Vehicle Type:</span>
-                  <span className="font-bold text-amber-800 font-mono bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200">
+                <div className="flex items-center justify-between text-stone-600">
+                  <span className="text-stone-500">Vehicle Type:</span>
+                  <span className="font-bold text-amber-400 font-mono bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200">
                     {amb.type}
                   </span>
                 </div>
-                <div className="flex items-center justify-between text-slate-700">
-                  <span className="text-slate-500">Base Station:</span>
-                  <span className="font-bold text-slate-900 truncate max-w-[160px]">{amb.baseHospital}</span>
+                <div className="flex items-center justify-between text-stone-600">
+                  <span className="text-stone-500">Base Station:</span>
+                  <span className="font-bold text-stone-900 truncate max-w-[160px]">{amb.baseHospital}</span>
                 </div>
-                <div className="flex items-center justify-between text-slate-700">
-                  <span className="text-slate-500">Driver / Phone:</span>
-                  <span className="font-semibold text-slate-800">{amb.driverName}</span>
+                <div className="flex items-center justify-between text-stone-600">
+                  <span className="text-stone-500">Driver / Phone:</span>
+                  <span className="font-semibold text-stone-800">{amb.driverName}</span>
                 </div>
                 {amb.paramedicName && (
-                  <div className="flex items-center justify-between text-slate-700">
-                    <span className="text-slate-500">Paramedic:</span>
-                    <span className="font-semibold text-slate-800">{amb.paramedicName}</span>
+                  <div className="flex items-center justify-between text-stone-600">
+                    <span className="text-stone-500">Paramedic:</span>
+                    <span className="font-semibold text-stone-800">{amb.paramedicName}</span>
                   </div>
                 )}
               </div>
 
               {/* On-board Medical Equipment Badges */}
-              <div className="mt-2.5 pt-2 border-t border-slate-200">
-                <span className="text-[10px] text-slate-500 font-mono block mb-1">MEDICAL SUITE:</span>
+              <div className="mt-2.5 pt-2 border-t border-stone-200">
+                <span className="text-[10px] text-stone-500 font-mono block mb-1">MEDICAL SUITE:</span>
                 <div className="flex flex-wrap gap-1 text-[10px]">
                   {amb.equipment?.ventilator && (
-                    <span className="bg-sky-100 text-sky-800 font-bold px-1.5 py-0.5 rounded border border-sky-200">
+                    <span className="bg-sky-100 text-sky-400 font-bold px-1.5 py-0.5 rounded border border-sky-200">
                       Ventilator
                     </span>
                   )}
                   {amb.equipment?.defibrillator && (
-                    <span className="bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded border border-emerald-200">
+                    <span className="bg-emerald-100 text-emerald-400 font-bold px-1.5 py-0.5 rounded border border-emerald-200">
                       Defibrillator
                     </span>
                   )}
                   {amb.equipment?.oxygenReserve && (
-                    <span className="bg-blue-100 text-blue-800 font-bold px-1.5 py-0.5 rounded border border-blue-200">
+                    <span className="bg-blue-100 text-blue-400 font-bold px-1.5 py-0.5 rounded border border-blue-200">
                       O2 Reserve
                     </span>
                   )}
                   {amb.equipment?.syringePump && (
-                    <span className="bg-purple-100 text-purple-800 font-bold px-1.5 py-0.5 rounded border border-purple-200">
+                    <span className="bg-purple-100 text-purple-400 font-bold px-1.5 py-0.5 rounded border border-purple-200">
                       Syringe Pump
                     </span>
                   )}
@@ -408,11 +408,11 @@ export const AmbulanceFleetView: React.FC<AmbulanceFleetProps> = ({
             </div>
 
             {/* Bottom Actions & Status Changer */}
-            <div className="pt-2 mt-2 border-t border-slate-200 space-y-2 text-xs">
+            <div className="pt-2 mt-2 border-t border-stone-200 space-y-2 text-xs">
               <div className="flex items-center justify-between">
                 <a
                   href={`tel:${amb.phone}`}
-                  className="text-sky-700 hover:text-sky-900 font-bold flex items-center space-x-1"
+                  className="text-sky-400 hover:text-sky-900 font-bold flex items-center space-x-1"
                 >
                   <PhoneCall className="w-3.5 h-3.5 text-sky-600" />
                   <span>{amb.phone}</span>
@@ -421,7 +421,7 @@ export const AmbulanceFleetView: React.FC<AmbulanceFleetProps> = ({
                 <select
                   value={amb.status}
                   onChange={(e) => handleUpdateStatus(amb.id, e.target.value as Ambulance['status'])}
-                  className="text-[11px] font-bold bg-white border border-slate-300 rounded px-1.5 py-0.5"
+                  className="text-[11px] font-bold bg-white border border-stone-200 rounded px-1.5 py-0.5"
                 >
                   <option value="AVAILABLE">Set AVAILABLE</option>
                   <option value="DISPATCHED">Set DISPATCHED</option>
@@ -429,7 +429,7 @@ export const AmbulanceFleetView: React.FC<AmbulanceFleetProps> = ({
                 </select>
               </div>
 
-              <div className="flex items-center justify-between text-[10px] font-mono text-slate-400">
+              <div className="flex items-center justify-between text-[10px] font-mono text-stone-500">
                 <span className="flex items-center gap-1">
                   <Radio className="w-3 h-3 text-emerald-500 animate-pulse" />
                   <span>Ping: {amb.lastPing}</span>
@@ -443,16 +443,16 @@ export const AmbulanceFleetView: React.FC<AmbulanceFleetProps> = ({
 
       {/* Register Ambulance Modal */}
       {showRegisterModal && (
-        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg border border-slate-300 shadow-xl max-w-md w-full p-5 space-y-4">
+        <div className="fixed inset-0 bg-white/60 backdrop-blur-xs flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-lg border border-stone-200 shadow-lg shadow-stone-300/40 max-w-md w-full p-5 space-y-4">
             <div className="flex items-center justify-between border-b pb-2">
-              <h3 className="font-extrabold text-slate-900 text-base flex items-center gap-2">
-                <Truck className="w-5 h-5 text-sky-700" />
+              <h3 className="font-extrabold text-stone-900 text-base flex items-center gap-2">
+                <Truck className="w-5 h-5 text-sky-400" />
                 Register New 108 Emergency Vehicle
               </h3>
               <button
                 onClick={() => setShowRegisterModal(false)}
-                className="text-slate-400 hover:text-slate-700 font-bold"
+                className="text-stone-500 hover:text-stone-600 font-bold"
               >
                 ✕
               </button>
@@ -460,24 +460,24 @@ export const AmbulanceFleetView: React.FC<AmbulanceFleetProps> = ({
 
             <form onSubmit={handleRegisterUnit} className="space-y-3 text-xs">
               <div>
-                <label className="block font-bold text-slate-700 mb-1">Vehicle Registration No (RTO)</label>
+                <label className="block font-bold text-stone-600 mb-1">Vehicle Registration No (RTO)</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. MH-31-EQ-9102"
                   value={newRegNo}
                   onChange={(e) => setNewRegNo(e.target.value)}
-                  className="w-full px-3 py-1.5 border border-slate-300 rounded font-mono font-bold"
+                  className="w-full px-3 py-1.5 border border-stone-200 rounded font-mono font-bold"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Vehicle Category</label>
+                  <label className="block font-bold text-stone-600 mb-1">Vehicle Category</label>
                   <select
                     value={newType}
                     onChange={(e) => setNewType(e.target.value as any)}
-                    className="w-full px-2.5 py-1.5 border border-slate-300 rounded font-semibold"
+                    className="w-full px-2.5 py-1.5 border border-stone-200 rounded font-semibold"
                   >
                     <option value="ALS">ALS (Advanced Support)</option>
                     <option value="BLS">BLS (Basic Support)</option>
@@ -487,11 +487,11 @@ export const AmbulanceFleetView: React.FC<AmbulanceFleetProps> = ({
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">District Base</label>
+                  <label className="block font-bold text-stone-600 mb-1">District Base</label>
                   <select
                     value={newDistrictId}
                     onChange={(e) => setNewDistrictId(e.target.value)}
-                    className="w-full px-2.5 py-1.5 border border-slate-300 rounded font-semibold"
+                    className="w-full px-2.5 py-1.5 border border-stone-200 rounded font-semibold"
                   >
                     {districts.map((d) => (
                       <option key={d.id} value={d.id}>
@@ -503,51 +503,51 @@ export const AmbulanceFleetView: React.FC<AmbulanceFleetProps> = ({
               </div>
 
               <div>
-                <label className="block font-bold text-slate-700 mb-1">Base Hospital Station</label>
+                <label className="block font-bold text-stone-600 mb-1">Base Hospital Station</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. AIIMS Hospital Nagpur"
                   value={newBaseHospital}
                   onChange={(e) => setNewBaseHospital(e.target.value)}
-                  className="w-full px-3 py-1.5 border border-slate-300 rounded"
+                  className="w-full px-3 py-1.5 border border-stone-200 rounded"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Driver Name</label>
+                  <label className="block font-bold text-stone-600 mb-1">Driver Name</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. Ramesh Patil"
                     value={newDriverName}
                     onChange={(e) => setNewDriverName(e.target.value)}
-                    className="w-full px-3 py-1.5 border border-slate-300 rounded"
+                    className="w-full px-3 py-1.5 border border-stone-200 rounded"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Driver Hotline</label>
+                  <label className="block font-bold text-stone-600 mb-1">Driver Hotline</label>
                   <input
                     type="text"
                     required
                     placeholder="+91 98230 00000"
                     value={newPhone}
                     onChange={(e) => setNewPhone(e.target.value)}
-                    className="w-full px-3 py-1.5 border border-slate-300 rounded font-mono"
+                    className="w-full px-3 py-1.5 border border-stone-200 rounded font-mono"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block font-bold text-slate-700 mb-1">Assigned Medical Paramedic</label>
+                <label className="block font-bold text-stone-600 mb-1">Assigned Medical Paramedic</label>
                 <input
                   type="text"
                   placeholder="e.g. Nurse Sunita Deshmukh"
                   value={newParamedicName}
                   onChange={(e) => setNewParamedicName(e.target.value)}
-                  className="w-full px-3 py-1.5 border border-slate-300 rounded"
+                  className="w-full px-3 py-1.5 border border-stone-200 rounded"
                 />
               </div>
 
@@ -555,7 +555,7 @@ export const AmbulanceFleetView: React.FC<AmbulanceFleetProps> = ({
                 <button
                   type="button"
                   onClick={() => setShowRegisterModal(false)}
-                  className="px-3 py-1.5 border border-slate-300 rounded text-slate-700 font-bold"
+                  className="px-3 py-1.5 border border-stone-200 rounded text-stone-600 font-bold"
                 >
                   Cancel
                 </button>

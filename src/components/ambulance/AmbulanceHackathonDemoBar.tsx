@@ -49,7 +49,7 @@ export const AmbulanceHackathonDemoBar: React.FC<AmbulanceHackathonDemoBarProps>
   };
 
   return (
-    <div className="bg-slate-900 border-b-2 border-amber-500 p-3 text-white">
+    <div className="bg-white border-b-2 border-amber-500 p-3 text-stone-900">
       <div className="max-w-[1700px] mx-auto flex flex-col lg:flex-row lg:items-center justify-between gap-3">
         {/* Left Branding & Status */}
         <div className="flex items-center space-x-3">
@@ -58,10 +58,10 @@ export const AmbulanceHackathonDemoBar: React.FC<AmbulanceHackathonDemoBarProps>
             <span>HACKATHON DEMO MODE</span>
           </div>
           <div>
-            <div className="text-xs font-extrabold text-amber-300">
+            <div className="text-xs font-extrabold text-amber-100">
               Pune Road Accident Full EMS Life-Cycle Simulation
             </div>
-            <div className="text-[11px] text-slate-300 font-mono truncate max-w-md">
+            <div className="text-[11px] text-stone-600 font-mono truncate max-w-md">
               {stepLog}
             </div>
           </div>
@@ -79,7 +79,7 @@ export const AmbulanceHackathonDemoBar: React.FC<AmbulanceHackathonDemoBarProps>
                   ? 'bg-amber-400 text-slate-950 ring-2 ring-amber-300'
                   : activeStep > s.id
                   ? 'bg-emerald-900/80 text-emerald-300 border border-emerald-500/40'
-                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                  : 'bg-stone-100 text-stone-600 hover:bg-slate-700'
               }`}
             >
               {activeStep > s.id && <CheckCircle2 className="w-3 h-3 text-emerald-400" />}

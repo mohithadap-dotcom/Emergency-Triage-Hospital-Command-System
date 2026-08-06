@@ -146,8 +146,8 @@ export const HospitalEquipmentView: React.FC<HospitalEquipmentViewProps> = ({
             onClick={() => setSelectedCategory(c.value)}
             className={`px-3 py-1.5 rounded-xl border whitespace-nowrap transition-all ${
               selectedCategory === c.value
-                ? 'bg-sky-600 text-white border-sky-600 shadow-sm'
-                : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
+                ? 'bg-sky-600 text-stone-900 border-sky-600 shadow-sm'
+                : 'bg-white text-stone-600 border-stone-200 hover:bg-cream'
             }`}
           >
             {c.label}
@@ -156,14 +156,14 @@ export const HospitalEquipmentView: React.FC<HospitalEquipmentViewProps> = ({
       </div>
 
       {/* Main List */}
-      <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4">
+      <div className="bg-white border border-stone-200 rounded-xl p-5 shadow-sm space-y-4">
         <div className="flex items-center justify-between border-b border-slate-100 pb-3">
           <div>
-            <h3 className="text-base font-bold text-slate-900 flex items-center space-x-2">
+            <h3 className="text-base font-bold text-stone-900 flex items-center space-x-2">
               <Stethoscope className="w-5 h-5 text-sky-600" />
               <span>Biomedical Equipment Registry</span>
             </h3>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="text-xs text-stone-500 mt-0.5">
               Defibrillators, ECGs, Ultrasound, Portable X-Rays, Patient Monitors & Infusion Pumps
             </p>
           </div>
@@ -171,27 +171,27 @@ export const HospitalEquipmentView: React.FC<HospitalEquipmentViewProps> = ({
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredList.map((item) => (
-            <div key={item.id} className="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-2">
+            <div key={item.id} className="bg-cream border border-stone-200 rounded-xl p-4 space-y-2">
               <div className="flex items-start justify-between">
                 <div>
-                  <span className="text-[10px] font-mono font-bold text-slate-400 block">{item.serialNumber}</span>
-                  <h4 className="font-bold text-slate-900 text-xs mt-0.5">{item.name}</h4>
+                  <span className="text-[10px] font-mono font-bold text-stone-500 block">{item.serialNumber}</span>
+                  <h4 className="font-bold text-stone-900 text-xs mt-0.5">{item.name}</h4>
                 </div>
 
                 <span
                   className={`px-2 py-0.5 rounded text-[10px] font-black ${
                     item.status === 'Available'
-                      ? 'bg-emerald-100 text-emerald-800'
+                      ? 'bg-emerald-100 text-emerald-400'
                       : item.status === 'Assigned'
-                      ? 'bg-sky-100 text-sky-800'
-                      : 'bg-slate-200 text-slate-800'
+                      ? 'bg-sky-100 text-sky-400'
+                      : 'bg-stone-100 text-stone-800'
                   }`}
                 >
                   {item.status}
                 </span>
               </div>
 
-              <div className="text-[11px] text-slate-600 space-y-1">
+              <div className="text-[11px] text-stone-500 space-y-1">
                 <p>
                   <strong>Dept:</strong> {item.department} ({item.location})
                 </p>
@@ -200,10 +200,10 @@ export const HospitalEquipmentView: React.FC<HospitalEquipmentViewProps> = ({
                     Patient: {item.assignedPatientName}
                   </p>
                 )}
-                {item.notes && <p className="text-[10px] text-slate-500 italic">{item.notes}</p>}
+                {item.notes && <p className="text-[10px] text-stone-500 italic">{item.notes}</p>}
               </div>
 
-              <div className="flex items-center justify-between text-[10px] text-slate-400 pt-2 border-t border-slate-200 font-bold">
+              <div className="flex items-center justify-between text-[10px] text-stone-500 pt-2 border-t border-stone-200 font-bold">
                 <span>Category: {item.category}</span>
                 <span>Next Service: {item.nextServiceDueDate}</span>
               </div>

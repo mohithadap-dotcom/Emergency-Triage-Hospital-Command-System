@@ -1,1 +1,78 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Instrument Serif", serif;
+  --color-cream: #F5F2ED;
+  --color-cream-dark: #EBE7E0;
+}
+
+@layer base {
+  html,
+  #root {
+    background-color: #F5F2ED;
+  }
+
+  body {
+    @apply font-sans text-stone-700;
+    background-color: #F5F2ED;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+  }
+
+  /* Focus states */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-amber-500/30 ring-offset-2 ring-offset-cream;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-amber-400/30 text-stone-900;
+  }
+}
+
+@layer utilities {
+  /* The single card style */
+  .card {
+    @apply bg-white border border-stone-200 rounded-lg;
+  }
+
+  /* Label utility */
+  .label {
+    @apply text-xs font-medium uppercase tracking-widest text-stone-400;
+  }
+
+  /* Subtle hover lift */
+  .hover-lift {
+    @apply transition-all duration-200 ease-out;
+  }
+  .hover-lift:hover {
+    transform: translateY(-1px);
+    border-color: var(--color-stone-300);
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-stone-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-stone-400;
+}
+
+/* Smooth transitions globally */
+*, *::before, *::after {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}

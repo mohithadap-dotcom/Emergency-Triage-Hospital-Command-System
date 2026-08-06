@@ -34,13 +34,13 @@ export const HospitalNotificationsView: React.FC<HospitalNotificationsViewProps>
 
   return (
     <div className="space-y-6 font-sans">
-      <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4">
+      <div className="bg-white border border-stone-200 rounded-xl p-5 shadow-sm space-y-4">
         <div className="border-b border-slate-100 pb-3">
-          <h2 className="text-base font-bold text-slate-900 flex items-center space-x-2">
+          <h2 className="text-base font-bold text-stone-900 flex items-center space-x-2">
             <Bell className="w-5 h-5 text-sky-600" />
             <span>Hospital Operational Alerts & Push Notifications</span>
           </h2>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <p className="text-xs text-stone-500 mt-0.5">
             Real-time ambulance arrivals, ICU reservations, critical resource warnings, and AI recommendations
           </p>
         </div>
@@ -51,17 +51,17 @@ export const HospitalNotificationsView: React.FC<HospitalNotificationsViewProps>
               key={n.id}
               className={`p-4 rounded-xl border flex items-start space-x-3 text-xs ${
                 n.type === 'CRITICAL'
-                  ? 'bg-rose-50 border-rose-300 text-rose-900'
+                  ? 'bg-rose-50 border-rose-200 text-rose-900'
                   : n.type === 'RESERVATION'
                   ? 'bg-sky-50 border-sky-300 text-sky-900'
-                  : 'bg-slate-50 border-slate-200 text-slate-800'
+                  : 'bg-cream border-stone-200 text-stone-800'
               }`}
             >
               <Siren className={`w-5 h-5 shrink-0 ${n.type === 'CRITICAL' ? 'text-rose-600 animate-pulse' : 'text-sky-600'}`} />
               <div className="space-y-1 flex-1">
                 <div className="flex items-center justify-between">
                   <strong className="font-extrabold text-xs">{n.title}</strong>
-                  <span className="text-[10px] text-slate-400 font-mono">{n.time}</span>
+                  <span className="text-[10px] text-stone-500 font-mono">{n.time}</span>
                 </div>
                 <p className="text-xs font-medium leading-relaxed">{n.message}</p>
               </div>
