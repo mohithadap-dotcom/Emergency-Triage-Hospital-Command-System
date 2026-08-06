@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  rakshak-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://rakshak_admin:secret_pass@postgres:5432/rakshak_eoc_db
+      - REDIS_URL=redis://redis:6379
+      - STATE_EOC_DISTRICT=STATE_CONTROL
+    depends_on:
+      - postgres
+      - redis
+    restart: always
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: rakshak_postgres
+    environment:
+      POSTGRES_USER: rakshak_admin
+      POSTGRES_PASSWORD: secret_pass
+      POSTGRES_DB: rakshak_eoc_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: always
+
+  redis:
+    image: redis:7-alpine
+    container_name: rakshak_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+    restart: always
+
+volumes:
+  pgdata:
+  redisdata:

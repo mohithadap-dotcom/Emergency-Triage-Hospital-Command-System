@@ -1,0 +1,6 @@
+{
+  "name": "Rakshak AI - Maharashtra Emergency Operations Center",
+  "description": "AI-Powered Emergency Response & Multi-Hospital Coordination Platform for the Government of Maharashtra",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
