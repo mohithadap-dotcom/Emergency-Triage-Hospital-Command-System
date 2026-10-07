@@ -1,15 +1,19 @@
 {
-  "name": "react-example",
+  "name": "rakshak-ai-emergency-command-system",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "AI-assisted emergency triage, hospital capacity, ambulance dispatch, and disaster command platform.",
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
     "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "preview": "vite preview",
-    "clean": "rm -rf dist server.cjs",
-    "lint": "tsc --noEmit"
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "lint": "tsc --noEmit",
+    "check": "npm run lint && npm run build",
+    "db:migrate": "tsx scripts/run-migrations.ts",
+    "db:seed": "tsx scripts/seed-full-maharashtra.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

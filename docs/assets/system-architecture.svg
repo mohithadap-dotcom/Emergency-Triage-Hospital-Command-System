@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Rakshak AI system architecture</title>
+  <desc id="desc">Government, hospital, and ambulance portals connect through an Express API to AI, data, maps, realtime, and observability services.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#052f3b"/><stop offset="1" stop-color="#071d2b"/></linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#14b8a6"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000" flood-opacity=".24"/></filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#67e8f9"/></marker>
+  </defs>
+  <rect width="1600" height="900" rx="28" fill="url(#bg)"/>
+  <circle cx="1450" cy="70" r="240" fill="#0e7490" opacity=".11"/><circle cx="90" cy="830" r="290" fill="#14b8a6" opacity=".08"/>
+  <text x="80" y="90" fill="#f8fafc" font-family="Inter,Segoe UI,sans-serif" font-size="42" font-weight="800">System architecture</text>
+  <text x="80" y="130" fill="#a5f3fc" font-family="Inter,Segoe UI,sans-serif" font-size="21">One command network · three operating surfaces · resilient fallback paths</text>
+  <text x="80" y="205" fill="#94a3b8" font-family="Inter,Segoe UI,sans-serif" font-size="17" font-weight="700" letter-spacing="2">OPERATORS</text>
+  <g filter="url(#shadow)" font-family="Inter,Segoe UI,sans-serif">
+    <g transform="translate(80 235)"><rect width="350" height="145" rx="20" fill="#0f3d4b" stroke="#22d3ee" stroke-opacity=".55"/><circle cx="54" cy="54" r="25" fill="#0e7490"/><path d="M43 54h22M54 43v22" stroke="#e6fffb" stroke-width="5" stroke-linecap="round"/><text x="95" y="50" fill="#fff" font-size="25" font-weight="750">Government EOC</text><text x="95" y="82" fill="#bae6fd" font-size="17">State and district command</text><text x="30" y="118" fill="#94a3b8" font-size="15">GIS · incidents · resources · analytics</text></g>
+    <g transform="translate(625 235)"><rect width="350" height="145" rx="20" fill="#0f3d4b" stroke="#22d3ee" stroke-opacity=".55"/><circle cx="54" cy="54" r="25" fill="#0e7490"/><path d="M39 61h30M45 61V44h18v17M51 44v-8h6v8" stroke="#e6fffb" stroke-width="4" fill="none"/><text x="95" y="50" fill="#fff" font-size="25" font-weight="750">Hospital portal</text><text x="95" y="82" fill="#bae6fd" font-size="17">Capacity and receiving teams</text><text x="30" y="118" fill="#94a3b8" font-size="15">Beds · ICU · transfers · shortages</text></g>
+    <g transform="translate(1170 235)"><rect width="350" height="145" rx="20" fill="#0f3d4b" stroke="#22d3ee" stroke-opacity=".55"/><circle cx="54" cy="54" r="25" fill="#0e7490"/><path d="M38 54h31M43 45h18l7 9v10H40V50z" stroke="#e6fffb" stroke-width="4" fill="none"/><circle cx="47" cy="65" r="4" fill="#e6fffb"/><circle cx="63" cy="65" r="4" fill="#e6fffb"/><text x="95" y="50" fill="#fff" font-size="25" font-weight="750">Ambulance portal</text><text x="95" y="82" fill="#bae6fd" font-size="17">Driver and paramedic teams</text><text x="30" y="118" fill="#94a3b8" font-size="15">Missions · routing · vitals · equipment</text></g>
+  </g>
+  <path d="M255 400v68M800 400v68M1345 400v68" stroke="#67e8f9" stroke-width="4" marker-end="url(#arrow)" opacity=".85"/>
+  <rect x="245" y="465" width="1110" height="135" rx="26" fill="#083344" stroke="url(#accent)" stroke-width="3" filter="url(#shadow)"/>
+  <text x="800" y="515" text-anchor="middle" fill="#fff" font-family="Inter,Segoe UI,sans-serif" font-size="31" font-weight="800">Express API + domain services</text>
+  <text x="800" y="552" text-anchor="middle" fill="#a5f3fc" font-family="Inter,Segoe UI,sans-serif" font-size="18">100+ REST handlers · validation · orchestration · human override paths</text>
+  <text x="800" y="580" text-anchor="middle" fill="#94a3b8" font-family="Inter,Segoe UI,sans-serif" font-size="16">Vite middleware in development · compiled Node server in production</text>
+  <path d="M420 620v60M680 620v60M920 620v60M1180 620v60" stroke="#67e8f9" stroke-width="3" marker-end="url(#arrow)" opacity=".72"/>
+  <g font-family="Inter,Segoe UI,sans-serif" filter="url(#shadow)">
+    <g transform="translate(70 695)"><rect width="300" height="130" rx="18" fill="#112f3e" stroke="#155e75"/><text x="28" y="43" fill="#5eead4" font-size="20" font-weight="750">Data layer</text><text x="28" y="75" fill="#fff" font-size="17">Supabase + PostgreSQL</text><text x="28" y="102" fill="#94a3b8" font-size="15">In-memory demo fallback</text></g>
+    <g transform="translate(455 695)"><rect width="300" height="130" rx="18" fill="#112f3e" stroke="#155e75"/><text x="28" y="43" fill="#5eead4" font-size="20" font-weight="750">AI services</text><text x="28" y="75" fill="#fff" font-size="17">Google Gemini</text><text x="28" y="102" fill="#94a3b8" font-size="15">Rule-based safe fallback</text></g>
+    <g transform="translate(840 695)"><rect width="300" height="130" rx="18" fill="#112f3e" stroke="#155e75"/><text x="28" y="43" fill="#5eead4" font-size="20" font-weight="750">Spatial + realtime</text><text x="28" y="75" fill="#fff" font-size="17">Leaflet · map providers</text><text x="28" y="102" fill="#94a3b8" font-size="15">Supabase subscriptions</text></g>
+    <g transform="translate(1225 695)"><rect width="300" height="130" rx="18" fill="#112f3e" stroke="#155e75"/><text x="28" y="43" fill="#5eead4" font-size="20" font-weight="750">Operations</text><text x="28" y="75" fill="#fff" font-size="17">Health · logs · audit</text><text x="28" y="102" fill="#94a3b8" font-size="15">Docker + CI delivery</text></g>
+  </g>
+</svg>

@@ -1,21 +1,30 @@
-version: '3.8'
-
 services:
   rakshak-app:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        VITE_SUPABASE_URL: ${VITE_SUPABASE_URL:-}
+        VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY:-}
+        GOOGLE_MAPS_PLATFORM_KEY: ${GOOGLE_MAPS_PLATFORM_KEY:-}
     ports:
       - "3000:3000"
     environment:
-      - NODE_ENV=production
-      - DATABASE_URL=postgresql://rakshak_admin:secret_pass@postgres:5432/rakshak_eoc_db
-      - REDIS_URL=redis://redis:6379
-      - STATE_EOC_DISTRICT=STATE_CONTROL
+      NODE_ENV: production
+      DATABASE_URL: postgresql://rakshak_admin:${POSTGRES_PASSWORD:-rakshak_local}@postgres:5432/rakshak_eoc_db
+      REDIS_URL: redis://redis:6379
+      STATE_EOC_DISTRICT: ${STATE_EOC_DISTRICT:-STATE_CONTROL}
+      DEFAULT_DISASTER_MODE: ${DEFAULT_DISASTER_MODE:-NORMAL}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      VITE_SUPABASE_URL: ${VITE_SUPABASE_URL:-}
+      VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY:-}
+      GOOGLE_MAPS_PLATFORM_KEY: ${GOOGLE_MAPS_PLATFORM_KEY:-}
     depends_on:
-      - postgres
-      - redis
-    restart: always
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/health"]
       interval: 15s
@@ -27,13 +36,18 @@ services:
     container_name: rakshak_postgres
     environment:
       POSTGRES_USER: rakshak_admin
-      POSTGRES_PASSWORD: secret_pass
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-rakshak_local}
       POSTGRES_DB: rakshak_eoc_db
     ports:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-    restart: always
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rakshak_admin -d rakshak_eoc_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   redis:
     image: redis:7-alpine
@@ -42,7 +56,12 @@ services:
       - "6379:6379"
     volumes:
       - redisdata:/data
-    restart: always
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   pgdata:
